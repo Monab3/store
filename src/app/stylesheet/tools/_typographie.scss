@@ -1,0 +1,38 @@
+/*import lato light/regular, Liu Jian Mao Cao*/
+@import 'variables';
+@import 'mixins';
+
+h1{
+    @include fonts($font__regular, $font-size-headlin, $font-weight-regular);
+ }
+ 
+ h2{
+     @include fonts($font__regular, $font-size-titel, $font-weight-regular);
+ }
+ 
+ .text-regular{
+     @include fonts($font__regular, $font-size-body, $font-weight-regular);
+     line-height: $line__height;
+ }
+
+ .text-regular-italic{
+    @include fonts($font__regular, $font-size-body, $font-weight-regular, true);
+    line-height: $line__height;
+}
+
+.text-bold{
+    @include fonts($font__regular, $font-size-fine, $font-weight-regular);
+    line-height: $line__height;
+}
+
+.text-fine{
+    @include fonts($font__regular, $font-size-fine, $font-weight-regular);
+    line-height: $line__height;
+}
+
+button{
+    @include fonts($font__regular, $font-size-button, $font-weight-regular);
+}
+
+
+ 

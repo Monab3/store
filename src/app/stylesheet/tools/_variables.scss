@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap');
+
+/* Colors */
+$color-green-dark: #6D865E;
+$color-green-light: #174027;
+$color-red-dark: #6D3E4B;
+$color-red-signal: #C4413A;
+$color-grey-light: #F5F5F5;
+$color-blue-link: #3563E9;
+$color-black: #000000;
+
+/* Linear Gradients */
+$color-gradient-green-light: #64AA32;
+$color-gradient-green-dark: #64875A;
+$color-gradient-red-light: #D75176;
+$color-gradient-red-dark: #6D3E4B;
+$gradient-green: linear-gradient(to right, color-gradient-green-light 0%, $color-gradient-green-dark 100%);
+$gradient-green: linear-gradient(to right, $color-gradient-red-light 0%, $color-gradient-red-dark 100%);
+
+/* base */
+$base-font-size: 16px;
+
+/* Margin */
+$margin-container-x: 5rem;      
+$margin-section-big-x: 2.25rem; 
+$margin-section-small-x: 1.5rem;
+$margin-section-y: 1.25rem;     
+$margin-elements: 0.5rem;       
+
+/* Padding */
+$padding-elements: 1.5rem;       
+
+// Padding Button
+$padding-button-x: 0.75rem;      
+$padding-button-y: 1rem;         
+
+/* Border Radius */
+$radius: 0.5rem;                
+
+/* Font Family */
+$font-regular: 'PT Serif', serif;
+
+/* Font Sizes */
+$font-size-headline: 4.5rem;     
+$font-size-titel: 2.5rem;        
+$font-size-subtitel: 1.3125rem;  
+$font-size-body: 1rem;           
+$font-size-button: 1rem;         
+$font-size-fine: 0.6875rem; 
+
+/* font Weight*/
+$font-weight-regular: 400;
+$font-weight-bold: 700;

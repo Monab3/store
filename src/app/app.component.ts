@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
   }
 
   public fetchDatafromBackend(): void{
-      this.rebsortenService.fetchProduct().subscribe((data)=>{
+      this.rebsortenService.fetchRebsorten().subscribe((data)=>{
         if(data){
 
           for (let item of data) {
