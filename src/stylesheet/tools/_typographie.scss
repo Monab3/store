@@ -1,0 +1,50 @@
+/*import lato light/regular, Liu Jian Mao Cao*/
+@import '../tools/variables';
+@import '../mixins/mixins';
+
+//TODO add font to be inherrited from main or something
+
+//TODO lineheight hinzufügen
+
+h1 {
+    @include fonts($font-size-headline, $font-weight-regular);
+}
+
+h2 {
+    @include fonts($font-size-titel, $font-weight-regular);
+}
+
+
+h3 {
+    @include fonts($font-size-subtitel, $font-weight-bold);
+}
+
+.h3-bold{
+    @include fonts($font-size-subtitel, $font-weight-bold);
+}
+
+
+.text-regular {
+    @include fonts($font-size-body, $font-weight-regular);
+}
+
+.text-regular-italic {
+    @include fonts($font-size-body, $font-weight-regular, true);
+}
+
+.text-bold{
+    @include fonts($font-size-body, $font-weight-bold);
+}
+
+.text-fine {
+    @include fonts($font-size-fine, $font-weight-regular, $color: $color-);
+}
+
+.text-button {
+    @include fonts($font-size-button, $font-weight-regular);
+}
+
+.link{
+    color: $color-blue-link;
+    text-decoration: underline;
+}

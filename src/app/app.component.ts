@@ -5,8 +5,23 @@ import { base64ToImageConverter } from '../shared/services/base64ToImageConverte
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.sass'] // Fix the property name to styleUrls
+  styleUrls: ['./app.component.scss'] // Fix the property name to styleUrls
 })
+
+
+/*java script image loading*/
+/*const blurDivs = document.querySelectorAll(".blur-load")
+blurDivs.forEach(div =>{
+  const img = div.querySelector("img");
+   function loaded(){
+      div.classList.add("loaded");
+    if(img?.complete){
+      loaded();
+    }{
+      img?.addEventListener("load", loaded);
+    }
+   }
+})*/
 
 
 

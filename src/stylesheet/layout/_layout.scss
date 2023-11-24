@@ -1,0 +1,10 @@
+@import '../tools/variables';
+.container {
+    width: min($width-min-container, $width-max-container);
+    margin: 0 auto; //centers container
+}
+
+.cardDiv{
+    background-color: green;
+}
+
