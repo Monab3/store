@@ -29,7 +29,7 @@ blurDivs.forEach(div =>{
 export class AppComponent implements OnInit {
   title = 'store';
   base64String: string | undefined;
-
+  
   constructor(private rebsortenService: rebsortenService, private imageTransformSerivce: base64ToImageConverter) {
   }
   formGeschmack = new FormGroup({
