@@ -15,7 +15,8 @@ $color-gradient-green-light: #64AA32;
 $color-gradient-green-dark: #64875A;
 $color-gradient-red-light: #D75176;
 $color-gradient-red-dark: #6D3E4B;
-$gradient-red: linear-gradient(to right, #D75176 0%, #6D3E4B 100%);
+$gradient-green: linear-gradient(90deg, $color-green-light 0%, $color-green-dark 35%);
+$gradient-red: linear-gradient(90deg, color-gradient-red-light 0%, color-gradient-red-dark 35%);
 
 /* base */
 $base-font-size: 16px;
@@ -28,9 +29,12 @@ $breakpoints: (
     xlarge: 1200px
 );
 
+/* gabs container */
+$gap-container: 5rem;
+$gab-element:1.5rem;
 
 /* Margin */
-$margin-container-x: 5rem;
+
 $margin-section-big-x: 2.25rem;
 $margin-section-small-x: 1.5rem;
 $margin-section-y: 1.25rem;
@@ -49,7 +53,7 @@ padding: 4vw;: A larger padding for significant separation, suitable for larger 
 Fixed Aspect Ratio Padding:
 padding: 5vw 2vw;: If you want different padding for horizontal and vertical spacing.
 */
-$padding-elements: 1.5rem;
+$padding-element: 1.5rem;
 
 /* Padding Button */
 $padding-btn-x: 0.75rem;
@@ -65,6 +69,7 @@ $height-min-btn: 2.5rem;
 
 /* Border Radius */
 $border-radius: 0.5rem;
+$border-radius-max: 3.125rem;
 $border-width: 0.05em;
 
 /* Font Family */
@@ -81,3 +86,7 @@ $font-size-fine: 0.6875rem;
 /* font Weight*/
 $font-weight-regular: 400;
 $font-weight-bold: 700;
+
+/* border-box-shadow */
+
+$border-box-shadow:  0 .5rem 1rem -.25rem $color-black;

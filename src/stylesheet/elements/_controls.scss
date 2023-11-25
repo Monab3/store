@@ -12,7 +12,7 @@
     min-height: $height-min-btn;
 }
 .btn-main {
-    background: linear-gradient(90deg, $color-green-light 0%, $color-green-dark 35%);
+    background: $gradient-green;
     color: $color-light;
     @include border($color: green);
     @include button-effect-slide();

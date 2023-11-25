@@ -1,13 +1,9 @@
 @import '../mixins/mixins_effects';
 @import '../mixins/mixins';
+@import '../mixins/mixins_abstaende';
 
-.podukt-auswahl{
+.podukt-auswahl {
    @include flexbox($direction: row, $justify: space-between, $wrap: nowrap, $gab: $margin-elements);
-   &__filter{
-      width: 20%;
-      align-items: stretch;
-      background: green; 
-   }
 }
 
 .cards {
@@ -19,22 +15,24 @@
 
 .cards:last-child {
    align-self: flex-start;
- }
+}
 
 
 .card {
    @include border($color: $color-green-light);
-   padding: $padding-elements;
+   @include padding-element();
    @include flexbox($direction: row, $justify: center, $wrap: wrap, $gab: $margin-elements);
    //@include effect-drop-shadow-hover();
-   max-width: 17rem;
-   max-height: 25rem;
+   @include responsive-spacing(max-width, 17rem, 1, 0.5);
+   @include responsive-spacing(max-width, 25rem, 1, 0.5);
    @include effect-drop-shadow-hover();
    border-radius: $border-radius;
+
    &__text__container {
       width: 45%;
       @include flexbox($justify: space-between, $wrap: wrap, $gab: $margin-elements);
    }
+
    &__imgcontainer {
       overflow: hidden;
       width: 45%;
@@ -46,6 +44,7 @@
          object-fit: contain;
       }
    }
+
    &__line {
       width: 100%;
       border-bottom: $border-width;

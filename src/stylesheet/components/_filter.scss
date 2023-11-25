@@ -1,0 +1,12 @@
+@import "../tools/variables";
+@import "../mixins/mixins_effects";
+@import "../mixins/mixins";
+
+.filter{
+    @include border(0.6rem ,$color: $color-light);
+    background:$gradient-green;
+    border-top-right-radius: $border-radius-max;
+    border-bottom-left-radius: $border-radius-max;
+    width: 25%;
+    box-shadow: $border-box-shadow;
+}
