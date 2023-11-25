@@ -5,7 +5,73 @@
 
         <div class="podukt-auswahl">
             <div class="filter">
-                <p>test</p>
+                <figure class="filter__imgcontainer">
+                    <img src="assets/logo--weiss.png" class="filter__imgcontainer__img">
+                </figure>
+                <h2 class="h2--color-white">Unser Sortiment </h2>
+                <p-accordion [multiple]="true" [activeIndex]="[0]">
+                    <p-accordionTab header="Geschmack">
+                        <form [formGroup]="formGeschmack">
+                            <div class="filter__input__container">
+                                <div>
+                                    <input type="radio" formControlName="geschmack" value="trocken"> Trocken
+                                </div>
+                                <p class="filter__input__counter">0</p>
+                            </div>
+                            <div class="filter__input__container">
+                                <div>
+                                    <input type="radio" formControlName="geschmack" value="süß"> Süß
+                                </div>
+                                <p class="filter__input__counter">0</p>
+                            </div>
+                            <div class="filter__input__container">
+                                <div>
+                                    <input type="radio" formControlName="geschmack" value="herb"> Herb
+                                </div>
+                                <p class="filter__input__counter">0</p>
+                            </div>
+                            <div class="filter__input__container">
+                                <div>
+                                    <input type="radio" formControlName="geschmack" value="feinherb"> Feinherb
+                                </div>
+                                <p class="filter__input__counter">0</p>
+                            </div>
+                        </form>
+                    </p-accordionTab>
+                    <p-accordionTab header="Rebsorte">
+                        <form [formGroup]="formRebsorte">
+                            <div class="filter__input__container">
+                                <div>
+                                    <input type="radio" formControlName="rebsorte" value="trocken"> Riesling
+                                </div>
+                                <p class="filter__input__counter">0</p>
+                            </div>
+                            <div class="filter__input__container">
+                                <div>
+                                    <input type="radio" formControlName="rebsorte" value="süß"> Burgunder
+                                </div>
+                                <p class="filter__input__counter">0</p>
+                            </div>
+                            <div class="filter__input__container">
+                                <div>
+                                    <input type="radio" formControlName="rebsorte" value="herb"> Rivaner
+                                </div>
+                                <p class="filter__input__counter">0</p>
+                            </div>
+                            <div class="filter__input__container">
+                                <div>
+                                    <input type="radio" formControlName="rebsorte" value="feinherb"> Dornfelder
+                                </div>
+                                <p class="filter__input__counter">0</p>
+                            </div>
+                        </form>
+                    </p-accordionTab>
+                    <p-accordionTab header="Header III">
+                        <input type="range" min="0" max="100" value="50">
+                    </p-accordionTab>
+                </p-accordion>
+
+                <p-slider [(ngModel)]="val"></p-slider>
             </div>
             <div class="cards">
                 <div class="card">
@@ -21,7 +87,7 @@
                     <hr class="card__line">
                     <h3>7.90$</h3>
                     <button class="btn btn-main text-btn--white button">
-                        In den Einkaufswagen
+                        In den Warenkorb
                     </button>
                     <p class="text-fine">0,75l | 14,53 $ | inkl. MwSt. zzgl.
                         <span class="link">Verstand</span>
@@ -42,7 +108,7 @@
                     <hr class="card__line">
                     <h3>7.90$</h3>
                     <button class="btn btn-main text-btn--white button">
-                        In den Einkaufswagen
+                        In den Warenkorb
                     </button>
                     <p class="text-fine">0,75l | 14,53 $ | inkl. MwSt. zzgl.
                         <span class="link">Verstand</span>

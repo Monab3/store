@@ -10,18 +10,18 @@
 
 @mixin padding-element {
   padding: $padding-element;
-  @include responsive-spacing(padding, $padding-element)
+  @include responsive-spacing(padding, $padding-element);
 }
 
 @mixin responsive-spacing($property, $value, $medium-factor: 0.6, $minimum-factor: 0.3) {
   #{$property}: $value;
 
   @media only screen and (max-width: 576px) {
-    #{$property}: $value * $medium-factor;
+    #{$property}: $value * $minimum-factor;
   }
 
   @media only screen and (min-width: 577px) and (max-width: 768px) {
-    #{$property}: $value * $minimum-factor;
+    #{$property}: $value * $medium-factor;
   }
 
   @media only screen and (min-width: 769px) {

@@ -1,2 +1,29 @@
+@import '../stylesheet/mixins/mixins';
+@import '../stylesheet/mixins/mixins_abstaende';
+@import '../stylesheet/tools/variables';
 
+    form {
+        @include flexbox($justify: space-between, $align: flex-start, $wrap: nowrap, $gab: 1rem);
+      }
+
+      .filter__input__container{
+        @include flexbox($direction: row, $justify: space-between, $align: flex-start, $wrap: nowrap, $gab: 0.5rem);
+        width: 100%;
+      }
+
+      .filter__input__counter{
+        @include border($color: $color-grey-dark); 
+        background-color: $color-grey-light;
+        border-radius: $border-radius;
+        color: $color-grey-dark;
+        width: 1.2rem;
+        height: 1.2rem;
+        text-align: center;
+        //@include responsive-spacing($width, 2.5rem, $medium-factor: 1, $minimum-factor: 0.3)
+      }
+      
+      /* Style for individual radio buttons */
+      input[type="radio"] {
+        margin-right: 5px; /* Add some spacing between radio buttons and labels */
+      }
 

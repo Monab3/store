@@ -3,12 +3,12 @@
 @import '../mixins/mixins_abstaende';
 
 .podukt-auswahl {
-   @include flexbox($direction: row, $justify: space-between, $wrap: nowrap, $gab: $margin-elements);
+   @include flexbox($direction: row, $justify: space-between, $wrap: nowrap, $gab: $margin-elements, $align: flex-start);
 }
 
 .cards {
    @include flexbox($direction: row, $justify: flex-end, $wrap: wrap, $gab: $margin-elements);
-   width: 80%;
+   width: 100%;
 
 
 }
@@ -22,9 +22,9 @@
    @include border($color: $color-green-light);
    @include padding-element();
    @include flexbox($direction: row, $justify: center, $wrap: wrap, $gab: $margin-elements);
-   //@include effect-drop-shadow-hover();
-   @include responsive-spacing(max-width, 17rem, 1, 0.5);
-   @include responsive-spacing(max-width, 25rem, 1, 0.5);
+   @include effect-drop-shadow-hover();
+   @include responsive-spacing(max-width, 17rem, 1, 0.7);
+   @include responsive-spacing(max-height, 25rem, 1, 0.5);
    @include effect-drop-shadow-hover();
    border-radius: $border-radius;
 
