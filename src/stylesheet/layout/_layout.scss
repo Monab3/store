@@ -1,7 +1,9 @@
 @import '../tools/variables';
+@import '../mixins/mixins';
 .container {
     width: min($width-min-container, $width-max-container);
     margin: 0 auto; //centers container
+    @include flexbox($justify: center, $align: center, $wrap: wrap, $gab: $margin-elements)
 }
 
 .cardDiv{

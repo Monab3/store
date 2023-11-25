@@ -1,0 +1,59 @@
+@import '../mixins/mixins_effects';
+@import '../mixins/mixins';
+
+.podukt-auswahl{
+   @include flexbox($direction: row, $justify: space-between, $wrap: nowrap, $gab: $margin-elements);
+   &__filter{
+      width: 20%;
+      align-items: stretch;
+      background: green; 
+   }
+}
+
+.cards {
+   @include flexbox($direction: row, $justify: flex-end, $wrap: wrap, $gab: $margin-elements);
+   width: 80%;
+
+
+}
+
+.cards:last-child {
+   align-self: flex-start;
+ }
+
+
+.card {
+   @include border($color: $color-green-light);
+   padding: $padding-elements;
+   @include flexbox($direction: row, $justify: center, $wrap: wrap, $gab: $margin-elements);
+   //@include effect-drop-shadow-hover();
+   max-width: 17rem;
+   max-height: 25rem;
+   @include effect-drop-shadow-hover();
+   border-radius: $border-radius;
+   &__text__container {
+      width: 45%;
+      @include flexbox($justify: space-between, $wrap: wrap, $gab: $margin-elements);
+   }
+   &__imgcontainer {
+      overflow: hidden;
+      width: 45%;
+
+      &__img {
+         width: 100%;
+         height: auto;
+         display: block;
+         object-fit: contain;
+      }
+   }
+   &__line {
+      width: 100%;
+      border-bottom: $border-width;
+      background: $color-gradient-green-light;
+   }
+}
+
+.button {
+   width: 100%;
+
+}

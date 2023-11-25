@@ -7,41 +7,44 @@
 //TODO lineheight hinzufügen
 
 h1 {
-    @include fonts($font-size-headline, $font-weight-regular);
+    @include fonts($font-size-headline, $font-weight-regular, $color: $color-red-dark);
 }
 
 h2 {
-    @include fonts($font-size-titel, $font-weight-regular);
+    @include fonts($font-size-titel, $font-weight-regular, $color: $color-red-dark);
 }
 
 
 h3 {
-    @include fonts($font-size-subtitel, $font-weight-bold);
-}
-
-.h3-bold{
-    @include fonts($font-size-subtitel, $font-weight-bold);
+    font-family: inherit;
+    font-size: $font-size-body;
+    color: $color-red-dark;
+    font-weight: $font-weight-bold;
 }
 
 
 .text-regular {
-    @include fonts($font-size-body, $font-weight-regular);
+    @include fonts($font-size-body, $font-weight-regular, $color : $color-green-dark);
 }
 
 .text-regular-italic {
-    @include fonts($font-size-body, $font-weight-regular, true);
+    @include fonts($font-size-body, $font-weight-regular,$italic: true, $color : $color-green-dark);
 }
 
 .text-bold{
-    @include fonts($font-size-body, $font-weight-bold);
+    @include fonts($font-size-body, $font-weight-bold, $color : $color-green-dark);
 }
 
 .text-fine {
-    @include fonts($font-size-fine, $font-weight-regular, $color: $color-);
+    @include fonts($font-size-fine, $font-weight-regular, $color : $color-green-dark);
 }
 
-.text-button {
-    @include fonts($font-size-button, $font-weight-regular);
+.text-btn--white {
+    @include fonts($font-size-button, $font-weight-regular, $color : $color-light);
+}
+
+.text-btn--black {
+    @include fonts($font-size-button, $font-weight-regular, $color : $color-black);
 }
 
 .link{
