@@ -2,72 +2,95 @@
     <img *ngIf="base64String" [src]="base64String" alt="Image" />
 
     <div class="container">
-        
+        <nav>
+            <button>
+                <img src="../assets/grauburgunder.png" class="logo">
+            </button>
+        </nav>
         <div class="podukt-auswahl">
             <div class="filter">
-                <figure class="filter__imgcontainer">
+             <!--  <figure class="filter__imgcontainer">
                     <img src="assets/logo--weiss.png" class="filter__imgcontainer__img">
-                </figure>
-                <h2 class="h2--color-white">Unser Sortiment </h2>
+                </figure>-->
+                <h3 class="h2--color-white"> Zusätzliche Produktfilter</h3>
                 <p-accordion [multiple]="true" [activeIndex]="[0]">
                     <p-accordionTab header="Geschmack">
                         <form [formGroup]="formGeschmack">
+
                             <div class="filter__input__container">
-                                <div>
+                                <div class="radio__container">
                                     <input type="radio" formControlName="geschmack" value="trocken"> Trocken
                                 </div>
-                                <p class="filter__input__counter">0</p>
+                                <input type="text" class="filter__input__counter" value="0" disabled>
                             </div>
+
                             <div class="filter__input__container">
-                                <div>
-                                    <input type="radio" formControlName="geschmack" value="süß"> Süß
+                                <div class="radio__container">
+                                    <input type="radio" formControlName="suess" value="süß"> Süß
                                 </div>
-                                <p class="filter__input__counter">0</p>
+                                <input type="text" class="filter__input__counter" formControlName="suessCount" value="0" disabled>
                             </div>
+
                             <div class="filter__input__container">
-                                <div>
+                                <div class="radio__container">
                                     <input type="radio" formControlName="geschmack" value="herb"> Herb
                                 </div>
-                                <p class="filter__input__counter">0</p>
+                                <input type="text" class="filter__input__counter" value="0" disabled>
+
                             </div>
                             <div class="filter__input__container">
-                                <div>
+                                <div class="radio__container">
                                     <input type="radio" formControlName="geschmack" value="feinherb"> Feinherb
                                 </div>
-                                <p class="filter__input__counter">0</p>
+                                <input type="text" class="filter__input__counter" value="0" disabled>
                             </div>
+
                         </form>
                     </p-accordionTab>
                     <p-accordionTab header="Rebsorte">
                         <form [formGroup]="formRebsorte">
                             <div class="filter__input__container">
-                                <div>
+                                <div class="radio__container">
                                     <input type="radio" formControlName="rebsorte" value="trocken"> Riesling
                                 </div>
-                                <p class="filter__input__counter">0</p>
+                                <input type="text" class="filter__input__counter" value="0" disabled>
                             </div>
                             <div class="filter__input__container">
-                                <div>
+                                <div class="radio__container">
                                     <input type="radio" formControlName="rebsorte" value="süß"> Burgunder
                                 </div>
-                                <p class="filter__input__counter">0</p>
+                                <input type="text" class="filter__input__counter" value="0" disabled>
                             </div>
                             <div class="filter__input__container">
-                                <div>
+                                <div class="radio__container">
                                     <input type="radio" formControlName="rebsorte" value="herb"> Rivaner
                                 </div>
-                                <p class="filter__input__counter">0</p>
+                                <input type="text" class="filter__input__counter" value="0" disabled>
                             </div>
                             <div class="filter__input__container">
-                                <div>
+                                <div class="radio__container">
                                     <input type="radio" formControlName="rebsorte" value="feinherb"> Dornfelder
                                 </div>
-                                <p class="filter__input__counter">0</p>
+                                <input type="text" class="filter__input__counter" value="0" disabled>
                             </div>
                         </form>
                     </p-accordionTab>
-                    <p-accordionTab header="Header III">
-                        <input type="range" min="0" max="100" value="50">
+                    <p-accordionTab header="Preis">
+                        <form [formGroup]="formPreis">
+                            <div class="filter__input__container">
+                                <div class="radio__container">
+                                <div class="inputpreis__container">
+                                    <label class="inputpreis" for="preisMax">von</label>
+                                    <input class="inputpreis" type="number" id="preisMax" formControlName="preisMax">
+                                </div>
+                                <p> - </p>
+                                <div class="inputpreis__container">
+                                    <label for="preisMin" class="inputpreis">bis</label>
+                                    <input type="number" id="preisMin" formControlName="preisMin" class="inputpreis">
+                                </div>
+                                </div>
+                            </div>
+                        </form>
                     </p-accordionTab>
                 </p-accordion>
 

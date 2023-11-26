@@ -34,14 +34,24 @@ export class AppComponent implements OnInit {
   }
   formGeschmack = new FormGroup({
     geschmack: new FormControl(''),
+    suess: new FormControl(''),
+    suessCount: new FormControl(0)
   });
 
   formRebsorte = new FormGroup({
     rebsorte: new FormControl(''),
   });
+
+  formPreis = new FormGroup({
+    preisMax: new FormControl(''),
+    preisMin: new FormControl(''),
+  });
   ngOnInit(): void {
     this.formGeschmack.get('geschmack')?.valueChanges.subscribe((value) => {
       console.log('Selected Geschmack:', value);
+      this.formGeschmack.get('suess')?.valueChanges.subscribe((value) => {
+        console.log('Selected Suess:', value);
+        });
     });
   }
   public fetchDatafromBackend(): void {

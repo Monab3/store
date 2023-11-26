@@ -1,36 +1,36 @@
 @import "../tools/variables";
 @import "../mixins/mixins_effects";
 @import "../mixins/mixins";
-@import "../mixins//mixins_abstaende"; 
+@import "../mixins/mixins_abstaende";
 
-.filter{
-    @include border($width: 0.6rem,$color: $color-light);
-    background:$gradient-green;
-    border-top-right-radius: $border-radius-max;
+.filter {
+    background: $gradient-green;
     border-bottom-left-radius: $border-radius-max;
-    width: 25%;
+    border-top-right-radius: $border-radius-max;
     box-shadow: $border-box-shadow;
-    padding: $padding-element; 
-    color: $color-light; 
-    @include flexbox($justify: flex-start, $wrap: wrap, $gab: $margin-elements, $align:center);
+    color: $color-light;
+    @include border($width: 0.6rem, $color: $color-light);
+    @include flexbox($justify: flex-start, $wrap: wrap, $gab: $margin-elements, $align: center);
+    padding: $padding-element;
+    width: 20%;
 
-&__imgcontainer{
-    width: 70%;
-    margin-top: 2rem;
-    overflow: hidden;
+    &__imgcontainer {
+        margin-top: 2rem;
+        overflow: hidden;
+        width: 70%;
 
-    &__img{
-        width: 100%;
-        height: auto;
-        display: block;
-        object-fit: contain;
+        &__img {
+            display: block;
+            height: auto;
+            object-fit: contain;
+            width: 100%;
+        }
     }
-}
 }
 
 .p-accordion-header {
-    @include border($border-property: border-bottom,$color: $color-light);
+    @include border($border-property: border-bottom, $color: $color-light);
+    @include responsive-spacing(margin-bottom, 0.5rem, 1, 0.5);
     @include responsive-spacing(padding-bottom, 0.5rem, 1, 0.5);
     @include responsive-spacing(padding-top, 0.5rem, 1, 0.5);
-    @include responsive-spacing(margin-bottom, 0.5rem, 1, 0.5);
 }

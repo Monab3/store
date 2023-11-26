@@ -22,8 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AccordionModule,
     BrowserAnimationsModule,
     FormsModule, 
-    Ng5SliderModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
