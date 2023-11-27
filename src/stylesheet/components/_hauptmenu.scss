@@ -7,7 +7,6 @@
     background-color: $color-green-light;
     width: 100%;
     height: $height-nav;
-    display: relative;
     @include margin-page;
     &__content {
         color: $color-green-dark;
@@ -36,11 +35,13 @@
 
 .warenkorb{
     &__container{
+        top: $height-nav; 
+        right: 0; 
         background-color: red; 
         width: 25%; 
         @include flexbox--no-gap($direction: column, $justify: space-between, $wrap: nowrap, $align: stretch);
         padding: $padding-element;
-        display: absolute; 
+        position: absolute; 
         & > * {
             width: 100%;
             @include flexbox--no-gap($direction: row, $justify: space-between, $wrap: nowrap, $align: stretch);

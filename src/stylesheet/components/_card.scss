@@ -7,7 +7,7 @@
 }
 
 .card__container {
-   @include flexbox($direction: row, $justify: space-around, $wrap: wrap,  $gab: $margin-elements);
+   @include flexbox($direction: row, $justify: space-around, $wrap: wrap, $gab: $margin-elements);
    width: 100%;
 }
 
@@ -28,9 +28,9 @@
    }
 
    &__imgcontainer {
-overflow: hidden;
+      overflow: hidden;
       width: 45%;
-      
+
       &__img {
          width: 100%;
          height: auto;
@@ -52,12 +52,13 @@ overflow: hidden;
 
 /* Media Queries */
 @media only screen and (max-width: 769px) {
-   .card{
+   .card {
       &__text__container {
          width: 100%;
       }
+
       &__imgcontainer {
          width: 100%;
       }
    }
- }
+}

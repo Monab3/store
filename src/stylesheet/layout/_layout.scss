@@ -6,6 +6,7 @@
     margin: 0 auto; //centers container
     @include flexbox($justify: center, $align: center, $wrap: wrap, $gab: $gap-container);
     @include gap-page;
+    position: relative; 
 }
 
 .cardDiv{
