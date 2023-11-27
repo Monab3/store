@@ -39,3 +39,10 @@
     color: $color-light;
     @include border($color: green);
 }
+
+/* Media Querys */
+@media only screen and (max-width: 769px) {
+    .btn-main{
+        padding:$padding-btn-y-small $padding-btn-x-small;
+    }
+  }

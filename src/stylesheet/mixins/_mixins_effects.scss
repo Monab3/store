@@ -42,7 +42,7 @@
     }
 }
 
-@mixin effect-border-underline($boder-width: $border-width, $color-bg) {
+@mixin effect-border-underline($border-width: $border-width, $color-bg) {
     position: relative;
 
     &::before {
@@ -52,17 +52,30 @@
         bottom: 0;
         height: $border-width;
         position: absolute;
-        color: $color-bg;
+        background-color: $color-bg; 
         transition: transform 300ms ease-in-out;
-        transform: scaleX(1);
+        transform: scaleX(0); 
     }
 
-    &:hover::before {
-        transform: sclaeX(1);
+    &:hover {
+        border-color: transparent;
+        color: $color-red-dark;
+
+        &::before {
+            transform: scaleX(1);
+        }
     }
 
-    &:focus::before {
-        transform: scaleX(1);
+    &:focus {
+        border-bottom: 1px solid $color-red-dark;
+        color: $color-red-dark;
+
+
+
+        &::before {
+            border-bottom: 1px solid $color-red-dark;
+            transform: scaleX(1);
+        }
     }
 }
 

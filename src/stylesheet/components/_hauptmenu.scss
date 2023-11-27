@@ -1,0 +1,25 @@
+@import "../tools/variables";
+@import "../mixins/mixins_effects";
+@import "../mixins/mixins";
+@import "../mixins/mixins_abstaende";
+
+.hauptmenu {
+    background-color: $color-green-light;
+    width: 100%;
+    height: $height-nav;
+    &__content {
+        color: $color-green-dark;
+        height: $height-nav;
+        text-transform: uppercase;
+        width: 100%;
+        @include flexbox--no-gap($direction: row, $justify: space-between, $align: stretch, $wrap: wrap);
+    }
+    &__item {
+        flex-grow: 1;
+        @include reset-button-styles;
+        border-bottom: 1px solid $color-green-light;
+        @include flexbox--no-gap($justify: center, $wrap: nowrap, $align: center);
+        @include effect-border-underline($color-bg: $color-red-dark);
+        color: $color-green-dark;
+    }
+}

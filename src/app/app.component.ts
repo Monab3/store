@@ -27,19 +27,35 @@ blurDivs.forEach(div =>{
 
 
 export class AppComponent implements OnInit {
+
   title = 'store';
   base64String: string | undefined;
-  
+
+  /* Arrays */ 
+  geschmaecker = ['Trocken', 'Süß', 'Herb', 'Feinherb'];
+  rebsorten = ['Riesling', 'Burgunder', 'Rivaner', 'Dornfelder'];
+  navWein = ['Weißwein', 'Rotwein', 'Roséwein', 'Sekt'];
+  weinmenueBilder = ['../assets/weinmenue_weisswein.jpg', '../assets/weinmenue_rotwein.jpg', '../assets/weinmenue_rosewein.jpg', '../assets/weinmenue_schaumwein.jpg'];
+
   constructor(private rebsortenService: rebsortenService, private imageTransformSerivce: base64ToImageConverter) {
   }
+
+
   formGeschmack = new FormGroup({
-    geschmack: new FormControl(''),
-    suess: new FormControl(''),
-    suessCount: new FormControl(0)
+    geschmack: new FormControl(''), 
+    trockenCount: new FormControl(0),
+    süßCount: new FormControl(0),
+    herbCount: new FormControl(0),
+    feinherbCount: new FormControl(0)
   });
+
 
   formRebsorte = new FormGroup({
     rebsorte: new FormControl(''),
+    rieslingCount: new FormControl(1),
+    burgunderCount: new FormControl(2),
+    rivanerCount: new FormControl(3),
+    dornfelderCount: new FormControl(4)
   });
 
   formPreis = new FormGroup({

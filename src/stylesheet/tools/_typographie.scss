@@ -11,8 +11,20 @@ h1 {
 }
 
 h2 {
-    @include fonts($font-size-titel, $font-weight-regular, $color: $color-red-dark);
+    @include fonts($font-size-subtitel, $font-weight-regular, $color: $color-red-dark);
+    text-transform: uppercase;
 }
+
+.h2{
+    @include fonts($font-size-subtitel, $font-weight-regular, $color: inherit);
+    text-transform: uppercase;
+}
+
+.h3{
+    @include fonts($font-size-body, $font-weight-bold, $color: inherit);
+    text-transform: uppercase;
+}
+
 
 .h2--color-white{
     color: $color-light;

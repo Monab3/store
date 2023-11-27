@@ -1,9 +1,11 @@
 @import '../tools/variables';
 @import '../mixins/mixins';
+@import '../mixins/mixins_abstaende';
 .container {
     width: min($width-min-container, $width-max-container);
     margin: 0 auto; //centers container
-    @include flexbox($justify: center, $align: center, $wrap: wrap, $gab: $margin-elements)
+    @include flexbox($justify: center, $align: center, $wrap: wrap, $gab: $gap-container);
+    @include gap-page;
 }
 
 .cardDiv{

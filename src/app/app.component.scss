@@ -2,29 +2,5 @@
 @import '../stylesheet/mixins/mixins_effects';
 @import '../stylesheet/tools/variables';
 @import '../stylesheet/mixins/mixins_abstaende';
-.filter__input__container{
-    @include flexbox--no-gap($direction: row, $justify: space-between , $wrap: nowrap, $align: flex-start);
-}
-.filter__input__counter{
-    @include border($border-property: border, $color: $color-grey-dark);
-    width: 10px; 
-    height: 20px; 
-}
-
-
-.inputpreis__container{
-    box-sizing: border-box;
-}
-
-.radio__container{
-    @include flexbox($direction: row, $justify: space-between , $wrap: nowrap, $align: center, $gab: $padding-element);
-}
-
-.p-element{
-    width: 100%;  
-}
-
-#preisMax,
-#preisMin {
-    width: 100%; /* Adjust the width as needed */
-}
+@import '../stylesheet/components/weinmenue';
+@import '../stylesheet/components/hauptmenu';

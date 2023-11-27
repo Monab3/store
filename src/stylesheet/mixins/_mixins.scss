@@ -65,6 +65,20 @@ Example:  // Example usage:
   flex-wrap: $wrap;
 }
 
+@mixin reset-button-styles{
+        margin: 0;
+        padding: 0;
+        border: none;
+        background: none;
+        font: inherit;
+        cursor: pointer;
+        outline: none;
+        /* Remove default button styles */
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+}
+
 // Example usage:
 /*.container {
   @include flexbox(column, flex-start, stretch, wrap);
@@ -73,10 +87,6 @@ Example:  // Example usage:
 @mixin border($border-property: border, $width: $border-width, $style: solid, $color) {
   #{$border-property}: $width $style $color;
 }
-
-
-
-
 
 // This will compile to:
 // .container {

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap');
 
 /* Colors */
-$color-green-light: #6D865E;
+$color-green-light: #E6F5DD;
 $color-green-dark: #174027;
 $color-red-dark: #6D3E4B;
 $color-red-signal: #C4413A;
@@ -12,27 +12,25 @@ $color-black: #000000;
 $color-light: #FFFFFF;
 
 /* Linear Gradients */
-$color-gradient-green-light: #64AA32;
+$color-gradient-green-light: #E1EFD9;
 $color-gradient-green-dark: #64875A;
 $color-gradient-red-light: #D75176;
 $color-gradient-red-dark: #6D3E4B;
-$gradient-green: linear-gradient(90deg, $color-green-light 0%, $color-green-dark 35%);
+$gradient-green: linear-gradient(90deg, #E1EFD9, 0%, $color-green-dark 35%);
 $gradient-red: linear-gradient(90deg, color-gradient-red-light 0%, color-gradient-red-dark 35%);
 
 /* base */
 $base-font-size: 16px;
 
 /* breakpoints equal to bootstraps*/
-$breakpoints: (
-    small: 576px,
-    medium: 768px,
-    large: 992px,
-    xlarge: 1200px
-);
+$breakpoint-small: 576px;
+$breakpoint-medium: 768px;
+$breakpoint-large: 992px;
+$breakpoint-xlarge: 1200px;
 
 /* gabs container */
 $gap-container: 5rem;
-$gab-element:1.5rem;
+$gap-element:1.5rem;
 
 /* Margin */
 
@@ -61,6 +59,9 @@ $padding-box-small: 0.1rem;
 $padding-btn-x: 0.75rem;
 $padding-btn-y: 1rem;
 
+$padding-btn-x-small: $padding-btn-x * 0.5;
+$padding-btn-y-small: $padding-btn-y * 0.5;
+
 /* width */
 $width-min-container: 90%;
 $width-max-container: 75.25rem; 
@@ -68,11 +69,12 @@ $width-min-button-desktop: 8.125rem;
 $width-min-button-mobile: 6.25rem; 
 /* height */
 $height-min-btn: 2.5rem;
-
+$height-nav: 5rem; 
 /* Border Radius */
 $border-radius: 0.5rem;
 $border-radius-max: 3.125rem;
 $border-width: 0.05em;
+$border-width-max: 0.6rem; 
 
 /* Font Family */
 $font-regular: 'PT Serif', serif;

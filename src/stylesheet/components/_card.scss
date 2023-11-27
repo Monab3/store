@@ -2,17 +2,13 @@
 @import '../mixins/mixins';
 @import '../mixins/mixins_abstaende';
 
-.podukt-auswahl {
-   @include flexbox($direction: row, $justify: space-between, $wrap: nowrap, $gab: $margin-elements, $align: flex-start);
+.produkt-auswahl__container {
+   @include flexbox($direction: row, $justify: center, $wrap: nowrap, $gab: $margin-elements, $align: flex-start);
 }
 
-.cards {
-   @include flexbox($direction: row, $justify: space-between, $wrap: wrap,  $gab: $margin-elements);
+.card__container {
+   @include flexbox($direction: row, $justify: space-around, $wrap: wrap,  $gab: $margin-elements);
    width: 100%;
-}
-
-.cards:last-child {
-   align-self: flex-start;
 }
 
 
@@ -21,8 +17,8 @@
    @include padding-element();
    @include flexbox($direction: row, $justify: center, $wrap: wrap, $gab: $margin-elements);
    @include effect-drop-shadow-hover();
-   @include responsive-spacing(max-width, 19rem, 1, 0.7);
-   @include responsive-spacing(max-height, 25rem, 1, 0.5);
+   @include responsive-spacing(max-width, 18rem, 1, 0.5, $width-small: 0.5);
+   //@include responsive-spacing(max-height, 25rem, 1, 0.5);
    @include effect-drop-shadow-hover();
    border-radius: $border-radius;
 
@@ -52,5 +48,16 @@
 
 .button {
    width: 100%;
-
 }
+
+/* Media Queries */
+@media only screen and (max-width: 769px) {
+   .card{
+      &__text__container {
+         width: 100%;
+      }
+      &__imgcontainer {
+         width: 100%;
+      }
+   }
+ }
