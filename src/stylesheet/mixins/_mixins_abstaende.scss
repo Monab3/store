@@ -28,6 +28,11 @@
   @include responsive-spacing(gap, $gap-container)
 }
 
+@mixin margin-page {
+  margin-bottom: $gap-container;
+  @include responsive-spacing( margin-bottom, $gap-container)
+}
+
 @mixin gap-elements {
   gap: $gap-element;
   @include responsive-spacing(gap, $gap-element)

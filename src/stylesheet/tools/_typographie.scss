@@ -21,7 +21,7 @@ h2 {
 }
 
 .h3{
-    @include fonts($font-size-body, $font-weight-bold, $color: inherit);
+    @include fonts($font-size-body, $font-weight-regular, $color: inherit);
     text-transform: uppercase;
 }
 

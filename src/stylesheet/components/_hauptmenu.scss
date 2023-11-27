@@ -7,19 +7,54 @@
     background-color: $color-green-light;
     width: 100%;
     height: $height-nav;
+    display: relative;
+    @include margin-page;
     &__content {
         color: $color-green-dark;
         height: $height-nav;
         text-transform: uppercase;
         width: 100%;
-        @include flexbox--no-gap($direction: row, $justify: space-between, $align: stretch, $wrap: wrap);
+        @include flexbox--no-gap($direction: row, $justify: center, $align: stretch, $wrap: wrap);
     }
-    &__item {
+    &__nav-button {
         flex-grow: 1;
         @include reset-button-styles;
         border-bottom: 1px solid $color-green-light;
         @include flexbox--no-gap($justify: center, $wrap: nowrap, $align: center);
         @include effect-border-underline($color-bg: $color-red-dark);
         color: $color-green-dark;
+        &--warenkorb {
+            font-size: 1.5rem !important;
+            @include flexbox--no-gap($direction:row ,$justify: center, $wrap: nowrap, $align: center);
+            &__text{
+                text-align: start;
+                margin-left: $margin-elements;
+            }
+        }
     }
 }
+
+.warenkorb{
+    &__container{
+        background-color: red; 
+        width: 25%; 
+        @include flexbox--no-gap($direction: column, $justify: space-between, $wrap: nowrap, $align: stretch);
+        padding: $padding-element;
+        display: absolute; 
+        & > * {
+            width: 100%;
+            @include flexbox--no-gap($direction: row, $justify: space-between, $wrap: nowrap, $align: stretch);
+            padding-bottom: $padding-element;
+    }
+}
+    &__header{
+        background-color: green;
+    }
+    &__section{
+        background-color: blue;
+    }
+    &__footer{
+        background-color: yellow;
+    }
+}
+    

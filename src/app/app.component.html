@@ -2,16 +2,33 @@
     <img *ngIf="base64String" [src]="base64String" alt="Image" />
 
     <div class="hauptmenu">
-        <header class="container">
+        <div class="container">
+            <article *ngIf="warenkorbVisibility" class="warenkorb__container">
+                <header class="warenkorb__header">
+                    <p>test</p>
+                    <p>test</p>
+                </header>
+                <section class="warenkorb__section">
+                    <p>test</p>
+                    <p>test</p>
+                </section>
+                <footer class="warenkorb__footer">
+                    <p>test</p>
+                    <p>test</p>
+                </footer>
+                </article>
         <nav class="hauptmenu__content">
-            <button *ngFor="let nav of navWein; index as i" class="hauptmenu__item">
+            <button *ngFor="let nav of navWein; index as i" class="hauptmenu__nav-button">
                 <span class="h3">{{nav}}</span>
             </button>
-            <button class="hauptmenu__item">
-                <span class="h3">{{nav}}</span>
+            <button class=" hauptmenu__nav-button hauptmenu__nav-button--warenkorb" (click)="toggleWarenkorb()">
+                <span class="h3 "><i class="bi-cart3 bi-4x hauptmenu__nav-button--warenkorb"></i></span>
+                <span class ="hauptmenu__nav-button--warenkorb__text text-regular">Gesamt:
+                    <br>
+                0.00 €</span>
             </button>
         </nav>
-    </header>
+    </div>
     </div>
     <div class="container">
         <nav class="weinmenu">

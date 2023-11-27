@@ -30,6 +30,7 @@ export class AppComponent implements OnInit {
 
   title = 'store';
   base64String: string | undefined;
+  warenkorbVisibility = false; 
 
   /* Arrays */ 
   geschmaecker = ['Trocken', 'Süß', 'Herb', 'Feinherb'];
@@ -62,6 +63,7 @@ export class AppComponent implements OnInit {
     preisMax: new FormControl(''),
     preisMin: new FormControl(''),
   });
+
   ngOnInit(): void {
     this.formGeschmack.get('geschmack')?.valueChanges.subscribe((value) => {
       console.log('Selected Geschmack:', value);
@@ -83,6 +85,10 @@ export class AppComponent implements OnInit {
 
       }
     })
+  }
+
+  public toggleWarenkorb(): void {
+    this.warenkorbVisibility = !this.warenkorbVisibility;
   }
 
 }
