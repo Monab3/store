@@ -7,7 +7,7 @@ export interface Wein {
     herstellungsDatum: Date;
     beschreibungsText: string;
     produktTyp: string;
-    füllmenge: number;
+    fuellmenge: number;
     alkoholgehalt: number;
     restZucker: number;
     gesamtSaeure: number;

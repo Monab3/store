@@ -14,9 +14,9 @@
 
 .card {
    @include border($color: $color-green-light);
-   @include padding-element();
    @include flexbox($direction: row, $justify: center, $wrap: wrap, $gab: $margin-elements);
    @include effect-drop-shadow-hover();
+   @include padding-element;
    @include responsive-spacing(max-width, 18rem, 1, 0.5, $width-small: 0.5);
    //@include responsive-spacing(max-height, 25rem, 1, 0.5);
    @include effect-drop-shadow-hover();

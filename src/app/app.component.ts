@@ -3,6 +3,8 @@ import { rebsortenService } from '../shared/services/rebsorten.service';
 import { warenkorbService } from '../shared/services/warenkorb.service';
 import { base64ToImageConverter } from '../shared/services/base64ToImageConverter.service';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { WarenkorbItem } from '../shared/models/WarenkorbItem';
+import { Wein } from '../shared/models/Wein';
 
 @Component({
   selector: 'app-root',
@@ -18,14 +20,15 @@ export class AppComponent implements OnInit {
 
   /* */
 
-  /* Arrays */ 
+  /* Arrays */
   geschmaecker = ['Trocken', 'Süß', 'Herb', 'Feinherb'];
   rebsorten = ['Riesling', 'Burgunder', 'Rivaner', 'Dornfelder'];
   navWein = ['Weißwein', 'Rotwein', 'Roséwein', 'Sekt'];
   weinmenueBilder = ['../assets/weinmenue_weisswein.jpg', '../assets/weinmenue_rotwein.jpg', '../assets/weinmenue_rosewein.jpg', '../assets/weinmenue_schaumwein.jpg'];
 
- mockDataWine = [
+  mockDataWine = [
     {
+      _id: 1,
       name: 'Wine B',
       geschmack: 'Sweet',
       rebsorte: 'Merlot',
@@ -48,6 +51,7 @@ export class AppComponent implements OnInit {
       servierBildString: '../../images/bottle_card_2.png',
     },
     {
+      _id: 2,
       name: 'Wine C',
       geschmack: 'Medium',
       rebsorte: 'Sauvignon Blanc',
@@ -70,6 +74,7 @@ export class AppComponent implements OnInit {
       servierBildString: '../../images/bottle_card_2.png',
     },
     {
+      _id: 2,
       name: 'Wine D',
       geschmack: 'Dry',
       rebsorte: 'Cabernet Sauvignon',
@@ -97,11 +102,11 @@ export class AppComponent implements OnInit {
 
   constructor(private rebsortenService: rebsortenService, private imageTransformSerivce: base64ToImageConverter,
     private fb: FormBuilder, private warenkorbService: warenkorbService
-    ) {
+  ) {
 
   }
   formGeschmack = new FormGroup({
-    geschmack: new FormControl(''), 
+    geschmack: new FormControl(''),
     trockenCount: new FormControl(0),
     süßCount: new FormControl(0),
     herbCount: new FormControl(0),
@@ -125,7 +130,7 @@ export class AppComponent implements OnInit {
   //there must be an input
 
   //this.registerForm.invalid; 
-
+  cartQuantity: FormGroup[] = [];
 
 
   ngOnInit(): void {
@@ -133,15 +138,38 @@ export class AppComponent implements OnInit {
       console.log('Selected Geschmack:', value);
       this.formGeschmack.get('suess')?.valueChanges.subscribe((value) => {
         console.log('Selected Suess:', value);
-        });
+      });
+    });
+
+    this.mockDataWine.forEach((product, index) => {
+      const formGroup = new FormGroup({
+        quantity: new FormControl(1),
+      });
+      this.cartQuantity.push(formGroup);
+    });
+
+
+  }
+
+  addQuantity(i: number, event: any) {
+    event.subscribe((value: any) => {
+      const newValue = value;
+      this.cartQuantity[i].get('quantity')?.setValue(newValue);
+      console.log(this.cartQuantity[i].get('quantity')?.value);
     });
 
   }
 
-  onValueChanged(i: number, newValue: number) {
-    console.log('Quantity changed:', newValue + " "+ i);
-  }
 
+  addProductToCart(i: number, product: Wein) {
+    const quantity = this.cartQuantity[i].get('quantity')?.value;
+    const newProduct: WarenkorbItem = {
+      wein: product,
+      produktAnzahl: 10
+    };
+    console.log(newProduct);
+    this.warenkorbService.addToWarenkorb(newProduct);
+  }
 
   public fetchDatafromBackend(): void {
     this.rebsortenService.fetchRebsorten().subscribe((data) => {
@@ -158,9 +186,8 @@ export class AppComponent implements OnInit {
     })
   }
 
-
   dateConverter(date: Date): string {
-    return "Ursprung "+ date.getFullYear();
+    return "Ursprung " + date.getFullYear();
   }
 
 }

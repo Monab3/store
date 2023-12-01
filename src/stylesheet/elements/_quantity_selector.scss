@@ -15,6 +15,7 @@
     -moz-appearance: textfield;
     appearance: none;
     margin: 0;
+
     &::-webkit-inner-spin-button,
     &::-webkit-outer-spin-button {
         -webkit-appearance: none;
@@ -45,6 +46,27 @@
         &__container {
             width: 70%;
             text-align: end;
+        }
+    }
+}
+
+@media only screen and (max-width: 769px) {
+    .form_field {
+        max-width: 100%;
+
+        &__control {
+            display: none;
+            margin: none;
+
+            &__container {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+
+        &__container {
+            flex-direction: column;
+            justify-content: center;
         }
     }
 }

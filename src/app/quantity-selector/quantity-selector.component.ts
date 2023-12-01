@@ -57,7 +57,7 @@ export class QuantitySelectorComponent implements OnInit {
   private emitValueChanged() {
     const value = this.counterForm?.get('product')?.value;
     if (value !== undefined) {
-      this.preis = this.product.preis * (value);
+      this.preis = this.product.preis * value;
       this.valueChanged.emit(value);
     }
   }

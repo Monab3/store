@@ -12,6 +12,8 @@ import { Observable } from 'rxjs';
 export class HauptmenueComponent implements OnInit{
   navWein: String[] = [];
   produktWein: String[] =[];
+  warenkorbInhalt: Observable<any> = new Observable();
+  warenkorbAnzahl: Number=0;
   
   constructor(private fb: FormBuilder, private warenkorbService: warenkorbService
     ) {
@@ -23,10 +25,15 @@ export class HauptmenueComponent implements OnInit{
   ngOnInit(): void {
     console.log("test");
 
-    //warenkorbInhalt = warenkorbService.subscripe()
+    this.warenkorbService.warenkorbInhalt.subscribe((data) => {
+      this.warenkorbAnzahl = data.length;
+      console.log(data);
+    });
   }
+
   warenkorbVisibility = true; 
-  anzahlArtikel = 0;  weinmenueBilder = ['../../assets/weinmenue_weisswein.jpg', '../../assets/weinmenue_rotwein.jpg', '../../assets/weinmenue_rosewein.jpg', '../../assets/weinmenue_schaumwein.jpg'];
+  
+  weinmenueBilder = ['../../assets/weinmenue_weisswein.jpg', '../../assets/weinmenue_rotwein.jpg', '../../assets/weinmenue_rosewein.jpg', '../../assets/weinmenue_schaumwein.jpg'];
 
 
   public toggleWarenkorb(): void {

@@ -89,8 +89,8 @@
                         </div>
                     </div>
                     <hr class="card__line">
-                    <app-quantity-selector [product]="produkt" (valueChanged)="onValueChanged(i, $event)"></app-quantity-selector>
-                    <button class="btn btn-main text-btn--white button">
+                    <app-quantity-selector [product]="produkt" (valueChanged)="addQuantity(i, $event)" style="width: 100%;"></app-quantity-selector>
+                    <button class="btn btn-main text-btn--white button" (click) ="addProductToCart(i, produkt)">
                         In den Warenkorb
                     </button>
                     <p class="text-fine">{{produkt.fuellmenge}}l | {{produkt.preisProLiter}}€ | inkl. MwSt. zzgl.

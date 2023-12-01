@@ -1,6 +1,6 @@
 @import '../tools/variables';
 
-@mixin responsive-spacing($property, $value, $medium-factor: 0.6, $minimum-factor: 0.3, $width-small: 1) {
+@mixin responsive-spacing($property, $value, $medium-factor: 0.6, $minimum-factor: 0.3, $width-small: 0.3) {
   #{$property}: $value;
 
   @media only screen and (max-width: 576px) {

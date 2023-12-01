@@ -8,6 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: "root" })
 export class warenkorbService {
+    
     private warenkorbInhaltSource = new BehaviorSubject<WarenkorbItem[]>([]);
     private anzahlWarenkorb = new BehaviorSubject<Number>(0);
     warenkorbInhalt = this.warenkorbInhaltSource.asObservable();

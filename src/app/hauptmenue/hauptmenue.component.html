@@ -13,7 +13,7 @@
         </nav>
         <article *ngIf="warenkorbVisibility" class="warenkorb__container">
             <header class="warenkorb__header">
-                <p class="h3--color-red">Ihr Warenkorb, <span class="h3--color-green">{{anzahlArtikel}} Artikel</span></p>
+                <p class="h3--color-red">Ihr Warenkorb, <span class="h3--color-green">{{warenkorbAnzahl }}Artikel</span></p>
                 <button class=" btn-interaction" (click)="toggleWarenkorb()">
                 <i class="bi  bi-x-lg bi-2x"></i>
             </button>
