@@ -100,8 +100,6 @@ export class AppComponent implements OnInit {
     ) {
 
   }
-
-
   formGeschmack = new FormGroup({
     geschmack: new FormControl(''), 
     trockenCount: new FormControl(0),
@@ -129,31 +127,6 @@ export class AppComponent implements OnInit {
   //this.registerForm.invalid; 
 
 
-  value = 0;
-
-  handleMinus(i: number) {
-    const control = this.counterForm?.get(`product-${i}`);
-    if (control) {
-      const currentValue = control.value;
-      if (currentValue >=2) {
-        control.setValue(currentValue - 1);
-      } else{
-        control.setValue(1);
-      }
-    }
-  }
-
-  handlePlus(i: number) {
-    const control = this.counterForm?.get(`product-${i}`);
-    if (control) {
-      const currentValue = control.value;
-      if (currentValue >=1) {
-        control.setValue(currentValue + 1);
-      } else{
-        control.setValue(1);
-      }
-    }
-  }
 
   ngOnInit(): void {
     this.formGeschmack.get('geschmack')?.valueChanges.subscribe((value) => {
@@ -163,18 +136,12 @@ export class AppComponent implements OnInit {
         });
     });
 
-    this.initializeCounterForProduct();
   }
 
-  counterForm: FormGroup | undefined;
-
-  initializeCounterForProduct() {
-    this.counterForm = new FormGroup({});
-
-    this.mockDataWine.forEach((item, index) => {
-      this.counterForm?.addControl(`product-${index}`, new FormControl(1, [Validators.min(1)]));
-    });
+  onValueChanged(i: number, newValue: number) {
+    console.log('Quantity changed:', newValue + " "+ i);
   }
+
 
   public fetchDatafromBackend(): void {
     this.rebsortenService.fetchRebsorten().subscribe((data) => {

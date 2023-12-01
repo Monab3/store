@@ -1,0 +1,19 @@
+<form *ngIf="counterForm" class="form_field__container" [formGroup]="counterForm">
+    <h3 *ngIf="product" class="form_field__number">{{preis}} €</h3>
+    <div class="form_field__control__container">
+      <button class="form_field__control btn-interaction" (click)="handleMinus()"><i class="bi bi-dash-lg"></i></button>
+      <input
+        type="number"
+        class="form_field form_field__field"
+        formControlName="product"
+        (keydown.enter)="onInputChange($event)"
+        [class.form_field--invalid]="counterForm.get('product')?.invalid && counterForm.get('product')?.touched"
+      />
+      <button class="form_field__control btn-interaction" (click)="handlePlus()"><i class="bi bi-plus-lg"></i></button>
+    </div>
+  </form>
+  <p *ngIf="counterForm?.get('product')?.invalid && counterForm?.get('product')?.touched"
+    class="text-regular--invalid"
+    [ngClass]="{'disabled': counterForm?.get('product')?.invalid, 'notDisabled': !counterForm?.get('product')?.invalid}">
+    Zahlen zwischen 1 und 100 eingeben
+  </p>

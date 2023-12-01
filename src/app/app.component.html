@@ -89,26 +89,7 @@
                         </div>
                     </div>
                     <hr class="card__line">
-
-
-                    <form *ngIf="counterForm" class="form_field__container" [formGroup]="counterForm">
-                        <h3 class="form_field__number">{{produkt.preis}} €</h3>
-                        <div class="form_field__control__container">
-                            <button class="form_field__control btn-interaction" (click)="handleMinus(i)"><i
-                                    class="bi bi-dash-lg"></i>
-                            </button>
-                            <input type="number" class="form_field form_field__field" formControlName="product-{{i}}"
-                                [class.form_field--invalid]="counterForm.get('product-' + i)?.invalid && counterForm.get('product-' + i)?.touched" />
-
-                            <button class="form_field__control btn-interaction" (click)="handlePlus(i)"><i
-                                    class="bi bi-plus-lg"></i></button>
-                        </div>
-                    </form>
-                    <p *ngIf="counterForm?.get('product-' + i)?.invalid && counterForm?.get('product-' + i)?.touched"
-                    class="text-regular--invalid"
-                    [ngClass]="{'disabled':counterForm?.get('product-' + i)?.invalid, 'notDisabled': !counterForm?.get('product-' + i)?.invalid}">
-                    Zahlen zwischen 1 und 100 eingeben
-                </p>
+                    <app-quantity-selector [product]="produkt" (valueChanged)="onValueChanged(i, $event)"></app-quantity-selector>
                     <button class="btn btn-main text-btn--white button">
                         In den Warenkorb
                     </button>
