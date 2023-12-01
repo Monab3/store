@@ -10,11 +10,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 /*Angular Components */
 import { AccordionModule } from 'primeng/accordion';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HauptmenueComponent } from './hauptmenue/hauptmenue.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HauptmenueComponent
   ],
   imports: [
     BrowserModule,

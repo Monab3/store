@@ -15,22 +15,10 @@ h2 {
     text-transform: uppercase;
 }
 
-.h2{
+.h2 {
     @include fonts($font-size-subtitel, $font-weight-regular, $color: inherit);
     text-transform: uppercase;
 }
-
-.h3{
-    @include fonts($font-size-body, $font-weight-regular, $color: inherit);
-    text-transform: uppercase;
-}
-
-
-.h2--color-white{
-    color: $color-light;
-    text-align: center;
-}
-
 
 h3 {
     font-family: inherit;
@@ -39,16 +27,39 @@ h3 {
     font-weight: $font-weight-bold;
 }
 
+.h3 {
+    @include fonts($font-size-body, $font-weight-regular, $color: inherit);
+    text-transform: uppercase;
+
+    &--color-red {
+        color: $color-red-dark;
+
+    }
+    &--color-green{
+        color: $color-green-dark;
+    }
+}
+
+
+
+.h2--color-white {
+    color: $color-light;
+    text-align: center;
+}
+
+
+
+
 
 .text-regular {
     @include fonts($font-size-body, $font-weight-regular, $color : $color-green-dark);
 }
 
 .text-regular-italic {
-    @include fonts($font-size-body, $font-weight-regular,$italic: true, $color : $color-green-dark);
+    @include fonts($font-size-body, $font-weight-regular, $italic: true, $color : $color-green-dark);
 }
 
-.text-bold{
+.text-bold {
     @include fonts($font-size-body, $font-weight-bold, $color : $color-green-dark);
 }
 
@@ -64,7 +75,11 @@ h3 {
     @include fonts($font-size-button, $font-weight-regular, $color : $color-black);
 }
 
-.link{
+.text-regular--invalid {
+    @include fonts($font-size-body, $font-weight-regular, $color : $color-red-signal);
+}
+
+.link {
     color: $color-blue-link;
     text-decoration: underline;
 }

@@ -1,0 +1,50 @@
+@import '../tools/variables';
+@import '../tools/typographie';
+@import '../mixins/mixins';
+@import '../mixins/mixins_abstaende';
+@import '../mixins/mixins_effects';
+
+.form_field {
+    @include effect-drop-shadow-hover();
+    padding: $padding-btn-y-small 0;
+    @include border($color: $color-grey-dark);
+    border-radius: $border-radius;
+    text-align: center;
+    color: $color-green-dark;
+    max-width: 50%;
+    -moz-appearance: textfield;
+    appearance: none;
+    margin: 0;
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    &:focus {
+        @include border($color: $color-green-dark);
+        outline: none;
+    }
+
+    &--invalid {
+        border-color: $color-red-signal;
+        @include effect-drop-shadow-hover($color-shadow: $color-red-signal);
+    }
+
+    &__container {
+        @include flexbox--no-gap($direction: row, $justify: space-between, $wrap: nowrap, $align: center);
+        width: 100%;
+        padding: $padding-btn-y-small $padding-btn-x-small;
+    }
+
+    &__control {
+        ~* {
+            margin-left: $margin-elements;
+        }
+
+        &__container {
+            width: 70%;
+            text-align: end;
+        }
+    }
+}

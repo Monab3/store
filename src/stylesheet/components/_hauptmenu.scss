@@ -8,6 +8,7 @@
     width: 100%;
     height: $height-nav;
     @include margin-page;
+
     &__content {
         color: $color-green-dark;
         height: $height-nav;
@@ -15,6 +16,7 @@
         width: 100%;
         @include flexbox--no-gap($direction: row, $justify: center, $align: stretch, $wrap: wrap);
     }
+
     &__nav-button {
         flex-grow: 1;
         @include reset-button-styles;
@@ -22,40 +24,90 @@
         @include flexbox--no-gap($justify: center, $wrap: nowrap, $align: center);
         @include effect-border-underline($color-bg: $color-red-dark);
         color: $color-green-dark;
+
         &--warenkorb {
-            font-size: 1.5rem !important;
-            @include flexbox--no-gap($direction:row ,$justify: center, $wrap: nowrap, $align: center);
-            &__text{
+            flex-grow: 1;
+            @include reset-button-styles;
+            border-bottom: 1px solid $color-green-light;
+            @include flexbox--no-gap($justify: center, $wrap: nowrap, $align: center);
+            color: $color-green-dark;
+            @include flexbox--no-gap($direction: row, $justify: center, $wrap: nowrap, $align: center);
+
+            &:hover {
+                color: $color-red-dark;
+            }
+
+            &__icon {
+                color: $color-green-dark;
+                font-size: 1.5rem !important;
+                color: $color-red-dark;
+
+            }
+
+            &__text {
+                color: $color-red-dark;
                 text-align: start;
                 margin-left: $margin-elements;
             }
+
+
         }
     }
 }
 
-.warenkorb{
-    &__container{
-        top: $height-nav; 
-        right: 0; 
-        background-color: red; 
-        width: 25%; 
+.warenkorb {
+    &__container {
+        top: $height-nav;
+        right: 0;
+        width: 25%;
         @include flexbox--no-gap($direction: column, $justify: space-between, $wrap: nowrap, $align: stretch);
-        padding: $padding-element;
-        position: absolute; 
-        & > * {
+        position: absolute;
+        z-index: 1000;
+
+        &>* {
             width: 100%;
-            @include flexbox--no-gap($direction: row, $justify: space-between, $wrap: nowrap, $align: stretch);
-            padding-bottom: $padding-element;
+            padding: $padding-element;
+        }
+    }
+
+    &__header {
+        @include flexbox--no-gap($direction: row, $justify: space-between, $wrap: nowrap, $align: stretch);
+        background: $color-green-light;
+    }
+
+    &__section {
+        border-left: $border-width solid $color-green-light;
+        border-right: $border-width solid $color-green-light;
+        background-color: $color-light;
+
+        &__img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: fill;
+        }
+
+            &__img-container {
+                overflow: hidden;
+                border-radius: $border-radius;
+                background-color: $color-grey-light;
+                width: 80px;
+                height: 80px;
+                @include border($width: $border-width-max, $color: $color-light);
+            }
+    }
+
+    &__footer {
+        @include flexbox--no-gap($direction: row, $justify: space-between, $wrap: nowrap, $align: stretch);
+        background-color: $color-green-light;
     }
 }
-    &__header{
-        background-color: green;
-    }
-    &__section{
-        background-color: blue;
-    }
-    &__footer{
-        background-color: yellow;
-    }
+
+.disabled {
+    display: visible;
+
 }
-    
+
+.notDisabled {
+    display: none;
+}

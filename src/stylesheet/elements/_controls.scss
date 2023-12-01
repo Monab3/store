@@ -11,12 +11,14 @@
     min-width: $width-min-button-desktop;
     min-height: $height-min-btn;
 }
+
 .btn-main {
     background: $gradient-green;
     color: $color-light;
     @include border($color: green);
     @include button-effect-slide();
 }
+
 .btn-secondary {
     color: $color-green-dark;
     background-color: transparent;
@@ -40,9 +42,39 @@
     @include border($color: green);
 }
 
+.btn-cancel {
+    @include reset-button-styles;
+    color: $color-red-dark;
+
+    &:hover {
+        color: $color-red-signal;
+    }
+
+    &:active {
+        color: $color-red-signal;
+    }
+}
+
+.btn-interaction {
+    @include reset-button-styles--with-border;
+    color: $color-red-dark;
+    border-radius: 50%;
+    background-color: $color-green-light;
+    padding: $padding-icon;
+    &:hover {
+        color: $color-red-signal;
+        border: 1px solid $color-green-dark;
+    }
+
+    &:active {
+        color: $color-red-signal;
+        border: 1px solid $color-green-dark;
+    }
+}
+
 /* Media Querys */
 @media only screen and (max-width: 769px) {
-    .btn-main{
-        padding:$padding-btn-y-small $padding-btn-x-small;
+    .btn-main {
+        padding: $padding-btn-y-small $padding-btn-x-small;
     }
-  }
+}

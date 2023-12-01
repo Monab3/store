@@ -2,7 +2,7 @@
 
 /* Colors */
 $color-green-light: #E6F5DD;
-$color-green-dark: #174027;
+$color-green-dark: #6D865E;
 $color-red-dark: #6D3E4B;
 $color-red-signal: #C4413A;
 $color-grey-light: #F5F5F5;
@@ -30,7 +30,7 @@ $breakpoint-xlarge: 1200px;
 
 /* gabs container */
 $gap-container: 5rem;
-$gap-element:1.5rem;
+$gap-element: 1.5rem;
 
 /* Margin */
 
@@ -53,28 +53,29 @@ Fixed Aspect Ratio Padding:
 padding: 5vw 2vw;: If you want different padding for horizontal and vertical spacing.
 */
 $padding-element: 1.5rem;
-$padding-box-small: 0.1rem; 
+$padding-box-small: 0.1rem;
 
 /* Padding Button */
 $padding-btn-x: 0.75rem;
 $padding-btn-y: 1rem;
+$padding-icon: 0.25rem;
 
 $padding-btn-x-small: $padding-btn-x * 0.5;
 $padding-btn-y-small: $padding-btn-y * 0.5;
 
 /* width */
 $width-min-container: 90%;
-$width-max-container: 75.25rem; 
+$width-max-container: 75.25rem;
 $width-min-button-desktop: 8.125rem;
-$width-min-button-mobile: 6.25rem; 
+$width-min-button-mobile: 6.25rem;
 /* height */
 $height-min-btn: 2.5rem;
-$height-nav: 5rem; 
+$height-nav: 5rem;
 /* Border Radius */
 $border-radius: 0.5rem;
 $border-radius-max: 3.125rem;
 $border-width: 0.05em;
-$border-width-max: 0.6rem; 
+$border-width-max: 0.6rem;
 
 /* Font Family */
 $font-regular: 'PT Serif', serif;
@@ -93,4 +94,5 @@ $font-weight-bold: 700;
 
 /* border-box-shadow */
 
-$border-box-shadow:  0 .5rem 1rem -.25rem $color-black;
+$border-box-shadow: 0 .5rem 1rem -.25rem $color-black;
+$border-box-shadow--green-dark: 0 .5rem 1rem -.25rem $color-green-dark;

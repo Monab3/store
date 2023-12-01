@@ -79,6 +79,15 @@ Example:  // Example usage:
         appearance: none;
 }
 
+@mixin reset-button-styles--with-border{
+  margin: 0;
+  padding: 0;
+  border:1px solid $color-green-light;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+}
+
 // Example usage:
 /*.container {
   @include flexbox(column, flex-start, stretch, wrap);

@@ -1,4 +1,4 @@
-export interface Wine {
+export interface Wein {
     _id: number;
     name: string;
     geschmack: string;
@@ -15,7 +15,7 @@ export interface Wine {
     trinkTemperatur: number;
     lagerfähigkeit: string;
     allergieHinweis: string;
-    produktAnzahl: number;
+    iventar: number;
     servierempfehlung: string;
     weinBildString?: string;
     servierBildString?: string;

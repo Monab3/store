@@ -42,13 +42,36 @@
    &__line {
       width: 100%;
       border-bottom: $border-width;
-      background: $color-gradient-green-light;
+      color: $color-gradient-green-light;
    }
 }
 
-.button {
-   width: 100%;
+.svg__text{
+   &__container{
+      @include flexbox($direction: row, $justify: flex-start, $wrap: nowrap, $align: center, $gab: $margin-elements);
+      width: 100%;
+   }
 }
+
+
+.flex-container {
+   display: flex;
+   flex-direction: row;
+ }
+ 
+ .form {
+   flex: 1; /* Takes up 1/3 of the space */
+ }
+ 
+ .btn-main {
+   flex: 2; /* Takes up 2/3 of the space */
+   background: $gradient-green;
+   color: $color-light;
+   @include border($color: green);
+   @include button-effect-slide();
+ }
+
+ 
 
 /* Media Queries */
 @media only screen and (max-width: 769px) {
