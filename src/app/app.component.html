@@ -12,7 +12,7 @@
         </nav>
         <div class="produkt-auswahl__container">
             <div class="filter__container">
-                <h3 class="h2--color-white"> Zusätzliche Produktfilter</h3>
+                <p class="h2--white"> Zusätzliche Produktfilter</p>
                 <p-accordion [multiple]="true" [activeIndex]="[0]">
                     <p-accordionTab header="Geschmack">
                         <form [formGroup]="formGeschmack">
@@ -93,7 +93,7 @@
                     <button class="btn btn-main text-btn--white button" (click) ="addProductToCart(i, produkt)">
                         In den Warenkorb
                     </button>
-                    <p class="text-fine">{{produkt.fuellmenge}}l | {{produkt.preisProLiter}}€ | inkl. MwSt. zzgl.
+                    <p class="text-regular--fine">{{produkt.fuellmenge}}l | {{produkt.preisProLiter}}€ | inkl. MwSt. zzgl.
                         <span class="link">Verstand</span>
                     </p>
                     <hr class="card__line">

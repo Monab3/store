@@ -4,31 +4,28 @@
             <button *ngFor="let nav of navWein; index as i" class="hauptmenu__nav-button">
                 <span class="h3">{{nav}}</span>
             </button>
-            <button class="hauptmenu__nav-button--warenkorb" (click)="toggleWarenkorb()">
-                <span class="h3 "><i class="bi-cart3 bi-4x hauptmenu__nav-button--warenkorb__icon"></i></span>
-                <span class="hauptmenu__nav-button--warenkorb__text text-regular">Gesamt:
+            <button class="hauptmenu__nav-button--cart" (click)="togglecart()">
+                <span class="h3 "><i class="bi-cart3 bi-4x hauptmenu__nav-button--cart__icon"></i></span>
+                <span class="hauptmenu__nav-button--cart__text text-regular">Gesamt:
                     <br>
-                    0.00 €</span>
+                    {{cartTotal}} €</span>
             </button>
         </nav>
-        <article *ngIf="warenkorbVisibility" class="warenkorb__container">
-            <header class="warenkorb__header">
-                <p class="h3--color-red">Ihr Warenkorb, <span class="h3--color-green">{{warenkorbAnzahl }}Artikel</span></p>
-                <button class=" btn-interaction" (click)="toggleWarenkorb()">
+        <article *ngIf="cartVisibility" class="cart__container">
+            <header class="cart__header">
+                <p class="h3--color-red">Ihr Warenkorb, <span class="h3--color-green">{{cartAnzahl }}Artikel</span></p>
+                <button class=" btn-interaction" (click)="togglecart()">
                 <i class="bi  bi-x-lg bi-2x"></i>
             </button>
             </header>
-            <section class="warenkorb__section container">
-                <figure class="warenkorb__section__img-container bg-success">
-                    <img src="../assets/grauburgunder.png" class="warenkorb__section__img">
-                </figure>
-                <p>2022er </p>
-                <p>Grauburgunder Test</p>
-                <p>test</p>
-                <p>test</p>
+            <section *ngIf="cartItems.length == 0" class="cart__section--no-items">
+                <h3>Es befinden sich noch  keine Weine in ihrem Warenkorb. </h3>
+                <p class="text-regular--italic" >Klicken Sie einfach 
+                    auf den Button "In den Warenkorb" um Weine in ihren Warenkorb zu legen.
+                </p>
             </section>
-            <footer class="warenkorb__footer">
-                <p>test</p>
+            <footer class="cart__footer">
+                <p>Gesamtsumme <span class="text-regular">(inkl. MwSt.)</span></p>
                 <p>test</p>
             </footer>
         </article>

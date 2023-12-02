@@ -1,9 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { rebsortenService } from '../shared/services/rebsorten.service';
-import { warenkorbService } from '../shared/services/warenkorb.service';
+import { cartService } from '../shared/services/cart.service';
 import { base64ToImageConverter } from '../shared/services/base64ToImageConverter.service';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { WarenkorbItem } from '../shared/models/WarenkorbItem';
+import { CartItem } from '../shared/models/CartItem';
 import { Wein } from '../shared/models/Wein';
 
 @Component({
@@ -74,7 +74,7 @@ export class AppComponent implements OnInit {
       servierBildString: '../../images/bottle_card_2.png',
     },
     {
-      _id: 2,
+      _id: 3,
       name: 'Wine D',
       geschmack: 'Dry',
       rebsorte: 'Cabernet Sauvignon',
@@ -101,7 +101,7 @@ export class AppComponent implements OnInit {
   // Other component logic goes here
 
   constructor(private rebsortenService: rebsortenService, private imageTransformSerivce: base64ToImageConverter,
-    private fb: FormBuilder, private warenkorbService: warenkorbService
+    private fb: FormBuilder, private cartService: cartService
   ) {
 
   }
@@ -126,10 +126,6 @@ export class AppComponent implements OnInit {
     preisMax: new FormControl(''),
     preisMin: new FormControl(''),
   });
-
-  //there must be an input
-
-  //this.registerForm.invalid; 
   cartQuantity: FormGroup[] = [];
 
 
@@ -152,23 +148,24 @@ export class AppComponent implements OnInit {
   }
 
   addQuantity(i: number, event: any) {
-    event.subscribe((value: any) => {
-      const newValue = value;
-      this.cartQuantity[i].get('quantity')?.setValue(newValue);
-      console.log(this.cartQuantity[i].get('quantity')?.value);
-    });
-
+    // Use the index to identify the specific iteration
+    const quantityControl = this.cartQuantity[i]?.get('quantity');
+    if (quantityControl) {
+      quantityControl.setValue(event);
+      console.log(`Quantity changed for index ${i}: ${event}`);
+    }
   }
 
 
   addProductToCart(i: number, product: Wein) {
     const quantity = this.cartQuantity[i].get('quantity')?.value;
-    const newProduct: WarenkorbItem = {
+    const newProduct: CartItem = {
       wein: product,
-      produktAnzahl: 10
+      produktAnzahl: this.cartQuantity[i]?.get('quantity')?.value || 1
     };
     console.log(newProduct);
-    this.warenkorbService.addToWarenkorb(newProduct);
+    this.cartService.addTocart(newProduct);
+    this.cartService.togglecartVisibility();
   }
 
   public fetchDatafromBackend(): void {

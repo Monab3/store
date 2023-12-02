@@ -15,9 +15,12 @@ h2 {
     text-transform: uppercase;
 }
 
-.h2 {
+.h2{
     @include fonts($font-size-subtitel, $font-weight-regular, $color: inherit);
     text-transform: uppercase;
+    &--white {
+        @include fonts($font-size-subtitel, $font-weight-regular, $color: $color-light);
+    }  
 }
 
 h3 {
@@ -39,32 +42,33 @@ h3 {
         color: $color-green-dark;
     }
 }
-
-
-
-.h2--color-white {
-    color: $color-light;
-    text-align: center;
-}
-
-
-
-
-
 .text-regular {
     @include fonts($font-size-body, $font-weight-regular, $color : $color-green-dark);
+    &--italic{
+        @include fonts($font-size-body, $font-weight-regular, $italic: true, $color : $color-green-dark);
+    }
+    &--bold{
+        @include fonts($font-size-body, $font-weight-bold, $color : $color-green-dark);
+    }
+    &--fine{
+        @include fonts($font-size-fine, $font-weight-regular, $color : $color-green-dark);
+    }
+    &--invalid{
+        @include fonts($font-size-body, $font-weight-regular, $color : $color-red-signal);
+    }
 }
 
-.text-regular-italic {
-    @include fonts($font-size-body, $font-weight-regular, $italic: true, $color : $color-green-dark);
-}
-
-.text-bold {
-    @include fonts($font-size-body, $font-weight-bold, $color : $color-green-dark);
-}
-
-.text-fine {
-    @include fonts($font-size-fine, $font-weight-regular, $color : $color-green-dark);
+.text-regular--red-dark {
+    @include fonts($font-size-body, $font-weight-regular, $color : $color-red-dark);
+    &--italic{
+        @include fonts($font-size-body, $font-weight-regular, $italic: true, $color :  $color-red-dark);
+    }
+    &--bold{
+        @include fonts($font-size-body, $font-weight-bold, $color : $color-red-dark);
+    }
+    &--fine{
+        @include fonts($font-size-fine, $font-weight-regular, $color :  $color-red-dark);
+    }
 }
 
 .text-btn--white {
@@ -73,10 +77,6 @@ h3 {
 
 .text-btn--black {
     @include fonts($font-size-button, $font-weight-regular, $color : $color-black);
-}
-
-.text-regular--invalid {
-    @include fonts($font-size-body, $font-weight-regular, $color : $color-red-signal);
 }
 
 .link {

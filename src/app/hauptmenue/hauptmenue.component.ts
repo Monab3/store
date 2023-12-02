@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { warenkorbService } from '../../shared/services/warenkorb.service';
+import { cartService } from '../../shared/services/cart.service';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { CartItem } from '../../shared/models/CartItem';
 
 @Component({
   selector: 'app-hauptmenue',
@@ -11,33 +11,39 @@ import { Observable } from 'rxjs';
 })
 export class HauptmenueComponent implements OnInit{
   navWein: String[] = [];
-  produktWein: String[] =[];
-  warenkorbInhalt: Observable<any> = new Observable();
-  warenkorbAnzahl: Number=0;
+  cartItems: CartItem [] = [];
+  cartAnzahl: Number=0;
+  cartVisibility = false;
+  cartTotal: String = "";
   
-  constructor(private fb: FormBuilder, private warenkorbService: warenkorbService
+  constructor(private fb: FormBuilder, private cartService: cartService
     ) {
       this.navWein = ['Weißwein', 'Rotwein', 'Roséwein', 'Sekt'];
   }
 
-  //warenkorbInhalt: Observable<any> = new Observable();
+  //cartInhalt: Observable<any> = new Observable();
 
   ngOnInit(): void {
     console.log("test");
 
-    this.warenkorbService.warenkorbInhalt.subscribe((data) => {
-      this.warenkorbAnzahl = data.length;
-      console.log(data);
+    this.cartService.cartInhalt.subscribe((data) => {
+      this.cartItems = data;
+      this.cartAnzahl = data.length;
     });
-  }
 
-  warenkorbVisibility = true; 
-  
+    this.cartService.cartVisibility.subscribe((visibility) => {
+      this.cartVisibility = visibility;
+      });
+
+      this.cartService.cartTotal.subscribe((data) => {
+        this.cartTotal = data.toFixed(2);
+      });
+  }  
   weinmenueBilder = ['../../assets/weinmenue_weisswein.jpg', '../../assets/weinmenue_rotwein.jpg', '../../assets/weinmenue_rosewein.jpg', '../../assets/weinmenue_schaumwein.jpg'];
 
 
-  public toggleWarenkorb(): void {
-    this.warenkorbVisibility = !this.warenkorbVisibility;
+  public togglecart(): void {
+    this.cartVisibility = !this.cartVisibility;
   }
 
 }

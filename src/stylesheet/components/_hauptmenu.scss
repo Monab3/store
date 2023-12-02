@@ -25,7 +25,7 @@
         @include effect-border-underline($color-bg: $color-red-dark);
         color: $color-green-dark;
 
-        &--warenkorb {
+        &--cart {
             flex-grow: 1;
             @include reset-button-styles;
             border-bottom: 1px solid $color-green-light;
@@ -55,7 +55,7 @@
     }
 }
 
-.warenkorb {
+.cart {
     &__container {
         top: $height-nav;
         right: 0;
@@ -79,6 +79,12 @@
         border-left: $border-width solid $color-green-light;
         border-right: $border-width solid $color-green-light;
         background-color: $color-light;
+        &--no-items{
+            border-left: $border-width solid $color-green-light;
+            border-right: $border-width solid $color-green-light;
+            background-color: $color-light;
+            text-align: center;
+        }
 
         &__img {
             width: 100%;
