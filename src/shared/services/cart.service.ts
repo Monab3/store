@@ -44,4 +44,8 @@ export class cartService {
         this.cartVisibilityVariable = !this.cartVisibilityVariable ;
         this.cartVisibilitySource.next(this.cartVisibilityVariable );
       }
+      setcartVisibilityTrue(): void {
+        this.cartVisibilityVariable = true;
+        this.cartVisibilitySource.next(this.cartVisibilityVariable );
+      }
 }

@@ -11,22 +11,29 @@
                     {{cartTotal}} €</span>
             </button>
         </nav>
-        <article *ngIf="cartVisibility" class="cart__container">
+        <article [ngClass]="{'cart__container': cartVisibility, 'cart__container--hidden': !cartVisibility}">
             <header class="cart__header">
                 <p class="h3--color-red">Ihr Warenkorb, <span class="h3--color-green">{{cartAnzahl }}Artikel</span></p>
                 <button class=" btn-interaction" (click)="togglecart()">
                 <i class="bi  bi-x-lg bi-2x"></i>
             </button>
             </header>
+            <main class="cart__main">
             <section *ngIf="cartItems.length == 0" class="cart__section--no-items">
                 <h3>Es befinden sich noch  keine Weine in ihrem Warenkorb. </h3>
                 <p class="text-regular--italic" >Klicken Sie einfach 
                     auf den Button "In den Warenkorb" um Weine in ihren Warenkorb zu legen.
                 </p>
             </section>
+            <section *ngIf="cartItems.length > 0" class="cart__section--no-items">
+                <figure class="cart__section__img-container">
+                    <img src="assets/grauburgunder.png" class="cart__section__img">
+                </figure>
+            </section>
+        </main>
             <footer class="cart__footer">
-                <p>Gesamtsumme <span class="text-regular">(inkl. MwSt.)</span></p>
-                <p>test</p>
+                <p class="text-regular">Gesamtsumme <span class="text-fine">(inkl. MwSt.) </span>:</p>
+                <p class="text-regular--red-dark">{{cartTotal}} €</p>
             </footer>
         </article>
     </div>

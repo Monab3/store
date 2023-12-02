@@ -165,7 +165,7 @@ export class AppComponent implements OnInit {
     };
     console.log(newProduct);
     this.cartService.addTocart(newProduct);
-    this.cartService.togglecartVisibility();
+    this.cartService.setcartVisibilityTrue();
   }
 
   public fetchDatafromBackend(): void {

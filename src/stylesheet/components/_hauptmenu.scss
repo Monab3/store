@@ -63,6 +63,11 @@
         @include flexbox--no-gap($direction: column, $justify: space-between, $wrap: nowrap, $align: stretch);
         position: absolute;
         z-index: 1000;
+        display: visible;
+
+        &--hidden {
+            display: none;
+        }
 
         &>* {
             width: 100%;
@@ -76,12 +81,9 @@
     }
 
     &__section {
-        border-left: $border-width solid $color-green-light;
-        border-right: $border-width solid $color-green-light;
         background-color: $color-light;
-        &--no-items{
-            border-left: $border-width solid $color-green-light;
-            border-right: $border-width solid $color-green-light;
+
+        &--no-items {
             background-color: $color-light;
             text-align: center;
         }
@@ -93,14 +95,20 @@
             object-fit: fill;
         }
 
-            &__img-container {
-                overflow: hidden;
-                border-radius: $border-radius;
-                background-color: $color-grey-light;
-                width: 80px;
-                height: 80px;
-                @include border($width: $border-width-max, $color: $color-light);
-            }
+        &__img-container {
+            overflow: hidden;
+            border-radius: $border-radius;
+            width: 60px;
+            height: 60px;
+        }
+    }
+
+    &__main {
+        max-height: 50vh;
+        background-color: $color-light;
+        overflow-y: auto;
+        border-left: $border-width solid $color-green-light;
+        border-right: $border-width solid $color-green-light;
     }
 
     &__footer {
