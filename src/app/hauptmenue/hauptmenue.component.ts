@@ -55,11 +55,6 @@ export class HauptmenueComponent implements OnInit {
     this.cartVisibility = !this.cartVisibility;
   }
 
-  addQuantity(i: number, event: any) {
-
-    console.log(`Quantity changed for index ${i}: ${event}`);
-  }
-
 
 
   initializeCounterForProduct() {
@@ -78,6 +73,10 @@ export class HauptmenueComponent implements OnInit {
       this.cartItems[i].produktAnzahl = $event.target.value;
       this.cartService.addToCartFromCart(this.cartItems[i]);
     }  }
+
+    deleteItemFromCart( item: CartItem) {
+      this.cartService.deleteFromCart(item);
+    }
   
 
 

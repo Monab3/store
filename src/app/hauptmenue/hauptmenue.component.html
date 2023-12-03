@@ -21,7 +21,7 @@
             <main class="cart__main">
                 <section *ngIf="cartItems.length == 0" class="cart__section--no-items">
                     <h3>Es befinden sich noch keine Weine in ihrem Warenkorb. </h3>
-                    <p class="text-regular--italic">Klicken Sie einfach
+                    <p class="text-regular--italic">Klicken Sie
                         auf den Button "In den Warenkorb" um Weine in ihren Warenkorb zu legen.
                     </p>
                 </section>
@@ -52,7 +52,7 @@
                         class="text-regular--invalid">
                         Zahl zwischen 1 und 100 eingeben
                     </p>
-                    <button class="btn-tertiary btn">aus dem Warenkorb entfernen.</button>
+                    <button class="btn-tertiary btn" (click)="deleteItemFromCart(item)">aus dem Warenkorb entfernen.</button>
                     </div>
                 </section>
             </main>

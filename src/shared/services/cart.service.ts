@@ -68,4 +68,11 @@ export class cartService {
         this.cartVisibilityVariable = true;
         this.cartVisibilitySource.next(this.cartVisibilityVariable);
     }
+
+    deleteFromCart(item: CartItem) {     
+        const currentcart = this.cartInhaltSource.getValue();
+        const updatedcart = currentcart.filter(cartItem => cartItem.wein._id !== item.wein._id);
+        this.cartInhaltSource.next(updatedcart);
+        this.calculateTotal();
+    }
 }

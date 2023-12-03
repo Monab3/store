@@ -83,13 +83,13 @@
     &__section {
         background-color: $color-light;
 
-        &__container{
-            &--column{
+        &__container {
+            &--column {
                 @include flexbox--no-gap($direction: column, $justify: space-between, $wrap: nowrap, $align: stretch);
                 @include responsive-spacing(gap, $margin-elements, $medium-factor: 1, $minimum-factor: 0.5, $width-small: 0.5);
             }
 
-            &--row{
+            &--row {
                 @include flexbox--no-gap($direction: row, $justify: space-between, $wrap: nowrap, $align: flex-start);
             }
         }
@@ -176,5 +176,17 @@
     &--invalid {
         border-color: $color-red-signal;
         color: $color-red-signal;
+    }
+}
+
+//Media Queries
+
+@media only screen and (max-width: 769px) {
+    .cart {
+        &__container {
+            width: 100%;
+            top: 0;
+            left: 0;
+        }
     }
 }
