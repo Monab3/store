@@ -126,7 +126,6 @@ export class AppComponent implements OnInit {
     preisMax: new FormControl(''),
     preisMin: new FormControl(''),
   });
-  cartQuantity: FormGroup[] = [];
 
 
   ngOnInit(): void {
@@ -137,35 +136,64 @@ export class AppComponent implements OnInit {
       });
     });
 
+    this.initializeCounterForProduct();
+
     this.mockDataWine.forEach((product, index) => {
       const formGroup = new FormGroup({
         quantity: new FormControl(1),
       });
-      this.cartQuantity.push(formGroup);
     });
-
-
   }
 
-  addQuantity(i: number, event: any) {
-    // Use the index to identify the specific iteration
-    const quantityControl = this.cartQuantity[i]?.get('quantity');
-    if (quantityControl) {
-      quantityControl.setValue(event);
-      console.log(`Quantity changed for index ${i}: ${event}`);
+  counterForm: FormGroup | undefined;
+
+  initializeCounterForProduct() {
+    this.counterForm = new FormGroup({});
+
+    this.mockDataWine.forEach((item, index) => {
+      this.counterForm?.addControl(`product-${index}`, new FormControl(1, [Validators.min(1)]));
+    });
+  }
+
+  handleMinus(i: number) {
+    const control = this.counterForm?.get(`product-${i}`);
+    if (control) {
+      const currentValue = control.value;
+      if (currentValue >=2) {
+        control.setValue(currentValue - 1);
+      } else{
+        control.setValue(1);
+      }
+    }
+  }
+
+  handlePlus(i: number) {
+    const control = this.counterForm?.get(`product-${i}`);
+    if (control) {
+      const currentValue = control.value;
+      if (currentValue >=1) {
+        control.setValue(currentValue + 1);
+      } else{
+        control.setValue(1);
+      }
     }
   }
 
 
   addProductToCart(i: number, product: Wein) {
-    const quantity = this.cartQuantity[i].get('quantity')?.value;
+    const control = this.counterForm?.get(`product-${i}`);
+
+  if (control) {
+    const quantity = control.value;
+
     const newProduct: CartItem = {
       wein: product,
-      produktAnzahl: this.cartQuantity[i]?.get('quantity')?.value || 1
+      produktAnzahl: quantity || 1
     };
-    console.log(newProduct);
-    this.cartService.addTocart(newProduct);
+    
+    this.cartService.addToCart(newProduct);
     this.cartService.setcartVisibilityTrue();
+  }
   }
 
   public fetchDatafromBackend(): void {

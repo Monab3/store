@@ -29,6 +29,10 @@
     color: $color-green-dark;
     background-color: transparent;
     @include border($color: $color-green-light);
+    :hover{
+        
+    }
+
 }
 
 .btn-ghost {

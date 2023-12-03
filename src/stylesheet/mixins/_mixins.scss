@@ -97,6 +97,22 @@ Example:  // Example usage:
   #{$border-property}: $width $style $color;
 }
 
+@mixin scrollbar{
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $color-grey-dark;
+    radius: $border-radius-max;
+  }
+}
+
+
 // This will compile to:
 // .container {
 //   display: flex;

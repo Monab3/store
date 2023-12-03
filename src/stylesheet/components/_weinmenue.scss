@@ -10,25 +10,28 @@
     @include flexbox($direction: row, $justify: center, $wrap: nowrap, $align: stretch, $gab: $gap-container);
     position: relative;
     border-bottom: 0.5px solid $color-green-light;
-    &__text-margin{
+
+    &__text-margin {
         @include responsive-spacing($property: margin-top, $value: $margin-section-big-x, $medium-factor: 0.6, $minimum-factor: 0.3);
     }
-        &__nav-button {
-            flex-grow: 1;
-            @include reset-button-styles; 
-            border-bottom: 1px solid $color-green-light;
-            @include flexbox--no-gap($justify: center, $wrap: nowrap, $align: center);
-            @include effect-border-underline($color-bg: $color-red-dark);
-            color: $color-green-dark;
-        }
+
+    &__nav-button {
+        flex-grow: 1;
+        @include reset-button-styles;
+        border-bottom: 1px solid $color-green-light;
+        @include flexbox--no-gap($justify: center, $wrap: nowrap, $align: center);
+        @include effect-border-underline($color-bg: $color-red-dark);
+        color: $color-green-dark;
+    }
+
     &__img-container {
-overflow: hidden;
+        overflow: hidden;
         border-radius: 100%;
         width: 80px;
         height: 80px;
         @include border($width: $border-width-max, $color: $color-light);
         box-shadow: $border-box-shadow;
-        }
+    }
 
     &__img {
         width: 100%;
@@ -41,9 +44,7 @@ overflow: hidden;
 //Media Queries
 
 @media only screen and (max-width: 769px) {
-    .weinmenu{
+    .weinmenu {
         display: none;
     }
-  }
-
- 
+}

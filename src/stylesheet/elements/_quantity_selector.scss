@@ -11,7 +11,6 @@
     border-radius: $border-radius;
     text-align: center;
     color: $color-green-dark;
-    max-width: 50%;
     -moz-appearance: textfield;
     appearance: none;
     margin: 0;
@@ -29,7 +28,12 @@
 
     &--invalid {
         border-color: $color-red-signal;
-        @include effect-drop-shadow-hover($color-shadow: $color-red-signal);
+        color: $color-red-signal;
+    }
+
+    &:hover {
+        @include border($color: $color-green-dark);
+        box-shadow: $border-box-shadow--green-dark;
     }
 
     &__container {
@@ -53,14 +57,16 @@
 @media only screen and (max-width: 769px) {
     .form_field {
         max-width: 100%;
-
+        margin: 0;
         &__control {
             display: none;
             margin: none;
+            margin: 0;
 
             &__container {
                 width: 100%;
                 max-width: 100%;
+                text-align: center;
             }
         }
 

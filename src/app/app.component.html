@@ -89,11 +89,27 @@
                         </div>
                     </div>
                     <hr class="card__line">
-                    <app-quantity-selector [product]="produkt" (valueChanged)="addQuantity(i, $event)" style="width: 100%;"></app-quantity-selector>
+                    <h3 class="form_field__number">{{produkt.preis}} €</h3>
+                    <form *ngIf="counterForm" class="form_field__container" [formGroup]="counterForm">
+                          <button class="form_field__control btn-interaction" (click)="handleMinus(i)"><i class="bi bi-dash-lg"></i></button>
+                          <input
+                            type="number"
+                            class="form_field"
+                            formControlName="product-{{i}}"
+                            [class.form_field--invalid]="counterForm?.get('product-' + i)?.invalid && counterForm?.get('product-' + i)?.touched"
+                          />
+                          <button class="form_field__control btn-interaction" (click)="handlePlus(i)"><i class="bi bi-plus-lg"></i></button>
+                      </form>
+                      <p *ngIf="counterForm?.get('product-' + i)?.invalid && counterForm?.get('product-' + i)?.touched"
+                        class="text-regular--invalid"
+                        [ngClass]="{'disabled': counterForm?.get('product-' + i)?.invalid, 'notDisabled': !counterForm?.get('product-' + i)?.invalid}">
+                        Zahl zwischen 1 und 100 eingeben
+                      </p>
+
                     <button class="btn btn-main text-btn--white button" (click) ="addProductToCart(i, produkt)">
                         In den Warenkorb
                     </button>
-                    <p class="text-regular--fine">{{produkt.fuellmenge}}l | {{produkt.preisProLiter}}€ | inkl. MwSt. zzgl.
+                    <p class="text-fine">{{produkt.fuellmenge}}l | {{produkt.preisProLiter}}€ | inkl. MwSt. zzgl.
                         <span class="link">Verstand</span>
                     </p>
                     <hr class="card__line">

@@ -14,21 +14,40 @@ export class cartService {
     cartInhalt = this.cartInhaltSource.asObservable();
     cartTotal = this.cartTotalSource.asObservable();
     cartVisibility = this.cartVisibilitySource.asObservable();
-    private cartVisibilityVariable = false; 
+    private cartVisibilityVariable = false;
     constructor(private http: HttpClient) {
     }
     // Function to add a new item to the cart
-    addTocart(newItem: CartItem) {
+    addToCart(newItem: CartItem) {
         const currentcart = this.cartInhaltSource.getValue();
 
         const existingItemIndex = currentcart.findIndex(item => item.wein._id === newItem.wein._id);
         if (existingItemIndex !== -1) {
-            currentcart[existingItemIndex].produktAnzahl += newItem.produktAnzahl;
+            currentcart.splice(existingItemIndex, 1);
+        }
+        currentcart.unshift(newItem);
+        this.cartInhaltSource.next(currentcart);
+        this.calculateTotal();
+    }
+
+    /**
+     * Wenn innerhalb des Warenkorb-PopUps ein Wein hinzugefügt wird, wird diese Funktion aufgerufen, damit der Wein im 
+     * im cartInhaltSource an Index 0 hinzugefügt wird, sondern an seinem vorherigen Index bleibt.
+     * 
+     * @param {CartItem} newItem - hinzuzufügendes CartItem-Objekt
+     */
+
+    addToCartFromCart(newItem: CartItem) {
+        const currentcart = this.cartInhaltSource.getValue();
+
+        const existingItemIndex = currentcart.findIndex(item => item.wein._id === newItem.wein._id);
+        if (existingItemIndex !== -1) {
+            currentcart[existingItemIndex].produktAnzahl = newItem.produktAnzahl;
             this.cartInhaltSource.next(currentcart);
-            console.log("[cartService] Item quantity stayed the same: "+ JSON.stringify(currentcart));
+            console.log("[cartService] Item quantity stayed the same: " + JSON.stringify(currentcart));
         } else {
             const updatedcart = [...currentcart, newItem];
-            console.log("[cartService] Item quantity increased: "+ JSON.stringify(updatedcart));
+            console.log("[cartService] Item quantity increased: " + JSON.stringify(updatedcart));
             this.cartInhaltSource.next(updatedcart);
         }
         this.calculateTotal();
@@ -36,16 +55,17 @@ export class cartService {
 
     calculateTotal() {
         const currentCart = this.cartInhaltSource.getValue();
-        const total = currentCart.reduce((sum, item) => sum + (item.wein.preis* item.produktAnzahl), 0);
+        const total = currentCart.reduce((sum, item) => sum + (item.wein.preis * item.produktAnzahl), 0);
         this.cartTotalSource.next(total);
     }
 
     togglecartVisibility(): void {
-        this.cartVisibilityVariable = !this.cartVisibilityVariable ;
-        this.cartVisibilitySource.next(this.cartVisibilityVariable );
-      }
-      setcartVisibilityTrue(): void {
+        this.cartVisibilityVariable = !this.cartVisibilityVariable;
+        this.cartVisibilitySource.next(this.cartVisibilityVariable);
+    }
+    
+    setcartVisibilityTrue(): void {
         this.cartVisibilityVariable = true;
-        this.cartVisibilitySource.next(this.cartVisibilityVariable );
-      }
+        this.cartVisibilitySource.next(this.cartVisibilityVariable);
+    }
 }
