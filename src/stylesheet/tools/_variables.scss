@@ -16,8 +16,8 @@ $color-gradient-green-light: #E1EFD9;
 $color-gradient-green-dark: #64875A;
 $color-gradient-red-light: #D75176;
 $color-gradient-red-dark: #6D3E4B;
-$gradient-green: linear-gradient(90deg, #E1EFD9, 0%, $color-green-dark 35%);
-$gradient-red: linear-gradient(90deg, color-gradient-red-light 0%, color-gradient-red-dark 35%);
+$gradient-green: linear-gradient(90deg, $color-gradient-green-light, 0%, $color-green-dark 35%);
+$gradient-red: linear-gradient(90deg, $color-gradient-red-light 0%, $color-red-dark 35%);
 
 /* base */
 $base-font-size: 16px;

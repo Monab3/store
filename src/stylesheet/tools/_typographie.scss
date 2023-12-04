@@ -104,6 +104,9 @@ h3 {
     &--black {
         @include fonts($font-size-button, $font-weight-regular, $color : $color-black);
     }
+    &--green-dark {
+        @include fonts($font-size-button, $font-weight-regular, $color : $color-green-dark);
+    }
 }
 
 .link {

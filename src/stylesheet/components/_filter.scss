@@ -14,7 +14,7 @@
         @include flexbox($justify: flex-start, $wrap: wrap, $gab: $margin-elements, $align: center);
         padding: $padding-element;
         width: 20%;
-        &__imgcontainer {
+        &__img-container {
             margin-top: 2rem;
             overflow: hidden;
             width: 70%;

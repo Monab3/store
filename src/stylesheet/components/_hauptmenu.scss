@@ -71,7 +71,7 @@
 
         &>* {
             width: 100%;
-            padding: $padding-element;
+            @include responsive-spacing(padding, $padding-element, $medium-factor: 1, $minimum-factor: 0.5, $width-small: 0.5);
         }
     }
 
@@ -135,8 +135,14 @@
     }
 
     &__footer {
-        @include flexbox--no-gap($direction: row, $justify: space-between, $wrap: nowrap, $align: stretch);
         background-color: $color-green-light;
+        @include flexbox--no-gap($direction: column, $justify: center, $wrap: nowrap, $align: stretch);
+        @include responsive-spacing(gap, $margin-elements, $medium-factor: 1, $minimum-factor: 0.5, $width-small: 0.5);
+
+        &__container {
+            @include flexbox--no-gap($direction: row, $justify: space-between, $wrap: nowrap, $align: stretch);
+            width: 100%;
+        }
     }
 }
 
@@ -185,7 +191,7 @@
     .cart {
         &__container {
             width: 100%;
-            top: 0;
+            top: $height-nav;
             left: 0;
         }
     }

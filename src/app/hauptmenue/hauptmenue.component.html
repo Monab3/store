@@ -28,37 +28,44 @@
                 <section *ngIf="cartItems.length > 0" class="cart__section">
                     <div *ngFor="let item of cartItems; let i = index" class="cart__section__container--column">
                         <div class="cart__section__container--row">
-                        <figure class="cart__section__img-container">
-                            <img src="assets/grauburgunder.png" class="cart__section__img">
-                        </figure>
-                        <div class="cart__section__information">
-                        <p class="text-regular--red-dark">{{ item.wein.name }}</p>
-                        <p class="text-regular">{{ itemPriceSum(item) }}</p>
-
-                    </div>
-                        <div class="cart__section__information">
-                            <form *ngIf="counterForm" [formGroup]="counterForm">
-                                <p class="text-regular">Anzahl</p>
-                                <input class="selector__form__input" type="number" formControlName="count"
-                                    [formControlName]="'count' + (item.wein._id)"
-                                    [ngClass]="{'selector__form__input--invalid': counterForm.get('count' + (item.wein._id))?.invalid && counterForm.get('count' + (item.wein._id))?.touched}" 
-                                    (input)="onInputChanged($event, i)"
-                                    />
-                            </form>
+                            <figure class="cart__section__img-container">
+                                <img src="assets/grauburgunder.png" class="cart__section__img">
+                            </figure>
+                            <div class="cart__section__information">
+                                <p class="text-regular--red-dark">{{ item.wein.name }}</p>
+                                <p class="text-regular">{{ itemPriceSum(item) }}</p>
+                                <p class="text-fine">zzgl. <span class="link">Versand</span></p>
+                            </div>
+                            <div class="cart__section__information">
+                                <form *ngIf="counterForm" [formGroup]="counterForm">
+                                    <p class="text-regular">Anzahl</p>
+                                    <input class="selector__form__input" type="number" formControlName="count"
+                                        [formControlName]="'count' + (item.wein._id)"
+                                        [ngClass]="{'selector__form__input--invalid': counterForm.get('count' + (item.wein._id))?.invalid && counterForm.get('count' + (item.wein._id))?.touched}"
+                                        (input)="onInputChanged($event, i)" />
+                                </form>
+                            </div>
                         </div>
-                    </div>
-                        
+
                         <p *ngIf="counterForm?.get('count' + (item.wein._id))?.invalid && counterForm?.get('count' + (item.wein._id))?.touched"
-                        class="text-regular--invalid">
-                        Zahl zwischen 1 und 100 eingeben
-                    </p>
-                    <button class="btn-tertiary btn" (click)="deleteItemFromCart(item)">aus dem Warenkorb entfernen.</button>
+                            class="text-regular--invalid">
+                            Zahl zwischen 1 und 100 eingeben
+                        </p>
+                        <button class="btn-tertiary btn" (click)="deleteItemFromCart(item)">aus dem Warenkorb
+                            entfernen.</button>
                     </div>
                 </section>
             </main>
             <footer class="cart__footer">
-                <p class="text-regular">Gesamtsumme <span class="text-fine">(inkl. MwSt.) </span>:</p>
-                <p class="text-regular--red-dark">{{cartTotal}} €</p>
+                <div class="cart__footer__container">
+                    <p class="text-regular">Gesamtsumme <span class="text-fine">(inkl. MwSt.) </span>:</p>
+                    <p class="text-regular--red-dark">{{cartTotal}} €</p>
+                </div>
+                <button class="btn btn-secondary text-btn--green-dark">
+                    <span style="font-size: 14px;"><i class="bi-cart3 bi"></i></span>
+                    Warenkorb einsehen</button>
+                <button class="btn btn-main--red text-btn--white">Zur Kasse gehen</button>
+
             </footer>
         </article>
     </div>

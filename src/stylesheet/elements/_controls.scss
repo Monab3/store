@@ -15,21 +15,28 @@
 .btn-main {
     background: $gradient-green;
     color: $color-light;
-    @include border($color: green);
+    @include border($color: $color-green-dark);
     @include button-effect-slide();
+    &--red{
+        color: $color-light;
+        @include border($color: $color-red-dark); 
+        background: $gradient-red;
+        @include button-effect-slide($background:$gradient-red, $color-before: $color-red-signal);
+    }
 }
 
 .btn-secondary {
     color: $color-green-dark;
     background-color: transparent;
     @include border($color: $color-green-dark);
+    @include button-effect-slide($background: $color-light, $color-before: $color-green-light);
 }
 
 .btn-tertiary {
     color: $color-green-dark;
     background-color: transparent;
     @include border($color: $color-green-light);
-    @include button-effect-slide($background: $color-light, $color-before: $color-green-dark);
+    @include button-effect-slide($background: $color-light, $color-before: $color-grey-light, $color-hover: $color-green-dark);
 }
 
 .btn-ghost {

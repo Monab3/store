@@ -1,0 +1,20 @@
+<div class="carousel__container">
+  <div>
+    <div (click)="goToPrevious()" class="carousel__arrow--right">❰</div>
+    <div (click)="goToNext()" class="carousel__arrow--left">❱</div>
+  </div>
+  <div class="carousel__slide" [style]="{ 'background-image': 'url(' + getCurrentSlideUrl() + ')'}">
+    <article class="carousel__article">
+      <section>
+        <p class="h3--color-red">{{getCurrentTitel()}}</p>
+        <p class="text-regular">{{getCurrentText()}}</p>
+      </section>
+    </article>
+
+  </div>
+  <div class="carousel__dots__container">
+    <div *ngFor="let slide of slides; let slideIndex = index" class="carousel__dots" (click)="goToSlide(slideIndex)" [class.carousel__dots--selected]="slideIndex === currentIndex">
+      ●
+    </div>
+  </div>
+</div>

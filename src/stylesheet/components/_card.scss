@@ -4,6 +4,7 @@
 
 .produkt-auswahl__container {
    @include flexbox($direction: row, $justify: center, $wrap: nowrap, $gab: $margin-elements, $align: flex-start);
+   width: 100%;
 }
 
 .card__container {
@@ -18,7 +19,6 @@
    @include effect-drop-shadow-hover();
    @include padding-element;
    @include responsive-spacing(max-width, 18rem, 1, 0.5, $width-small: 0.5);
-   //@include responsive-spacing(max-height, 25rem, 1, 0.5);
    @include effect-drop-shadow-hover();
    border-radius: $border-radius;
 
@@ -27,13 +27,12 @@
       @include flexbox($justify: space-between, $wrap: wrap, $gab: $margin-elements);
    }
 
-   &__imgcontainer {
+   &__img-container {
       overflow: hidden;
       width: 45%;
 
       &__img {
          width: 100%;
-         height: auto;
          display: block;
          object-fit: contain;
       }
@@ -46,8 +45,8 @@
    }
 }
 
-.svg__text{
-   &__container{
+.svg__text {
+   &__container {
       @include flexbox($direction: row, $justify: flex-start, $wrap: nowrap, $align: center, $gab: $margin-elements);
       width: 100%;
    }
@@ -57,21 +56,29 @@
 .flex-container {
    display: flex;
    flex-direction: row;
- }
- 
- .form {
-   flex: 1; /* Takes up 1/3 of the space */
- }
- 
- .btn-main {
-   flex: 2; /* Takes up 2/3 of the space */
+}
+
+.form {
+   flex: 1;
+   /* Takes up 1/3 of the space */
+}
+
+.btn-main {
+   flex: 2;
+   /* Takes up 2/3 of the space */
    background: $gradient-green;
    color: $color-light;
    @include border($color: green);
    @include button-effect-slide();
- }
+}
 
- 
+.btn-main__length {
+   background: $gradient-green;
+   color: $color-light;
+   @include border($color: green);
+   @include button-effect-slide();
+}
+
 
 /* Media Queries */
 @media only screen and (max-width: 769px) {
@@ -80,8 +87,78 @@
          width: 100%;
       }
 
-      &__imgcontainer {
+      &__img-container {
          width: 100%;
       }
+   }
+}
+
+
+.cart-list {
+   @include border($color: $color-green-light);
+   @include flexbox($direction: row, $justify: space-between, $wrap: wrap, $gab: $margin-elements);
+   @include effect-drop-shadow-hover();
+   @include padding-element;
+   //@include responsive-spacing(max-width, 18rem, 1, 0.5, $width-small: 0.5);
+   //@include responsive-spacing(max-height, 25rem, 1, 0.5);
+   @include effect-drop-shadow-hover();
+   border-radius: $border-radius;
+
+   &__infocontainer {
+      @include flexbox($direction: column, $justify: flex-end,  $align: stretch,$wrap: wrap, $gab: $margin-elements);
+   }
+
+   &__text__container {
+      @include flexbox($justify: space-between, $wrap: wrap, $gab: $margin-elements);
+   }
+
+   &__img-container {
+      overflow: hidden;
+      height: 9rem;
+
+      &__img {
+         height: 100%;
+         display: block;
+         object-fit: contain;
+      }
+   }
+
+   &__line {
+      width: 100%;
+      border-bottom: $border-width;
+      color: $color-gradient-green-light;
+   }
+   &__form-field-number{
+      text-align: end;
+   }
+   &__container {
+      @include flexbox($direction: column, $justify: space-around, $wrap: wrap, $gab: $margin-elements);
+      width: 100%;
+   }
+}
+
+.toggle-product-view{
+   width: 100%;
+   text-align: end;
+   &__button{
+      @include reset-button-styles;
+         &:hover{
+            stroke: $color-red-signal;
+         }
+   }
+   &__first-child {
+      @include responsive-spacing(margin-right, $margin-elements, 1, 0.5, $width-small: 0.5);
+   }
+}
+
+//Media Queries
+
+@media only screen and (max-width: 769px) {
+   .cart-list__infocontainer{
+      width: 100%; 
+      justify-content: center;
+   }
+   .cart-list__form-field-center{
+      text-align: center;
    }
 }
