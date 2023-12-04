@@ -1,7 +1,11 @@
-@import "../tools/variables";
-@import "../mixins/mixins_effects";
-@import "../mixins/mixins";
-@import "../mixins/mixins_abstaende";
+@import "../../../shared/stylesheets/mixins/mixins";
+@import "../../../shared/stylesheets/mixins/mixins_abstaende";
+@import "../../../shared/stylesheets/mixins/mixins_effects";
+
+@import "../../../shared/stylesheets/tools/typographie";
+@import "../../../shared/stylesheets/tools/variables";
+
+@import "../../../shared/stylesheets/elements/controls";
 
 
 .carousel {
@@ -68,8 +72,7 @@
         top: 50%;
         left: 50%;
         transform: translateX(-50%);
-        @include flexbox--no-gap($direction: column, $justify: center, $align: center, $wrap: wrap);
-        @include responsive-spacing(gap, $margin-elements, $medium-factor: 0.5, $minimum-factor: 0.5, $width-small: 0.5);
+        @include flexbox--gab-respsonsive($direction: column, $justify: center, $align: center, $wrap: wrap, $gap: $margin-elements);
 
         & section {
             @include responsive-spacing(padding, $padding-element, $medium-factor: 0.5, $minimum-factor: 0.5, $width-small: 0.5);
@@ -77,79 +80,4 @@
             background-color: rgba($color-grey-light, 0.8);
         }
     }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.slide {
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    background-size: cover;
-    background-position: center;
-}
-
-.rightArrow {
-    position: absolute;
-    top: 50%;
-    transform: translate(0, -50%);
-    right: 32px;
-    font-size: 45px;
-    color: green;
-    z-index: 1;
-    cursor: pointer;
-}
-
-.leftArrow {
-    position: absolute;
-    top: 50%;
-    transform: translate(0, -50%);
-    left: 32px;
-    font-size: 45px;
-    color: green;
-    z-index: 1;
-    cursor: pointer;
-}
-
-.slider {
-    position: relative;
-    height: 100%;
-}
-
-.dotsContainer {
-    display: flex;
-    justify-content: center;
-}
-
-.dot {
-    margin: 0 3px;
-    cursor: pointer;
-    font-size: 20px;
 }

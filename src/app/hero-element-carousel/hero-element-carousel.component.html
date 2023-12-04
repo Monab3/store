@@ -6,8 +6,8 @@
   <div class="carousel__slide" [style]="{ 'background-image': 'url(' + getCurrentSlideUrl() + ')'}">
     <article class="carousel__article">
       <section>
-        <p class="h3--color-red">{{getCurrentTitel()}}</p>
-        <p class="text-regular">{{getCurrentText()}}</p>
+        <p *ngIf="showTitel" class="h3--color-red">{{getCurrentTitel()}}</p>
+        <p *ngIf="showText" class="text-regular">{{getCurrentText()}}</p>
       </section>
     </article>
 

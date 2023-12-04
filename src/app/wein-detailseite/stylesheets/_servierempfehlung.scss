@@ -1,0 +1,14 @@
+@import "../../../shared/stylesheets/mixins/mixins";
+@import "../../../shared/stylesheets/mixins/mixins_abstaende";
+@import "../../../shared/stylesheets/mixins/mixins_effects";
+
+@import "../../../shared/stylesheets/tools/typographie";
+@import "../../../shared/stylesheets/tools/variables";
+
+@import "../../../shared/stylesheets/elements/controls";
+
+
+.produkt-flex--row{
+    @include flexbox--gab-respsonsive($direction: row, $justify: space-between, $align: center, $wrap: nowrap);
+    
+}

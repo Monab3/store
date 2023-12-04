@@ -1,6 +1,12 @@
-@import '../mixins/mixins_effects';
-@import '../mixins/mixins';
-@import '../mixins/mixins_abstaende';
+@import "../../../shared/stylesheets/mixins/mixins";
+@import "../../../shared/stylesheets/mixins/mixins_abstaende";
+@import "../../../shared/stylesheets/mixins/mixins_effects";
+
+@import "../../../shared/stylesheets/tools/typographie";
+@import "../../../shared/stylesheets/tools/variables";
+
+@import "../../../shared/stylesheets/elements/controls";
+@import "../../../shared/stylesheets/components/quantity_selector";
 
 .produkt-auswahl__container {
    @include flexbox($direction: row, $justify: center, $wrap: nowrap, $gab: $margin-elements, $align: flex-start);
@@ -170,6 +176,7 @@
 
 .row{
    @include responsive-spacing(gap, $margin-elements, 0.5, 0.5, $width-small: 0.5); 
+   justify-content: flex-end !important;
 }
 
     .col-lg-4{

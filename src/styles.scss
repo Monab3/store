@@ -1,11 +1,6 @@
 
-@use "./stylesheet/settings/foundation";
-@use "./stylesheet/settings/reset";
-@use "./stylesheet/layout/layout";
-@use "./stylesheet/components/card";
-@use "./stylesheet/elements/controls";
-@use "./stylesheet/tools/typographie";
-@use "./stylesheet/components/filter";
-@use "./stylesheet/components/weinmenue";
+@use "./stylesheets/settings/foundation";
+@use "./stylesheets/settings/reset";
+
 @import '../node_modules/bootstrap/dist/css/bootstrap-grid.css'; 
 @import '../node_modules/bootstrap-icons/font/bootstrap-icons.css'; 

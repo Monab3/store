@@ -153,6 +153,14 @@ export class ProductViewComponent  implements OnInit {
     },
   ];
 
+  
+  slides=[
+    {url: '../../assets/grauburgunder.png', titel: 'Selbst gemacht'},
+    {url: '../../assets/weinmenue_rosewein.jpg', titel: 'Neues von der Weinproduktion', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.'},
+    {url: '../../assets/weinmenue_rotwein.jpg', titel: 'Hier und jetzt ', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.'},
+    {url: '../../assets/weinmenue_weisswein.jpg', titel: 'neunes Ettikett', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.'},
+  ];
+
   /* Arrays */
   geschmaecker = ['Trocken', 'Süß', 'Herb', 'Feinherb'];
   rebsorten = ['Riesling', 'Burgunder', 'Rivaner', 'Dornfelder'];

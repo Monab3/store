@@ -1,7 +1,11 @@
-@import "../tools/variables";
-@import "../mixins/mixins_effects";
-@import "../mixins/mixins";
-@import "../mixins/mixins_abstaende";
+@import "../../../shared/stylesheets/mixins/mixins";
+@import "../../../shared/stylesheets/mixins/mixins_abstaende";
+@import "../../../shared/stylesheets/mixins/mixins_effects";
+
+@import "../../../shared/stylesheets/tools/typographie";
+@import "../../../shared/stylesheets/tools/variables";
+
+@import "../../../shared/stylesheets/elements/controls";
 
 .filter {
     &__container {

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-hero-element-carousel',
@@ -7,12 +7,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 })
 export class HeroElementCarouselComponent implements OnInit, OnDestroy  {
 
-  slides=[
-    {url: '../../assets/grauburgunder.png', titel: 'Selbst gemacht'},
-    {url: '../../assets/weinmenue_rosewein.jpg', titel: 'Neues von der Weinproduktion', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.'},
-    {url: '../../assets/weinmenue_rotwein.jpg', titel: 'Hier und jetzt ', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.'},
-    {url: '../../assets/weinmenue_weisswein.jpg', titel: 'neunes Ettikett', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.'},
-  ]
+  @Input() slides: any[] = [];
+  @Input() showTitel: boolean = true;
+  @Input() showText: boolean = true;
 
   currentIndex: number = 0;
   timeoutId?: number;

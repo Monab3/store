@@ -1,4 +1,5 @@
 /* Mixin for Mobile Spacing Modifier */
+@import './mixins_abstaende';
 
 @mixin mobile-spacing($property, $value) {
   $mobile-modifier: 0.8;
@@ -63,6 +64,15 @@ Example:  // Example usage:
   justify-content: $justify;
   align-items: $align;
   flex-wrap: $wrap;
+}
+
+@mixin flexbox--gab-respsonsive($direction: column, $justify: space-between, $align: stretch, $wrap: wrap, $gap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+  @include responsive-spacing(gap, $gap, $minimum-factor: 0.5, $width-small: 0.5);
 }
 
 @mixin reset-button-styles{

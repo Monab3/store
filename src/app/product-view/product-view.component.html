@@ -4,7 +4,7 @@
 
     <div class="container--costumn">
         <div style="width: 100%; height: 25rem;">
-            <app-hero-element-carousel></app-hero-element-carousel>
+            <app-hero-element-carousel [slides]="slides"></app-hero-element-carousel>
         </div>
         <nav class="weinmenu">
             <button *ngFor="let nav of navWein; index as i" class="weinmenu__nav-button">
