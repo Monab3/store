@@ -18,10 +18,9 @@
    @include flexbox($direction: row, $justify: center, $wrap: wrap, $gab: $margin-elements);
    @include effect-drop-shadow-hover();
    @include padding-element;
-   @include responsive-spacing(max-width, 18rem, 1, 0.5, $width-small: 0.5);
+  // @include responsive-spacing(max-width, 18rem, 1, 0.5, $width-small: 0.5);
    @include effect-drop-shadow-hover();
    border-radius: $border-radius;
-
    &__text__container {
       width: 45%;
       @include flexbox($justify: space-between, $wrap: wrap, $gab: $margin-elements);
@@ -162,3 +161,38 @@
       text-align: center;
    }
 }
+
+/* bootstrap anpassungen */
+
+.row > *{
+   padding: 0 !important;
+}
+
+.row{
+   @include responsive-spacing(gap, $margin-elements, 0.5, 0.5, $width-small: 0.5); 
+}
+
+    .col-lg-4{
+      max-width: 32% !important;
+   }
+   
+    .col-md-6{
+      max-width: 48% !important;
+   }
+   
+    .col-6{
+      max-width: 49% !important;
+   }
+   
+   .col-6{
+      max-width: 49% !important;
+   }
+
+   @media (min-width: 992px){
+      .col-lg-4 {
+         width: 32% !important;
+     }
+   }
+
+
+
