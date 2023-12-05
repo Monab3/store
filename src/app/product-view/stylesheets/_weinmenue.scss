@@ -10,7 +10,7 @@
 /* Weinmenü */
 .weinmenu {
     width: 100%;
-    padding: 0 $padding-page;
+    @include padding-page($left: true, $right: true);
     @include flexbox--no-gap($direction: row, $justify: center, $wrap: nowrap, $align: stretch);
     @include gab-page;
     position: relative;

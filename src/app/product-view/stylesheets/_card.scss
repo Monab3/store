@@ -159,7 +159,7 @@
          }
    }
    &__first-child {
-      @include responsive-spacing(margin-right, $margin-element, 1, 0.5, $width-small: 0.5);
+      @include margin-element($right:true);
    }
 }
 

@@ -29,7 +29,7 @@
         &__titel{
             text-align: start;
             &:first-child{
-                margin-bottom: $margin-atom;
+                @include margin-element($bottom: true);
 
             }
         }

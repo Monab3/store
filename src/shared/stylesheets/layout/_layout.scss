@@ -3,7 +3,7 @@
 @import '../mixins/mixins_abstaende';
 
 .page {
-    width: min($width-min-container, $width-max-container);
+    width: min($min-width-page,$min-width-page);
     margin: 0 auto; //centers container
     @include flexbox--no-gap($justify: center, $align: center, $wrap: wrap);
     @include gap-page;

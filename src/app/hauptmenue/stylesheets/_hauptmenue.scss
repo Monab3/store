@@ -54,7 +54,8 @@
             &__text {
                 color: $color-red-dark;
                 text-align: start;
-                margin-left: $margin-element;
+                @include margin-element($left:true);
+
             }
 
 

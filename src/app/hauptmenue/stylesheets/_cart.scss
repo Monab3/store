@@ -23,7 +23,7 @@
 
         &>* {
             width: 100%;
-            @include responsive-spacing(padding, $padding-component, $medium-factor: 1, $minimum-factor: 0.5, $width-small: 0.5);
+            @include padding-component;
         }
     }
 
@@ -70,7 +70,7 @@
             @include flexbox--no-gap($direction: column, $justify: flex-start, $wrap: nowrap, $align: stretch);
 
             &:first-child {
-                @include responsive-spacing(margin-bottom, $margin-element, $medium-factor: 1, $minimum-factor: 0.5, $width-small: 0.5);
+                @include margin-element ($bottom: true);
             }
         }
     }

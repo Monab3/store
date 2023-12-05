@@ -76,7 +76,7 @@
         @include gap-element; 
 
         & section {
-            @include responsive-spacing(padding, $padding-component, $medium-factor: 0.5, $minimum-factor: 0.5, $width-small: 0.5);
+            @include padding-component;
             border-radius: $border-radius;
             background-color:$color-grey-transparent;
         }
