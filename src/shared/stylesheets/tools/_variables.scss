@@ -29,20 +29,25 @@ $breakpoint-medium: 768px;
 $breakpoint-large: 992px;
 $breakpoint-xlarge: 1200px;
 
-/* gabs */
+/* Gabs */
 $gap-page: 5rem;
+$gap-container: 2.25rem; 
 $gap-component: 1.5rem;
 $gap-element: 0.5rem;
-$gap-element--small: 0.5rem;
-/* Margin */
 
-$margin-section-big-x: 2.25rem;
-$margin-section-small-x: 1.5rem;
-$margin-section-y: 1.25rem;
-$margin-elements: 0.5rem;
-$margin-elements--small: 0.25rem;
+/* Margin */
+$margin-page: 5rem;
+$margin-container: 2.25rem; 
+$margin-component: 1.5rem;
+$margin-element: 0.5rem;
+$margin-atom: 0.25rem;
 
 /* Padding */
+$margin-page: 5rem;
+$margin-container: 2.25rem; 
+$margin-component: 1.5rem;
+$margin-element: 0.5rem;
+$margin-atom: 0.25rem;
 
 $padding-component: 1.5rem;
 $padding-box-small: 0.1rem;

@@ -37,7 +37,8 @@
 
         &__container {
             &--column {
-                @include flexbox--gab-respsonsive($direction: column, $justify: space-between, $wrap: nowrap, $align: stretch, $gap:$margin-elements);
+                @include flexbox--no-gap($direction: column, $justify: space-between, $wrap: nowrap, $align: stretch);
+                @include gap-element;
             }
 
             &--row {
@@ -69,7 +70,7 @@
             @include flexbox--no-gap($direction: column, $justify: flex-start, $wrap: nowrap, $align: stretch);
 
             &:first-child {
-                @include responsive-spacing(margin-bottom, $margin-elements, $medium-factor: 1, $minimum-factor: 0.5, $width-small: 0.5);
+                @include responsive-spacing(margin-bottom, $margin-element, $medium-factor: 1, $minimum-factor: 0.5, $width-small: 0.5);
             }
         }
     }
@@ -86,7 +87,8 @@
 
     &__footer {
         background-color: $color-green-light;
-        @include flexbox--gab-respsonsive($direction: column, $justify: center, $wrap: nowrap, $align: stretch, $gap:$margin-elements);
+        @include flexbox--no-gab($direction: column, $justify: center, $wrap: nowrap, $align: stretch);
+        @include gap-element;
         &__container {
             @include flexbox--no-gap($direction: row, $justify: space-between, $wrap: nowrap, $align: stretch);
             width: 100%;
@@ -95,7 +97,8 @@
 }
 
 .selector__form {
-    @include flexbox($direction: row, $justify: flex-end, $wrap: nowrap, $align: stretch, $gab: $margin-elements);
+    @include flexbox--no-gab($direction: row, $justify: flex-end, $wrap: nowrap, $align: stretch);
+    @include gap-element;
     width: 100%;
 }
 

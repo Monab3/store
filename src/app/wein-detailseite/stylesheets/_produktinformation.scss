@@ -29,7 +29,8 @@
         &__titel{
             text-align: start;
             &:first-child{
-                margin-bottom: $margin-elements--small;
+                margin-bottom: $margin-atom;
+
             }
         }
         &__starreview{
@@ -40,7 +41,7 @@
             &__stars{
                 &__container{
                     @include flexbox--no-gap($direction: row, $justify: flex-start, $wrap: nowrap);
-                    @include  gap-element--small;
+                    @include  gap-element;
                 }
             }
         }

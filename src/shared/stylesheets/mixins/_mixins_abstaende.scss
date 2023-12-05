@@ -43,9 +43,9 @@
   @include responsive-spacing(gap, $gap-element);
 }
 
-@mixin gap-element--small {
-  gap: $gap-element--small;
-  @include responsive-spacing(gap, $gap-element--small);
+@mixin gap-element {
+  gap: $gap-element;
+  @include responsive-spacing(gap, $gap-element);
 }
 
 @mixin padding-component {

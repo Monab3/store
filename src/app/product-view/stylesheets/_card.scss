@@ -9,25 +9,29 @@
 @import "../../../shared/stylesheets/components/quantity_selector";
 
 .produkt-auswahl__container {
-   @include flexbox($direction: row, $justify: center, $wrap: nowrap, $gab: $margin-elements, $align: flex-start);
+   @include flexbox--no-gap($direction: row, $justify: center, $wrap: nowrap, $align: flex-start);
+   @include gap-element;
    width: 100%;
 }
 
 .card__container {
-   @include flexbox($direction: row, $justify: space-around, $wrap: wrap, $gab: $margin-elements);
+   @include flexbox--no-gap($direction: row, $justify: space-around, $wrap: wrap);
+   @include gap-element;
    width: 100%;
 }
 
 
 .card {
    @include border($color: $color-green-light);
-   @include flexbox($direction: row, $justify: center, $wrap: wrap, $gab: $margin-elements);
+   @include flexbox--no-gap($direction: row, $justify: center, $wrap: wrap);
+   @include gap-element;
    @include effect-drop-shadow-hover();
    @include padding-component;
    border-radius: $border-radius;
    &__text__container {
       width: 45%;
-      @include flexbox($justify: space-between, $wrap: wrap, $gab: $margin-elements);
+      @include flexbox--no-gap($justify: space-between, $wrap: wrap);
+     @include gap-element; 
    }
 
    &__img-container {
@@ -50,8 +54,9 @@
 
 .svg__text {
    &__container {
-      @include flexbox($direction: row, $justify: flex-start, $wrap: nowrap, $align: center, $gab: $margin-elements);
+      @include flexbox--no-gap($direction: row, $justify: flex-start, $wrap: nowrap, $align: center);
       width: 100%;
+      @include gap-element;
    }
 }
 
@@ -99,7 +104,8 @@
 
 .cart-list {
    @include border($color: $color-green-light);
-   @include flexbox($direction: row, $justify: space-between, $wrap: wrap, $gab: $margin-elements);
+   @include flexbox--no-gap($direction: row, $justify: space-between, $wrap: wrap);
+   @include gap-element;
    @include effect-drop-shadow-hover();
    @include padding-component;
    //@include responsive-spacing(max-width, 18rem, 1, 0.5, $width-small: 0.5);
@@ -108,11 +114,13 @@
    border-radius: $border-radius;
 
    &__infocontainer {
-      @include flexbox($direction: column, $justify: flex-end,  $align: stretch,$wrap: wrap, $gab: $margin-elements);
+      @include flexbox--no-gap($direction: column, $justify: flex-end,  $align: stretch,$wrap: wrap);
+      @include gap-element;
    }
 
    &__text__container {
-      @include flexbox($justify: space-between, $wrap: wrap, $gab: $margin-elements);
+      @include flexbox--no-gap($justify: space-between, $wrap: wrap);
+      @include gap-element;
    }
 
    &__img-container {
@@ -135,7 +143,8 @@
       text-align: end;
    }
    &__container {
-      @include flexbox($direction: column, $justify: space-around, $wrap: wrap, $gab: $margin-elements);
+      @include flexbox--no-gap($direction: column, $justify: space-around, $wrap: wrap);
+      @include gap-element;
       width: 100%;
    }
 }
@@ -150,7 +159,7 @@
          }
    }
    &__first-child {
-      @include responsive-spacing(margin-right, $margin-elements, 1, 0.5, $width-small: 0.5);
+      @include responsive-spacing(margin-right, $margin-element, 1, 0.5, $width-small: 0.5);
    }
 }
 
@@ -173,7 +182,7 @@
 }
 
 .row{
-   @include responsive-spacing(gap, $margin-elements, 0.5, 0.5, $width-small: 0.5); 
+   @include gap-element;
    justify-content: flex-end !important;
 }
 

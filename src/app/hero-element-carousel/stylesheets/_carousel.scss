@@ -72,7 +72,8 @@
         top: 50%;
         left: 50%;
         transform: translateX(-50%);
-        @include flexbox--gab-respsonsive($direction: column, $justify: center, $align: center, $wrap: wrap, $gap: $margin-elements);
+        @include flexbox--no-gap($direction: column, $justify: center, $align: center, $wrap: wrap);
+        @include gap-element; 
 
         & section {
             @include responsive-spacing(padding, $padding-component, $medium-factor: 0.5, $minimum-factor: 0.5, $width-small: 0.5);
