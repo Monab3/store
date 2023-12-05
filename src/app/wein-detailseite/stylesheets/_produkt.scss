@@ -16,7 +16,7 @@
 
     &__background-img{
          position: absolute;
-         @include responsive-spacing($property: top,$value: -$gap-container, $medium-factor: 0.5, $minimum-factor: 0.5, $width-small: 0.5);
+         @include responsive-spacing($property: top,$value: -$margin-page, $medium-factor: 0.5, $minimum-factor: 0.5, $width-small: 0.5);
          left: 0;
          width: 100%;
          height: 72%;

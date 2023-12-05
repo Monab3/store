@@ -2,15 +2,11 @@
 @import '../mixins/mixins';
 @import '../mixins/mixins_abstaende';
 
-.container--costumn {
+.page {
     width: min($width-min-container, $width-max-container);
     margin: 0 auto; //centers container
-    @include flexbox($justify: center, $align: center, $wrap: wrap, $gab: $gap-container);
+    @include flexbox--no-gap($justify: center, $align: center, $wrap: wrap);
     @include gap-page;
     position: relative; 
-}
-
-.cardDiv{
-    background-color: green;
 }
 

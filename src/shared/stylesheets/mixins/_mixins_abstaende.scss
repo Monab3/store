@@ -24,13 +24,13 @@
 
 
 @mixin gap-page {
-  gap: $gap-container;
-  @include responsive-spacing($property: gap, $value: $gap-container, $medium-factor: 0.5, $minimum-factor: 0.5, $width-small: 0.5);
+  gap: $gap-page;
+  @include responsive-spacing($property: gap, $value: $gap-page, $medium-factor: 0.5, $minimum-factor: 0.5, $width-small: 0.5);
 }
 
 @mixin margin-page {
-  margin-bottom: $gap-container;
-  @include responsive-spacing( margin-bottom, $gap-container)
+  margin-bottom: $gap-page;
+  @include responsive-spacing( margin-bottom, $gap-page)
 }
 
 @mixin gap-component {
