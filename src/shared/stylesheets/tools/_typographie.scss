@@ -63,20 +63,19 @@ h3 {
     &--invalid {
         @include fonts($font-size-body, $font-weight-regular, $color : $color-red-signal);
     }
-}
-
-.text-regular--red-dark {
-    @include fonts($font-size-body, $font-weight-regular, $color : $color-red-dark);
-
-    &--italic {
-        @include fonts($font-size-body, $font-weight-regular, $italic: true, $color : $color-red-dark);
-    }
-
-    &--bold {
-        @include fonts($font-size-body, $font-weight-bold, $color : $color-red-dark);
-
+    &--red-dark {
+        @include fonts($font-size-body, $font-weight-regular, $color : $color-red-dark);
+    
         &--italic {
-            @include fonts($font-size-body, $font-weight-bold, $italic: true, $color : $color-red-dark);
+            @include fonts($font-size-body, $font-weight-regular, $italic: true, $color : $color-red-dark);
+        }
+    
+        &--bold {
+            @include fonts($font-size-body, $font-weight-bold, $color : $color-red-dark);
+    
+            &--italic {
+                @include fonts($font-size-body, $font-weight-bold, $italic: true, $color : $color-red-dark);
+            }
         }
     }
 }
@@ -94,6 +93,10 @@ h3 {
         &--italic {
             @include fonts($font-size-fine, $font-weight-bold, $italic: true, $color : $color-red-dark);
         }
+    }
+
+    &--red-dark{
+        @include fonts($font-size-fine, $font-weight-regular, $color : $color-red-dark);
     }
 }
 

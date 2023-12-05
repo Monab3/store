@@ -15,6 +15,7 @@ import { ProductViewComponent } from './product-view/product-view.component';
 import { HeroElementCarouselComponent } from './hero-element-carousel/hero-element-carousel.component';
 import { WeinDetailseiteComponent } from './wein-detailseite/wein-detailseite.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +23,7 @@ import { WeinDetailseiteComponent } from './wein-detailseite/wein-detailseite.co
     ProductViewComponent,
     HeroElementCarouselComponent,
     WeinDetailseiteComponent,
+
   ],
   imports: [
     BrowserModule,

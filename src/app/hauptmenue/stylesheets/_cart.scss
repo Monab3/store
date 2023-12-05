@@ -23,7 +23,7 @@
 
         &>* {
             width: 100%;
-            @include responsive-spacing(padding, $padding-element, $medium-factor: 1, $minimum-factor: 0.5, $width-small: 0.5);
+            @include responsive-spacing(padding, $padding-component, $medium-factor: 1, $minimum-factor: 0.5, $width-small: 0.5);
         }
     }
 

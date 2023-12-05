@@ -75,9 +75,9 @@
         @include flexbox--gab-respsonsive($direction: column, $justify: center, $align: center, $wrap: wrap, $gap: $margin-elements);
 
         & section {
-            @include responsive-spacing(padding, $padding-element, $medium-factor: 0.5, $minimum-factor: 0.5, $width-small: 0.5);
+            @include responsive-spacing(padding, $padding-component, $medium-factor: 0.5, $minimum-factor: 0.5, $width-small: 0.5);
             border-radius: $border-radius;
-            background-color: rgba($color-grey-light, 0.8);
+            background-color:$color-grey-transparent;
         }
     }
 }

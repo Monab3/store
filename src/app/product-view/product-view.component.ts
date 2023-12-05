@@ -209,12 +209,6 @@ export class ProductViewComponent  implements OnInit {
     });
 
     this.initializeCounterForProduct();
-
-    this.mockDataWine.forEach((product, index) => {
-      const formGroup = new FormGroup({
-        quantity: new FormControl(1),
-      });
-    });
   }
 
   counterForm: FormGroup | undefined;

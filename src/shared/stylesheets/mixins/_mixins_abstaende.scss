@@ -25,7 +25,7 @@
 
 @mixin gap-page {
   gap: $gap-container;
-  @include responsive-spacing(gap, $gap-container)
+  @include responsive-spacing($property: gap, $value: $gap-container, $medium-factor: 0.5, $minimum-factor: 0.5, $width-small: 0.5);
 }
 
 @mixin margin-page {
@@ -33,14 +33,24 @@
   @include responsive-spacing( margin-bottom, $gap-container)
 }
 
-@mixin gap-elements {
-  gap: $gap-element;
-  @include responsive-spacing(gap, $gap-element)
+@mixin gap-component {
+  gap: $gap-component;
+  @include responsive-spacing(gap, $gap-component);
 }
 
-@mixin padding-element {
-  padding: $padding-element;
-  @include responsive-spacing(padding, $padding-element);
+@mixin gap-element {
+  gap: $gap-element;
+  @include responsive-spacing(gap, $gap-element);
+}
+
+@mixin gap-element--small {
+  gap: $gap-element--small;
+  @include responsive-spacing(gap, $gap-element--small);
+}
+
+@mixin padding-component {
+  padding: $padding-component;
+  @include responsive-spacing(padding, $padding-component);
 }
 
 

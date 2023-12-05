@@ -16,7 +16,7 @@
         color: $color-light;
         @include border($width: $border-width-max, $color: $color-light);
         @include flexbox($justify: flex-start, $wrap: wrap, $gab: $margin-elements, $align: center);
-        padding: $padding-element;
+        padding: $padding-component;
         width: 20%;
         &__img-container {
             margin-top: 2rem;
@@ -46,7 +46,7 @@
             color: $color-green-dark; 
             margin-bottom: 5px;
             &__container {
-                @include flexbox($direction: row, $justify: space-between, $wrap: nowrap, $align: center, $gab: $padding-element);
+                @include flexbox($direction: row, $justify: space-between, $wrap: nowrap, $align: center, $gab: $padding-component);
             }
         }
     }
