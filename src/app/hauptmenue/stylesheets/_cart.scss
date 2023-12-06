@@ -87,7 +87,7 @@
 
     &__footer {
         background-color: $color-green-light;
-        @include flexbox--no-gab($direction: column, $justify: center, $wrap: nowrap, $align: stretch);
+        @include flexbox--no-gap($direction: column, $justify: center, $wrap: nowrap, $align: stretch);
         @include gap-element;
         &__container {
             @include flexbox--no-gap($direction: row, $justify: space-between, $wrap: nowrap, $align: stretch);
@@ -97,7 +97,7 @@
 }
 
 .selector__form {
-    @include flexbox--no-gab($direction: row, $justify: flex-end, $wrap: nowrap, $align: stretch);
+    @include flexbox--no-gap($direction: row, $justify: flex-end, $wrap: nowrap, $align: stretch);
     @include gap-element;
     width: 100%;
 }

@@ -14,7 +14,7 @@
     background-color: $color-green-light;
     width: 100%;
     height: $height-nav;
-    @include margin-page;
+    @include margin-page($bottom: true);
 
     &__content {
         color: $color-green-dark;

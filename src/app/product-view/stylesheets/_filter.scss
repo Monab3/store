@@ -15,7 +15,7 @@
         box-shadow: $border-box-shadow;
         color: $color-light;
         @include border($width: $border-width-max, $color: $color-light);
-        @include flexbox($justify: flex-start, $wrap: wrap,  $align: center);
+        @include flexbox--no-gap($justify: flex-start, $wrap: wrap,  $align: center);
         @include gap-element;
         @include padding-component;
         width: 20%;
