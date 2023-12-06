@@ -5,6 +5,11 @@
 //TODO add font to be inherrited from main or something
 
 //TODO lineheight hinzufügen
+@mixin h1($color: $color-red-dark){
+    h1 {
+        @include fonts($font-size-headline, $font-weight-regular, $color:$color);
+    }
+}
 
 h1 {
     @include fonts($font-size-headline, $font-weight-regular, $color: $color-red-dark);

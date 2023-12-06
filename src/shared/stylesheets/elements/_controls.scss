@@ -5,7 +5,7 @@
 
 
 .btn {
-    @include flexbox--no-gap($direction: row, $justify: center, $wrap: nowrap);
+    @include flexbox($direction: row, $justify: center, $wrap: nowrap);
     @include gap-element;
     border-radius: $border-radius;
     padding: $padding-btn-y $padding-btn-x;

@@ -10,7 +10,7 @@
 .produkt {
    display: relative;
     &__container {
-        @include flexbox--no-gap($direction: row, $justify: center, $align: center, $wrap: wrap);
+        @include flexbox($direction: row, $justify: center, $align: center, $wrap: wrap);
         @include gap-page;
     }  
 
@@ -56,11 +56,11 @@
          }
      }
      &__side-images-container{
-        @include flexbox--no-gap($direction: row, $justify: space-between, $align: center, $wrap: nowrap);
+        @include flexbox($direction: row, $justify: space-between, $align: center, $wrap: nowrap);
         @include gap-component; 
      }
      &__side__text__container{
-        @include flexbox--no-gap($direction: column, $justify: space-between, $align: center, $wrap: nowrap);
+        @include flexbox($direction: column, $justify: space-between, $align: center, $wrap: nowrap);
         align-self: stretch;
         max-width: 30%;
      }

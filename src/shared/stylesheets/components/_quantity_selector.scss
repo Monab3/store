@@ -37,14 +37,14 @@
     }
 
     &__container {
-        @include flexbox--no-gap($direction: row, $justify: space-between, $wrap: nowrap, $align: center);
+        @include flexbox($direction: row, $justify: space-between, $wrap: nowrap, $align: center);
         width: 100%;
         padding: $padding-btn-y-small $padding-btn-x-small;
     }
 
     &__control {
         ~* {
-            @include margin-element($left: true);
+            @include margin-element($top: false, $right: false, $bottom: false, $left: true);
         }
 
         &__container {

@@ -11,7 +11,7 @@
 .produktinformation{
     &__container{
 
-        @include flexbox--no-gap($direction: column, $justify: center, $wrap: wrap);
+        @include flexbox($direction: column, $justify: center, $wrap: wrap);
         @include padding-component;
         @include gap-component;
         background: $color-light;
@@ -20,7 +20,7 @@
         max-width: 25%;
 
         & > *{
-            @include flexbox--no-gap($direction: column, $justify: space-between, $wrap: wrap);
+            @include flexbox($direction: column, $justify: space-between, $wrap: wrap);
             @include gap-element;
             width: 100%;
         }
@@ -29,18 +29,18 @@
         &__titel{
             text-align: start;
             &:first-child{
-                @include margin-element($bottom: true);
+                @include margin-element($top: false, $right: false, $bottom: true, $left: false);
 
             }
         }
         &__starreview{
             &__container{
                 width: 100%;
-                @include flexbox--no-gap($direction: row, $justify: space-between, $wrap: wrap);
+                @include flexbox($direction: row, $justify: space-between, $wrap: wrap);
             }
             &__stars{
                 &__container{
-                    @include flexbox--no-gap($direction: row, $justify: flex-start, $wrap: nowrap);
+                    @include flexbox($direction: row, $justify: flex-start, $wrap: nowrap);
                     @include  gap-element;
                 }
             }
@@ -48,10 +48,10 @@
     }
     &__section{
         &__ul{
-            @include flexbox--no-gap($direction: column, $justify: space-between, $wrap: nowrap);
+            @include flexbox($direction: column, $justify: space-between, $wrap: nowrap);
         }
         &__li{
-            @include flexbox--no-gap($direction: row, $justify: space-between, $wrap: nowrap);
+            @include flexbox($direction: row, $justify: space-between, $wrap: nowrap);
         }
     }
 

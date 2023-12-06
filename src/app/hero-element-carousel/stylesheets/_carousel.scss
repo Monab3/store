@@ -72,7 +72,7 @@
         top: 50%;
         left: 50%;
         transform: translateX(-50%);
-        @include flexbox--no-gap($direction: column, $justify: center, $align: center, $wrap: wrap);
+        @include flexbox($direction: column, $justify: center, $align: center, $wrap: wrap);
         @include gap-element; 
 
         & section {

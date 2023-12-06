@@ -14,21 +14,21 @@
     background-color: $color-green-light;
     width: 100%;
     height: $height-nav;
-    @include margin-page($bottom: true);
+    @include margin-page($top: false, $right: false, $bottom: true, $left: false);
 
     &__content {
         color: $color-green-dark;
         height: $height-nav;
         text-transform: uppercase;
         width: 100%;
-        @include flexbox--no-gap($direction: row, $justify: center, $align: stretch, $wrap: wrap);
+        @include flexbox($direction: row, $justify: center, $align: stretch, $wrap: wrap);
     }
 
     &__nav-button {
         flex-grow: 1;
         @include reset-button-styles;
         border-bottom: 1px solid $color-green-light;
-        @include flexbox--no-gap($justify: center, $wrap: nowrap, $align: center);
+        @include flexbox($justify: center, $wrap: nowrap, $align: center);
         @include effect-border-underline($color-bg: $color-red-dark);
         color: $color-green-dark;
 
@@ -36,9 +36,9 @@
             flex-grow: 1;
             @include reset-button-styles;
             border-bottom: 1px solid $color-green-light;
-            @include flexbox--no-gap($justify: center, $wrap: nowrap, $align: center);
+            @include flexbox($justify: center, $wrap: nowrap, $align: center);
             color: $color-green-dark;
-            @include flexbox--no-gap($direction: row, $justify: center, $wrap: nowrap, $align: center);
+            @include flexbox($direction: row, $justify: center, $wrap: nowrap, $align: center);
 
             &:hover {
                 color: $color-red-dark;
@@ -54,7 +54,7 @@
             &__text {
                 color: $color-red-dark;
                 text-align: start;
-                @include margin-element($left:true);
+                @include margin-element($top: false, $right: false, $bottom: false, $left: true);
 
             }
 

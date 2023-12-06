@@ -12,7 +12,7 @@
         top: $height-nav;
         right: 0;
         width: 25%;
-        @include flexbox--no-gap($direction: column, $justify: space-between, $wrap: nowrap, $align: stretch);
+        @include flexbox($direction: column, $justify: space-between, $wrap: nowrap, $align: stretch);
         position: absolute;
         z-index: 1000;
         display: visible;
@@ -28,7 +28,7 @@
     }
 
     &__header {
-        @include flexbox--no-gap($direction: row, $justify: space-between, $wrap: nowrap, $align: stretch);
+        @include flexbox($direction: row, $justify: space-between, $wrap: nowrap, $align: stretch);
         background: $color-green-light;
     }
 
@@ -37,12 +37,12 @@
 
         &__container {
             &--column {
-                @include flexbox--no-gap($direction: column, $justify: space-between, $wrap: nowrap, $align: stretch);
+                @include flexbox($direction: column, $justify: space-between, $wrap: nowrap, $align: stretch);
                 @include gap-element;
             }
 
             &--row {
-                @include flexbox--no-gap($direction: row, $justify: space-between, $wrap: nowrap, $align: flex-start);
+                @include flexbox($direction: row, $justify: space-between, $wrap: nowrap, $align: flex-start);
             }
         }
 
@@ -67,10 +67,10 @@
         }
 
         &__information {
-            @include flexbox--no-gap($direction: column, $justify: flex-start, $wrap: nowrap, $align: stretch);
+            @include flexbox($direction: column, $justify: flex-start, $wrap: nowrap, $align: stretch);
 
             &:first-child {
-                @include margin-element ($bottom: true);
+                @include margin-element ($top: false, $right: false, $bottom: true, $left: false);
             }
         }
     }
@@ -87,17 +87,17 @@
 
     &__footer {
         background-color: $color-green-light;
-        @include flexbox--no-gap($direction: column, $justify: center, $wrap: nowrap, $align: stretch);
+        @include flexbox($direction: column, $justify: center, $wrap: nowrap, $align: stretch);
         @include gap-element;
         &__container {
-            @include flexbox--no-gap($direction: row, $justify: space-between, $wrap: nowrap, $align: stretch);
+            @include flexbox($direction: row, $justify: space-between, $wrap: nowrap, $align: stretch);
             width: 100%;
         }
     }
 }
 
 .selector__form {
-    @include flexbox--no-gap($direction: row, $justify: flex-end, $wrap: nowrap, $align: stretch);
+    @include flexbox($direction: row, $justify: flex-end, $wrap: nowrap, $align: stretch);
     @include gap-element;
     width: 100%;
 }

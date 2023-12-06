@@ -15,7 +15,7 @@
         box-shadow: $border-box-shadow;
         color: $color-light;
         @include border($width: $border-width-max, $color: $color-light);
-        @include flexbox--no-gap($justify: flex-start, $wrap: wrap,  $align: center);
+        @include flexbox($justify: flex-start, $wrap: wrap,  $align: center);
         @include gap-element;
         @include padding-component;
         width: 20%;
@@ -34,7 +34,7 @@
 
     &__input {
         &__container {
-            @include flexbox--no-gap($direction: row, $justify: space-between, $wrap: nowrap, $align: flex-start);
+            @include w, $justify: space-between, $wrap: nowrap, $align: flex-start);
         }
         &__preis__container {
             box-sizing: border-box;
@@ -47,7 +47,7 @@
             color: $color-green-dark; 
             margin-bottom: 5px;
             &__container {
-                @include flexbox--no-gap($direction: row, $justify: space-between, $wrap: nowrap, $align: center);
+                @include w, $justify: space-between, $wrap: nowrap, $align: center);
                 @include gap-component;
             }
         }

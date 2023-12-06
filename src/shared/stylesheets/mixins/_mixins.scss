@@ -1,17 +1,6 @@
 /* Mixin for Mobile Spacing Modifier */
 @import './mixins_abstaende';
 
-@mixin mobile-spacing($property, $value) {
-  $mobile-modifier: 0.8;
-  $value-mobile: $value * $mobile-modifier;
-
-  #{$property}: $value-mobile;
-
-  @media screen and (min-width: 768px) {
-    #{$property}: $value;
-  }
-}
-
 /*fonts*/
 @mixin fonts($size, $weight, $family: inherit, $italic: false, $color) {
   font-family: $family ;
@@ -24,55 +13,13 @@
   }
 }
 
-/* breakingpoint mixins */
-@mixin respond-to($breakpoint) {
-  $breakpoint-value: map-get($breakpoints, $breakpoint);
-
-  @media only screen and (min-width: $breakpoint-value) {
-    @content;
-  }
-}
-
-/*
-Example:  // Example usage:
-.element {
-  width: 100%;
-
-  @include respond-to(medium) {
-    width: 50%;
-  }
-
-  @include respond-to(large) {
-    width: 33.333%;
-  }
-}
-*/
-
 /* flexbox Mixin */
-@mixin flexbox($direction: column, $justify: space-between, $align: stretch, $wrap: wrap, $gab) {
+@mixin flexbox($direction: column, $justify: space-between, $align: stretch, $wrap: wrap) {
   display: flex;
   flex-direction: $direction;
   justify-content: $justify;
   align-items: $align;
   flex-wrap: $wrap;
-  gap: $gab;
-}
-
-@mixin flexbox--no-gap($direction: column, $justify: space-between, $align: stretch, $wrap: wrap) {
-  display: flex;
-  flex-direction: $direction;
-  justify-content: $justify;
-  align-items: $align;
-  flex-wrap: $wrap;
-}
-
-@mixin flexbox--gab-respsonsive($direction: column, $justify: space-between, $align: stretch, $wrap: wrap, $gap) {
-  display: flex;
-  flex-direction: $direction;
-  justify-content: $justify;
-  align-items: $align;
-  flex-wrap: $wrap;
-  @include responsive-spacing(gap, $gap, $minimum-factor: 0.5, $width-small: 0.5);
 }
 
 @mixin reset-button-styles{
@@ -98,11 +45,6 @@ Example:  // Example usage:
   cursor: pointer;
 }
 
-// Example usage:
-/*.container {
-  @include flexbox(column, flex-start, stretch, wrap);
-}*/
-
 @mixin border($border-property: border, $width: $border-width, $style: solid, $color) {
   #{$border-property}: $width $style $color;
 }
@@ -121,13 +63,3 @@ Example:  // Example usage:
     radius: $border-radius-max;
   }
 }
-
-
-// This will compile to:
-// .container {
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: flex-start;
-//   align-items: stretch;
-//   flex-wrap: wrap;
-// }

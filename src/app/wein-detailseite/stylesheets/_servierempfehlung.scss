@@ -29,7 +29,7 @@
         }
 
         &__container {
-            @include flexbox--no-gap($direction: row, $justify: space-between, $align: flex-end, $wrap: nowrap);
+            @include flexbox($direction: row, $justify: space-between, $align: flex-end, $wrap: nowrap);
             @include gap-element;
         }
 
