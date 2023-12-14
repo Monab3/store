@@ -1,6 +1,6 @@
 @import "../../../shared/stylesheets/mixins/mixins";
-@import "../../../shared/stylesheets/mixins/mixins_abstaende";
-@import "../../../shared/stylesheets/mixins/mixins_effects";
+@import "../../../shared/stylesheets/mixins/mixins-layout";
+@import "../../../shared/stylesheets/mixins/mixins-effects";
 
 @import "../../../shared/stylesheets/tools/typographie";
 @import "../../../shared/stylesheets/tools/variables";
@@ -8,193 +8,91 @@
 @import "../../../shared/stylesheets/elements/controls";
 @import "../../../shared/stylesheets/components/quantity_selector";
 
-.produkt-auswahl__container {
-   @include flexbox($direction: row, $justify: center, $wrap: nowrap, $align: flex-start);
-   @include gap-element;
+.toggle-product-view {
    width: 100%;
+   justify-self: end;
+
+   &__button {
+      &:hover {
+         stroke: $color-red-signal;
+      }
+   }
+
+   &__first-child {
+      @include margin-element($right: true);
+   }
 }
-
-.card__container {
-   @include flexbox($direction: row, $justify: space-around, $wrap: wrap);
-   @include gap-element;
-   width: 100%;
-}
-
-
 .card {
    @include border($color: $color-green-light);
-   @include flexbox($direction: row, $justify: center, $wrap: wrap);
-   @include gap-element;
+   @include flexbox($direction: row, $justify: space-between,  $wrap: wrap);
    @include effect-drop-shadow-hover();
    @include padding-component;
+   @include gap-component;
    border-radius: $border-radius;
-   &__text__container {
-      width: 45%;
-      @include flexbox($justify: space-between, $wrap: wrap);
-     @include gap-element; 
-   }
+   background: $color-light;
 
-   &__img-container {
-      overflow: hidden;
-      width: 45%;
-
-      &__img {
-         width: 100%;
-         display: block;
-         object-fit: contain;
-      }
-   }
-
-   &__line {
-      width: 100%;
-      border-bottom: $border-width;
-      color: $color-gradient-green-light;
-   }
-}
-
-.svg__text {
    &__container {
-      @include flexbox($direction: row, $justify: flex-start, $wrap: nowrap, $align: center);
+      @include flexbox($direction: row, $justify: space-between, $wrap: wrap);
+      @include gap-element;
       width: 100%;
-      @include gap-element;
-   }
-}
 
-
-.flex-container {
-   display: flex;
-   flex-direction: row;
-}
-
-.form {
-   flex: 1;
-   /* Takes up 1/3 of the space */
-}
-
-.btn-main--align-self {
-   width: 100%;
-}
-
-
-/* Media Queries */
-@media only screen and (max-width: 769px) {
-   .card {
-      &__text__container {
-         width: 100%;
-      }
-
-      &__img-container {
-         width: 100%;
-      }
-   }
-}
-
-
-.cart-list {
-   @include border($color: $color-green-light);
-   @include flexbox($direction: row, $justify: space-between, $wrap: wrap);
-   @include gap-element;
-   @include effect-drop-shadow-hover();
-   @include padding-component;
-   //@include responsive-spacing(max-width, 18rem, 1, 0.5, $width-small: 0.5);
-   //@include responsive-spacing(max-height, 25rem, 1, 0.5);
-   @include effect-drop-shadow-hover();
-   border-radius: $border-radius;
-
-   &__infocontainer {
-      @include flexbox($direction: column, $justify: flex-end,  $align: stretch,$wrap: wrap);
-      @include gap-element;
    }
 
-   &__text__container {
+   &>header {
+      width: 100%;
+   }
+
+   &>figure {
+      @include flexbox($justify: center, $wrap: wrap);
+      width: 30%;
+   }
+
+   &>section {
       @include flexbox($justify: space-between, $wrap: wrap);
       @include gap-element;
-   }
+      width: 50%;
 
-   &__img-container {
-      overflow: hidden;
-      height: 9rem;
+      & ul {
+         @include flexbox($direction: column, $justify: flex-start, $wrap: nowrap);
+         @include gap-element;
 
-      &__img {
-         height: 100%;
-         display: block;
-         object-fit: contain;
-      }
-   }
-
-   &__line {
-      width: 100%;
-      border-bottom: $border-width;
-      color: $color-gradient-green-light;
-   }
-   &__form-field-number{
-      text-align: end;
-   }
-   &__container {
-      @include flexbox($direction: column, $justify: space-around, $wrap: wrap);
-      @include gap-element;
-      width: 100%;
-   }
-}
-
-.toggle-product-view{
-   width: 100%;
-   text-align: end;
-   &__button{
-      @include reset-button-styles;
-         &:hover{
-            stroke: $color-red-signal;
+         &>* {
+            @include flexbox($direction: row, $justify: flex-start, $wrap: nowrap);
          }
+      }
    }
-   &__first-child {
-      @include margin-element($right:true);
+
+   &>footer {
+      width: 100%;
+      @include border($border-property: border-top, $width: $border-width, $style: solid, $color: $color-green-dark);
+      @include padding-element($left: false, $right: false, $bottom: false);
+      align-self: flex-end;
+
+      &>form {
+         width: 100%;
+         @include padding-element($right: false, $left: false);
+         @include gap-element;
+         @include flexbox($direction: row, $justify: space-between, $align: center, $wrap: wrap);
+
+
+
+         &>button {
+            width: 80%;
+         }
+      }
+
+      &>h3 {
+         text-align: center;
+      }
+
+      &>p {
+         text-align: center;
+      }
+   }
+
+   &__img {
+      @include responsive-image--width;
    }
 }
 
-//Media Queries
-
-@media only screen and (max-width: 769px) {
-   .cart-list__infocontainer{
-      width: 100%; 
-      justify-content: center;
-   }
-   .cart-list__form-field-center{
-      text-align: center;
-   }
-}
-
-/* bootstrap anpassungen */
-
-.row > *{
-   padding: 0 !important;
-}
-
-.row{
-   @include gap-element;
-   justify-content: flex-end !important;
-}
-
-    .col-lg-4{
-      max-width: 32% !important;
-   }
-   
-    .col-md-6{
-      max-width: 48% !important;
-   }
-   
-    .col-6{
-      max-width: 49% !important;
-   }
-   
-   .col-6{
-      max-width: 49% !important;
-   }
-
-   @media (min-width: 992px){
-      .col-lg-4 {
-         width: 32% !important;
-     }
-   }
-
-
-
+@include form__number($width: 15%);

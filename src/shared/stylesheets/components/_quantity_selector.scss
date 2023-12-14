@@ -1,8 +1,8 @@
 @import '../tools/variables';
 @import '../tools/typographie';
 @import '../mixins/mixins';
-@import '../mixins/mixins_abstaende';
-@import '../mixins/mixins_effects';
+@import '../mixins/mixins-layout';
+@import '../mixins/mixins-effects';
 
 .form_field {
     @include effect-drop-shadow-hover();

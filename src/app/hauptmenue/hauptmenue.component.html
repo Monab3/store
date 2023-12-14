@@ -1,27 +1,27 @@
 <div class="hauptmenu">
     <div class="page">
-        <nav class="hauptmenu__content">
-            <button *ngFor="let nav of navWein; index as i" class="hauptmenu__nav-button">
-                <span class="h3">{{nav}}</span>
+        <nav class="hauptmenu__nav__container">
+            <button *ngFor="let nav of navWein; index as i" class="interaction-button font-interactive-element">
+                <span class="font-interactive-element">{{nav}}</span>
             </button>
-            <button class="hauptmenu__nav-button--cart" (click)="togglecart()">
-                <span class="h3 "><i class="bi-cart3 bi-4x hauptmenu__nav-button--cart__icon"></i></span>
-                <span class="hauptmenu__nav-button--cart__text text-regular">Gesamt:
+            <button class="hauptmenu__open-cart-button" (click)="togglecart()">
+                <span><i class="bi-cart3 bi-4x hauptmenu__open-cart-button__icon"></i></span>
+                <span class="hauptmenu__open-cart-button__text text-regular">Gesamt:
                     <br>
                     {{cartTotal}} €</span>
             </button>
         </nav>
         <article [ngClass]="{'cart__container': cartVisibility, 'cart__container--hidden': !cartVisibility}">
             <header class="cart__header">
-                <p class="h3--color-red">Ihr Warenkorb, <span class="h3--color-green">{{cartAnzahl }}Artikel</span></p>
-                <button class=" btn-interaction" (click)="togglecart()">
+                <p class="text-regular--red-dark">Ihr Warenkorb, <span class="text-regular">{{cartAnzahl }}Artikel</span></p>
+                <button class="interaction-icon" (click)="togglecart()">
                     <i class="bi  bi-x-lg bi-2x"></i>
                 </button>
             </header>
             <main class="cart__main">
                 <section *ngIf="cartItems.length == 0" class="cart__section--no-items">
-                    <h3>Es befinden sich noch keine Weine in ihrem Warenkorb. </h3>
-                    <p class="text-regular--italic">Klicken Sie
+                    <h4>Es befinden sich noch keine Weine in ihrem Warenkorb. </h4>
+                    <p class="text-regular">Klicken Sie
                         auf den Button "In den Warenkorb" um Weine in ihren Warenkorb zu legen.
                     </p>
                 </section>
@@ -61,10 +61,10 @@
                     <p class="text-regular">Gesamtsumme <span class="text-fine">(inkl. MwSt.) </span>:</p>
                     <p class="text-regular--red-dark">{{cartTotal}} €</p>
                 </div>
-                <button class="btn btn-secondary text-btn--green-dark">
+                <button class="button button__secondary">
                     <span style="font-size: 14px;"><i class="bi-cart3 bi"></i></span>
                     Warenkorb einsehen</button>
-                <button class="btn btn-main--red text-btn--white">Zur Kasse gehen</button>
+                <button class="button button__main--red">Zur Kasse gehen</button>
 
             </footer>
         </article>

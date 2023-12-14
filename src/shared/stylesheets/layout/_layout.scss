@@ -1,12 +1,15 @@
 @import '../tools/variables';
 @import '../mixins/mixins';
-@import '../mixins/mixins_abstaende';
+@import '../mixins/mixins-layout';
 
 .page {
-    width: min($min-width-page,$min-width-page);
+    width: min($min-width-page,$max-width-page);
     margin: 0 auto; //centers container
-    @include flexbox($justify: center, $align: center, $wrap: wrap);
-    @include gap-page;
-    position: relative; 
+    &__grid{
+        @include grid;
+        gap: $gap-container;
+    }
 }
+
+
 

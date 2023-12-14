@@ -1,6 +1,6 @@
 @import "../../../shared/stylesheets/mixins/mixins";
-@import "../../../shared/stylesheets/mixins/mixins_abstaende";
-@import "../../../shared/stylesheets/mixins/mixins_effects";
+@import "../../../shared/stylesheets/mixins/mixins-layout";
+@import "../../../shared/stylesheets/mixins/mixins-effects";
 
 @import "../../../shared/stylesheets/tools/typographie";
 @import "../../../shared/stylesheets/tools/variables";
@@ -22,7 +22,6 @@
 
     &__nav-button {
         flex-grow: 1;
-        @include reset-button-styles;
         border-bottom: 1px solid $color-green-light;
         @include flexbox($justify: center, $wrap: nowrap, $align: center);
         @include effect-border-underline($color-bg: $color-red-dark);

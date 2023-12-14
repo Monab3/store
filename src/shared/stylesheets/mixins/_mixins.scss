@@ -1,10 +1,11 @@
 /* Mixin for Mobile Spacing Modifier */
-@import './mixins_abstaende';
+@import './mixins-layout';
 
 /*fonts*/
-@mixin fonts($size, $weight, $family: inherit, $italic: false, $color) {
-  font-family: $family ;
+@mixin fonts($family: inherit, $size, $weight, $italic: false, $color, $font-fallback: $font-fallback) {
+  font-family: $family, $font-fallback;
   font-size: $size;
+  line-height: $font-line-height; 
   font-weight: $weight;
   color: $color;
 
@@ -22,28 +23,15 @@
   flex-wrap: $wrap;
 }
 
-@mixin reset-button-styles{
-        margin: 0;
-        padding: 0;
-        border: none;
-        background: none;
-        font: inherit;
-        cursor: pointer;
-        outline: none;
-        /* Remove default button styles */
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-}
-
-@mixin reset-button-styles--with-border{
+/*@mixin reset-button-styles {
   margin: 0;
   padding: 0;
-  border:1px solid $color-green-light;
   background: none;
-  font: inherit;
   cursor: pointer;
-}
+  outline: none;
+  appearance: none;
+    border: none;
+}*/
 
 @mixin border($border-property: border, $width: $border-width, $style: solid, $color) {
   #{$border-property}: $width $style $color;
@@ -60,6 +48,6 @@
 
   &::-webkit-scrollbar-thumb {
     background-color: $color-grey-dark;
-    radius: $border-radius-max;
+    border-radius: $border-radius-max;
   }
 }

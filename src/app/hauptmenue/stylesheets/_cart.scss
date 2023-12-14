@@ -1,6 +1,6 @@
 @import "../../../shared/stylesheets/mixins/mixins";
-@import "../../../shared/stylesheets/mixins/mixins_abstaende";
-@import "../../../shared/stylesheets/mixins/mixins_effects";
+@import "../../../shared/stylesheets/mixins/mixins-layout";
+@import "../../../shared/stylesheets/mixins/mixins-effects";
 
 @import "../../../shared/stylesheets/tools/typographie";
 @import "../../../shared/stylesheets/tools/variables";
@@ -21,7 +21,7 @@
             display: none;
         }
 
-        &>* {
+        & >* {
             width: 100%;
             @include padding-component;
         }
@@ -81,7 +81,6 @@
         overflow-y: auto;
         border-left: $border-width solid $color-green-light;
         border-right: $border-width solid $color-green-light;
-
         @include scrollbar;
     }
 
@@ -132,6 +131,7 @@
 
     &--invalid {
         border-color: $color-red-signal;
+
         color: $color-red-signal;
     }
 }
@@ -147,3 +147,26 @@
         }
     }
 }
+
+
+.hauptmenu__open-cart-button{
+            flex-grow: 1;
+            @include flexbox($direction: row, $justify: center, $wrap: nowrap, $align: center);
+            color: $color-green-dark;
+            &:hover {
+                color: $color-red-dark;
+                & > * {
+                    color: $color-red-dark;
+                }
+            }
+            &__icon {
+                color: $color-green-dark;
+                font-size: 1.5rem !important;
+            }
+            &__text {
+                text-align: start;
+                @include margin-element($top: false, $right: false, $bottom: false, $left: true);
+            }
+
+
+        }

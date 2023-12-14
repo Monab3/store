@@ -1,0 +1,359 @@
+@import '../tools/variables';
+
+@mixin responsive-spacing($property, $value, $medium-factor: 0.5, $minimum-factor: 0.5, $width-small: 0.5) {
+  #{$property}: $value;
+
+  @media only screen and (max-width: 576px) {
+    #{$property}: $value * $minimum-factor;
+  }
+
+  @media only screen and (min-width: 577px) and (max-width: 768px) {
+    #{$property}: $value * $medium-factor;
+  }
+
+  @media only screen and (min-width: 769px) and (max-width: 1199px) {
+    #{$property}: $value;
+  }
+
+  @media only screen and (max-width: 400px) {
+    #{$property}: $value * $width-small;
+  }
+}
+
+@mixin responsive-image--width {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+@mixin responsive-image--height {
+  width: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+
+
+/* Gaps */
+@mixin gap-page {
+  gap: $gap-page;
+  @include responsive-spacing($property: gap, $value: $gap-page, $medium-factor: 0.5, $minimum-factor: 0.5, $width-small: 0.5);
+}
+
+@mixin gap-container {
+  gap: $gap-container;
+  @include responsive-spacing($property: gap, $value: $gap-container);
+}
+
+@mixin gap-component {
+  gap: $gap-component;
+  @include responsive-spacing($property: gap, $value: $gap-component);
+}
+
+@mixin gap-element {
+  gap: $gap-element;
+  @include responsive-spacing($property: gap, $value: $gap-element);
+}
+
+/* Margin */
+@mixin margin-page($top: true, $right: true, $bottom: true, $left: true) {
+  @if $top {
+    margin-top: $margin-page;
+    @include responsive-spacing($property: margin-top, $value: $margin-page);
+  }
+
+  @if $right {
+    margin-right: $margin-page;
+    @include responsive-spacing($property: margin-right, $value: $margin-page);
+  }
+
+  @if $bottom {
+    margin-bottom: $margin-page;
+    @include responsive-spacing($property: margin-bottom, $value: $margin-page);
+  }
+
+  @if $left {
+    margin-left: $margin-page;
+    @include responsive-spacing($property: margin-left, $value: $margin-page);
+  }
+}
+
+@mixin margin-container($top: true, $right: true, $bottom: true, $left: true) {
+  @if $top {
+    margin-top: $margin-container;
+    @include responsive-spacing($property: margin-top, $value: $margin-container);
+  }
+
+  @if $right {
+    margin-right: $margin-container;
+    @include responsive-spacing($property: margin-right, $value: $margin-container);
+  }
+
+  @if $bottom {
+    margin-bottom: $margin-container;
+    @include responsive-spacing($property: margin-bottom, $value: $margin-container);
+  }
+
+  @if $left {
+    margin-left: $margin-container;
+    @include responsive-spacing($property: margin-left, $value: $margin-container);
+  }
+}
+
+@mixin margin-component($top: true, $right: true, $bottom: true, $left: true) {
+  @if $top {
+    margin-top: $margin-component;
+    @include responsive-spacing($property: margin-top, $value: $margin-component);
+  }
+
+  @if $right {
+    margin-right: $margin-component;
+    @include responsive-spacing($property: margin-right, $value: $margin-component);
+  }
+
+  @if $bottom {
+    margin-bottom: $margin-component;
+    @include responsive-spacing($property: margin-bottom, $value: $margin-component);
+  }
+
+  @if $left {
+    margin-left: $margin-component;
+    @include responsive-spacing($property: margin-left, $value: $margin-component);
+  }
+}
+
+@mixin margin-element($top: true, $right: true, $bottom: true, $left: true) {
+  @if $top {
+    margin-top: $margin-element;
+    @include responsive-spacing($property: margin-top, $value: $margin-element);
+  }
+
+  @if $right {
+    margin-right: $margin-element;
+    @include responsive-spacing($property: margin-right, $value: $margin-element);
+  }
+
+  @if $bottom {
+    margin-bottom: $margin-element;
+    @include responsive-spacing($property: margin-bottom, $value: $margin-element);
+  }
+
+  @if $left {
+    margin-left: $margin-element;
+    @include responsive-spacing($property: margin-left, $value: $margin-element);
+  }
+}
+
+@mixin margin-atom($top: true, $right: true, $bottom: true, $left: true) {
+  @if $top {
+    margin-top: $margin-atom;
+    @include responsive-spacing($property: margin-top, $value: $margin-atom);
+  }
+
+  @if $right {
+    margin-right: $margin-atom;
+    @include responsive-spacing($property: margin-right, $value: $margin-atom);
+  }
+
+  @if $bottom {
+    margin-bottom: $margin-atom;
+    @include responsive-spacing($property: margin-bottom, $value: $margin-atom);
+  }
+
+  @if $left {
+    margin-left: $margin-atom;
+    @include responsive-spacing($property: margin-left, $value: $margin-atom);
+  }
+}
+
+/* Padding */
+@mixin padding-page($top: true, $right: true, $bottom: true, $left: true) {
+  @if $top {
+    padding-top: $padding-page;
+    @include responsive-spacing($property: padding-top, $value: $padding-page);
+  }
+
+  @if $right {
+    padding-right: $padding-page;
+    @include responsive-spacing($property: padding-right, $value: $padding-page);
+  }
+
+  @if $bottom {
+    padding-bottom: $padding-page;
+    @include responsive-spacing($property: padding-bottom, $value: $padding-page);
+  }
+
+  @if $left {
+    padding-left: $padding-page;
+    @include responsive-spacing($property: padding-left, $value: $padding-page);
+  }
+}
+
+@mixin padding-container($top: true, $right: true, $bottom: true, $left: true) {
+  @if $top {
+    padding-top: $padding-container;
+    @include responsive-spacing($property: padding-top, $value: $padding-container);
+  }
+
+  @if $right {
+    padding-right: $padding-container;
+    @include responsive-spacing($property: padding-right, $value: $padding-container);
+  }
+
+  @if $bottom {
+    padding-bottom: $padding-container;
+    @include responsive-spacing($property: padding-bottom, $value: $padding-container);
+  }
+
+  @if $left {
+    padding-left: $padding-container;
+    @include responsive-spacing($property: padding-left, $value: $padding-container);
+  }
+}
+
+@mixin padding-component($top: true, $right: true, $bottom: true, $left: true) {
+  @if $top {
+    padding-top: $padding-component;
+    @include responsive-spacing($property: padding-top, $value: $padding-component);
+  }
+
+  @if $right {
+    padding-right: $padding-component;
+    @include responsive-spacing($property: padding-right, $value: $padding-component);
+  }
+
+  @if $bottom {
+    padding-bottom: $padding-component;
+    @include responsive-spacing($property: padding-bottom, $value: $padding-component);
+  }
+
+  @if $left {
+    padding-left: $padding-component;
+    @include responsive-spacing($property: padding-left, $value: $padding-component);
+  }
+}
+
+@mixin padding-element($top: true, $right: true, $bottom: true, $left: true) {
+  @if $top {
+    padding-top: $padding-element;
+    @include responsive-spacing($property: padding-top, $value: $padding-element);
+  }
+
+  @if $right {
+    padding-right: $padding-element;
+    @include responsive-spacing($property: padding-right, $value: $padding-element);
+  }
+
+  @if $bottom {
+    padding-bottom: $padding-element;
+    @include responsive-spacing($property: padding-bottom, $value: $padding-element);
+  }
+
+  @if $left {
+    padding-left: $padding-element;
+    @include responsive-spacing($property: padding-left, $value: $padding-element);
+  }
+}
+
+@mixin padding-atom($top: true, $right: true, $bottom: true, $left: true) {
+  @if $top {
+    padding-top: $padding-atom;
+    @include responsive-spacing($property: padding-top, $value: $padding-atom);
+  }
+
+  @if $right {
+    padding-right: $padding-atom;
+    @include responsive-spacing($property: padding-right, $value: $padding-atom);
+  }
+
+  @if $bottom {
+    padding-bottom: $padding-atom;
+    @include responsive-spacing($property: padding-bottom, $value: $padding-atom);
+  }
+
+  @if $left {
+    padding-left: $padding-atom;
+    @include responsive-spacing($property: padding-left, $value: $padding-atom);
+  }
+}
+
+
+@mixin grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+
+  @media only screen and (min-width: 0) and (max-width: $breakpoint-medium--minus) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media only screen and (min-width:$breakpoint-medium) and (max-width: $breakpoint-large) {
+    grid-template-columns: repeat(8, 1fr);
+  }
+}
+
+@mixin grid__span--all{
+    grid-column: span 12;
+
+  @media only screen and (min-width: 0) and (max-width:$breakpoint-medium--minus) {
+    grid-column: span 4;
+  }
+
+  @media only screen and (min-width:$breakpoint-medium) and (max-width: $breakpoint-large) {
+    grid-column: span 8;
+  }
+}
+
+@mixin grid__span--half {
+  grid-column: span 6;
+
+  @media only screen and (min-width: 0) and (max-width:$breakpoint-medium--minus) {
+    grid-column: span 2;
+}
+
+  @media only screen and (min-width:$breakpoint-medium) and (max-width: $breakpoint-large) {
+    grid-column: span 4;
+  }
+
+}
+
+@mixin grid__span__quarter--mg-lg($multipy: 1) {
+  grid-column: span 3 * $multipy;
+
+  @if $multipy >2 {
+    @media only screen and (min-width: 0) and (max-width:$breakpoint-medium--minus) {
+        grid-column: span 4;
+    }
+
+    @media only screen and (min-width:$breakpoint-medium) and (max-width: $breakpoint-large) {
+        grid-column: span 2 * $multipy;
+    }
+  }
+
+  @if $multipy <=2 {
+    @media only screen and (max-width: $breakpoint-large) {
+        grid-column: span 2 * $multipy;}
+  }
+}
+
+@mixin grid__span__third--lg($multipy: 1) {
+  grid-column: span 4*$multipy;
+
+  @if $multipy >2 {
+    @media only screen and (min-width: 0) and (max-width:$breakpoint-medium--minus) {
+        grid-column: span 4;
+    }
+
+    @media only screen and (min-width:$breakpoint-medium) and (max-width: $breakpoint-large) {
+        grid-column: span 8;
+    }
+  }
+
+  @if $multipy <=2 {
+    @media only screen and (min-width: 0) and (max-width:$breakpoint-medium--minus) {
+      grid-column: span 4;
+  }
+
+  @media only screen and (min-width:$breakpoint-medium) and (max-width: $breakpoint-large) {
+      grid-column: span 4 * $multipy;
+  }
+  }
+}

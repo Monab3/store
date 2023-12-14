@@ -7,3 +7,17 @@ a, a:hover, a:focus, a:active, a:visited{
     color: inherit;
     cursor: pointer;
 }
+
+button{
+    margin: 0;
+    padding: 0;
+    background: none;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    border: none; 
+}
+
+figure{
+    overflow: hidden;
+}

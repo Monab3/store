@@ -15,7 +15,7 @@ export class ProductViewComponent  implements OnInit {
   mockDataWine = [
     {
       _id: 1,
-      name: 'Wine B',
+      name: 'Wein mit Langem Namen zu Testen des Looks',
       geschmack: 'Sweet',
       rebsorte: 'Merlot',
       preis: 18.99,

@@ -1,0 +1,37 @@
+@import "../../../shared/stylesheets/mixins/mixins";
+@import "../../../shared/stylesheets/mixins/mixins-layout";
+@import "../../../shared/stylesheets/mixins/mixins-effects";
+
+@import "../../../shared/stylesheets/tools/typographie";
+@import "../../../shared/stylesheets/tools/variables";
+
+@import "../../../shared/stylesheets/elements/controls";
+@import "../../../shared/stylesheets/components/quantity_selector";
+
+
+
+.page__grid {
+   &__filter {
+      @include grid__span__quarter--mg-lg;
+      width: 100%;
+   }
+   &__produkt {
+      @include grid__span__quarter--mg-lg($multipy: 3);
+      width: 100%;
+   }
+}
+
+.produkt {
+   &__grid {
+      @include grid;
+      gap: $gap-element;
+      &__toggle-product-view {
+         @include grid__span--all;
+         width: 100%;
+      }
+      &__card {
+         @include grid__span__third--lg;
+         width: 100%;
+      }
+   }
+}

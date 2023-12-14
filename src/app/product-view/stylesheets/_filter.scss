@@ -1,6 +1,6 @@
 @import "../../../shared/stylesheets/mixins/mixins";
-@import "../../../shared/stylesheets/mixins/mixins_abstaende";
-@import "../../../shared/stylesheets/mixins/mixins_effects";
+@import "../../../shared/stylesheets/mixins/mixins-layout";
+@import "../../../shared/stylesheets/mixins/mixins-effects";
 
 @import "../../../shared/stylesheets/tools/typographie";
 @import "../../../shared/stylesheets/tools/variables";
@@ -8,67 +8,39 @@
 @import "../../../shared/stylesheets/elements/controls";
 
 .filter {
-    &__container {
-        background: $gradient-green;
-        border-bottom-left-radius: $border-radius-max;
-        border-top-right-radius: $border-radius-max;
-        box-shadow: $border-box-shadow;
-        color: $color-light;
-        @include border($width: $border-width-max, $color: $color-light);
-        @include flexbox($justify: flex-start, $wrap: wrap,  $align: center);
+    background: $gradient-green;
+    border-bottom-left-radius: $border-radius-max;
+    border-top-right-radius: $border-radius-max;
+    box-shadow: $border-box-shadow;
+    color: $color-light;
+    @include border($width: $border-width, $color: $color-light);
+    @include flexbox($justify: flex-start, $wrap: wrap, $align: stretch);
+    @include gap-component;
+    @include padding-component;
+
+    &__form{
+        @include flexbox;
         @include gap-element;
-        @include padding-component;
-        width: 20%;
-        &__img-container {
-            margin-top: 2rem;
-            overflow: hidden;
-            width: 70%;
-            &__img {
-                display: block;
-                height: auto;
-                object-fit: contain;
-                width: 100%;
+    }
+    &__radio {
+        @include flexbox($direction: row, $justify: space-between, $align: stretch, $wrap: nowrap);
+        &__label {
+            display: flex;
+            align-items: center;
+            margin-right: 10px;
+            cursor: pointer;
+
+            & input {
+                margin-right: 5px;
             }
         }
     }
-
-    &__input {
-        &__container {
-            @include w, $justify: space-between, $wrap: nowrap, $align: flex-start);
-        }
-        &__preis__container {
-            box-sizing: border-box;
-        }
-        &__radio {
-            @include border($color: $color-grey-dark);
-            border-radius: $border-radius; 
-            padding: 0 5px; 
-            background: $color-green-light;
-            color: $color-green-dark; 
-            margin-bottom: 5px;
-            &__container {
-                @include w, $justify: space-between, $wrap: nowrap, $align: center);
-                @include gap-component;
-            }
-        }
+    &__count {
+        @include border($color: $color-grey-dark);
+        border-radius: $border-radius;
+        padding: 0 5px;
+        background: $color-green-light;
+        color: $color-green-dark;
     }
 }
 
-.p-accordion-header {
-    @include border($border-property: border-bottom, $color: $color-light);
-    @include responsive-spacing(margin-bottom, 0.5rem, 1, 0.5);
-    @include responsive-spacing(padding-bottom, 0.5rem, 1, 0.5);
-    @include responsive-spacing(padding-top, 0.5rem, 1, 0.5);
-}
-
-#preisMax,
-#preisMin {
-    width: 100%;
-}
-
-/* Media Queries */
-@media only screen and (max-width: 769px) {
-    .filter__container {
-        display: none;
-    }
-}

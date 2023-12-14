@@ -4,120 +4,120 @@
 
 //TODO add font to be inherrited from main or something
 
-//TODO lineheight hinzufügen
-@mixin h1($color: $color-red-dark){
-    h1 {
-        @include fonts($font-size-headline, $font-weight-regular, $color:$color);
-    }
-}
 
-h1 {
-    @include fonts($font-size-headline, $font-weight-regular, $color: $color-red-dark);
-}
-
-h2 {
-    @include fonts($font-size-subtitel, $font-weight-regular, $color: $color-red-dark);
-    text-transform: uppercase;
+.h1 {
+    @include fonts($font-header, $font-size-extra-large, $font-weight-regular, $color: $color-red-dark);
 }
 
 .h2 {
-    @include fonts($font-size-subtitel, $font-weight-regular, $color: inherit);
-    text-transform: uppercase;
-
-    &--white {
-        @include fonts($font-size-subtitel, $font-weight-regular, $color: $color-light);
+    @include fonts($font-header, $font-size-large, $font-weight-bold, $color: $color-red-dark);
+    &--white{
+        @include fonts($font-header, $font-size-large, $font-weight-regular, $color: $color-light);
     }
-}
-
-h3 {
-    font-family: inherit;
-    font-size: $font-size-body;
-    color: $color-red-dark;
-    font-weight: $font-weight-bold;
 }
 
 .h3 {
-    @include fonts($font-size-body, $font-weight-regular, $color: inherit);
-    text-transform: uppercase;
-
-    &--color-red {
-        color: $color-red-dark;
-
-    }
-
-    &--color-green {
-        color: $color-green-dark;
+    @include fonts($font-regular, $font-size-medium, $font-weight-bold, $color: $color-red-dark);
+    &--regular {
+        @include fonts($font-regular, $font-size-medium, $font-weight-regular,$color: $color-red-dark);
     }
 }
 
+h4{
+    @include fonts($font-regular, $font-size-regular, $font-weight-bold, $color: $color-green-dark);
+}
+
+
+
 .text-regular {
-    @include fonts($font-size-body, $font-weight-regular, $color : $color-green-dark);
+    @include fonts($font-regular,$font-size-regular, $font-weight-regular, $color : $color-green-dark);
 
     &--italic {
-        @include fonts($font-size-body, $font-weight-regular, $italic: true, $color : $color-green-dark);
+        @include fonts($font-regular, $font-size-regular, $font-weight-regular, $italic: true, $color : $color-green-dark);
     }
 
     &--bold {
-        @include fonts($font-size-body, $font-weight-bold, $color : $color-green-dark);
+        @include fonts($font-regular,$font-size-regular, $font-weight-bold, $color : $color-green-dark);
 
         &--italic {
-            @include fonts($font-size-body, $font-weight-bold, $italic: true, $color : $color-green-dark);
+            @include fonts($font-regular,$font-size-regular, $font-weight-bold, $italic: true, $color : $color-green-dark);
         }
     }
-
-    &--invalid {
-        @include fonts($font-size-body, $font-weight-regular, $color : $color-red-signal);
-    }
     &--red-dark {
-        @include fonts($font-size-body, $font-weight-regular, $color : $color-red-dark);
+        @include fonts($font-regular,$font-size-regular, $font-weight-regular, $color : $color-red-dark);
     
         &--italic {
-            @include fonts($font-size-body, $font-weight-regular, $italic: true, $color : $color-red-dark);
+            @include fonts($font-regular,$font-size-regular, $font-weight-regular, $italic: true, $color : $color-red-dark);
         }
     
         &--bold {
-            @include fonts($font-size-body, $font-weight-bold, $color : $color-red-dark);
+            @include fonts($font-regular,$font-size-regular, $font-weight-bold, $color : $color-red-dark);
     
             &--italic {
-                @include fonts($font-size-body, $font-weight-bold, $italic: true, $color : $color-red-dark);
+                @include fonts($font-regular,$font-size-regular, $font-weight-bold, $italic: true, $color : $color-red-dark);
+            }
+        }
+    }
+
+    &--light {
+        @include fonts($font-regular,$font-size-regular, $font-weight-regular, $color : $color-light);
+    
+        &--italic {
+            @include fonts($font-regular,$font-size-regular, $font-weight-regular, $italic: true, $color : $color-light);
+        }
+    
+        &--bold {
+            @include fonts($font-regular,$font-size-regular, $font-weight-bold, $color : $color-light);
+    
+            &--italic {
+                @include fonts($font-regular,$font-size-regular, $font-weight-bold, $italic: true, $color : $color-light);
+            }
+        }
+    }
+
+    &--red-signal {
+        @include fonts($font-regular,$font-size-regular, $font-weight-regular, $color : $color-red-signal);
+    
+        &--italic {
+            @include fonts($font-regular,$font-size-regular, $font-weight-regular, $italic: true, $color : $color-red-signal);
+        }
+    
+        &--bold {
+            @include fonts($font-regular,$font-size-regular, $font-weight-bold, $color : $color-red-signal);
+    
+            &--italic {
+                @include fonts($font-regular,$font-size-regular, $font-weight-bold, $italic: true, $color : $color-red-signal);
             }
         }
     }
 }
 
 .text-fine {
-    @include fonts($font-size-fine, $font-weight-regular, $color : $color-green-dark);
+    @include fonts($font-regular,$font-size-extra-small, $font-weight-regular, $color : $color-green-dark);
 
     &--italic {
-        @include fonts($font-size-fine, $font-weight-regular, $italic: true, $color : $color-green-dark);
+        @include fonts($font-regular,$font-size-extra-small, $font-weight-regular, $italic: true, $color : $color-green-dark);
     }
 
     &--bold {
-        @include fonts($font-size-fine, $font-weight-bold, $color : $color-red-dark);
+        @include fonts($font-regular,$font-size-extra-small, $font-weight-bold, $color : $color-red-dark);
 
         &--italic {
-            @include fonts($font-size-fine, $font-weight-bold, $italic: true, $color : $color-red-dark);
+            @include fonts($font-regular,$font-size-extra-small, $font-weight-bold, $italic: true, $color : $color-red-dark);
         }
     }
 
     &--red-dark{
-        @include fonts($font-size-fine, $font-weight-regular, $color : $color-red-dark);
+        @include fonts($font-regular,$font-size-extra-small, $font-weight-regular, $color : $color-red-dark);
     }
 }
 
-.text-btn {
-    &--white {
-        @include fonts($font-size-button, $font-weight-regular, $color : $color-light);
-    }
-    &--black {
-        @include fonts($font-size-button, $font-weight-regular, $color : $color-black);
-    }
-    &--green-dark {
-        @include fonts($font-size-button, $font-weight-regular, $color : $color-green-dark);
-    }
-}
-
-.link {
-    color: $color-blue-link;
+.font-link{
+    @include fonts($font-regular,  $font-size-regular, $font-weight-regular, $color:$color-blue-link);
     text-decoration: underline;
+    &--small{
+        @include fonts($font-regular,  $font-size-extra-small, $font-weight-regular, $color:$color-blue-link);
+        text-decoration: underline;
+
+    }
 }
