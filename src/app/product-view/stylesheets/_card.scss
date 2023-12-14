@@ -22,9 +22,10 @@
       @include margin-element($right: true);
    }
 }
+
 .card {
    @include border($color: $color-green-light);
-   @include flexbox($direction: row, $justify: space-between,  $wrap: wrap);
+   @include flexbox($direction: row, $justify: space-between, $wrap: wrap);
    @include effect-drop-shadow-hover();
    @include padding-component;
    @include gap-component;
@@ -90,7 +91,7 @@
 
 .card-list {
    @include border($color: $color-green-light);
-   @include flexbox($direction: row, $justify: space-between,  $wrap: wrap);
+   @include flexbox($direction: row, $justify: space-between, $wrap: wrap);
    @include effect-drop-shadow-hover();
    @include padding-component;
    @include gap-component;
@@ -98,19 +99,19 @@
    background: $color-light;
 
    &>header {
-      order:1;
-      width: 40%;
+      order: 1;
+      width: 22%;
    }
 
    &>figure {
-      display: none; 
+      display: none;
    }
 
    &>section {
-      order:2;
+      order: 2;
       @include flexbox($justify: space-between, $wrap: wrap);
-      @include gap-element; 
-      width:20%;
+      @include gap-element;
+      width: 20%;
 
       & ul {
          @include flexbox($direction: column, $justify: flex-start, $wrap: nowrap);
@@ -124,18 +125,19 @@
 
    &>footer {
       order: 3;
-      width: 30%;
+      width: auto;
       @include padding-element($left: false, $right: false, $bottom: false);
 
       &>form {
          @include padding-element($right: false, $left: false);
          @include gap-element;
-         @include flexbox($direction: row, $justify: space-between, $align: center, $wrap: wrap);
-
-
+         @include flexbox($direction: column, $justify: space-between, $align: flex-end, $wrap: wrap);
 
          &>button {
-            width: 60%;
+            width: 100%;
+         }
+         & > input{
+            width: 100%;
          }
       }
 
@@ -152,6 +154,23 @@
       @include responsive-image(true, false);
 
    }
+}
+
+@media only screen and (min-width: 0) and (max-width:$breakpoint-small) {
+   .card-list {
+      &>header {
+         width: 60%;
+      }
+
+      &>section {
+         width: 30%;
+      }
+
+      &>footer {
+         width: 100%;
+      }
+   }
+
 }
 
 @include form__number($width: 15%);

@@ -276,6 +276,7 @@
   }
 }
 
+/* Grid Layout */
 
 @mixin grid {
     display: grid;
@@ -355,4 +356,12 @@
       grid-column: span 4 * $multipy;
   }
   }
+}
+
+@mixin grid__span--one($multipy: 1) {
+  grid-column: span 1*$multipy;
+}
+
+@mixin grid__span--adjust {
+  grid-column: auto;
 }
