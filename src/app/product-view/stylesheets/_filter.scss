@@ -17,6 +17,7 @@
     @include flexbox($justify: flex-start, $wrap: wrap, $align: stretch);
     @include gap-component;
     @include padding-component;
+    
 
     &__form{
         @include flexbox;

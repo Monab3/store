@@ -23,7 +23,9 @@
    }
 }
 
-.card {
+/* Auslagerung von sich doppeltem Css*/
+
+@mixin card {
    @include border($color: $color-green-light);
    @include flexbox($direction: row, $justify: space-between, $wrap: wrap);
    @include effect-drop-shadow-hover();
@@ -31,57 +33,70 @@
    @include gap-component;
    border-radius: $border-radius;
    background: $color-light;
+}
 
-   &>header {
-      width: 100%;
-   }
-
-   &>figure {
-      @include flexbox($justify: center, $wrap: wrap);
-      width: 30%;
-   }
-
-   &>section {
-      @include flexbox($justify: space-between, $wrap: wrap);
+@mixin ul {
+   & ul {
+      @include flexbox($direction: column, $justify: flex-start, $wrap: nowrap);
       @include gap-element;
-      width: 50%;
 
-      & ul {
-         @include flexbox($direction: column, $justify: flex-start, $wrap: nowrap);
-         @include gap-element;
-
-         &>* {
-            @include flexbox($direction: row, $justify: flex-start, $wrap: nowrap);
-         }
+      & > * {
+         @include flexbox($direction: row, $justify: flex-start, $wrap: nowrap);
       }
    }
+}
 
-   &>footer {
+@mixin footer-text{
+   &>h3 {
+      text-align: center;
+   }
+
+   &>p {
+      text-align: center;
+   }
+}
+
+
+   .card {
+      @include card;
+
+      &>header {
+         width: 100%;
+      }
+
+      &>figure {
+         @include flexbox($justify: center, $wrap: wrap);
+         width: 30%;
+      }
+
+      &>section {
+         @include flexbox($justify: space-between, $wrap: wrap);
+         @include gap-element;
+         width: 50%;
+         
+         @include ul;
+
+      }
+
+   & > footer {
       width: 100%;
       @include border($border-property: border-top, $width: $border-width, $style: solid, $color: $color-green-dark);
-      @include padding-element($left: false, $right: false, $bottom: false);
       align-self: flex-end;
+      @include padding-element($left: false, $right: false, $bottom: false);
+ 
 
       &>form {
          width: 100%;
          @include padding-element($right: false, $left: false);
          @include gap-element;
          @include flexbox($direction: row, $justify: space-between, $align: center, $wrap: wrap);
-
-
-
-         &>button {
+         
+         & > button {
             width: 80%;
          }
       }
 
-      &>h3 {
-         text-align: center;
-      }
-
-      &>p {
-         text-align: center;
-      }
+      @include footer-text;
    }
 
    &__img {
@@ -90,13 +105,7 @@
 }
 
 .card-list {
-   @include border($color: $color-green-light);
-   @include flexbox($direction: row, $justify: space-between, $wrap: wrap);
-   @include effect-drop-shadow-hover();
-   @include padding-component;
-   @include gap-component;
-   border-radius: $border-radius;
-   background: $color-light;
+   @include card;
 
    &>header {
       order: 1;
@@ -113,14 +122,7 @@
       @include gap-element;
       width: 20%;
 
-      & ul {
-         @include flexbox($direction: column, $justify: flex-start, $wrap: nowrap);
-         @include gap-element;
-
-         &>* {
-            @include flexbox($direction: row, $justify: flex-start, $wrap: nowrap);
-         }
-      }
+      @include ul;
    }
 
    &>footer {
@@ -141,18 +143,7 @@
          }
       }
 
-      &>h3 {
-         text-align: center;
-      }
-
-      &>p {
-         text-align: center;
-      }
-   }
-
-   &__img {
-      @include responsive-image(true, false);
-
+      @include footer-text;
    }
 }
 
