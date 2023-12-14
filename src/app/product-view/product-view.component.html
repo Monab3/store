@@ -121,13 +121,13 @@
                     </svg>
                 </button>
             </aside>
-            <article *ngFor="let produkt of mockDataWine; index as i" class="produkt__grid__card card">
+            <article *ngFor="let produkt of mockDataWine; index as i" class="produkt__grid__card-list card-list">
                 <header>
                     <p class="text-regular--red-dark">{{dateConverter(produkt.herstellungsDatum)}}</p>
                     <h3 class="h3">{{produkt.name}}</h3>
                 </header>
                 <figure>
-                    <img src="assets/grauburgunder.png" class="card__img">
+                    <img src="assets/grauburgunder.png" class="card-list__img">
                 </figure>
                 <section>
                     <ul>
@@ -167,7 +167,7 @@
                         Zahl zwischen 1 und 100 eingeben
                     </p>
                     </form>
-                    <p class="card__footer__text text-fine">{{produkt.fuellmenge}}l | {{produkt.preisProLiter}}€ | inkl.
+                    <p class="card-list__footer__text text-fine">{{produkt.fuellmenge}}l | {{produkt.preisProLiter}}€ | inkl.
                         MwSt.
                         zzgl.
                         <span class="font-link--small">Verstand</span>

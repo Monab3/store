@@ -20,16 +20,15 @@
   }
 }
 
-@mixin responsive-image--width {
-  width: 100%;
+@mixin responsive-image( $width, $height) {
+  @if $height {
+    height: 100%;
+  }
+  @if $width {
+    width: 100%;
+  }
   display: block;
   object-fit: cover;
-}
-
-@mixin responsive-image--height {
-  width: 100%;
-  display: block;
-  object-fit: contain;
 }
 
 

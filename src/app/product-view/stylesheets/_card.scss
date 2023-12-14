@@ -31,13 +31,6 @@
    border-radius: $border-radius;
    background: $color-light;
 
-   &__container {
-      @include flexbox($direction: row, $justify: space-between, $wrap: wrap);
-      @include gap-element;
-      width: 100%;
-
-   }
-
    &>header {
       width: 100%;
    }
@@ -91,7 +84,73 @@
    }
 
    &__img {
-      @include responsive-image--width;
+      @include responsive-image(true, false);
+   }
+}
+
+.card-list {
+   @include border($color: $color-green-light);
+   @include flexbox($direction: row, $justify: space-between,  $wrap: wrap);
+   @include effect-drop-shadow-hover();
+   @include padding-component;
+   @include gap-component;
+   border-radius: $border-radius;
+   background: $color-light;
+
+   &>header {
+      order:1;
+      width: 40%;
+   }
+
+   &>figure {
+      display: none; 
+   }
+
+   &>section {
+      order:2;
+      @include flexbox($justify: space-between, $wrap: wrap);
+      @include gap-element; 
+      width:20%;
+
+      & ul {
+         @include flexbox($direction: column, $justify: flex-start, $wrap: nowrap);
+         @include gap-element;
+
+         &>* {
+            @include flexbox($direction: row, $justify: flex-start, $wrap: nowrap);
+         }
+      }
+   }
+
+   &>footer {
+      order: 3;
+      width: 30%;
+      @include padding-element($left: false, $right: false, $bottom: false);
+
+      &>form {
+         @include padding-element($right: false, $left: false);
+         @include gap-element;
+         @include flexbox($direction: row, $justify: space-between, $align: center, $wrap: wrap);
+
+
+
+         &>button {
+            width: 60%;
+         }
+      }
+
+      &>h3 {
+         text-align: center;
+      }
+
+      &>p {
+         text-align: center;
+      }
+   }
+
+   &__img {
+      @include responsive-image(true, false);
+
    }
 }
 
