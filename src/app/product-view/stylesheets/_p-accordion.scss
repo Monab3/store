@@ -28,10 +28,3 @@
 ::ng-deep .p-element {
     width: 100%;
 }
-
-/* Media Queries */
-@media only screen and (max-width: $breakpoint-medium) {
-    .filter{
-        display:none;
-    }
-}

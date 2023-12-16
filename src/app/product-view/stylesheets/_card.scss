@@ -8,20 +8,6 @@
 @import "../../../shared/stylesheets/elements/controls";
 @import "../../../shared/stylesheets/components/quantity_selector";
 
-.toggle-product-view {
-   width: 100%;
-   justify-self: end;
-
-   &__button {
-      &:hover {
-         stroke: $color-red-signal;
-      }
-   }
-
-   &__first-child {
-      @include margin-element($right: true);
-   }
-}
 
 /* Auslagerung von sich doppeltem Css*/
 
@@ -39,7 +25,7 @@
    & ul {
       @include flexbox($direction: column, $justify: flex-start, $wrap: nowrap);
       @include gap-element;
-
+      @include hide-for-small;
       & > * {
          @include flexbox($direction: row, $justify: flex-start, $wrap: nowrap);
       }

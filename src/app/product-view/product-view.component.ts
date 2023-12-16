@@ -5,13 +5,14 @@ import { base64ToImageConverter } from '../../shared/services/base64ToImageConve
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { CartItem } from '../../shared/models/CartItem';
 import { Wein } from '../../shared/models/Wein';
+import { WeinFilters } from '../../shared/models/WeinFilters';
 
 @Component({
   selector: 'app-product-view',
   templateUrl: './product-view.component.html',
   styleUrl: './product-view.component.scss'
 })
-export class ProductViewComponent  implements OnInit {
+export class ProductViewComponent implements OnInit {
   mockDataWine = [
     {
       _id: 1,
@@ -59,7 +60,7 @@ export class ProductViewComponent  implements OnInit {
       servierempfehlung: 'Pairs well with seafood and salads.',
       weinBildString: '../../images/bottle_card_2.png',
       servierBildString: '../../images/bottle_card_2.png',
-      searchTags: ['süß', 'Riesling']
+      searchTags: ['Süß', 'Riesling']
     },
     {
       _id: 3,
@@ -86,8 +87,8 @@ export class ProductViewComponent  implements OnInit {
       searchTags: ['Herb', 'Rivaner']
     },
     {
-      _id: 1,
-      name: 'Wine B',
+      _id: 4,
+      name: 'Wine E',
       geschmack: 'Sweet',
       rebsorte: 'Merlot',
       preis: 18.99,
@@ -110,8 +111,8 @@ export class ProductViewComponent  implements OnInit {
       searchTags: ['Trocken', 'Riesling']
     },
     {
-      _id: 2,
-      name: 'Wine C',
+      _id: 5,
+      name: 'Wine F',
       geschmack: 'Medium',
       rebsorte: 'Sauvignon Blanc',
       preis: 21.50,
@@ -134,8 +135,8 @@ export class ProductViewComponent  implements OnInit {
       searchTags: ['Herb', 'Riesling']
     },
     {
-      _id: 3,
-      name: 'Wine D',
+      _id: 6,
+      name: 'Wine G',
       geschmack: 'Dry',
       rebsorte: 'Cabernet Sauvignon',
       preis: 32.99,
@@ -159,14 +160,13 @@ export class ProductViewComponent  implements OnInit {
     },
   ];
 
-  filterDataWine=[];
+  filterDataWine = this.mockDataWine;
 
-  
-  slides=[
-    {url: '../../assets/grauburgunder.png', titel: 'Selbst gemacht'},
-    {url: '../../assets/weinmenue_rosewein.jpg', titel: 'Neues von der Weinproduktion', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.'},
-    {url: '../../assets/weinmenue_rotwein.jpg', titel: 'Hier und jetzt ', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.'},
-    {url: '../../assets/weinmenue_weisswein.jpg', titel: 'neunes Ettikett', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.'},
+  slides = [
+    { url: '../../assets/grauburgunder.png', titel: 'Selbst gemacht' },
+    { url: '../../assets/weinmenue_rosewein.jpg', titel: 'Neues von der Weinproduktion', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.' },
+    { url: '../../assets/weinmenue_rotwein.jpg', titel: 'Hier und jetzt ', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.' },
+    { url: '../../assets/weinmenue_weisswein.jpg', titel: 'neunes Ettikett', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.' },
   ];
 
   /* Arrays */
@@ -174,9 +174,9 @@ export class ProductViewComponent  implements OnInit {
   rebsorten = ['Riesling', 'Burgunder', 'Rivaner', 'Dornfelder'];
   navWein = ['Weißwein', 'Rotwein', 'Roséwein', 'Sekt'];
   weinmenueBilder = ['../assets/weinmenue_weisswein.jpg', '../assets/weinmenue_rotwein.jpg', '../assets/weinmenue_rosewein.jpg', '../assets/weinmenue_schaumwein.jpg'];
-  productViewList:boolean = false;
+  productViewList: boolean = false;
 
-  /*Form Controls */ 
+  /*Form Controls */
   formGeschmack = new FormGroup({
     geschmack: new FormControl(''),
     trockenCount: new FormControl(0),
@@ -194,6 +194,12 @@ export class ProductViewComponent  implements OnInit {
     dornfelderCount: new FormControl(4)
   });
 
+  /*Filter Objects */
+  filters: WeinFilters = {
+    geschmack: null, 
+    rebsorte: null, 
+  };
+
   /* Variables */
   base64String: string | undefined;
 
@@ -204,40 +210,45 @@ export class ProductViewComponent  implements OnInit {
   }
 
   ngOnInit(): void {
-    this.formGeschmack.get('geschmack')?.valueChanges.subscribe((value) => {
-      console.log('Selected Geschmack:', value);
-      this.formGeschmack.get('suess')?.valueChanges.subscribe((value) => {
-        console.log('Selected Suess:', value);
-      });
-    });
-
     this.initializeCounterForProduct();
+    this.subscribeFilters();
   }
+
+
 
   counterForm: FormGroup | undefined;
 
   initializeCounterForProduct() {
     this.counterForm = new FormGroup({});
-
     this.mockDataWine.forEach((item, index) => {
       this.counterForm?.addControl(`product-${index}`, new FormControl(1, [Validators.min(1)]));
     });
   }
+  subscribeFilters() {
+    this.formGeschmack.get('geschmack')?.valueChanges.subscribe((value) => {
+      this.setFiltersGeschmack(value);
+    });
+    this.formRebsorte.get('rebsorte')?.valueChanges.subscribe((value) => {
+      this.setFiltersRebsorte(value);
+    });
+  }
+
 
   addProductToCart(i: number, product: Wein) {
     const control = this.counterForm?.get(`product-${i}`);
 
-  if (control) {
-    const quantity = control.value;
+    if (control) {
+      const quantity = control.value;
 
-    const newProduct: CartItem = {
-      wein: product,
-      produktAnzahl: quantity || 1
-    };
-    
-    this.cartService.addToCart(newProduct);
-    this.cartService.setcartVisibilityTrue();
-  }
+      const newProduct: CartItem = {
+        wein: product,
+        produktAnzahl: quantity || 1
+      };
+
+      this.cartService.addToCart(newProduct);
+      console.log("set card visibility auf true");
+      this.cartService.setcartVisibilityTrue();
+    }
   }
 
   public fetchDatafromBackend(): void {
@@ -259,10 +270,54 @@ export class ProductViewComponent  implements OnInit {
     return "Ursprung " + date.getFullYear();
   }
 
-  toggleProductViewList(): boolean{
+  toggleProductViewList(): boolean {
     this.productViewList = !this.productViewList;
     return this.productViewList;
   }
 
+  removeAllFilters(): void {
+    console.log("remove all filters");
+   this.filters = {
+      geschmack: null,
+      rebsorte: null
+    }
+    this.formGeschmack.controls.geschmack.setValue(null);
+    this.formRebsorte.controls.rebsorte.setValue(null);
+    this.addFilters();
+  }
+
+  addFilters(): void {
+    this.filterDataWine = this.mockDataWine.filter((wine) => {
+      const geschmackFilter = !this.filters.geschmack || wine.searchTags.includes(this.filters.geschmack);
+      const rebsorteFilter = !this.filters.rebsorte || wine.searchTags.includes(this.filters.rebsorte);
+      return geschmackFilter && rebsorteFilter;
+    });
+  }
+
+  setFiltersGeschmack(value: any) {
+    this.filters.geschmack = value;
+    if(!value){
+      this.formGeschmack.controls.geschmack.setValue(null);
+    }
+    this.addFilters();
+  }
+
+  setFiltersRebsorte(value: any) {
+    this.filters.rebsorte = value;
+    if(!value){
+      this.formRebsorte.controls.rebsorte.setValue(null);
+    }
+    this.addFilters();
+  }
+  
+
+  getObjectValues(obj: any): any[] {
+    return Object.values(obj).filter(value => value !== null);
+  }
+
+  toggleFilter() {
+    const filterButton = document.querySelector('.toggle-product-view__filter');
+    filterButton?.classList.toggle('active');
+  }
 }
 

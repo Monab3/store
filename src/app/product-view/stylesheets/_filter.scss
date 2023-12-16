@@ -17,8 +17,8 @@
     @include flexbox($justify: flex-start, $wrap: wrap, $align: stretch);
     @include gap-component;
     @include padding-component;
-    
-
+    @include hide-for-medium;
+    @include hide-for-small;
     &__form{
         @include flexbox;
         @include gap-element;
@@ -43,5 +43,14 @@
         background: $color-green-light;
         color: $color-green-dark;
     }
+    & > button{
+        @include hide-for-large;
+    }
 }
 
+
+.toggle-product-view{
+    & > section{
+        @include hide-for-large;
+    }
+}

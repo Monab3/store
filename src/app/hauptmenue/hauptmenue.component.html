@@ -1,7 +1,7 @@
 <div class="hauptmenu">
     <div class="page">
         <nav class="hauptmenu__nav__container">
-            <button *ngFor="let nav of navWein; index as i" class="interaction-button font-interactive-element">
+            <button *ngFor="let nav of navWein; index as i" class="nav-button font-interactive-element">
                 <span class="font-interactive-element">{{nav}}</span>
             </button>
             <button class="hauptmenu__open-cart-button" (click)="togglecart()">

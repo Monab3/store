@@ -1,0 +1,75 @@
+@import "../../../shared/stylesheets/mixins/mixins";
+@import "../../../shared/stylesheets/mixins/mixins-layout";
+@import "../../../shared/stylesheets/mixins/mixins-effects";
+
+@import "../../../shared/stylesheets/tools/typographie";
+@import "../../../shared/stylesheets/tools/variables";
+
+@import "../../../shared/stylesheets/elements/controls";
+@import "../../../shared/stylesheets/components/quantity_selector";
+
+.toggle-product-view {
+    width: 100%;
+    @include flexbox($direction: row, $justify: space-between, $align: stretch, $wrap: wrap);
+    & > ul{
+        @include flexbox($direction: row, $justify: space-between, $align: flex-end, $wrap: wrap);
+        @include gap-element;
+    }
+    &__controls {
+        @include flexbox($direction: row, $justify: space-between, $align: flex-end, $wrap: wrap);
+        & button {
+            &:hover {
+                stroke: $color-red-signal;
+            }
+        }
+        & button:first-child {
+            @include margin-element($top: false, $right: true, $bottom: false, $left: false);
+        }
+    }
+}
+
+.toggle-product-view__controls {
+    display: flex;
+    align-items: flex-end; /* Align items at the bottom */
+}
+
+.toggle-product-view__controls button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.toggle-product-view__controls .color-red-dark svg rect {
+    stroke: $color-red-dark;
+}
+
+.toggle-product-view__controls button:hover svg rect{
+    stroke: $color-red-dark;
+}
+
+.toggle-product-view__filter{
+   & span {
+        display: block;
+        width: 26px;
+        height: 2px;
+        background-color: $color-green-dark;
+        transition: all 300ms ease-in-out;
+        transform-origin: 3px 1px;
+  
+        &:not(:last-child){
+          margin-bottom: 5px;
+        }
+    }
+}
+
+.toggle-product-view__filter.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+
+  .toggle-product-view__filter.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .toggle-product-view__filter.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }

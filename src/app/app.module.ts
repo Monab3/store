@@ -25,7 +25,6 @@ import { TestofresponsiveComponent } from './testofresponsive/testofresponsive.c
     HeroElementCarouselComponent,
     WeinDetailseiteComponent,
     TestofresponsiveComponent,
-
   ],
   imports: [
     BrowserModule,

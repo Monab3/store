@@ -365,3 +365,22 @@
 @mixin grid__span--adjust {
   grid-column: auto;
 }
+
+@mixin hide-for-small{
+  @media only screen and (max-width: $breakpoint-small--minus) {
+      display:none;
+}
+}
+
+@mixin hide-for-medium{
+  @media only screen and (max-width: $breakpoint-medium--minus) and (min-width: $breakpoint-small) {
+      display:none;
+}
+
+}
+
+@mixin hide-for-large{
+  @media only screen and (min-width: $breakpoint-medium) {
+    display: none;
+  }
+}

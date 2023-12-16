@@ -2,57 +2,54 @@
     <div class="page__grid">
         <!-- Kartenfilter -->
         <section class="page__grid__filter filter">
-            <h2 class="h2--white"> Filter</h2>
-            <p-accordion [multiple]="true" [activeIndex]="[0]">
-                <p-accordionTab header="Geschmack">
-                    <form [formGroup]="formGeschmack" class="filter__form">
-                        <div *ngFor="let geschmack of geschmaecker" class="filter__radio">
-                            <label class="filter__radio__label text-regular--light">
-                                <input type="radio" formControlName="geschmack" [value]="geschmack">
-                                {{ geschmack }}
-                            </label>
-                            <p class="filter__count text-regular">{{ formGeschmack.get(geschmack.toLowerCase() +
-                                'Count')?.value }}</p>
-                        </div>
-                    </form>
-                </p-accordionTab>
-                <p-accordionTab header="Rebsorte">
-                    <form [formGroup]="formRebsorte" class="filter__form"> 
-                        <div *ngFor="let rebsorte of rebsorten" class="filter__radio">
-                            <label class="filter__radio__label text-regular--light">
-                                <input type="radio" formControlName="rebsorte" [value]="rebsorte"> {{ rebsorte }}
-                            </label>
-                            <p class="filter__count text-regular">{{ formRebsorte.get(rebsorte.toLowerCase() +
-                                'Count')?.value }}</p>
-                        </div>
-                    </form>
-                </p-accordionTab>
-            </p-accordion>
-        </section>
+        <ng-container *ngTemplateOutlet="accordionContent"></ng-container>
+        </section> 
         <!-- Hier beginnt die Produktübersicht -->
-        <section class="page__grid__produkt produkt__grid">
+        <section  class="page__grid__produkt produkt__grid">
             <!--Button, die die Produkte Toggeln-->
-            <aside class="produkt__grid__toggle-product-view">
-                <button (click)="toggleProductViewList()"
-                    class="toggle-product-view__button toggle-product-view__first-child">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="0.5" y="0.5" width="10" height="10" rx="1.5" fill="white" stroke="#6D865E" />
-                        <rect x="0.5" y="13.5" width="10" height="10" rx="1.5" fill="white" stroke="#6D865E" />
-                        <rect x="13.5" y="0.5" width="10" height="10" rx="1.5" fill="white" stroke="#6D865E" />
-                        <rect x="13.5" y="13.5" width="10" height="10" rx="1.5" fill="white" stroke="#6D865E" />
-                    </svg>
+            <section class="produkt__grid__toggle-product-view toggle-product-view">
+                <section class="filter--small">
+                    <button class="toggle-product-view__filter">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                      </button>
+                </section>
+                <ul id="toggle-product-view_ul">
+                    <li *ngIf="filters.geschmack">
+                      <button class="remove__button" (click)="setFiltersGeschmack(null)">
+                        <span>{{ filters.geschmack }}</span>
+                        <i class="bi bi-x-lg bi-2x"></i>
+                      </button>
+                    </li>
 
+                    <li *ngIf="filters.rebsorte">
+                        <button class="remove__button" (click)="setFiltersRebsorte(null)">
+                          <span>{{ filters.rebsorte }}</span>
+                          <i class="bi bi-x-lg bi-2x"></i>
+                        </button>
+                      </li>
+                  </ul>
+                <nav class="toggle-product-view__controls">
+                    <button (click)="toggleProductViewList()"[ngClass]="{ 'color-red-dark': !productViewList}">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="0.5" y="0.5" width="10" height="10" rx="1.5" stroke="#6D865E"/>
+                                <rect x="0.5" y="13.5" width="10" height="10" rx="1.5" stroke="#6D865E"/>
+                                <rect x="13.5" y="0.5" width="10" height="10" rx="1.5" stroke="#6D865E"/>
+                                <rect x="13.5" y="13.5" width="10" height="10" rx="1.5" stroke="#6D865E"/>
+                                </svg> 
+                            
+                    </button>
+                <button (click)="toggleProductViewList()" [ngClass]="{ 'color-red-dark': productViewList}">
+                    <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="0.5" y="0.5" width="23" height="10" rx="5" stroke="#6D865E"/>
+                        <rect x="0.5" y="14.5" width="23" height="10" rx="5" stroke="#6D865E"/>
+                        </svg>
                 </button>
-                <button (click)="toggleProductViewList()" class="toggle-product-view__button">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="0.5" y="0.5" width="23" height="5" rx="2.5" fill="white" stroke="#6D865E" />
-                        <rect x="0.5" y="9.5" width="23" height="5" rx="2.5" fill="white" stroke="#6D865E" />
-                        <rect x="0.5" y="18.5" width="23" height="5" rx="2.5" fill="white" stroke="#6D865E" />
-                    </svg>
-                </button>
-            </aside>
+            </nav>
+        </section>
             <!--Produkte, als Karten oder Listen-->
-            <article *ngFor="let produkt of mockDataWine; index as i"
+            <article *ngFor="let produkt of filterDataWine; index as i"
                 [ngClass]="{ 'produkt__grid__card-list': productViewList, 'card-list': productViewList, 'produkt__grid__card': !productViewList, 'card': !productViewList }">
                 <header>
                     <p class="text-regular--red-dark">{{dateConverter(produkt.herstellungsDatum)}}</p>
@@ -111,3 +108,33 @@
         </section>
     </div>
 </main>
+
+<ng-template #accordionContent>
+        <h2 class="h2--white"> Filter</h2>
+        <button class="button button__tertiary button__tertiary--font-light" (click)="removeAllFilters()"><span>Filter entfernen</span></button>
+        <p-accordion [multiple]="true" [activeIndex]="[0,1]">
+            <p-accordionTab header="Geschmack">
+                <form [formGroup]="formGeschmack" class="filter__form">
+                    <div *ngFor="let geschmack of geschmaecker" class="filter__radio">
+                        <label class="filter__radio__label text-regular--light">
+                            <input type="radio" formControlName="geschmack" [value]="geschmack">
+                            {{ geschmack }}
+                        </label>
+                        <p class="filter__count text-regular">{{ formGeschmack.get(geschmack.toLowerCase() +
+                            'Count')?.value }}</p>
+                    </div>
+                </form>
+            </p-accordionTab>
+            <p-accordionTab header="Rebsorte">
+                <form [formGroup]="formRebsorte" class="filter__form"> 
+                    <div *ngFor="let rebsorte of rebsorten" class="filter__radio">
+                        <label class="filter__radio__label text-regular--light">
+                            <input type="radio" formControlName="rebsorte" [value]="rebsorte"> {{ rebsorte }}
+                        </label>
+                        <p class="filter__count text-regular">{{ formRebsorte.get(rebsorte.toLowerCase() +
+                            'Count')?.value }}</p>
+                    </div>
+                </form>
+            </p-accordionTab>
+        </p-accordion>
+</ng-template>

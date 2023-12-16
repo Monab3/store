@@ -19,6 +19,7 @@
    &__produkt {
       @include grid__span__quarter--mg-lg($multipy: 3);
       width: 100%;
+      align-self: flex-start;
    }
 }
 
