@@ -5,6 +5,7 @@
 .page {
     width: min($min-width-page,$max-width-page);
     margin: 0 auto; //centers container
+    position: relative;
     &__grid{
         @include grid;
         gap: $gap-container;

@@ -1,4 +1,13 @@
 <div class="hauptmenu">
+    <nav class="hauptmenu__nav--small hide-for-medium hide-for-large" [ngClass]="{'hauptmenu__nav--small--open': hauptmenuButtonOpen}">
+        <ul>
+            <li *ngFor="let nav of navWein; index as i">
+        <button  class="nav-button font-interactive-element " >
+            <span class="font-interactive-element">{{nav}}</span>
+        </button>
+    </li>
+    </ul>
+    </nav>
     <div class="page">
         <nav class="hauptmenu__nav__container">
             <button *ngFor="let nav of navWein; index as i" class="nav-button font-interactive-element hauptmenu__nav__button--hide">
@@ -13,24 +22,13 @@
                     <br>
                     {{cartTotal}} €</span>
             </button>
-        </nav>
-        <ng-container *ngTemplateOutlet="cart">
+        </nav>  
 
-        </ng-container>
-        <nav class="hauptmenu__nav--small hide-for-medium hide-for-large" [ngClass]="{'hauptmenu__nav--small--open': hauptmenuButtonOpen}">
-            <ul>
-                <li *ngFor="let nav of navWein; index as i">
-            <button  class="nav-button font-interactive-element" >
-                <span class="font-interactive-element">{{nav}}</span>
-            </button>
-        </li>
-        </ul>
-        </nav>
     </div>
 </div>
 
 <ng-template #cart>
-    <article [ngClass]="{'cart__container': cartVisibility, 'cart__container--hidden': !cartVisibility}">
+       <article [ngClass]="{'cart__container': cartVisibility, 'cart__container--hidden': !cartVisibility}">
         <header class="cart__header">
             <p class="text-regular--red-dark">Ihr Warenkorb, <span class="text-regular">{{cartAnzahl }}Artikel</span></p>
             <button class="interaction-icon" (click)="togglecart()">
