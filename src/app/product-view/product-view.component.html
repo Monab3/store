@@ -105,26 +105,28 @@
                         </li>
                     </ul>
                 </section>
-                <footer>
-                    <h3 class="h3">{{produkt.preis}} €</h3>
-
-                    <form *ngIf="counterForm" class="form__number" [formGroup]="counterForm">
-                        <input type="number" formControlName="product-{{i}}"
+                <footer class="selector__footer__grid">
+                        <h3 class="h3">{{produkt.preis}} €</h3>
+                        <form *ngIf="counterForm" class="selector__grid" [formGroup]="counterForm">
+                            <button class="selector__control" (click)="handleMinus(i)"><i
+                                    class="bi bi-dash-lg"></i></button>
+                            <input type="number" class="selector" formControlName="product-{{i}}"
                             [class.form__number__invalid]="counterForm?.get('product-' + i)?.invalid && counterForm?.get('product-' + i)?.touched" />
-                        <button class="button button__main" (click)="addProductToCart(i, produkt)">
-                            In den Warenkorb
-                        </button>
+                            <button class="selector__control" (click)="handlePlus(i)"><i
+                                    class="bi bi-plus-lg"></i></button>
+                        </form>
+                    <p *ngIf="counterForm?.get('counter')?.invalid && counterForm?.get('counter')?.touched"
+                        class="text-regular--invalid"
+                        [ngClass]="{'disabled': counterForm?.get('counter')?.invalid, 'notDisabled': !counterForm?.get('counter')?.invalid}">
+                        Zahl zwischen 1 und 100 eingeben
+                    </p>
 
-                        <p *ngIf="counterForm?.get('product-' + i)?.invalid && counterForm?.get('product-' + i)?.touched"
-                            class="text-regular--red-signal">
-                            Zahl zwischen 1 und 100 eingeben
-                        </p>
-                    </form>
-                    <p [ngClass]="{ 'card-list__footer__text': productViewList, 'card__footer__text': !productViewList }"
-                        class=" text-fine">{{produkt.fuellmenge}}l | {{produkt.preisProLiter}}€ | inkl.
-                        MwSt.
+                    <button class="button button__main" (click)="addProductToCart(i, produkt)">
+                        In den Warenkorb
+                    </button>
+                    <p class="text-fine">{{produkt.fuellmenge}}l | {{produkt.preisProLiter}}€ | inkl. MwSt.
                         zzgl.
-                        <span class="font-link--small">Verstand</span>
+                        <span class="font-link--fine">Verstand</span>
                     </p>
                 </footer>
             </article>

@@ -23,7 +23,7 @@ import { WeinDetailseiteComponent } from './wein-detailseite/wein-detailseite.co
     ProductViewComponent,
     HeroElementCarouselComponent,
     WeinDetailseiteComponent,
-  ],
+      ],
   imports: [
     BrowserModule,
     AppRoutingModule,

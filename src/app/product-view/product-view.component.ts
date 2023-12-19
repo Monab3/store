@@ -251,7 +251,6 @@ export class ProductViewComponent implements OnInit {
       };
 
       this.cartService.addToCart(newProduct);
-      console.log("set card visibility auf true");
       this.cartService.setcartVisibilityTrue();
     }
   }
@@ -329,6 +328,26 @@ export class ProductViewComponent implements OnInit {
 
   toggleFilterButton() {
     this.filterButtonSmallOpen = !this.filterButtonSmallOpen;
+  }
+
+  handleMinus(i: number) {
+    const control = this.counterForm?.get('product-' + i);
+    if (control) {
+      const currentValue = control.value;
+      if (currentValue !== null && currentValue >= 2) {
+        control.setValue(currentValue - 1);
+      } else {
+        control.setValue(1);
+      }
+    }
+  }
+  
+  handlePlus(i: number) {
+    const control = this.counterForm?.get('product-' + i);
+    if (control) {
+      const currentValue = control.value || 0;
+      control.setValue(currentValue + 1);
+    }
   }
 }
 

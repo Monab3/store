@@ -67,22 +67,7 @@
    & > footer {
       width: 100%;
       @include border($border-property: border-top, $width: $border-width, $style: solid, $color: $color-green-dark);
-      align-self: flex-end;
       @include padding-element($left: false, $right: false, $bottom: false);
- 
-
-      &>form {
-         width: 100%;
-         @include padding-element($right: false, $left: false);
-         @include gap-element;
-         @include flexbox($direction: row, $justify: space-between, $align: center, $wrap: wrap);
-         
-         & > button {
-            width: 80%;
-         }
-      }
-
-      @include footer-text;
    }
 
    &__img {
@@ -115,21 +100,8 @@
       order: 3;
       width: auto;
       @include padding-element($left: false, $right: false, $bottom: false);
-
-      &>form {
-         @include padding-element($right: false, $left: false);
-         @include gap-element;
-         @include flexbox($direction: column, $justify: space-between, $align: flex-end, $wrap: wrap);
-
-         &>button {
-            width: 100%;
-         }
-         & > input{
-            width: 100%;
-         }
-      }
-
       @include footer-text;
+      width: 25%;
    }
    &--full-width{
       width: 100%!important;

@@ -21,7 +21,7 @@
             display: none;
         }
 
-        & >* {
+        &>* {
             width: 100%;
             @include padding-component;
         }
@@ -88,6 +88,7 @@
         background-color: $color-green-light;
         @include flexbox($direction: column, $justify: center, $wrap: nowrap, $align: stretch);
         @include gap-element;
+
         &__container {
             @include flexbox($direction: row, $justify: space-between, $wrap: nowrap, $align: stretch);
             width: 100%;
@@ -149,24 +150,26 @@
 }
 
 
-.hauptmenu__open-cart-button{
-            flex-grow: 1;
-            @include flexbox($direction: row, $justify: center, $wrap: nowrap, $align: center);
-            color: $color-green-dark;
-            &:hover {
-                color: $color-red-dark;
-                & > * {
-                    color: $color-red-dark;
-                }
-            }
-            &__icon {
-                color: $color-green-dark;
-                font-size: 1.5rem !important;
-            }
-            &__text {
-                text-align: start;
-                @include margin-element($top: false, $right: false, $bottom: false, $left: true);
-            }
+.hauptmenu__open-cart-button {
+    flex-grow: 1;
+    @include flexbox($direction: row, $justify: center, $wrap: nowrap, $align: center);
+    color: $color-green-dark;
 
+    &:hover {
+        color: $color-red-dark;
 
+        &>* {
+            color: $color-red-dark;
         }
+    }
+
+    &__icon {
+        color: $color-green-dark;
+        font-size: 1.5rem !important;
+    }
+
+    &__text {
+        text-align: start;
+        @include margin-element($top: false, $right: false, $bottom: false, $left: true);
+    }
+}

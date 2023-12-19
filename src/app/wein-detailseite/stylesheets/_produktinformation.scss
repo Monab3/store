@@ -10,22 +10,17 @@
 
 .produktinformation{
     &__container{
-
         @include flexbox($direction: column, $justify: center, $wrap: wrap);
         @include padding-component;
         @include gap-component;
         background: $color-light;
-        @include border($color: $color-green-light);
-        border-radius: $border-radius;
-        max-width: 25%;
-
-        & > *{
-            @include flexbox($direction: column, $justify: space-between, $wrap: wrap);
-            @include gap-element;
-            width: 100%;
-        }
+        @include border($color: $color-green-light); //check
+        border-radius: $border-radius; //check
     }
     &__header{
+        @include flexbox($direction: column, $justify: space-between, $wrap: wrap);
+        @include gap-element;
+        width: 100%;
         &__titel{
             text-align: start;
             &:first-child{
@@ -47,6 +42,9 @@
         }
     }
     &__section{
+        @include flexbox($direction: column, $justify: space-between, $wrap: wrap);
+        @include gap-element;
+        width: 100%;
         &__ul{
             @include flexbox($direction: column, $justify: space-between, $wrap: nowrap);
         }
@@ -57,9 +55,8 @@
 
     &__footer{
         &__line{
-            width: 100%;
             border-bottom: $border-width;
-            color: $color-gradient-green-light;
+            border-color: $color-gradient-green-light;
         }
     }
 

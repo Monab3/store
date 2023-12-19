@@ -1,0 +1,37 @@
+@import "../../../shared/stylesheets/mixins/mixins";
+@import "../../../shared/stylesheets/mixins/mixins-layout";
+@import "../../../shared/stylesheets/mixins/mixins-effects";
+
+@import "../../../shared/stylesheets/tools/typographie";
+@import "../../../shared/stylesheets/tools/variables";
+
+@import "../../../shared/stylesheets/elements/controls";
+
+.page__grid {
+    &__produkt {
+        grid-column: 2 / span 10;
+    }
+}
+.grid-span-3{
+    grid-column: span 3;
+    background: red; 
+}
+
+.produkt__grid {
+    height: 100px;
+    @include grid;
+    gap: $gap-container;
+
+    &__figure {
+        @include grid__span__quarter--mg-lg;
+        text-align: center;
+    }
+
+    &____side-img {
+        @include grid__span__quarter--mg-lg;
+    }
+
+    &__produktinformation {
+        @include grid__span--half;
+    }
+}

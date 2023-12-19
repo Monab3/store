@@ -4,7 +4,7 @@
 @import '../mixins/mixins-layout';
 @import '../mixins/mixins-effects';
 
-.form_field {
+.selector {
     @include effect-drop-shadow-hover();
     padding: $padding-btn-y-small 0;
     text-align: center;
@@ -14,16 +14,17 @@
     appearance: none;
     margin: 0;
     outline: none;
+    grid-column: span 2;
     &::-webkit-inner-spin-button,
     &::-webkit-outer-spin-button {
         -webkit-appearance: none;
         margin: 0;
     }
 
-
-    &__container {
-        @include flexbox($direction: row, $justify: space-between, $wrap: nowrap, $align: center);
-        width: 100%;
+    &__grid{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        @include gap-element; 
         padding: $padding-btn-y-small $padding-btn-x-small;
         @include border($color: $color-grey-dark);
         border-radius: $border-radius;
@@ -38,42 +39,46 @@
         }
     }
 
-    &__control {
+    &__control{
+        grid-column: span 1;
         color: $color-green-dark; 
-        ~* {
-            @include margin-element($top: false, $right: false, $bottom: false, $left: true);
-        }
-
-         &:hover{
+        &:hover{
             color: $color-red-dark;
          }
-        &__container {
-            width: 70%;
-            text-align: end;
-        }
     }
-}
+    &__footer {
+        &__grid {
+           display: grid;
+           grid-template-columns: repeat(5, 1fr);
+           @include gap-element;
+  
+           &>h2 {
+              grid-column: span 2;
+              text-align: center center;
+           }
 
-@media only screen and (max-width: 769px) {
-    .form_field {
-        max-width: 100%;
-        margin: 0;
-
-        &__control {
-            display: none;
-            margin: none;
-            margin: 0;
-
-            &__container {
-                width: 100%;
-                max-width: 100%;
-                text-align: center;
-            }
+           &>h3 {
+            grid-column: span 2;
+            text-align: center center;
+         }
+  
+           &>form {
+              grid-column: span 3;
+           }
+  
+           &>button {
+              grid-column: span 5;
+           }
+  
+           &>hr {
+              grid-column: span 5;
+  
+           }
+  
+           & p {
+              grid-column: span 5;
+              text-align: center;
+           }
         }
-
-        &__container {
-            flex-direction: column;
-            justify-content: center;
-        }
-    }
+     }
 }
