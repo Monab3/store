@@ -20,6 +20,7 @@ export class HauptmenueComponent implements OnInit {
 
 
   counterForm: FormGroup = new FormGroup({ count: new FormControl(1, [Validators.min(1)]) });
+  hauptmenuButtonOpen: boolean = false;
 
   constructor(private fb: FormBuilder, private cartService: cartService
   ) {
@@ -49,11 +50,6 @@ export class HauptmenueComponent implements OnInit {
     this.initializeCounterForProduct();
   }
   weinmenueBilder = ['../../assets/weinmenue_weisswein.jpg', '../../assets/weinmenue_rotwein.jpg', '../../assets/weinmenue_rosewein.jpg', '../../assets/weinmenue_schaumwein.jpg'];
-
-
-  public togglecart(): void {
-    this.cartVisibility = !this.cartVisibility;
-  }
 
 
 
@@ -104,6 +100,21 @@ export class HauptmenueComponent implements OnInit {
 
 itemPriceSum(item: CartItem) {
     return (item.wein.preis * item.produktAnzahl).toFixed(2);
+  }
+
+  togglehauptMenuButton() {
+    if(this.cartVisibility){
+      this.cartVisibility = false;
+    }
+    this.hauptmenuButtonOpen = !this.hauptmenuButtonOpen;
+  }
+
+  
+  public togglecart(): void {
+    if(this.hauptmenuButtonOpen)
+    this.hauptmenuButtonOpen = false;
+    this.cartVisibility = !this.cartVisibility;
+
   }
 
 }

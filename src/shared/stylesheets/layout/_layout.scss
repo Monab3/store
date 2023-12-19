@@ -15,3 +15,15 @@
     @include hide-for-small;
 }
 
+.hide-for-small{
+    @include hide-for-small;
+}
+
+.hide-for-medium{
+    @include hide-for-medium;
+}
+
+.hide-for-large{
+    @include hide-for-large;
+}
+

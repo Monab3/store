@@ -1,112 +1,3 @@
-<section class="container">
-    <div class="card__container swiper">
-       <div class="card__content">
-          <div class="swiper-wrapper">
-             <article class="card__article swiper-slide">
-                <div class="card__image">
-                   <img src="assets/img/avatar-1.png" alt="image" class="card__img">
-                   <div class="card__shadow"></div>
-                </div>
- 
-                <div class="card__data">
-                   <h3 class="card__name">Kell Dawx</h3>
-                   <p class="card__description">
-                      Passionate about development and design, 
-                      I carry out projects at the request of users.
-                   </p>
- 
-                   <a href="#" class="card__button">View More</a>
-                </div>
-             </article>
- 
-             <article class="card__article swiper-slide">
-                <div class="card__image">
-                   <img src="assets/img/avatar-2.png" alt="image" class="card__img">
-                   <div class="card__shadow"></div>
-                </div>
- 
-                <div class="card__data">
-                   <h3 class="card__name">Lotw Fox</h3>
-                   <p class="card__description">
-                      Passionate about development and design, 
-                      I carry out projects at the request of users.
-                   </p>
- 
-                   <a href="#" class="card__button">View More</a>
-                </div>
-             </article>
- 
-             <article class="card__article swiper-slide">
-                <div class="card__image">
-                   <img src="assets/img/avatar-3.png" alt="image" class="card__img">
-                   <div class="card__shadow"></div>
-                </div>
- 
-                <div class="card__data">
-                   <h3 class="card__name">Sara Mit</h3>
-                   <p class="card__description">
-                      Passionate about development and design, 
-                      I carry out projects at the request of users.
-                   </p>
- 
-                   <a href="#" class="card__button">View More</a>
-                </div>
-             </article>
- 
-             <article class="card__article swiper-slide">
-                <div class="card__image">
-                   <img src="assets/img/avatar-4.png" alt="image" class="card__img">
-                   <div class="card__shadow"></div>
-                </div>
- 
-                <div class="card__data">
-                   <h3 class="card__name">Jenny Wert</h3>
-                   <p class="card__description">
-                      Passionate about development and design, 
-                      I carry out projects at the request of users.
-                   </p>
- 
-                   <a href="#" class="card__button">View More</a>
-                </div>
-             </article>
-
-             <article class="card__article swiper-slide">
-                <div class="card__image">
-                   <img src="assets/img/avatar-5.png" alt="image" class="card__img">
-                   <div class="card__shadow"></div>
-                </div>
- 
-                <div class="card__data">
-                   <h3 class="card__name">Lexa Kin</h3>
-                   <p class="card__description">
-                      Passionate about development and design, 
-                      I carry out projects at the request of users.
-                   </p>
- 
-                   <a href="#" class="card__button">View More</a>
-                </div>
-             </article>
-          </div>
-       </div>
-
-       <!-- Navigation buttons -->
-       <div class="swiper-button-next">
-          <i class="ri-arrow-right-s-line"></i>
-       </div>
-       
-       <div class="swiper-button-prev">
-          <i class="ri-arrow-left-s-line"></i>
-       </div>
-
-       <!-- Pagination -->
-       <div class="swiper-pagination"></div>
-    </div>
- </section>
-
-
-
-
-
 <div class="page">
      
     <div class="produkt__container">
@@ -115,8 +6,8 @@
         <article class="produktinformation__container">
             <header>
                 <div class="produktinformation__header__titel">
-                    <p class="text-fine--red-dark">{{dateConverter(mockWein.herstellungsDatum)}}</p>
-                    <h3>{{mockWein.name}}</h3>
+                    <p class="text-regular--red-dark">{{dateConverter(mockWein.herstellungsDatum)}}</p>
+                    <h2 class="h2">lalal test test wein</h2>
                 </div>
                 <div class="produktinformation__header__starreview__container">
                     <div class="produktinformation__header__starreview__stars__container">
@@ -146,7 +37,7 @@
                                 d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
                         </svg>
                     </div>
-                    <p class="link">5 Kundenmeinungen</p>
+                    <p class="font-link">5 Kundenmeinungen</p>
                 </div>
             </header>
             <section class="produktinformation__section">
@@ -182,13 +73,13 @@
             </section>
             <footer>
                 <hr class="produktinformation__footer__line">
-                <h2 class="form_field__number">{{mockWein.preis}} €</h2>
+                <h2 class="h2">{{mockWein.preis}} €</h2>
                 <form *ngIf="counterForm" class="form_field__container" [formGroup]="counterForm">
-                    <button class="form_field__control btn-interaction" (click)="handleMinus()"><i
+                    <button class="form_field__control" (click)="handleMinus()"><i
                             class="bi bi-dash-lg"></i></button>
                     <input type="number" class="form_field" formControlName="counter"
                         [class.form_field--invalid]="counterForm?.get('counter')?.invalid && counterForm?.get('counter')?.touched" />
-                    <button class="form_field__control btn-interaction" (click)="handlePlus()"><i
+                    <button class="form_field__control" (click)="handlePlus()"><i
                             class="bi bi-plus-lg"></i></button>
                 </form>
                 <p *ngIf="counterForm?.get('counter')?.invalid && counterForm?.get('counter')?.touched"
@@ -197,12 +88,12 @@
                     Zahl zwischen 1 und 100 eingeben
                 </p>
 
-                <button class="btn btn-main text-btn--white button" (click)="addProductToCart()">
+                <button class="button button__main" (click)="addProductToCart()">
                     In den Warenkorb
                 </button>
                 <p class="text-fine">{{mockWein.fuellmenge}}l | {{mockWein.preisProLiter}}€ | inkl. MwSt.
                     zzgl.
-                    <span class="link">Verstand</span>
+                    <span class="font-link--fine">Verstand</span>
                 </p>
                 <hr class="card__line">
             </footer>

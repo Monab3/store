@@ -11,6 +11,7 @@
   min-width: $width-min-button-desktop;
   min-height: $height-min-btn;
   white-space: nowrap;
+
   & .bi {
     @include margin-atom($top: false, $right: true, $bottom: false, $left: false);
   }
@@ -75,23 +76,26 @@
   @include effect-border-underline($color-bg: $color-red-dark);
   color: $color-green-dark;
   border: none;
-  @include fonts($font-header, $font-size-medium, $font-weight-regular, $color: $color-green-dark);
+  @include fonts($font-header, $font-size-medium, $font-weight-bold, $color: $color-green-dark);
 }
 
-.remove__button{
+.remove__button {
   @include fonts($font-special, $font-size-regular, $font-weight-regular, $color : $color-green-dark);
   border: none;
   background-color: $color-green-light;
   border-radius: $border-radius-max;
   padding: $padding-btn-x $padding-btn-y;
+
   & .bi-x-lg {
     @include margin-element($top: false, $right: false, $bottom: false, $left: true);
-   }
+  }
+
   &:hover,
   &:active {
-    & .bi-x-lg{
+    & .bi-x-lg {
       color: $color-red-signal;
-     }
+    }
+
     outline: $border-width solid $color-green-dark;
   }
 }
@@ -107,6 +111,73 @@
   &:active {
     color: $color-red-signal;
     outline: $border-width solid $color-green-dark;
+  }
+}
+
+.hamburger-button {
+  align-self: center;
+  position: relative;
+  display: block;
+  width: $wdith-interaction-mobile;
+  height: 30px;
+  cursor: pointer;
+  border: none;
+  @include hide-for-large;
+  z-index: 1001;
+
+  &:before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 5px;
+    background-color: $color-green-dark;
+    transition: 0.4s;
+    border-radius: $border-radius;
+    transform-origin: center;
+  }
+
+  &:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 5px;
+    background-color: $color-green-dark;
+    transition: 0.4s;
+    border-radius: $border-radius;
+  }
+
+  & > div {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 5px;
+    background-color: $color-green-dark;
+    @include margin-atom($top: true, $right: false, $bottom: true, $left: false);
+    transition: 0.4s;
+    border-radius: $border-radius;
+
+    &:hover {
+      background-color: $color-red-dark;
+    }
+  }
+
+  &--open {
+    &:before {
+      transform: rotate(45deg) translate(3px, 4px);
+      background-color: $color-red-dark;
+    }
+
+    &:after {
+      transform: rotate(-45deg) translate(5px, -8px);
+      background-color: $color-red-dark;
+    }
+
+    &>div {
+      opacity: 0;
+    }
+  }
+  &--hide-for-medium{
+    @include hide-for-medium;
   }
 }
 

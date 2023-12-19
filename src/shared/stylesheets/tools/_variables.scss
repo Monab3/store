@@ -18,7 +18,7 @@ $color-gradient-green-light: #E1EFD9;
 $color-gradient-green-dark: #64875A;
 $color-gradient-red-light: #D75176;
 $color-gradient-red-dark: #6D3E4B;
-$gradient-green: linear-gradient(90deg, $color-gradient-green-light, 5%, $color-gradient-green-dark 35%);
+$gradient-green:  linear-gradient(90deg, #64AA32 4.86%, #64875A 92.12%);
 $gradient-red: linear-gradient(90deg, $color-gradient-red-light 0%, $color-red-dark 35%);
 
 /* base */
@@ -61,6 +61,7 @@ $padding-icon: 0.25rem;  /* 0.25rem = 4px */
 $padding-btn-x-small: $padding-btn-x * 0.5;  /* 50% of 0.75rem */
 $padding-btn-y-small: $padding-btn-y * 0.5;  /* 50% of 1rem */
 $width-min-button-desktop: 8.125rem;  /* 8.125rem = 130px */
+$wdith-interaction-mobile: 2.5rem;  /* 2.5rem = 40px */ 
 
 /* Min/Max Width Page */
 $min-width-page: 90%;  /* 90% of the viewport width */

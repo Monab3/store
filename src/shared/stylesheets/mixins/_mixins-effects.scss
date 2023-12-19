@@ -1,6 +1,6 @@
 @import '../tools/variables';
 
-@mixin button-effect-slide($background: linear-gradient(90deg, $color-green-light 0%, $color-green-dark 35%), $color-before: darken($color-green-dark, 15%), $color-hover: $color-light) {
+@mixin button-effect-slide($background: $gradient-green, $color-before: $color-green-dark, $color-hover: $color-light) {
     display: inline-block;
     transition: all .3s;
     position: relative;

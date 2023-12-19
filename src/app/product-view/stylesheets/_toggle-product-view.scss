@@ -9,8 +9,9 @@
 @import "../../../shared/stylesheets/components/quantity_selector";
 
 .toggle-product-view {
-    width: 100%;
-    @include flexbox($direction: row, $justify: space-between, $align: stretch, $wrap: wrap);
+    height: 46.396px; 
+    width: 100%; 
+    @include flexbox($direction: row, $justify: space-between, $align: flex-end, $wrap: wrap);
     & > ul{
         @include flexbox($direction: row, $justify: space-between, $align: flex-end, $wrap: wrap);
         @include gap-element;
@@ -46,30 +47,3 @@
 .toggle-product-view__controls button:hover svg rect{
     stroke: $color-red-dark;
 }
-
-.toggle-product-view__filter{
-   & span {
-        display: block;
-        width: 26px;
-        height: 2px;
-        background-color: $color-green-dark;
-        transition: all 300ms ease-in-out;
-        transform-origin: 3px 1px;
-  
-        &:not(:last-child){
-          margin-bottom: 5px;
-        }
-    }
-}
-
-.toggle-product-view__filter.active span:nth-child(1) {
-    transform: rotate(-45deg) translate(-5px, 6px);
-  }
-
-  .toggle-product-view__filter.active span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .toggle-product-view__filter.active span:nth-child(3) {
-    transform: rotate(45deg) translate(-5px, -6px);
-  }

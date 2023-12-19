@@ -14,7 +14,7 @@
         width: 25%;
         @include flexbox($direction: column, $justify: space-between, $wrap: nowrap, $align: stretch);
         position: absolute;
-        z-index: 1000;
+        z-index: 1002;
         display: visible;
 
         &--hidden {

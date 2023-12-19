@@ -161,6 +161,7 @@ export class ProductViewComponent implements OnInit {
   ];
 
   filterDataWine = this.mockDataWine;
+  title: String = ""; 
 
   slides = [
     { url: '../../assets/grauburgunder.png', titel: 'Selbst gemacht' },
@@ -173,8 +174,11 @@ export class ProductViewComponent implements OnInit {
   geschmaecker = ['Trocken', 'Süß', 'Herb', 'Feinherb'];
   rebsorten = ['Riesling', 'Burgunder', 'Rivaner', 'Dornfelder'];
   navWein = ['Weißwein', 'Rotwein', 'Roséwein', 'Sekt'];
+  
   weinmenueBilder = ['../assets/weinmenue_weisswein.jpg', '../assets/weinmenue_rotwein.jpg', '../assets/weinmenue_rosewein.jpg', '../assets/weinmenue_schaumwein.jpg'];
   productViewList: boolean = false;
+  filterButtonSmallOpen: boolean = false;
+  dispayNoProductsFound: boolean = false;
 
   /*Form Controls */
   formGeschmack = new FormGroup({
@@ -196,8 +200,8 @@ export class ProductViewComponent implements OnInit {
 
   /*Filter Objects */
   filters: WeinFilters = {
-    geschmack: null, 
-    rebsorte: null, 
+    geschmack: null,
+    rebsorte: null,
   };
 
   /* Variables */
@@ -225,6 +229,7 @@ export class ProductViewComponent implements OnInit {
     });
   }
   subscribeFilters() {
+
     this.formGeschmack.get('geschmack')?.valueChanges.subscribe((value) => {
       this.setFiltersGeschmack(value);
     });
@@ -277,7 +282,7 @@ export class ProductViewComponent implements OnInit {
 
   removeAllFilters(): void {
     console.log("remove all filters");
-   this.filters = {
+    this.filters = {
       geschmack: null,
       rebsorte: null
     }
@@ -290,13 +295,20 @@ export class ProductViewComponent implements OnInit {
     this.filterDataWine = this.mockDataWine.filter((wine) => {
       const geschmackFilter = !this.filters.geschmack || wine.searchTags.includes(this.filters.geschmack);
       const rebsorteFilter = !this.filters.rebsorte || wine.searchTags.includes(this.filters.rebsorte);
+      this.dispayNoProductsFound = false;
       return geschmackFilter && rebsorteFilter;
     });
+
+    if (this.filterDataWine.length == 0) {
+      this.dispayNoProductsFound = true;
+    }
   }
 
   setFiltersGeschmack(value: any) {
+
     this.filters.geschmack = value;
-    if(!value){
+
+    if (!value) {
       this.formGeschmack.controls.geschmack.setValue(null);
     }
     this.addFilters();
@@ -304,20 +316,19 @@ export class ProductViewComponent implements OnInit {
 
   setFiltersRebsorte(value: any) {
     this.filters.rebsorte = value;
-    if(!value){
+    if (!value) {
       this.formRebsorte.controls.rebsorte.setValue(null);
     }
     this.addFilters();
   }
-  
+
 
   getObjectValues(obj: any): any[] {
     return Object.values(obj).filter(value => value !== null);
   }
 
-  toggleFilter() {
-    const filterButton = document.querySelector('.toggle-product-view__filter');
-    filterButton?.classList.toggle('active');
+  toggleFilterButton() {
+    this.filterButtonSmallOpen = !this.filterButtonSmallOpen;
   }
 }
 

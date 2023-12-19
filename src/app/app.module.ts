@@ -14,7 +14,6 @@ import { HauptmenueComponent } from './hauptmenue/hauptmenue.component';
 import { ProductViewComponent } from './product-view/product-view.component';
 import { HeroElementCarouselComponent } from './hero-element-carousel/hero-element-carousel.component';
 import { WeinDetailseiteComponent } from './wein-detailseite/wein-detailseite.component';
-import { TestofresponsiveComponent } from './testofresponsive/testofresponsive.component';
 
 
 @NgModule({
@@ -24,7 +23,6 @@ import { TestofresponsiveComponent } from './testofresponsive/testofresponsive.c
     ProductViewComponent,
     HeroElementCarouselComponent,
     WeinDetailseiteComponent,
-    TestofresponsiveComponent,
   ],
   imports: [
     BrowserModule,

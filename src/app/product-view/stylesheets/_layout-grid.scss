@@ -21,6 +21,9 @@
       width: 100%;
       align-self: flex-start;
    }
+   &__header{
+      @include grid__span__all;
+   }
 }
 
 .produkt {
