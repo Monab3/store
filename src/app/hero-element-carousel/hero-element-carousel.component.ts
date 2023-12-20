@@ -5,28 +5,16 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
   templateUrl: './hero-element-carousel.component.html',
   styleUrl: './hero-element-carousel.component.scss'
 })
-export class HeroElementCarouselComponent implements OnInit, OnDestroy  {
+export class HeroElementCarouselComponent implements OnInit {
 
   @Input() slides: any[] = [];
   @Input() showTitel: boolean = true;
   @Input() showText: boolean = true;
 
   currentIndex: number = 0;
-  timeoutId?: number;
 
   ngOnInit(): void {
-    this.resetTimer();
-  }
-
-  ngOnDestroy() {
-    window.clearTimeout(this.timeoutId);
-  }
-
-  resetTimer() {
-    if (this.timeoutId) {
-      window.clearTimeout(this.timeoutId);
-    }
-    this.timeoutId = window.setTimeout(() => this.goToNext(), 3000);
+    console.log(this.slides);
   }
 
   goToPrevious(): void {
@@ -35,7 +23,6 @@ export class HeroElementCarouselComponent implements OnInit, OnDestroy  {
       ? this.slides.length - 1
       : this.currentIndex - 1;
 
-    this.resetTimer();
     this.currentIndex = newIndex;
   }
 
@@ -43,16 +30,15 @@ export class HeroElementCarouselComponent implements OnInit, OnDestroy  {
     const isLastSlide = this.currentIndex === this.slides.length - 1;
     const newIndex = isLastSlide ? 0 : this.currentIndex + 1;
 
-    this.resetTimer();
     this.currentIndex = newIndex;
   }
 
   goToSlide(slideIndex: number): void {
-    this.resetTimer();
     this.currentIndex = slideIndex;
   }
 
   getCurrentSlideUrl() {
+    console.log("current Index: "+ this.currentIndex);
     return this.slides[this.currentIndex].url;
   }
 

@@ -21,7 +21,7 @@
         transform: translate(0, -50%);
         right: 32px;
         @include responsive-spacing(font-size, 45px, $medium-factor: 0.5, $minimum-factor: 0.5, $width-small: 0.5);
-        color: $color-grey-dark;
+        color: $color-green-dark;
         z-index: 1;
 
         &:hover {
@@ -35,7 +35,7 @@
         transform: translate(0, -50%);
         left: 32px;
         @include responsive-spacing(font-size, 45px, $medium-factor: 0.5, $minimum-factor: 0.5, $width-small: 0.5);
-        color: $color-grey-dark;
+        color: $color-green-dark;
         z-index: 1;
 
         &:hover {
@@ -47,10 +47,17 @@
     &__slide {
         width: 100%;
         height: 100%;
-        border-radius: $border-radius-max;
+        border-radius: $border-radius;
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
+        &__figure{
+           height: 100%; 
+           overflow: hidden; 
+           & > img {
+               @include responsive-image( true, true, $object-fit: contain);
+           }
+        }
     }
 
     &__dots {
