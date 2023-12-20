@@ -35,6 +35,7 @@ export class ProductViewComponent implements OnInit {
       iventar: 30,
       servierempfehlung: 'Ideal with grilled meats.',
       weinBildString: '../../images/bottle_card_2.png',
+      weinEttiketBildString: "",
       servierBildString: '../../images/bottle_card_2.png',
       searchTags: ['Trocken', 'Riesling']
     },
@@ -59,6 +60,7 @@ export class ProductViewComponent implements OnInit {
       iventar: 40,
       servierempfehlung: 'Pairs well with seafood and salads.',
       weinBildString: '../../images/bottle_card_2.png',
+      weinEttiketBildString: "",
       servierBildString: '../../images/bottle_card_2.png',
       searchTags: ['Süß', 'Riesling']
     },
@@ -83,6 +85,7 @@ export class ProductViewComponent implements OnInit {
       iventar: 25,
       servierempfehlung: 'Great with red meat dishes.',
       weinBildString: '../../images/bottle_card_2.png',
+      weinEttiketBildString: "",
       servierBildString: '../../images/bottle_card_2.png',
       searchTags: ['Herb', 'Rivaner']
     },
@@ -107,6 +110,7 @@ export class ProductViewComponent implements OnInit {
       iventar: 30,
       servierempfehlung: 'Ideal with grilled meats.',
       weinBildString: '../../images/bottle_card_2.png',
+      weinEttiketBildString: "",
       servierBildString: '../../images/bottle_card_2.png',
       searchTags: ['Trocken', 'Riesling']
     },
@@ -131,6 +135,7 @@ export class ProductViewComponent implements OnInit {
       iventar: 40,
       servierempfehlung: 'Pairs well with seafood and salads.',
       weinBildString: '../../images/bottle_card_2.png',
+      weinEttiketBildString: "",
       servierBildString: '../../images/bottle_card_2.png',
       searchTags: ['Herb', 'Riesling']
     },
@@ -155,6 +160,7 @@ export class ProductViewComponent implements OnInit {
       iventar: 25,
       servierempfehlung: 'Great with red meat dishes.',
       weinBildString: '../../images/bottle_card_2.png',
+      weinEttiketBildString: "",
       servierBildString: '../../images/bottle_card_2.png',
       searchTags: ['Dornfelder', 'Riesling']
     },
@@ -162,13 +168,6 @@ export class ProductViewComponent implements OnInit {
 
   filterDataWine = this.mockDataWine;
   title: String = ""; 
-
-  slides = [
-    { url: '../../assets/grauburgunder.png', titel: 'Selbst gemacht' },
-    { url: '../../assets/weinmenue_rosewein.jpg', titel: 'Neues von der Weinproduktion', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.' },
-    { url: '../../assets/weinmenue_rotwein.jpg', titel: 'Hier und jetzt ', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.' },
-    { url: '../../assets/weinmenue_weisswein.jpg', titel: 'neunes Ettikett', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.' },
-  ];
 
   /* Arrays */
   geschmaecker = ['Trocken', 'Süß', 'Herb', 'Feinherb'];
@@ -214,7 +213,6 @@ export class ProductViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.initializeCounterForProduct();
     this.subscribeFilters();
   }
 
@@ -222,12 +220,6 @@ export class ProductViewComponent implements OnInit {
 
   counterForm: FormGroup | undefined;
 
-  initializeCounterForProduct() {
-    this.counterForm = new FormGroup({});
-    this.mockDataWine.forEach((item, index) => {
-      this.counterForm?.addControl(`product-${index}`, new FormControl(1, [Validators.min(1)]));
-    });
-  }
   subscribeFilters() {
 
     this.formGeschmack.get('geschmack')?.valueChanges.subscribe((value) => {
@@ -236,23 +228,6 @@ export class ProductViewComponent implements OnInit {
     this.formRebsorte.get('rebsorte')?.valueChanges.subscribe((value) => {
       this.setFiltersRebsorte(value);
     });
-  }
-
-
-  addProductToCart(i: number, product: Wein) {
-    const control = this.counterForm?.get(`product-${i}`);
-
-    if (control) {
-      const quantity = control.value;
-
-      const newProduct: CartItem = {
-        wein: product,
-        produktAnzahl: quantity || 1
-      };
-
-      this.cartService.addToCart(newProduct);
-      this.cartService.setcartVisibilityTrue();
-    }
   }
 
   public fetchDatafromBackend(): void {
@@ -328,26 +303,6 @@ export class ProductViewComponent implements OnInit {
 
   toggleFilterButton() {
     this.filterButtonSmallOpen = !this.filterButtonSmallOpen;
-  }
-
-  handleMinus(i: number) {
-    const control = this.counterForm?.get('product-' + i);
-    if (control) {
-      const currentValue = control.value;
-      if (currentValue !== null && currentValue >= 2) {
-        control.setValue(currentValue - 1);
-      } else {
-        control.setValue(1);
-      }
-    }
-  }
-  
-  handlePlus(i: number) {
-    const control = this.counterForm?.get('product-' + i);
-    if (control) {
-      const currentValue = control.value || 0;
-      control.setValue(currentValue + 1);
-    }
   }
 }
 

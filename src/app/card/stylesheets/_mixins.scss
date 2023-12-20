@@ -1,0 +1,41 @@
+@import "../../../shared/stylesheets/mixins/mixins";
+@import "../../../shared/stylesheets/mixins/mixins-layout";
+@import "../../../shared/stylesheets/mixins/mixins-effects";
+
+@import "../../../shared/stylesheets/tools/variables";
+@import "../../../shared/stylesheets/tools/typographie";
+
+
+
+
+
+@mixin card {
+    @include border($color: $color-green-light);
+    @include flexbox($direction: row, $justify: space-between, $wrap: wrap);
+    @include effect-drop-shadow-hover();
+    @include padding-component;
+    @include gap-component;
+    height: 100%; 
+    border-radius: $border-radius;
+    background: $color-light;
+ }
+ 
+ @mixin ul {
+    & ul {
+       @include flexbox($direction: column, $justify: flex-start, $wrap: nowrap);
+       @include gap-element;
+       & > * {
+          @include flexbox($direction: row, $justify: flex-start, $wrap: nowrap);
+       }
+    }
+ }
+ 
+ @mixin footer-text{
+    &>h3 {
+       text-align: center;
+    }
+ 
+    &>p {
+       text-align: center;
+    }
+ }

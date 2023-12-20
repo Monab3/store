@@ -54,12 +54,12 @@
   
            &>h2 {
               grid-column: span 2;
-              text-align: center center;
+              @include flexbox($align: flex-start, $justify: center);
            }
 
            &>h3 {
             grid-column: span 2;
-            text-align: center center;
+            @include flexbox($align: flex-start, $justify: center);
          }
   
            &>form {

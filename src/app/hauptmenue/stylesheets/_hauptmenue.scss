@@ -14,7 +14,6 @@
     background-color: $color-green-light;
     width: 100%;
     height: $height-nav;
-    @include margin-page($top: false, $right: false, $bottom: true, $left: false);
 
     &__nav {
         &__container {

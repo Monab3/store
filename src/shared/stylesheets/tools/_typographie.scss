@@ -123,7 +123,7 @@ h4 {
     @include fonts($font-regular, $font-size-regular, $font-weight-regular, $color: $color-blue-link);
     text-decoration: underline;
 
-    &--small {
+    &--fine {
         @include fonts($font-regular, $font-size-extra-small, $font-weight-regular, $color: $color-blue-link);
         text-decoration: underline;
 

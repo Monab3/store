@@ -1,0 +1,67 @@
+@import '../../../shared/stylesheets/layout/layout';
+@import '../../../shared/stylesheets/elements/controls';
+@import "../../../shared/stylesheets/mixins/mixins";
+@import "../../../shared/stylesheets/mixins/mixins-layout";
+@import "../../../shared/stylesheets/mixins/mixins-effects";
+
+@import "../../../shared/stylesheets/tools/variables";
+@import "../../../shared/stylesheets/tools/typographie";
+
+@import "../../../shared/stylesheets/elements/controls";
+@import "../../../shared/stylesheets/components/quantity_selector";
+
+
+.card--detail{
+    width: 100%;
+        @include flexbox($direction: column, $justify: center, $wrap: wrap);
+        @include padding-component;
+        @include gap-component;
+        background: $color-light;
+        @include border($color: $color-green-light); 
+        border-radius: $border-radius; 
+    
+        &__header{
+            @include flexbox($direction: column, $justify: space-between, $wrap: wrap);
+            @include gap-element;
+            width: 100%;
+            &__titel{
+                text-align: start;
+                &:first-child{
+                    @include margin-element($top: false, $right: false, $bottom: true, $left: false);
+    
+                }
+            }
+            &__starreview{
+                &__container{
+                    width: 100%;
+                    @include flexbox($direction: row, $justify: flex-start, $wrap: wrap);
+                    @include gap-element; 
+                }
+                &__stars{
+                    &__container{
+                        @include flexbox($direction: row, $justify: flex-start, $wrap: nowrap);
+                        @include  gap-element;
+                    }
+                }
+            }
+        }
+        &__section{
+            @include flexbox($direction: column, $justify: space-between, $wrap: wrap);
+            @include gap-element;
+            width: 100%;
+            &__ul{
+                @include flexbox($direction: column, $justify: space-between, $wrap: nowrap);
+            }
+            &__li{
+                @include flexbox($direction: row, $justify: space-between, $wrap: nowrap);
+            }
+        }
+    
+        &__footer{
+            &__line{
+                border-bottom: $border-width;
+                border-color: $color-gradient-green-light;
+            }
+        }
+    
+    }

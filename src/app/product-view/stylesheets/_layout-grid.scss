@@ -24,6 +24,7 @@
    }
 
    &__header {
+      @include margin-page($top: true, $right: false, $bottom: false, $left: false);
       @include grid__span__all;
    }
 }

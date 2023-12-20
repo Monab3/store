@@ -9,22 +9,32 @@
 
 .page__grid {
     &__produkt {
-        grid-column: 2 / span 10;
+        grid-column: 3 / span 8;
+        @include padding-container;
     }
-}
-.grid-span-3{
-    grid-column: span 3;
-    background: red; 
+
+    &__background {
+        background-image: url('../../../assets/BackgroundImage.png');
+        background-position: center;
+        background-size: cover;
+    }
+
 }
 
 .produkt__grid {
-    height: 100px;
     @include grid;
     gap: $gap-container;
 
     &__figure {
-        @include grid__span__quarter--mg-lg;
+        @include grid__span--half;
         text-align: center;
+    }
+
+    &__carousel {
+        @include grid__span--all;
+        text-align: center;
+        height: 50vh;
+        display: none;
     }
 
     &____side-img {
@@ -33,5 +43,42 @@
 
     &__produktinformation {
         @include grid__span--half;
+    }
+}
+
+@media only screen and (min-width: 0) and (max-width: $breakpoint-medium--minus) {
+    .page__grid__produkt {
+        grid-column: span 4;
+    }
+
+    .produkt__grid {
+        &__figure {
+            height: 50vh;
+            display: none;
+        }
+
+        &__carousel {
+            display: block;
+        }
+
+        &__produktinformation {
+            @include grid__span--all;
+        }
+    }
+}
+
+@media only screen and (min-width:$breakpoint-medium) and (max-width: $breakpoint-large) {
+    .page__grid__produkt {
+        grid-column: 2 / span 6;
+    }
+
+    .produkt__grid {
+        &__figure {
+            grid-column: 2/ span 6;
+        }
+
+        &__produktinformation {
+            @include grid__span--all;
+        }
     }
 }

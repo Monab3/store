@@ -38,10 +38,11 @@ export class WeinDetailseiteComponent implements OnInit {
     iventar: 30,
     servierempfehlung: 'Ideal with grilled meats.',
     weinBildString: '../../assets/black_noir_weisswein.png',
+    weinEttiketBildString: '../../assets/image 143.png',
     servierBildString: '../../assets/grauburgunder.png',
   }
 
-  url: string = "../../assets/image 143.png";
+
 
 
   constructor(private cartService: cartService
@@ -81,7 +82,7 @@ export class WeinDetailseiteComponent implements OnInit {
       wein: this.mockWein,
       produktAnzahl: quantity || 1
     };
-    
+
     this.cartService.addToCart(newProduct);
     this.cartService.setcartVisibilityTrue();
   }
@@ -90,6 +91,17 @@ export class WeinDetailseiteComponent implements OnInit {
     return "Ursprung " + date.getFullYear();
   }
 
+  /**
+   * Erstellt Slides aus den Bildern des Weins
+   */
 
-
+  createSlidesForCarousel() {
+    const slides = [];
+    slides.push({ url: this.mockWein.weinBildString });
+    slides.push({ url: this.mockWein.weinEttiketBildString });
+    return slides;
   }
+
+
+
+}

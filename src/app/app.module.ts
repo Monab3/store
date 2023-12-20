@@ -14,6 +14,7 @@ import { HauptmenueComponent } from './hauptmenue/hauptmenue.component';
 import { ProductViewComponent } from './product-view/product-view.component';
 import { HeroElementCarouselComponent } from './hero-element-carousel/hero-element-carousel.component';
 import { WeinDetailseiteComponent } from './wein-detailseite/wein-detailseite.component';
+import { CardComponent } from './card/card.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { WeinDetailseiteComponent } from './wein-detailseite/wein-detailseite.co
     ProductViewComponent,
     HeroElementCarouselComponent,
     WeinDetailseiteComponent,
+    CardComponent,
       ],
   imports: [
     BrowserModule,
