@@ -1,6 +1,6 @@
 <main class="page">
-        <section class="page__grid page__grid__background">
-            <div class="page__grid__produkt produkt__grid">
+    <section class="page__grid page__grid__background">
+        <div class="page__grid__produkt produkt__grid">
             <div class="produkt__grid__carousel">
                 <app-hero-element-carousel [showTitel]="false" [showText]="false" [slides]="createSlidesForCarousel()">
                 </app-hero-element-carousel>
@@ -10,7 +10,7 @@
                 <figure class="produkt__img-container">
                     <img class="produkt__img-container__img" src="{{mockWein.weinBildString}}" alt="Wein">
                 </figure>
-                <div class="produkt__side-images-container">
+                <div class="produkt__side-imgs-container">
                     <figure class="produkt__side-img-container">
                         <img class="produkt__side-img-container__img" src="{{mockWein.weinBildString}}" alt="Wein">
                     </figure>
@@ -22,7 +22,150 @@
             </div>
             <app-card [wein]="mockWein" [cardDetail]="true" class="produkt__grid__produktinformation"></app-card>
         </div>
-        </section>
+    </section>
+
+    <section *ngIf="rebsorteInfo" class="steckbrief__container">
+        <h2 class="h2__container-titel">Bewertungen</h2>
+        <div class="steckbrief steckbrief__grid">
+            <div class="steckbrief__info">
+                <table class="steckbrief__info__table">
+                    <tbody>
+                        <tr>
+                            <td class="text-regular">Rebsorte</td>
+                            <td class="text-regular">{{ mockWein.rebsorte }}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-regular">Nettofüllmenge</td>
+                            <td class="text-regular">{{ mockWein.fuellmenge }} L</td>
+                        </tr>
+                        <tr>
+                            <td class="text-regular">Alkoholgehalt</td>
+                            <td class="text-regular">{{ mockWein.alkoholgehalt }} % vol</td>
+                        </tr>
+                        <tr>
+                            <td class="text-regular">Restzucker</td>
+                            <td class="text-regular">{{ mockWein.restZucker }} g/L</td>
+                        </tr>
+                        <tr>
+                            <td class="text-regular">Gesamtsäure</td>
+                            <td class="text-regular">{{ mockWein.gesamtSaeure }} g/L</td>
+                        </tr>
+                        <tr>
+                            <td class="text-regular">Geschmack</td>
+                            <td class="text-regular">{{ mockWein.geschmack }}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-regular">Verschluss</td>
+                            <td class="text-regular">{{ mockWein.verschlussArt }}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-regular">Trinktemperatur</td>
+                            <td class="text-regular">{{ mockWein.trinkTemperatur }} °C</td>
+                        </tr>
+                        <tr>
+                            <td class="text-regular">Lagerfähigkeit</td>
+                            <td class="text-regular">{{ mockWein.lagerfaehigkeit }}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-regular">Allergiehinweise</td>
+                            <td class="text-regular">{{ mockWein.allergieHinweis }}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-regular">Erzeuger</td>
+                            <td class="text-regular">
+                                <p>Weingut Buhrmann-Becher</p>
+                                <p>Talweg 7, 67822 Kalkofen</p>
+                                <p>Deutschland</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <article class="steckbrief__rebsorte">
+                <figure class="steckbrief__rebsorte__img">
+                    <img src="{{rebsorteInfo.rebsorteBild}}" alt="{{rebsorteInfo.bildBeschreibung}}">
+                </figure>
+                <section class="steckbrief__rebsorte__info">
+                    <h2 class="h2--light"> {{rebsorteInfo.rebsorte}}</h2>
+                    <p class="text-regular--light">
+                        {{rebsorteInfo.rebsorteBeschreibung}}
+                    </p>
+                </section>
+            </article>
+        </div>
+    </section>
+
+    <section class="bewertung__container">
+        <h2 class="h2__container-titel">Bewertungen</h2>
+        <p></p>
+        <div class="steckbrief steckbrief__grid">
+            <div class="steckbrief__info">
+                <table class="steckbrief__info__table">
+                    <tbody>
+                        <tr>
+                            <td class="text-regular">Rebsorte</td>
+                            <td class="text-regular">{{ mockWein.rebsorte }}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-regular">Nettofüllmenge</td>
+                            <td class="text-regular">{{ mockWein.fuellmenge }} L</td>
+                        </tr>
+                        <tr>
+                            <td class="text-regular">Alkoholgehalt</td>
+                            <td class="text-regular">{{ mockWein.alkoholgehalt }} % vol</td>
+                        </tr>
+                        <tr>
+                            <td class="text-regular">Restzucker</td>
+                            <td class="text-regular">{{ mockWein.restZucker }} g/L</td>
+                        </tr>
+                        <tr>
+                            <td class="text-regular">Gesamtsäure</td>
+                            <td class="text-regular">{{ mockWein.gesamtSaeure }} g/L</td>
+                        </tr>
+                        <tr>
+                            <td class="text-regular">Geschmack</td>
+                            <td class="text-regular">{{ mockWein.geschmack }}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-regular">Verschluss</td>
+                            <td class="text-regular">{{ mockWein.verschlussArt }}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-regular">Trinktemperatur</td>
+                            <td class="text-regular">{{ mockWein.trinkTemperatur }} °C</td>
+                        </tr>
+                        <tr>
+                            <td class="text-regular">Lagerfähigkeit</td>
+                            <td class="text-regular">{{ mockWein.lagerfaehigkeit }}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-regular">Allergiehinweise</td>
+                            <td class="text-regular">{{ mockWein.allergieHinweis }}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-regular">Erzeuger</td>
+                            <td class="text-regular">
+                                <p>Weingut Buhrmann-Becher</p>
+                                <p>Talweg 7, 67822 Kalkofen</p>
+                                <p>Deutschland</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <article class="steckbrief__rebsorte">
+                <figure class="steckbrief__rebsorte__img">
+                    <img src="{{rebsorteInfo?.rebsorteBild}}" alt="{{rebsorteInfo?.bildBeschreibung}}">
+                </figure>
+                <section class="steckbrief__rebsorte__info">
+                    <h2 class="h2--light"> {{rebsorteInfo?.rebsorte}}</h2>
+                    <p class="text-regular--light">
+                        {{rebsorteInfo?.rebsorteBeschreibung}}
+                    </p>
+                </section>
+            </article>
+        </div>
+    </section>
 
 
 
@@ -123,7 +266,7 @@
 
     <!--<div class="produkt__container page__grid__produktinformation produkt__grid">
         <div class="produkt__background-img"
-            [style]="{ 'background-image': 'url(' + '../../assets/BackgroundImage.png' + ')'}">
+            [style]="{ 'background-img': 'url(' + '../../assets/BackgroundImage.png' + ')'}">
         </div>
         <article class="produktinformation__container">
             <header>
@@ -220,7 +363,7 @@
         </article>
 
         <div class="produkt__side__text__container">
-            <div class="produkt__side-images-container">
+            <div class="produkt__side-imgs-container">
                 <figure class="produkt__side-img-container">
                     <img class="produkt__side-img-container__img" src="{{mockWein.weinBildString}}" alt="Wein">
                 </figure>

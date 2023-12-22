@@ -20,7 +20,7 @@
   }
 }
 
-@mixin responsive-image( $width, $height, $object-fit: cover) {
+@mixin responsive-img( $width, $height, $object-fit: cover) {
   @if $height {
     height: 100%;
   }
@@ -302,18 +302,33 @@
   }
 }
 
-@mixin grid__span--half {
+@mixin grid__span--half($full-for-small: false, $full-for-medium: false) {
   grid-column: span 6;
 
   @media only screen and (min-width: 0) and (max-width:$breakpoint-medium--minus) {
     grid-column: span 2;
 }
 
+
   @media only screen and (min-width:$breakpoint-medium) and (max-width: $breakpoint-large) {
     grid-column: span 4;
   }
 
+  @if $full-for-small {
+    @media only screen and (max-width: $breakpoint-medium--minus) {
+      grid-column: span 4;
+    }
+  }
+
+  @if $full-for-medium {
+    @media only screen and (min-width:$breakpoint-medium) and (max-width: $breakpoint-large) {
+      grid-column: span 8;
+    }
+  }
+  
 }
+
+
 
 @mixin grid__span__quarter--mg-lg($multipy: 1) {
   grid-column: span 3 * $multipy;

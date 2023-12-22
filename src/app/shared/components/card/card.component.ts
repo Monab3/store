@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { cartService } from '../../shared/services/cart.service';
-import { CartItem } from '../../shared/models/CartItem';
-import { Wein } from '../../shared/models/Wein';
+import { cartService } from '../../../../shared/services/cart.service';
+import { CartItem } from '../../../../shared/models/CartItem';
+import { Wein } from '../../../../shared/models/Wein';
 
 @Component({
   selector: 'app-card',
@@ -24,7 +24,7 @@ export class CardComponent implements OnInit {
   url: string = "../../assets/image 143.png";
 
 
-  constructor(private cartService: cartService
+  constructor(private cartService: cartService, 
   ) {
 
   }
@@ -71,8 +71,4 @@ export class CardComponent implements OnInit {
     return "Ursprung " + date.getFullYear();
   }
 }
-
-
-
-
 

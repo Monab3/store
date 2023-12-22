@@ -14,7 +14,7 @@ export interface Wein {
     gesamtSaeure: number;
     verschlussArt: string;
     trinkTemperatur: number;
-    lagerfähigkeit: string;
+    lagerfaehigkeit: string;
     allergieHinweis: string;
     iventar: number;
     servierempfehlung: string;

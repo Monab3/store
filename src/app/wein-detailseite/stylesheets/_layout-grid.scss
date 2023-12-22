@@ -13,6 +13,10 @@
         @include padding-container;
     }
 
+    &__steckbrief {
+        @include grid__span--all;
+    }
+
     &__background {
         background-image: url('../../../assets/BackgroundImage.png');
         background-position: center;
@@ -46,6 +50,18 @@
     }
 }
 
+.steckbrief__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    & .steckbrief__info {
+        grid-column: span 1;
+    }
+
+    & article {
+        grid-column: span 2;
+    }
+}
+
 @media only screen and (min-width: 0) and (max-width: $breakpoint-medium--minus) {
     .page__grid__produkt {
         grid-column: span 4;
@@ -65,6 +81,16 @@
             @include grid__span--all;
         }
     }
+
+    .steckbrief__grid {
+        & .steckbrief__info {
+            grid-column: span 3;
+        }
+
+        & article {
+            grid-column: span 3;
+        }
+    }
 }
 
 @media only screen and (min-width:$breakpoint-medium) and (max-width: $breakpoint-large) {
@@ -79,6 +105,16 @@
 
         &__produktinformation {
             @include grid__span--all;
+        }
+    }
+
+    .steckbrief__grid {
+        & .steckbrief__info {
+            grid-column: span 3;
+        }
+
+        & article {
+            grid-column: span 3;
         }
     }
 }

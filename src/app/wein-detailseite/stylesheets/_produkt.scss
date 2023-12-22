@@ -72,7 +72,7 @@
       }
    }
 
-   &__side-images-container {
+   &__side-imgs-container {
       @include flexbox($direction: row, $justify: flex-end, $align: flex-end, $wrap: nowrap);
       @include gap-element;
    }

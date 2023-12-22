@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 import { cartService } from '../../shared/services/cart.service';
+import { rebsortenService } from '../../shared/services/rebsorten.service';
 import { CartItem } from '../../shared/models/CartItem';
 import { Wein } from '../../shared/models/Wein';
+import { Rebsorte } from '../../shared/models/Rebsorten';
 
 
 @Component({
@@ -33,7 +36,7 @@ export class WeinDetailseiteComponent implements OnInit {
     gesamtSaeure: 4.8,
     verschlussArt: 'Screw Cap',
     trinkTemperatur: 18,
-    lagerfähigkeit: '5 years',
+    lagerfaehigkeit: '5 years',
     allergieHinweis: 'Contains sulfites',
     iventar: 30,
     servierempfehlung: 'Ideal with grilled meats.',
@@ -42,12 +45,14 @@ export class WeinDetailseiteComponent implements OnInit {
     servierBildString: '../../assets/grauburgunder.png',
   }
 
+  rebsorteInfo: Rebsorte | undefined;
 
 
 
-  constructor(private cartService: cartService
-  ) {
 
+  constructor(private cartService: cartService, private rebsortenService: rebsortenService)
+ {
+  this.rebsorteInfo = this.rebsortenService.getRebsorte(this.mockWein.rebsorte);
   }
 
   handleMinus() {

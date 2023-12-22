@@ -12,9 +12,8 @@ import { AccordionModule } from 'primeng/accordion';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HauptmenueComponent } from './hauptmenue/hauptmenue.component';
 import { ProductViewComponent } from './product-view/product-view.component';
-import { HeroElementCarouselComponent } from './hero-element-carousel/hero-element-carousel.component';
 import { WeinDetailseiteComponent } from './wein-detailseite/wein-detailseite.component';
-import { CardComponent } from './card/card.component';
+import {SharedModule } from './shared/shared.module'; 
 
 
 @NgModule({
@@ -22,9 +21,7 @@ import { CardComponent } from './card/card.component';
     AppComponent,
     HauptmenueComponent,
     ProductViewComponent,
-    HeroElementCarouselComponent,
     WeinDetailseiteComponent,
-    CardComponent,
       ],
   imports: [
     BrowserModule,
@@ -34,6 +31,7 @@ import { CardComponent } from './card/card.component';
     BrowserAnimationsModule,
     FormsModule, 
     ReactiveFormsModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

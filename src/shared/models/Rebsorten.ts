@@ -1,6 +1,7 @@
 export interface Rebsorte {
     _id: string,
     rebsorte: string;
-    rebsorteText: string;
-    rebsorteImage?: string;
+    rebsorteBeschreibung: string;
+    rebsorteBild?: string;
+    bildBeschreibung: string;
   }

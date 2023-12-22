@@ -6,3 +6,69 @@
 @import "../../../shared/stylesheets/tools/variables";
 
 @import "../../../shared/stylesheets/elements/controls";
+
+
+.steckbrief {
+  @include border($color: $color-red-dark);
+  border-radius: $border-radius;
+
+  &__container {
+    @include gap-container;
+    @include margin-page($left: false, $right: false, $bottom: false);
+    @include flexbox($direction: column, $justify: space-between, $align: stretch, $wrap: wrap);
+  }
+
+  &__rebsorte {
+    background-color: $color-red-dark;
+    border-radius: 0 $border-radius $border-radius 0;
+    @include padding-component;
+    @include flexbox($direction: row, $justify: space-around, $align: center, $wrap: wrap);
+    @include gap-component; 
+
+    &__img {
+      @include border($color: $color-light);
+      width: 35%;
+      height: auto;
+      border-radius: 50%;
+      & img {
+        @include responsive-img(true, true);
+      }
+    }
+
+    &__info {
+      width: 50%;
+    }
+  }
+
+  &__info {
+    @include padding-component;
+
+    &__table {
+      width: 100%;
+      border-collapse: collapse;
+
+      & tr {
+        @include border($border-property: border-bottom, $color: $color-green-dark);
+
+        td {
+          @include padding-atom($left: false, $right: false);
+
+          &:last-child {
+            text-align: end;
+          }
+        }
+      }
+    }
+
+    & tr:last-child td {
+      border-bottom: none;
+    }
+
+  }
+}
+
+@media only screen and (min-width: 0) and (max-width: $breakpoint-medium--minus) {
+  .steckbrief__rebsorte__info{
+    width: 100%; 
+  }
+}
