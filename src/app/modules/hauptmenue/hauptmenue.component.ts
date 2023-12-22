@@ -1,8 +1,8 @@
 import { Component, EventEmitter, OnInit } from '@angular/core';
 
-import { cartService } from '../../shared/services/cart.service';
+import { cartService } from '../../core/services/cart.service';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { CartItem } from '../../shared/models/CartItem';
+import { CartItem } from '../../core/models/CartItem';
 
 @Component({
   selector: 'app-hauptmenue',

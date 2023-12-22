@@ -1,11 +1,11 @@
-@import "../../../shared/stylesheets/mixins/mixins";
-@import "../../../shared/stylesheets/mixins/mixins-layout";
-@import "../../../shared/stylesheets/mixins/mixins-effects";
+@import '../../../core/stylesheets/mixins/mixins';
+@import '../../../core/stylesheets/mixins/mixins-layout';
+@import '../../../core/stylesheets/mixins/mixins-effects';
 
-@import "../../../shared/stylesheets/tools/typographie";
-@import "../../../shared/stylesheets/tools/variables";
+@import '../../../core/stylesheets/tools/typographie';
+@import '../../../core/stylesheets/tools/variables';
 
-@import "../../../shared/stylesheets/elements/controls";
+@import '../../../core/stylesheets/elements/controls';
 
 .filter {
     background: $gradient-green;

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { cartService } from '../../shared/services/cart.service';
-import { rebsortenService } from '../../shared/services/rebsorten.service';
-import { CartItem } from '../../shared/models/CartItem';
-import { Wein } from '../../shared/models/Wein';
-import { Rebsorte } from '../../shared/models/Rebsorten';
+import { cartService } from '../../core/services/cart.service';
+import { rebsortenService } from '../../core/services/rebsorten.service';
+import { CartItem } from '../../core/models/CartItem';
+import { Wein } from '../../core/models/Wein';
+import { Rebsorte } from '../../core/models/Rebsorten';
 
 
 @Component({

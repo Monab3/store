@@ -10,9 +10,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 /*Angular Components */
 import { AccordionModule } from 'primeng/accordion';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HauptmenueComponent } from './hauptmenue/hauptmenue.component';
-import { ProductViewComponent } from './product-view/product-view.component';
-import { WeinDetailseiteComponent } from './wein-detailseite/wein-detailseite.component';
+import { HauptmenueComponent } from './modules/hauptmenue/hauptmenue.component';
+import { ProductViewComponent } from './modules/product-view/product-view.component';
+import { WeinDetailseiteComponent } from './modules/wein-detailseite/wein-detailseite.component';
 import {SharedModule } from './shared/shared.module'; 
 
 

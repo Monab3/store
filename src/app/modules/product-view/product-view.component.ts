@@ -1,11 +1,11 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { rebsortenService } from '../../shared/services/rebsorten.service';
-import { cartService } from '../../shared/services/cart.service';
-import { base64ToImageConverter } from '../../shared/services/base64ToImageConverter.service';
+import { rebsortenService } from '../../core/services/rebsorten.service';
+import { cartService } from '../../core/services/cart.service';
+import { base64ToImageConverter } from '../../core/services/base64ToImageConverter.service';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { CartItem } from '../../shared/models/CartItem';
-import { Wein } from '../../shared/models/Wein';
-import { WeinFilters } from '../../shared/models/WeinFilters';
+import { CartItem } from '../../core/models/CartItem';
+import { Wein } from '../../core/models/Wein';
+import { WeinFilters } from '../../core/models/WeinFilters';
 
 @Component({
   selector: 'app-product-view',

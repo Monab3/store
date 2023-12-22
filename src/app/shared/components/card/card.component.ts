@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { cartService } from '../../../../shared/services/cart.service';
-import { CartItem } from '../../../../shared/models/CartItem';
-import { Wein } from '../../../../shared/models/Wein';
+import { cartService } from '../../../core/services/cart.service';
+import { CartItem } from '../../../core/models/CartItem';
+import { Wein } from '../../../core/models/Wein';
 
 @Component({
   selector: 'app-card',
