@@ -5,7 +5,7 @@ import { WeinDetailseiteComponent } from './modules/wein-detailseite/wein-detail
 
 const routes: Routes = [
   { path: '', component: ProductViewComponent },
-{ path: 'wein-detail', component: WeinDetailseiteComponent },];
+{ path: 'detail', component: WeinDetailseiteComponent },];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

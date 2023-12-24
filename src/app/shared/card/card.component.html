@@ -90,9 +90,10 @@
         <hr class="card__footer__line">
     </footer>
 </article>
-
+<a routerLink="/detail">
 <article *ngIf="wein && cardProduktView" 
 [ngClass]="{ 'card-list--produkt-view': productViewList, 'card--produkt-view': !productViewList }">
+
 <header>
     <p class="text-regular--red-dark">{{dateConverter(wein.herstellungsDatum)}}</p>
     <h3 class="h3">{{wein.name}}</h3>
@@ -148,6 +149,7 @@
     </p>
 </footer>
 </article>
+</a>
 
 
 

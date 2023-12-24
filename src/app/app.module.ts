@@ -13,7 +13,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HauptmenueComponent } from './modules/hauptmenue/hauptmenue.component';
 import { ProductViewComponent } from './modules/product-view/product-view.component';
 import { WeinDetailseiteComponent } from './modules/wein-detailseite/wein-detailseite.component';
-import {SharedModule } from './shared/shared.module'; 
+import { HeroElementCarouselComponent } from './shared/hero-element-carousel/hero-element-carousel.component';
+import { CardComponent } from './shared/card/card.component';
+
 
 
 @NgModule({
@@ -22,6 +24,8 @@ import {SharedModule } from './shared/shared.module';
     HauptmenueComponent,
     ProductViewComponent,
     WeinDetailseiteComponent,
+    HeroElementCarouselComponent,
+    CardComponent
       ],
   imports: [
     BrowserModule,
@@ -31,7 +35,6 @@ import {SharedModule } from './shared/shared.module';
     BrowserAnimationsModule,
     FormsModule, 
     ReactiveFormsModule,
-    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

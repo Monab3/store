@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-
 @Component({
   selector: 'app-hero-element-carousel',
   templateUrl: './hero-element-carousel.component.html',

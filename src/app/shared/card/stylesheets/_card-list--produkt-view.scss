@@ -1,14 +1,14 @@
-@import '../../../../core/stylesheets/layout/layout';
-@import '../../../../core/stylesheets/elements/controls';
-@import '../../../../core/stylesheets/mixins/mixins';
-@import '../../../../core/stylesheets/mixins/mixins-layout';
-@import '../../../../core/stylesheets/mixins/mixins-effects';
+@import '../../../core/stylesheets/layout/layout';
+@import '../../../core/stylesheets/elements/controls';
+@import '../../../core/stylesheets/mixins/mixins';
+@import '../../../core/stylesheets/mixins/mixins-layout';
+@import '../../../core/stylesheets/mixins/mixins-effects';
 
-@import '../../../../core/stylesheets/tools/variables';
-@import '../../../../core/stylesheets/tools/typographie';
+@import '../../../core/stylesheets/tools/variables';
+@import '../../../core/stylesheets/tools/typographie';
 
-@import '../../../../core/stylesheets/elements/controls';
-@import '../../../../core/stylesheets/components/quantity_selector';
+@import '../../../core/stylesheets/elements/controls';
+@import '../../../core/stylesheets/components/quantity_selector';
 
 
 @import "./mixins";
@@ -16,16 +16,16 @@
 .card-list--produkt-view {
     @include card;
  
-    &>header {
+    &> a> header {
        order: 1;
        width: 22%;
     }
  
-    &>figure {
+    &> a > figure {
        display: none;
     }
  
-    &>section {
+    &> a> section {
        order: 2;
        @include flexbox($justify: space-between, $wrap: wrap);
        @include gap-element;
@@ -34,7 +34,7 @@
        @include ul;
     }
  
-    &>footer {
+    &> footer {
        order: 3;
        width: auto;
        @include padding-element($left: false, $right: false, $bottom: false);

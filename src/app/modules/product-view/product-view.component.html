@@ -73,7 +73,6 @@
                             entfernen</span></button>
                     </footer>
                 </header>
-
             </article>
             <app-card *ngFor="let wein of filterDataWine" [wein]="wein" [cardProduktView]="true" [productViewList]="productViewList" class="produkt__grid__produktinformation"
             [ngClass]="{ 'produkt__grid__card-list': productViewList, 'produkt__grid__card': !productViewList }"
