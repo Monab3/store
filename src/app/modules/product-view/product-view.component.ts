@@ -279,7 +279,6 @@ export class ProductViewComponent implements OnInit {
   }
 
   setFiltersGeschmack(value: any) {
-
     this.filters.geschmack = value;
 
     if (!value) {
