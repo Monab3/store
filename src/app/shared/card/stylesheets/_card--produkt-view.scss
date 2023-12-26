@@ -15,16 +15,16 @@
 .card--produkt-view {
     @include card;
 
-    &>header {
+    &> a >header {
        width: 100%;
     }
 
-    &>figure {
+    &> a > figure {
        @include flexbox($justify: center, $wrap: wrap);
        width: 30%;
     }
 
-    &>section {
+    &> a >section {
        @include flexbox($justify: space-between, $wrap: wrap);
        @include gap-element;
        width: 50%;
@@ -34,6 +34,7 @@
     }
 
  & > footer {
+   align-items: end;
     width: 100%;
     @include border($border-property: border-top, $width: $border-width, $style: solid, $color: $color-green-dark);
     @include padding-element($left: false, $right: false, $bottom: false);

@@ -24,6 +24,10 @@
     height: 100%; 
     border-radius: $border-radius;
     background: $color-light;
+    a {
+      @include flexbox($direction: row, $justify: space-between, $wrap: wrap);
+      @include gap-component;
+    }
  }
  
  @mixin ul {

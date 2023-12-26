@@ -73,6 +73,13 @@
             <button class="hamburger-button hamburger-button--hide-for-medium" [class.hamburger-button--open]="hauptmenuButtonOpen" (click)="togglehauptMenuButton()">
                 <div></div>
             </button>
+
+            <div class="hamburger hamburger--boring" aria-expanded="false" role="navigation">
+                <div class="hamburger-box">
+                    <div class="hamburger-inner"></div>
+                </div>
+            </div>
+
             <button class="hauptmenu__open-cart-button" (click)="togglecart()">
                 <span><i class="bi-cart3 bi-4x hauptmenu__open-cart-button__icon"></i></span>
                 <span class="hauptmenu__open-cart-button__text text-regular">Gesamt:

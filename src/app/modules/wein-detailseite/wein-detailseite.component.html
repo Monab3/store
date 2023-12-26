@@ -8,19 +8,19 @@
 
             <div class="produkt__grid__figure produkt__img-container produkt__img-container--background">
                 <figure class="produkt__img-container">
-                    <img class="produkt__img-container__img" src="{{mockWein.weinBildString}}" alt="Wein">
+                    <img class="produkt__img-container__img" src="{{mockWein?.weinBildString}}" alt="Wein">
                 </figure>
                 <div class="produkt__side-imgs-container">
                     <figure class="produkt__side-img-container">
-                        <img class="produkt__side-img-container__img" src="{{mockWein.weinBildString}}" alt="Wein">
+                        <img class="produkt__side-img-container__img" src="{{mockWein?.weinBildString}}" alt="Wein">
                     </figure>
                     <figure class="produkt__side-img-container">
-                        <img class="produkt__side-img-container__img" src="{{mockWein.weinEttiketBildString}}"
+                        <img class="produkt__side-img-container__img" src="{{mockWein?.weinEttiketBildString}}"
                             alt="Wein">
                     </figure>
                 </div>
             </div>
-            <app-card [wein]="mockWein" [cardDetail]="true" class="produkt__grid__produktinformation"></app-card>
+            <app-card  *ngIf="mockWein" [wein]="mockWein" [cardDetail]="true" class="produkt__grid__produktinformation"></app-card>
         </div>
     </section>
 
@@ -32,43 +32,43 @@
                     <tbody>
                         <tr>
                             <td class="text-regular">Rebsorte</td>
-                            <td class="text-regular">{{ mockWein.rebsorte }}</td>
+                            <td class="text-regular">{{ mockWein?.rebsorte }}</td>
                         </tr>
                         <tr>
                             <td class="text-regular">Nettofüllmenge</td>
-                            <td class="text-regular">{{ mockWein.fuellmenge }} L</td>
+                            <td class="text-regular">{{ mockWein?.fuellmenge }} L</td>
                         </tr>
                         <tr>
                             <td class="text-regular">Alkoholgehalt</td>
-                            <td class="text-regular">{{ mockWein.alkoholgehalt }} % vol</td>
+                            <td class="text-regular">{{ mockWein?.alkoholgehalt }} % vol</td>
                         </tr>
                         <tr>
                             <td class="text-regular">Restzucker</td>
-                            <td class="text-regular">{{ mockWein.restZucker }} g/L</td>
+                            <td class="text-regular">{{ mockWein?.restZucker }} g/L</td>
                         </tr>
                         <tr>
                             <td class="text-regular">Gesamtsäure</td>
-                            <td class="text-regular">{{ mockWein.gesamtSaeure }} g/L</td>
+                            <td class="text-regular">{{ mockWein?.gesamtSaeure }} g/L</td>
                         </tr>
                         <tr>
                             <td class="text-regular">Geschmack</td>
-                            <td class="text-regular">{{ mockWein.geschmack }}</td>
+                            <td class="text-regular">{{ mockWein?.geschmack }}</td>
                         </tr>
                         <tr>
                             <td class="text-regular">Verschluss</td>
-                            <td class="text-regular">{{ mockWein.verschlussArt }}</td>
+                            <td class="text-regular">{{ mockWein?.verschlussArt }}</td>
                         </tr>
                         <tr>
                             <td class="text-regular">Trinktemperatur</td>
-                            <td class="text-regular">{{ mockWein.trinkTemperatur }} °C</td>
+                            <td class="text-regular">{{ mockWein?.trinkTemperatur }} °C</td>
                         </tr>
                         <tr>
                             <td class="text-regular">Lagerfähigkeit</td>
-                            <td class="text-regular">{{ mockWein.lagerfaehigkeit }}</td>
+                            <td class="text-regular">{{ mockWein?.lagerfaehigkeit }}</td>
                         </tr>
                         <tr>
                             <td class="text-regular">Allergiehinweise</td>
-                            <td class="text-regular">{{ mockWein.allergieHinweis }}</td>
+                            <td class="text-regular">{{ mockWein?.allergieHinweis }}</td>
                         </tr>
                         <tr>
                             <td class="text-regular">Erzeuger</td>
@@ -104,43 +104,43 @@
                     <tbody>
                         <tr>
                             <td class="text-regular">Rebsorte</td>
-                            <td class="text-regular">{{ mockWein.rebsorte }}</td>
+                            <td class="text-regular">{{ mockWein?.rebsorte }}</td>
                         </tr>
                         <tr>
                             <td class="text-regular">Nettofüllmenge</td>
-                            <td class="text-regular">{{ mockWein.fuellmenge }} L</td>
+                            <td class="text-regular">{{ mockWein?.fuellmenge }} L</td>
                         </tr>
                         <tr>
                             <td class="text-regular">Alkoholgehalt</td>
-                            <td class="text-regular">{{ mockWein.alkoholgehalt }} % vol</td>
+                            <td class="text-regular">{{ mockWein?.alkoholgehalt }} % vol</td>
                         </tr>
                         <tr>
                             <td class="text-regular">Restzucker</td>
-                            <td class="text-regular">{{ mockWein.restZucker }} g/L</td>
+                            <td class="text-regular">{{ mockWein?.restZucker }} g/L</td>
                         </tr>
                         <tr>
                             <td class="text-regular">Gesamtsäure</td>
-                            <td class="text-regular">{{ mockWein.gesamtSaeure }} g/L</td>
+                            <td class="text-regular">{{ mockWein?.gesamtSaeure }} g/L</td>
                         </tr>
                         <tr>
                             <td class="text-regular">Geschmack</td>
-                            <td class="text-regular">{{ mockWein.geschmack }}</td>
+                            <td class="text-regular">{{ mockWein?.geschmack }}</td>
                         </tr>
                         <tr>
                             <td class="text-regular">Verschluss</td>
-                            <td class="text-regular">{{ mockWein.verschlussArt }}</td>
+                            <td class="text-regular">{{ mockWein?.verschlussArt }}</td>
                         </tr>
                         <tr>
                             <td class="text-regular">Trinktemperatur</td>
-                            <td class="text-regular">{{ mockWein.trinkTemperatur }} °C</td>
+                            <td class="text-regular">{{ mockWein?.trinkTemperatur }} °C</td>
                         </tr>
                         <tr>
                             <td class="text-regular">Lagerfähigkeit</td>
-                            <td class="text-regular">{{ mockWein.lagerfaehigkeit }}</td>
+                            <td class="text-regular">{{ mockWein?.lagerfaehigkeit }}</td>
                         </tr>
                         <tr>
                             <td class="text-regular">Allergiehinweise</td>
-                            <td class="text-regular">{{ mockWein.allergieHinweis }}</td>
+                            <td class="text-regular">{{ mockWein?.allergieHinweis }}</td>
                         </tr>
                         <tr>
                             <td class="text-regular">Erzeuger</td>
@@ -172,7 +172,7 @@
     <!-- <article class="produkt__grid__produktinformation">
                 <header>
                     <div class="produktinformation__header__titel">
-                        <p class="text-regular--red-dark">{{dateConverter(mockWein.herstellungsDatum)}}</p>
+                        <p class="text-regular--red-dark">{{dateConverter(mockWein?.herstellungsDatum)}}</p>
                         <h2 class="h2">lalal test test wein</h2>
                     </div>
                     <div class="produktinformation__header__starreview__container">
@@ -208,7 +208,7 @@
                 </header>
                 <section class="produktinformation__section">
                     <blockquote class="text-regular--italic">
-                        {{mockWein.beschreibungsText}}
+                        {{mockWein?.beschreibungsText}}
                     </blockquote>
                     <ul class="produktinformation__section__ul">
                         <li class="produktinformation__section__li">
@@ -216,7 +216,7 @@
                                 Produkttyp:
                             </p>
                             <p class="text-regular--red-dark">
-                                {{mockWein.produktTyp}}
+                                {{mockWein?.produktTyp}}
                             </p>
                         </li>
                         <li class="produktinformation__section__li">
@@ -224,7 +224,7 @@
                                 Inhalt:
                             </p>
                             <p class="text-regular--red-dark">
-                                {{mockWein.fuellmenge}} L
+                                {{mockWein?.fuellmenge}} L
                             </p>
                         </li>
                         <li class="produktinformation__section__li">
@@ -232,14 +232,14 @@
                                 Alkoholgehalt:
                             </p>
                             <p class="text-regular--red-dark">
-                                {{mockWein.alkoholgehalt}} %. Vol.
+                                {{mockWein?.alkoholgehalt}} %. Vol.
                             </p>
                         </li>
                     </ul>
                 </section>
                 <footer class="selector__footer__grid">
                     <hr class="selector__footer__line">
-                    <h2 class="h2">{{mockWein.preis}} €</h2>
+                    <h2 class="h2">{{mockWein?.preis}} €</h2>
                     <form *ngIf="counterForm" class="selector__grid" [formGroup]="counterForm">
                         <button class="selector__control" (click)="handleMinus()"><i
                                 class="bi bi-dash-lg"></i></button>
@@ -256,7 +256,7 @@
                     <button class="button button__main" (click)="addProductToCart()">
                         In den Warenkorb
                     </button>
-                    <p class="text-fine">{{mockWein.fuellmenge}}l | {{mockWein.preisProLiter}}€ | inkl. MwSt.
+                    <p class="text-fine">{{mockWein?.fuellmenge}}l | {{mockWein?.preisProLiter}}€ | inkl. MwSt.
                         zzgl.
                         <span class="font-link--fine">Verstand</span>
                     </p>
@@ -271,7 +271,7 @@
         <article class="produktinformation__container">
             <header>
                 <div class="produktinformation__header__titel">
-                    <p class="text-regular--red-dark">{{dateConverter(mockWein.herstellungsDatum)}}</p>
+                    <p class="text-regular--red-dark">{{dateConverter(mockWein?.herstellungsDatum)}}</p>
                     <h2 class="h2">lalal test test wein</h2>
                 </div>
                 <div class="produktinformation__header__starreview__container">
@@ -307,7 +307,7 @@
             </header>
             <section class="produktinformation__section">
                 <blockquote class="text-regular--italic">
-                    {{mockWein.beschreibungsText}}
+                    {{mockWein?.beschreibungsText}}
                 </blockquote>
                 <ul class="produktinformation__section__ul">
                     <li class="produktinformation__section__li">
@@ -315,7 +315,7 @@
                             Produkttyp:
                         </p>
                         <p class="text-regular--red-dark">
-                            {{mockWein.produktTyp}}
+                            {{mockWein?.produktTyp}}
                         </p>
                     </li>
                     <li class="produktinformation__section__li">
@@ -323,7 +323,7 @@
                             Inhalt:
                         </p>
                         <p class="text-regular--red-dark">
-                            {{mockWein.fuellmenge}} L
+                            {{mockWein?.fuellmenge}} L
                         </p>
                     </li>
                     <li class="produktinformation__section__li">
@@ -331,14 +331,14 @@
                             Alkoholgehalt:
                         </p>
                         <p class="text-regular--red-dark">
-                            {{mockWein.alkoholgehalt}} %. Vol.
+                            {{mockWein?.alkoholgehalt}} %. Vol.
                         </p>
                     </li>
                 </ul>
             </section>
             <footer>
                 <hr class="produktinformation__footer__line">
-                <h2 class="h2">{{mockWein.preis}} €</h2>
+                <h2 class="h2">{{mockWein?.preis}} €</h2>
                 <form *ngIf="counterForm" class="selector__container" [formGroup]="counterForm">
                     <button class="selector__control" (click)="handleMinus()"><i class="bi bi-dash-lg"></i></button>
                     <input type="number" class="selector" formControlName="counter"
@@ -354,7 +354,7 @@
                 <button class="button button__main" (click)="addProductToCart()">
                     In den Warenkorb
                 </button>
-                <p class="text-fine">{{mockWein.fuellmenge}}l | {{mockWein.preisProLiter}}€ | inkl. MwSt.
+                <p class="text-fine">{{mockWein?.fuellmenge}}l | {{mockWein?.preisProLiter}}€ | inkl. MwSt.
                     zzgl.
                     <span class="font-link--fine">Verstand</span>
                 </p>
@@ -365,7 +365,7 @@
         <div class="produkt__side__text__container">
             <div class="produkt__side-imgs-container">
                 <figure class="produkt__side-img-container">
-                    <img class="produkt__side-img-container__img" src="{{mockWein.weinBildString}}" alt="Wein">
+                    <img class="produkt__side-img-container__img" src="{{mockWein?.weinBildString}}" alt="Wein">
                 </figure>
                 <figure class="produkt__side-img-container">
                     <img class="produkt__side-img-container__img" src="{{url}}" alt="Wein">

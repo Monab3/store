@@ -1,6 +1,6 @@
 export const AppRoutes = {
-    home: 'home',
-    about: 'about',
-    contact: 'contact',
+    DETAIL: 'detail',
+    PRODUKTUEBERSICHT: 'produktübersicht',
+    WARENKORB: 'contact',
   };
   

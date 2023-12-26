@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { cartService } from '../../core/services/cart.service';
 import { CartItem } from '../../core/models/CartItem';
 import { Wein } from '../../core/models/Wein';
+import {AppRoutes} from '../../core/config/app-routes.config';
 
 
 @Component({
@@ -16,6 +17,8 @@ export class CardComponent implements OnInit {
   @Input() cardDetail: boolean = false;
   @Input() cardProduktView: boolean = false;
   @Input() productViewList: boolean = false;
+
+  appRoutes = AppRoutes;
 
   counterForm = new FormGroup({ counter: new FormControl(1, [Validators.min(1)]) });
   ngOnInit(): void {
