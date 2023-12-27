@@ -1,3 +1,4 @@
+<app-light-box [toogleLightBox]="toggleLightBox" [slides]="smallImageSlides"></app-light-box>
 <main class="page">
     <section class="page__grid page__grid__background">
         <div class="page__grid__produkt produkt__grid">
@@ -11,16 +12,23 @@
                     <img class="produkt__img-container__img" src="{{mockWein?.weinBildString}}" alt="Wein">
                 </figure>
                 <div class="produkt__side-imgs-container">
-                    <figure class="produkt__side-img-container">
-                        <img class="produkt__side-img-container__img" src="{{mockWein?.weinBildString}}" alt="Wein">
-                    </figure>
-                    <figure class="produkt__side-img-container">
-                        <img class="produkt__side-img-container__img" src="{{mockWein?.weinEttiketBildString}}"
-                            alt="Wein">
-                    </figure>
+                    <button (click)="showLightBox()">
+                        <figure class="produkt__side-img-container">
+                            <img class="produkt__side-img-container__img" src="{{mockWein?.weinBildString}}" alt="Wein">
+                            <div class="produkt__side-img__overlay"><i class="bi bi-zoom-in"></i> </div>
+                        </figure>
+                    </button>
+                    <button (click)="showLightBox()">
+                        <figure class="produkt__side-img-container">
+                            <img class="produkt__side-img-container__img" src="{{mockWein?.weinEttiketBildString}}"
+                                alt="Wein">
+                                <div class="produkt__side-img__overlay"><i class="bi bi-zoom-in"></i> </div>
+                        </figure>
+                    </button>
                 </div>
             </div>
-            <app-card  *ngIf="mockWein" [wein]="mockWein" [cardDetail]="true" class="produkt__grid__produktinformation"></app-card>
+            <app-card *ngIf="mockWein" [wein]="mockWein" [cardDetail]="true"
+                class="produkt__grid__produktinformation"></app-card>
         </div>
     </section>
 

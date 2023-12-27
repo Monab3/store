@@ -1,18 +1,21 @@
 <div class="hauptmenu">
-    <nav class="hauptmenu__nav--small hide-for-medium hide-for-large" [ngClass]="{'hauptmenu__nav--small--open': hauptmenuButtonOpen}">
-        <ul>
+    <nav class="hauptmenu__nav--small hide-for-medium hide-for-large"
+        [ngClass]="{'hauptmenu__nav--small--open': hauptmenuButtonOpen}">
+        <ul class="page">
             <li *ngFor="let nav of navWein; index as i">
-        <button  class="nav-button font-interactive-element">
-            <span class="font-interactive-element">{{nav}}</span>
-        </button>
-    </li>
-    </ul>
+                <button class="nav-button font-interactive-element">
+                    <span class="font-interactive-element">{{nav}}</span>
+                </button>
+            </li>
+        </ul>
     </nav>
     <div class="page">
+
         <nav class="hauptmenu__nav__container">
             <article [ngClass]="{'cart__container': cartVisibility, 'cart__container--hidden': !cartVisibility}">
                 <header class="cart__header">
-                    <p class="text-regular--red-dark">Ihr Warenkorb, <span class="text-regular">{{cartAnzahl}} Artikel</span></p>
+                    <p class="text-regular--red-dark">Ihr Warenkorb, <span class="text-regular">{{cartAnzahl}}
+                            Artikel</span></p>
                     <button class="interaction-icon" (click)="togglecart()">
                         <i class="bi  bi-x-lg bi-2x"></i>
                     </button>
@@ -45,7 +48,7 @@
                                     </form>
                                 </div>
                             </div>
-        
+
                             <p *ngIf="counterForm?.get('count' + (item.wein._id))?.invalid && counterForm?.get('count' + (item.wein._id))?.touched"
                                 class="text-regular--red-signal">
                                 Zahl zwischen 1 und 100 eingeben
@@ -64,13 +67,15 @@
                         <span style="font-size: 14px;"><i class="bi-cart3 bi"></i></span>
                         Warenkorb einsehen</button>
                     <button class="button button__buy">Zur Kasse gehen</button>
-        
+
                 </footer>
             </article>
-            <button *ngFor="let nav of navWein; index as i" class="nav-button font-interactive-element hauptmenu__nav__button--hide">
+            <button *ngFor="let nav of navWein; index as i"
+                class="nav-button font-interactive-element hauptmenu__nav__button--hide">
                 <span class="font-interactive-element">{{nav}}</span>
-              </button>
-            <button class="hamburger-button hamburger-button--hide-for-medium" [class.hamburger-button--open]="hauptmenuButtonOpen" (click)="togglehauptMenuButton()">
+            </button>
+            <button class="hamburger-button hamburger-button--hide-for-medium"
+                [class.hamburger-button--open]="hauptmenuButtonOpen" (click)="togglehauptMenuButton()">
                 <div></div>
             </button>
 
@@ -86,7 +91,7 @@
                     <br>
                     {{cartTotal}} €</span>
             </button>
-        </nav>  
+        </nav>
 
     </div>
 </div>

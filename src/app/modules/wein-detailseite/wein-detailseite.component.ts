@@ -8,6 +8,7 @@ import { CartItem } from '../../core/models/CartItem';
 import { Wein } from '../../core/models/Wein';
 import { Rebsorte } from '../../core/models/Rebsorten';
 import { ActivatedRoute } from '@angular/router';
+import { Subject } from 'rxjs';
 
 
 @Component({
@@ -17,11 +18,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class WeinDetailseiteComponent implements OnInit {
   wineId: string | null = null;
+  toggleLightBox: Subject<boolean> = new Subject<boolean>();
+  smallImageSlides: any[] = [];
 
   counterForm = new FormGroup({ counter: new FormControl(1, [Validators.min(1)]) });
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
 
   mockWein: Wein | undefined;;
 
@@ -31,6 +31,9 @@ export class WeinDetailseiteComponent implements OnInit {
 
 
   constructor(private cartService: cartService, private wineService: weinService, private rebsortenService: rebsortenService, private route: ActivatedRoute) {
+  }
+
+  ngOnInit(): void {
     this.initialiseData();
   }
 
@@ -43,6 +46,7 @@ export class WeinDetailseiteComponent implements OnInit {
     }
     if (this.mockWein) {
       this.rebsorteInfo = this.rebsortenService.getRebsorte(this.mockWein.rebsorte);
+      this.smallImageSlides.push({url: this.mockWein.weinBildString}, { url: this.mockWein.weinEttiketBildString },);
     }
   }
 
@@ -104,5 +108,9 @@ export class WeinDetailseiteComponent implements OnInit {
   }
 
 
+
+  showLightBox(){
+   this.toggleLightBox.next(true); 
+  }
 
 }

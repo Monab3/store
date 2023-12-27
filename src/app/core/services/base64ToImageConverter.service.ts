@@ -8,4 +8,5 @@ export class base64ToImageConverter {
     var base64Content = `data:${contentType};base64,${value}`;
     return base64Content;
   }
+  
 }

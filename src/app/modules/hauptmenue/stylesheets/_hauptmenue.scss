@@ -29,7 +29,6 @@
 
         &--small {
             background: $color-green-light;
-            @include padding-component;
             top: -100%;
             width: 100%;
             z-index: 1000;

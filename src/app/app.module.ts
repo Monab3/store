@@ -15,6 +15,7 @@ import { ProductViewComponent } from './modules/product-view/product-view.compon
 import { WeinDetailseiteComponent } from './modules/wein-detailseite/wein-detailseite.component';
 import { HeroElementCarouselComponent } from './shared/hero-element-carousel/hero-element-carousel.component';
 import { CardComponent } from './shared/card/card.component';
+import { LightBoxComponent } from './shared/light-box/light-box.component';
 
 
 
@@ -25,7 +26,8 @@ import { CardComponent } from './shared/card/card.component';
     ProductViewComponent,
     WeinDetailseiteComponent,
     HeroElementCarouselComponent,
-    CardComponent
+    CardComponent,
+    LightBoxComponent
       ],
   imports: [
     BrowserModule,

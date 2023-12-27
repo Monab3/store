@@ -18,7 +18,7 @@ export interface Wein {
     allergieHinweis: string;
     iventar: number;
     servierempfehlung: string;
-    weinBildString?: string;
-    weinEttiketBildString: string;
-    servierBildString?: string;
+    weinBildString?: String;
+    weinEttiketBildString:String;
+    servierBildString?: String;
   }

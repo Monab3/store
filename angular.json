@@ -56,8 +56,7 @@
             ],
             "styles": [
               "node_modules/normalize.css/normalize.css",
-              "src/styles.scss", 
-              "./node_modules/ngx-lightbox/lightbox.css"
+              "src/styles.scss"
             ],
             "scripts": []
           },
