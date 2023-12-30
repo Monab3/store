@@ -17,6 +17,7 @@ import { HeroElementCarouselComponent } from './shared/hero-element-carousel/her
 import { CardComponent } from './shared/card/card.component';
 import { LightBoxComponent } from './shared/light-box/light-box.component';
 import { BewertungenComponent } from './shared/bewertungen/bewertungen.component';
+import { LandingpageComponent } from './modules/landingpage/landingpage.component';
 
 
 
@@ -29,7 +30,8 @@ import { BewertungenComponent } from './shared/bewertungen/bewertungen.component
     HeroElementCarouselComponent,
     CardComponent,
     LightBoxComponent,
-    BewertungenComponent
+    BewertungenComponent,
+    LandingpageComponent
       ],
   imports: [
     BrowserModule,
