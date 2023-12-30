@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Wein } from '../models/Wein';
 import { CartItem } from '../models/CartItem';
 import { BehaviorSubject } from 'rxjs';
 
@@ -32,7 +30,7 @@ export class cartService {
 
     /**
      * Wenn innerhalb des Warenkorb-PopUps ein Wein hinzugefügt wird, wird diese Funktion aufgerufen, damit der Wein im 
-     * im cartInhaltSource an Index 0 hinzugefügt wird, sondern an seinem vorherigen Index bleibt.
+     * cartInhaltSource an Index 0 hinzugefügt wird, sondern an seinem vorherigen Index bleibt.
      * 
      * @param {CartItem} newItem - hinzuzufügendes CartItem-Objekt
      */
@@ -53,12 +51,6 @@ export class cartService {
         this.calculateTotal();
     }
 
-    calculateTotal() {
-        const currentCart = this.cartInhaltSource.getValue();
-        const total = currentCart.reduce((sum, item) => sum + (item.wein.preis * item.produktAnzahl), 0);
-        this.cartTotalSource.next(total);
-    }
-
     togglecartVisibility(): void {
         this.cartVisibilityVariable = !this.cartVisibilityVariable;
         this.cartVisibilitySource.next(this.cartVisibilityVariable);
@@ -74,5 +66,13 @@ export class cartService {
         const updatedcart = currentcart.filter(cartItem => cartItem.wein._id !== item.wein._id);
         this.cartInhaltSource.next(updatedcart);
         this.calculateTotal();
+    }
+
+    //Helfer Klassen
+
+    private calculateTotal() {
+        const currentCart = this.cartInhaltSource.getValue();
+        const total = currentCart.reduce((sum, item) => sum + (item.wein.preis * item.produktAnzahl), 0);
+        this.cartTotalSource.next(total);
     }
 }

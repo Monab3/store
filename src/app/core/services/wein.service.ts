@@ -166,7 +166,6 @@ export class weinService {
   }
 
   getWines() {
-
     return this.wineData;
   }
 
@@ -185,49 +184,8 @@ export class weinService {
  * @param relativePath Der relative Pfad des Bildes.
  * @returns Die absolute URL des Bildes.
  */
-getAbsoluteImageUrl(relativePath: string): String {
+private getAbsoluteImageUrl(relativePath: string): String {
   return this.location.prepareExternalUrl(relativePath);
 }
-
-  /*  removeAllFilters(): void {
-      console.log("remove all filters");
-      this.filters = {
-        geschmack: null,
-        rebsorte: null
-      }
-      this.formGeschmack.controls.geschmack.setValue(null);
-      this.formRebsorte.controls.rebsorte.setValue(null);
-      this.addFilters();
-    }
-  
-    addFilters(): void {
-      this.filterDataWine = this.mockDataWine.filter((wine) => {
-        const geschmackFilter = !this.filters.geschmack || wine.searchTags.includes(this.filters.geschmack);
-        const rebsorteFilter = !this.filters.rebsorte || wine.searchTags.includes(this.filters.rebsorte);
-        this.dispayNoProductsFound = false;
-        return geschmackFilter && rebsorteFilter;
-      });
-  
-      if (this.filterDataWine.length == 0) {
-        this.dispayNoProductsFound = true;
-      }
-    }
-  
-    setFiltersGeschmack(value: any) {
-      this.filters.geschmack = value;
-  
-      if (!value) {
-        this.formGeschmack.controls.geschmack.setValue(null);
-      }
-      this.addFilters();
-    }
-  
-    setFiltersRebsorte(value: any) {
-      this.filters.rebsorte = value;
-      if (!value) {
-        this.formRebsorte.controls.rebsorte.setValue(null);
-      }
-      this.addFilters();
-    }*/
 
 }

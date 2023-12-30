@@ -20,13 +20,15 @@
   }
 }
 
-@mixin responsive-img( $width, $height, $object-fit: cover) {
+@mixin responsive-img($width, $height, $object-fit: cover) {
   @if $height {
     height: 100%;
   }
+
   @if $width {
     width: 100%;
   }
+
   display: block;
   object-fit: $object-fit;
 }
@@ -279,19 +281,20 @@
 /* Grid Layout */
 
 @mixin grid {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
 
   @media only screen and (min-width: 0) and (max-width: $breakpoint-medium--minus) {
     grid-template-columns: repeat(4, 1fr);
   }
+
   @media only screen and (min-width:$breakpoint-medium) and (max-width: $breakpoint-large) {
     grid-template-columns: repeat(8, 1fr);
   }
 }
 
-@mixin grid__span--all{
-    grid-column: span 12;
+@mixin grid__span--all {
+  grid-column: span 12;
 
   @media only screen and (min-width: 0) and (max-width:$breakpoint-medium--minus) {
     grid-column: span 4;
@@ -307,7 +310,7 @@
 
   @media only screen and (min-width: 0) and (max-width:$breakpoint-medium--minus) {
     grid-column: span 2;
-}
+  }
 
 
   @media only screen and (min-width:$breakpoint-medium) and (max-width: $breakpoint-large) {
@@ -325,7 +328,7 @@
       grid-column: span 8;
     }
   }
-  
+
 }
 
 
@@ -335,17 +338,18 @@
 
   @if $multipy >2 {
     @media only screen and (min-width: 0) and (max-width:$breakpoint-medium--minus) {
-        grid-column: span 4;
+      grid-column: span 4;
     }
 
     @media only screen and (min-width:$breakpoint-medium) and (max-width: $breakpoint-large) {
-        grid-column: span 2 * $multipy;
+      grid-column: span 2 * $multipy;
     }
   }
 
   @if $multipy <=2 {
     @media only screen and (max-width: $breakpoint-large) {
-        grid-column: span 2 * $multipy;}
+      grid-column: span 2 * $multipy;
+    }
   }
 }
 
@@ -354,22 +358,22 @@
 
   @if $multipy >2 {
     @media only screen and (min-width: 0) and (max-width:$breakpoint-medium--minus) {
-        grid-column: span 4;
+      grid-column: span 4;
     }
 
     @media only screen and (min-width:$breakpoint-medium) and (max-width: $breakpoint-large) {
-        grid-column: span 8;
+      grid-column: span 8;
     }
   }
 
   @if $multipy <=2 {
     @media only screen and (min-width: 0) and (max-width:$breakpoint-medium--minus) {
       grid-column: span 4;
-  }
+    }
 
-  @media only screen and (min-width:$breakpoint-medium) and (max-width: $breakpoint-large) {
+    @media only screen and (min-width:$breakpoint-medium) and (max-width: $breakpoint-large) {
       grid-column: span 4 * $multipy;
-  }
+    }
   }
 }
 
@@ -381,21 +385,33 @@
   grid-column: auto;
 }
 
-@mixin hide-for-small{
+@mixin hide-for-small {
   @media only screen and (max-width: $breakpoint-small--minus) {
-      display:none;
-}
+    display: none;
+  }
 }
 
-@mixin hide-for-medium{
+@mixin hide-for-medium {
   @media only screen and (max-width: $breakpoint-medium--minus) and (min-width: $breakpoint-small) {
-      display:none;
-}
+    display: none;
+  }
 
 }
 
-@mixin hide-for-large{
+@mixin hide-for-large {
   @media only screen and (min-width: $breakpoint-medium) {
     display: none;
+  }
+}
+
+@mixin page__span--small {
+  grid-column: 3 / span 8;
+
+  @media only screen and (min-width: 0) and (max-width:$breakpoint-medium--minus) {
+    grid-column: span 4;
+  }
+
+  @media only screen and (min-width:$breakpoint-medium) and (max-width: $breakpoint-large) {
+    grid-column: 2 / span 6;
   }
 }

@@ -9,11 +9,8 @@
 
 
 .steckbrief {
-  @include border($color: $color-red-dark);
-
   &__container {
     @include gap-container;
-    @include margin-page($left: false, $right: false, $bottom: false);
     @include flexbox($direction: column, $justify: space-between, $align: stretch, $wrap: wrap);
   }
 
@@ -21,13 +18,14 @@
     background-color: $color-red-dark;
     @include padding-component;
     @include flexbox($direction: row, $justify: space-around, $align: center, $wrap: wrap);
-    @include gap-component; 
+    @include gap-component;
 
     &__img {
       @include border($color: $color-light);
       width: 35%;
       height: auto;
       border-radius: 50%;
+
       & img {
         @include responsive-img(true, true);
       }
@@ -66,7 +64,7 @@
 }
 
 @media only screen and (min-width: 0) and (max-width: $breakpoint-medium--minus) {
-  .steckbrief__rebsorte__info{
-    width: 100%; 
+  .steckbrief__rebsorte__info {
+    width: 100%;
   }
 }

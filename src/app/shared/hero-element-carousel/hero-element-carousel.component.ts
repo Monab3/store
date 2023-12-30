@@ -14,7 +14,6 @@ export class HeroElementCarouselComponent implements OnInit {
   currentIndex: number = 0;
 
   ngOnInit(): void {
-    console.log(this.slides);
   }
 
   goToPrevious(): void {
@@ -38,7 +37,6 @@ export class HeroElementCarouselComponent implements OnInit {
   }
 
   getCurrentSlideUrl() {
-    console.log("current Index: "+ this.currentIndex);
     return this.slides[this.currentIndex].url;
   }
 

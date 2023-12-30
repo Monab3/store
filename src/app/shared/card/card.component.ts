@@ -1,10 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { cartService } from '../../core/services/cart.service';
+import { bewertungService } from '../../core/services/bewertung.service';
 import { CartItem } from '../../core/models/CartItem';
 import { Wein } from '../../core/models/Wein';
-import {AppRoutes} from '../../core/config/app-routes.config';
-
+import { AppRoutes } from '../../core/config/app-routes.config';
+import { BewertungWrapper } from '../../core/models/BewertungWrapper';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-card',
@@ -21,17 +23,30 @@ export class CardComponent implements OnInit {
   appRoutes = AppRoutes;
 
   counterForm = new FormGroup({ counter: new FormControl(1, [Validators.min(1)]) });
-  ngOnInit(): void {
-    console.log(this.wein);
-  }
+  bewertungWrapper: BewertungWrapper = {
+    averageRating: 0,
+    bewertungen: []
+  };
 
+  bewertungWrapper$: Observable<BewertungWrapper> = new Observable<BewertungWrapper>();
   url: string = "../../assets/image 143.png";
 
-
-  constructor(private cartService: cartService, 
-  ) {
-
+  ngOnInit(): void {
+    this.initialiseData();
   }
+
+  initialiseData(): void {
+    if (this.wein != null) {
+      this.bewertungWrapper$ = this.bewertungService.getBewertungWrapperForWine(this.wein._id);
+    }
+    this.bewertungWrapper$.subscribe((wrapper: BewertungWrapper) => {
+      this.bewertungWrapper.averageRating = wrapper.averageRating;
+      this.bewertungWrapper.bewertungen = wrapper.bewertungen;
+    });
+  }
+
+
+  constructor(private cartService: cartService, private bewertungService: bewertungService) { }
 
   handleMinus() {
     const control = this.counterForm?.get('counter');
@@ -60,7 +75,7 @@ export class CardComponent implements OnInit {
   addProductToCart() {
     const quantity = this.counterForm?.get('counter')?.value
 
-    if(this.wein){
+    if (this.wein) {
       const newProduct: CartItem = {
         wein: this.wein,
         produktAnzahl: quantity || 1
@@ -68,7 +83,14 @@ export class CardComponent implements OnInit {
       this.cartService.addToCart(newProduct);
       this.cartService.setcartVisibilityTrue();
     }
+  }
 
+  getStarsArray(): number[] {
+    return new Array(5 - this.bewertungWrapper.averageRating);
+  }
+
+  getFullStarsArray(): number[] {
+    return new Array(this.bewertungWrapper.averageRating);
   }
 
   dateConverter(date: Date): string {

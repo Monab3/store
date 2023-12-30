@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { format } from 'date-fns';
+
 
 import { cartService } from '../../core/services/cart.service';
 import { weinService } from '../../core/services/wein.service';
@@ -17,7 +19,7 @@ import { Subject } from 'rxjs';
   styleUrl: './wein-detailseite.component.scss'
 })
 export class WeinDetailseiteComponent implements OnInit {
-  wineId: string | null = null;
+  wineId:number | null = null;
   toggleLightBox: Subject<boolean> = new Subject<boolean>();
   smallImageSlides: any[] = [];
 
@@ -39,10 +41,10 @@ export class WeinDetailseiteComponent implements OnInit {
 
   initialiseData() {
     this.route.paramMap.subscribe((params) => {
-      this.wineId = params.get('id');
+      this.wineId = parseInt(params.get('id') ?? '');
     });
     if (this.wineId != null) {
-      this.mockWein = this.wineService.getWineById(parseInt(this.wineId));
+      this.mockWein = this.wineService.getWineById(this.wineId);
     }
     if (this.mockWein) {
       this.rebsorteInfo = this.rebsortenService.getRebsorte(this.mockWein.rebsorte);
@@ -88,11 +90,6 @@ export class WeinDetailseiteComponent implements OnInit {
     }
 
   }
-
-  dateConverter(date: Date): string {
-    return "Ursprung " + date.getFullYear();
-  }
-
   /**
    * Erstellt Slides aus den Bildern des Weins
    */

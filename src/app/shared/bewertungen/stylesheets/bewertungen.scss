@@ -1,0 +1,166 @@
+@import '../../../core/stylesheets/layout/layout';
+@import '../../../core/stylesheets/elements/controls';
+@import '../../../core/stylesheets/mixins/mixins';
+@import '../../../core/stylesheets/mixins/mixins-layout';
+@import '../../../core/stylesheets/mixins/mixins-effects';
+
+@import '../../../core/stylesheets/tools/variables';
+@import '../../../core/stylesheets/tools/typographie';
+
+@import '../../../core/stylesheets/elements/controls';
+@import '../../../core/stylesheets/components/quantity_selector';
+
+.bewertungen {
+    @include flexbox($direction: column, $justify: center, $align: center, $wrap: wrap);
+    @include gap-component;
+
+    &__titel{
+        width: 100%;
+        @include flexbox($direction: column, $justify: center, $align: center, $wrap: wrap);
+        @include padding-element($left: false, $right: false); 
+        @include gap-element;
+        @include border($border-property: border-top, $color: $color-green-light);
+        @include border($border-property: border-bottom, $color: $color-green-light);
+    }
+
+    &__container {
+        @include flexbox($direction: row, $justify: center, $align: center, $wrap: nowrap);
+        @include gap-component;
+    }
+
+    &__quote {
+        &__author {
+            text-align: center;
+        }
+
+        &__text {
+            text-align: center;
+
+        }
+    }
+
+    &__starreview {
+        width: 100%;
+        @include flexbox($direction: row, $justify: center, $wrap: wrap);
+        @include gap-element;
+
+        &__stars {
+            @include flexbox($direction: row, $justify: flex-start, $wrap: nowrap);
+            @include gap-element;
+        }
+    }
+
+
+    &__arrow--left {
+        color: $color-green-dark;
+
+        &:hover {
+            color: $color-red-dark;
+        }
+    }
+
+    &__arrow--right {
+        color: $color-green-dark;
+
+        &:hover {
+            color: $color-red-dark;
+        }
+    }
+
+    &--small {
+        @include flexbox($direction: column, $justify: center, $align: center, $wrap: wrap);
+        @include gap-element;
+        @include hide-for-small;
+        @include hide-for-medium;
+    }
+
+    &--hide-for-small {
+        @include hide-for-small;
+        @include hide-for-medium;
+    }
+
+    &--hide-for-medium-large {
+        @include hide-for-large;
+    }
+
+    &__sourounding-container {
+        @include flexbox($direction: row, $justify: center, $align: center, $wrap: wrap);
+        @include gap-component;
+        border-radius: $border-radius;
+        @include border($color: $color-green-light);
+        @include padding-container;
+    }
+}
+
+.form {
+    &__grid {
+        @include grid;
+        width: 100%;
+    }
+
+    &__container {
+        @include page__span--small;
+        @include flexbox($direction: row, $justify: center, $align: center, $wrap: wrap);
+        @include border($color: $color-green-light);
+        @include gap-component;
+        border-radius: $border-radius;
+        @include padding-container;
+
+        &--full-width {
+            @include flexbox($direction: row, $justify: center, $align: center, $wrap: wrap);
+            @include gap-element;
+            width: 100%;
+
+            &>label {
+                width: 100%;
+            }
+
+            &>input {
+                width: 100%;
+            }
+
+            &>textarea {
+                width: 100%;
+            }
+        }
+
+        &--half-width {
+            @include flexbox($direction: row, $justify: stretch, $align: flex-start, $wrap: nowrap);
+            @include gap-component;
+            width: 100%;
+
+            >* {
+                flex: 1;
+            }
+        }
+        &__close{
+            width: 100%; 
+            text-align: right;
+        }
+    }
+
+
+    &--span-all {
+        @include flexbox($direction: column, $justify: stretch, $align: center, $wrap: wrap);
+
+        &>* {
+            width: 100%;
+        }
+    }
+}
+
+@media only screen and (min-width: 0) and (max-width:$breakpoint-medium) {
+    .form__container--half-width {
+        @include flexbox($direction: column, $justify: stretch, $align: center, $wrap: wrap);
+        @include gap-component;
+        width: 100%;
+
+        >* {
+            width: 100%;
+        }
+    }
+
+    .button__main {
+        width: 100%;
+    }
+}

@@ -9,7 +9,7 @@
 
 .page__grid {
     &__produkt {
-        grid-column: 3 / span 8;
+        @include page__span--small;
         @include padding-container;
     }
 
@@ -17,10 +17,15 @@
         @include grid__span--all;
     }
 
+    &__bewertungen{
+        @include grid__span--all;
+    }
+
     &__background {
         background-image: url('../../../../assets/BackgroundImage.png');
         background-position: center;
         background-size: cover;
+        @include grid__span--all;
     }
 
 }
@@ -54,6 +59,9 @@
 .steckbrief__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    @include border($color: $color-red-dark);
+    border-radius: $border-radius;
+    overflow: hidden;
     & .steckbrief__info {
         grid-column: span 1;
     }
@@ -64,9 +72,6 @@
 }
 
 @media only screen and (min-width: 0) and (max-width: $breakpoint-medium--minus) {
-    .page__grid__produkt {
-        grid-column: span 4;
-    }
 
     .produkt__grid {
         &__figure {
@@ -95,10 +100,6 @@
 }
 
 @media only screen and (min-width:$breakpoint-medium) and (max-width: $breakpoint-large) {
-    .page__grid__produkt {
-        grid-column: 2 / span 6;
-    }
-
     .produkt__grid {
         &__figure {
             grid-column: 2/ span 6;

@@ -2,6 +2,7 @@
 
 .form {
   @include fonts($font-regular, $font-size-regular, $font-weight-regular, $color: $color-red-dark);
+  
 
   &__input {
     color: $color-green-dark;
@@ -10,7 +11,7 @@
     min-height: $min-height-form-input;
     box-shadow: $border-box-shadow-form-coltrol;
     @include padding-atom;
-
+    
     &:focus {
       @include border($color: $color-grey-dark);
       box-shadow: $border-box-shadow-form-control--interaction;
@@ -46,8 +47,8 @@
       height: 100%;
       text-align: center;
 
-      &::-webkit-inner-spin-button,
-      &::-webkit-outer-spin-button {
+      &::-webkit-inner-spin-,
+      &::-webkit-outer-spin- {
         color: $color-green-dark;
         -webkit-appearance: none;
         margin: 0;

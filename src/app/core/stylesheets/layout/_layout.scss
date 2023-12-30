@@ -8,7 +8,7 @@
     position: relative;
     &__grid{
         @include grid;
-        gap: $gap-container;
+        gap: $gap-page;
     }
 }
 

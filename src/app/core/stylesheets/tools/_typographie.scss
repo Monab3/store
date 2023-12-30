@@ -36,7 +36,7 @@
 }
 
 h4 {
-    @include fonts($font-regular, $font-size-medium, $font-weight-bold, $color: $color-light);
+    @include fonts($font-regular, $font-size-regular, $font-weight-bold, $color: $color-green-dark);
 }
 
 
@@ -125,7 +125,7 @@ h4 {
     }
 }
 
-.font-link {
+.text-link {
     @include fonts($font-regular, $font-size-regular, $font-weight-regular, $color: $color-blue-link);
     text-decoration: underline;
 
