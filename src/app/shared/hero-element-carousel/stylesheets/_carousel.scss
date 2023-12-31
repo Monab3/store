@@ -53,12 +53,20 @@
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
-        &__figure{
-           height: 100%; 
-           overflow: hidden; 
-           & > img {
-               @include responsive-img( true, true, $object-fit: contain);
-           }
+
+        &__figure {
+            height: 100%;
+            overflow: hidden;
+
+            &__img {
+                &--contain {
+                    @include responsive-img(true, true, $object-fit: contain);
+                }
+
+                &--cover {
+                    @include responsive-img(true, true, $object-fit: cover);
+                }
+            }
         }
     }
 
@@ -83,12 +91,12 @@
         left: 50%;
         transform: translateX(-50%);
         @include flexbox($direction: column, $justify: center, $align: center, $wrap: wrap);
-        @include gap-element; 
+        @include gap-element;
 
         & section {
             @include padding-component;
             border-radius: $border-radius;
-            background-color:$color-grey-transparent;
+            background-color: $color-grey-transparent;
         }
     }
 }

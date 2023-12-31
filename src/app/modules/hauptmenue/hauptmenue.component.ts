@@ -49,8 +49,6 @@ export class HauptmenueComponent implements OnInit {
     //Formular counterForm Methoden
     this.initializeCounterForProduct();
   }
-  weinmenueBilder = ['../../assets/weinmenue_weisswein.jpg', '../../assets/weinmenue_rotwein.jpg', '../../assets/weinmenue_rosewein.jpg', '../../assets/weinmenue_schaumwein.jpg'];
-
 
 
   initializeCounterForProduct() {

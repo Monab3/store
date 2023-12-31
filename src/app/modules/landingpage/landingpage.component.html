@@ -1,1 +1,21 @@
-<p>landingpage works!</p>
+<main class="page page__grid">
+    <header class="page__grid__header page-titel">
+        <figure>
+            <img src="../../../assets/logo--weiss.png" alt="Weinweinmenü">
+        </figure>
+        <h1 class="h1--light">
+            Unser Weinshop
+        </h1>
+    </header>
+    <section class="page__grid__carousel carousel">
+        <app-hero-element-carousel [showTitel]="true" [showText]="true" [slides]="slides"></app-hero-element-carousel>
+    </section>
+    <nav class="page__grid__weinmenu weinmenu">
+        <button *ngFor="let nav of navWein; index as i" class="weinmenu__nav-button">
+            <figure class="weinmenu__img-container">
+                <img [src]="weinmenueBilder[i]" class="logo weinmenu__img">
+            </figure>
+            <span class="weinmenu__text-margin h2">{{nav}}</span>
+        </button>
+    </nav>
+</main>

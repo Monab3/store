@@ -20,6 +20,7 @@ export class BewertungenComponent implements OnInit {
   };
   currentIndex: number = 0;
   openFormular: boolean = false;
+  openThanYouText = false; 
   bewertungAbgegeben: boolean = false;
   bewertungWrapper$: Observable<BewertungWrapper> = new Observable<BewertungWrapper>();
 
@@ -96,9 +97,14 @@ export class BewertungenComponent implements OnInit {
         this.bewertungsService.addBewertungForWine(this.id, bewertung);
         //this.bewertungWrapper.bewertungen = this.bewertungsService.getBewertungenByWeinId(this.id);
         this.openFormular = false;
+        this.openThanYouText = true;
       }
       this.bewertungAbgegeben = true;
     }
+  }
+
+  closeThankyou(): void {
+    this.openThanYouText = false;
   }
 
   getStarsArray(sterne: number): number[] {

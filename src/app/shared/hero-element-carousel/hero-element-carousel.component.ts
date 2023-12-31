@@ -10,7 +10,6 @@ export class HeroElementCarouselComponent implements OnInit {
   @Input() slides: any[] = [];
   @Input() showTitel: boolean = true;
   @Input() showText: boolean = true;
-
   currentIndex: number = 0;
 
   ngOnInit(): void {

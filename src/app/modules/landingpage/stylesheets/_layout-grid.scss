@@ -1,0 +1,29 @@
+@import '../../../core/stylesheets/mixins/mixins';
+@import '../../../core/stylesheets/mixins/mixins-layout';
+@import '../../../core/stylesheets/mixins/mixins-effects';
+
+@import '../../../core/stylesheets/tools/typographie';
+@import '../../../core/stylesheets/tools/variables';
+
+@import '../../../core/stylesheets/elements/controls';
+@import '../../../core/stylesheets/components/quantity_selector';
+
+.page{
+    &__grid{
+        &__header{
+            @include margin-page($bottom: false, $left: false, $right: false);
+            @include grid__span__all;
+        }
+        &__carousel{
+            @include grid__span__all;
+            height: 80vh; 
+        }
+    }
+}
+
+@media only screen and (min-width: 0) and (max-width: $breakpoint-medium--minus) {
+    .page__grind__carousel{
+        height: 90vh;
+    }
+  }
+

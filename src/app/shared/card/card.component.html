@@ -58,11 +58,11 @@
         <form *ngIf="counterForm" class="selector__grid" [formGroup]="counterForm">
             <button class="selector__control" (click)="handleMinus()"><i class="bi bi-dash-lg"></i></button>
             <input type="number" class="selector" formControlName="counter"
-                [class.selector--invalid]="counterForm?.get('counter')?.invalid && counterForm?.get('counter')?.touched" />
+                [class.selector--invalid]="counterForm.get('counter')?.invalid && counterForm.get('counter')?.touched" />
             <button class="selector__control" (click)="handlePlus()"><i class="bi bi-plus-lg"></i></button>
         </form>
         <p *ngIf="counterForm?.get('counter')?.invalid && counterForm?.get('counter')?.touched"
-            class="text-regular--invalid">
+            class="text-regular--red-signalks">
             Zahl zwischen 1 und 100 eingeben
         </p>
 
@@ -116,12 +116,12 @@
         <form *ngIf="counterForm" class="selector__grid" [formGroup]="counterForm">
             <button class="selector__control" (click)="handleMinus()"><i class="bi bi-dash-lg"></i></button>
             <input type="number" class="selector" formControlName="counter"
-                [class.selector--invalid]="counterForm?.get('counter')?.invalid && counterForm?.get('counter')?.touched" />
+                [class.selector--invalid]="counterForm.get('counter')?.invalid && counterForm.get('counter')?.touched" />
             <button class="selector__control" (click)="handlePlus()"><i class="bi bi-plus-lg"></i></button>
         </form>
 
         <p *ngIf="counterForm?.get('counter')?.invalid && counterForm?.get('counter')?.touched"
-            class="text-regular--invalid">
+            class="text-regular--red-signalks">
             Zahl zwischen 1 und 100 eingeben
         </p>
 

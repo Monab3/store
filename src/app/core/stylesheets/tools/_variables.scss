@@ -7,11 +7,11 @@ $color-green-dark: #6D865E;
 $color-red-dark: #6D3E4B;
 $color-red-signal: #C4413A;
 $color-grey-light: #ddd;
-$color-grey-transparent:  rgba($color-grey-light, 0.8);
 $color-grey-dark: #B9B9B9;
 $color-blue-link: #3563E9;
 $color-black: #000000;
 $color-light: #FFFFFF;
+$color-grey-transparent:  rgba($color-light, 0.9);
 $color-grey--dark-opacity: rgba($color-black, 0.8);
 
 /* Linear Gradients */
@@ -35,20 +35,20 @@ $breakpoint-large: 992px;
 $breakpoint-xlarge: 1200px;
 
 /* Gaps */
-$gap-page: 5rem;  /* 5rem = 80px */
+$gap-page: 3rem;  /* 5rem = 80px */
 $gap-container: 2.25rem;  /* 2.25rem = 36px */
 $gap-component: 1.5rem;  /* 1.5rem = 24px */
 $gap-element: 0.5rem;  /* 0.5rem = 8px */
 
 /* Margin */
-$margin-page: 5rem;  /* 5rem = 80px */
+$margin-page: 3rem;  /* 5rem = 80px */
 $margin-container: 2.25rem;  /* 2.25rem = 36px */
 $margin-component: 1.5rem;  /* 1.5rem = 24px */
 $margin-element: 0.5rem;  /* 0.5rem = 8px */
 $margin-atom: 0.25rem;  /* 0.25rem = 4px */
 
 /* Padding */
-$padding-page: 5rem;  /* 5rem = 80px */
+$padding-page: 3rem;  /* 5rem = 80px */
 $padding-container: 2.25rem;  /* 2.25rem = 36px */
 $padding-component: 1.5rem;  /* 1.5rem = 24px */
 $padding-element: 0.5rem;  /* 0.5rem = 8px */
