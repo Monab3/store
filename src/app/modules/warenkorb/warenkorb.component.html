@@ -1,0 +1,119 @@
+<main class="page page__grid__warenkorb">
+    <nav class="anzeige__container nav__area">
+        <ul class="anzeige">
+            <li>
+                <button class="text-regular anzeige__item">
+                    <div class="anzeige__item__punkt anzeige__item__punkt--clickable"></div>
+                    Warenkorb
+                </button>
+            </li>
+            <li>
+                <button class="text-regular anzeige__item">
+                    <div class="anzeige__item__punkt anzeige__item__punkt--clickable"></div>
+                    Kundendaten
+                </button>
+            </li>
+            <li>
+                <button class="text-regular anzeige__item">
+                    <div class="anzeige__item__punkt anzeige__item__punkt--clickable"></div>
+                    Adresse & Bezahlung
+                </button>
+            </li>
+            <li>
+                <button class="text-regular anzeige__item">
+                    <div class="anzeige__item__punkt anzeige__item__punkt--clickable"></div>
+                    Danke!
+                </button>
+            </li>
+        </ul>
+        <ul class="anzeige--small">
+            <li>
+                <button class="text-regular--light anzeige__item__punkt anzeige__item__punkt--clickable">
+                    1
+                </button>
+            </li>
+            <li>
+                <button class="text-regular--light anzeige__item__punkt anzeige__item__punkt--active">
+                    2
+                </button>
+            </li>
+            <li>
+                <button class="text-regular--light anzeige__item__punkt anzeige__item__punkt--clickable">
+                    3
+                </button>
+            </li>
+            <li>
+                <button class="text-regular--light anzeige__item__punkt anzeige__item__punkt--clickable">
+                    4
+                </button>
+            </li>
+
+        </ul>
+    </nav>
+    <section class="produkt__area">
+    <h2 class="h2__container-titel">Ihre Bestellungen</h2>
+    <table *ngIf="cartItems.length !== 0" class="produkt">
+        <thead class="produkt__head">
+            <tr>
+                <th class="h3--light"></th>
+                <th class="h3--light">Produkt</th>
+                <th class="h3--light">Stückpreis</th>
+                <th class="h3--light">Anzahl</th>
+                <th class="h3--light">Summe</th>
+                <th class="h3--light"></th>
+            </tr>
+        </thead>
+        <tbody class="produkt__body">
+            <tr *ngFor="let item of cartItems; let i = index">
+                <td>
+                    <figure class="produkt__img-container"><img class="produkt__img"
+                            src="../../../assets/black_noir_weisswein.png"></figure>
+                </td>
+                <td>
+                    <p class="text-regular--red-dark">{{dateConverter(item.wein.herstellungsDatum)}}</p>
+                    <h3 class="h3">{{item.wein.name}}</h3>
+                </td>
+                <td>
+                    <p class="text-regular no-wrap-text">
+                        {{item.wein.preis}} €
+                    </p>
+                    <p class="text-regular">
+                        {{item.wein.preisProLiter}} €  | L 
+                    </p>
+                </td>
+                <td>
+                    <form>
+                        <input class="selector__form__input" type="number" />
+                    </form>
+                </td>
+                <td> <p class="text-regular no-wrap-text">{{(item.wein.preis * item.produktAnzahl).toFixed(2)}} €</p></td>
+                <td> <button class="button button__tertiary button--full-width">entfernen</button></td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section *ngIf="cartItems.length == 0" class="produkt__area produkt--empty">
+        <h4 class="h4">Noch keine Weine im Warenkorb</h4>
+        <p class="text-regular">Es befinden sich noch keine Weine in ihrem Warenkorb.</p>
+        <button class="button button__secondary"> Zur Produktseite </button>
+    </section>
+    <section class="sum sum__area">
+        <h4 class="h4--light">Zusammenfassung</h4>
+        <table class="sum__table">
+            <tbody>
+                <tr>
+                    <td class="text-regular--light">Warenwert:</td>
+                    <td class="text-regular--light ">{{cartTotal.toFixed(2)}} €</td>
+                </tr>
+                <tr>
+                    <td class="text-regular--light">Versandkosten:</td>
+                    <td class="text-regular--light">{{versandTotal.toFixed(2)}} €</td>
+                </tr>
+                <tr class="sum--margin-top">
+                    <td class="h4--light">Gesamtsumme:</td>
+                    <td class="h4--light">{{versandAndCartTotal.toFixed(2)}} €</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</main>

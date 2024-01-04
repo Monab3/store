@@ -18,6 +18,10 @@ import { CardComponent } from './shared/card/card.component';
 import { LightBoxComponent } from './shared/light-box/light-box.component';
 import { BewertungenComponent } from './shared/bewertungen/bewertungen.component';
 import { LandingpageComponent } from './modules/landingpage/landingpage.component';
+import { FooterComponent } from './modules/footer/footer.component';
+import { WarenkorbComponent } from './modules/warenkorb/warenkorb.component';
+import { KatalogseiteComponent } from './modules/katalogseite/katalogseite.component';
+
 
 
 
@@ -31,7 +35,10 @@ import { LandingpageComponent } from './modules/landingpage/landingpage.componen
     CardComponent,
     LightBoxComponent,
     BewertungenComponent,
-    LandingpageComponent
+    LandingpageComponent,
+    FooterComponent,
+    WarenkorbComponent,
+    KatalogseiteComponent
       ],
   imports: [
     BrowserModule,

@@ -21,9 +21,8 @@
     @include border($color: $color-green-dark);
     @include button-effect-slide();
     &:disabled {
-      /* Your styles for the disabled state here */
-      opacity: 0.5; /* Example: reduce opacity when disabled */
-      background-color: $color-grey-dark; /* Example: change cursor to 'not-allowed' when disabled */
+      opacity: 0.5; 
+      background-color: $color-grey-dark; 
       &:before{
         background-color: transparent;
       

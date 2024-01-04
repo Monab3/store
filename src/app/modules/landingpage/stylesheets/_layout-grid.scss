@@ -14,10 +14,28 @@
             @include margin-page($bottom: false, $left: false, $right: false);
             @include grid__span__all;
         }
+        &__weinkategorien{
+            @include grid__span__all;
+        }
         &__carousel{
             @include grid__span__all;
             height: 80vh; 
         }
+    }
+}
+
+.weinmenu__grid{
+    @include grid;
+    @include grid__span--all;
+    @include gap-page;
+}
+
+.weinkategorien__grid{
+    @include grid;
+    @include grid__span--all;
+    @include gap-page;
+    & h2{
+        @include grid__span--all; 
     }
 }
 

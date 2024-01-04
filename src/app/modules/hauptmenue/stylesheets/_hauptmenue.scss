@@ -14,6 +14,10 @@
     background-color: $color-green-light;
     width: 100%;
     height: $height-nav;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2000;
 
     &__nav {
         &__container {
@@ -33,7 +37,7 @@
             width: 100%;
             z-index: 1000;
             transition: 0.4s;
-            position: absolute;
+            position: fixed;
             @include hide-for-large;
             @include hide-for-medium;
              & > ul{

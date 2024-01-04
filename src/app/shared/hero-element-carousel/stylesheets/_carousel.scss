@@ -25,6 +25,9 @@
         @include responsive-spacing(font-size, 45px, $medium-factor: 0.5, $minimum-factor: 0.5, $width-small: 0.5);
         color: $color-green-dark;
         z-index: 1;
+        & > bi {
+            color: $color-light;
+        }
 
         &:hover {
             color: $color-red-dark;

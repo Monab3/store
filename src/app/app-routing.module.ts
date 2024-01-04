@@ -9,6 +9,7 @@ import { AppRoutes } from './core/config/app-routes.config';
 const routes: Routes = [
   { path: '', redirectTo: AppRoutes.WEINSHOP, pathMatch: 'full' },
   { path: AppRoutes.WEINSHOP, component: LandingpageComponent },
+  { path: AppRoutes.WEINSHOP, component: LandingpageComponent },
   { path: AppRoutes.DETAIL, component: WeinDetailseiteComponent },];
 
 @NgModule({

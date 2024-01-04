@@ -8,9 +8,11 @@ import { BehaviorSubject } from 'rxjs';
 export class cartService {
     private cartInhaltSource = new BehaviorSubject<CartItem[]>([]);
     private cartTotalSource = new BehaviorSubject<number>(0);
+    private versandTotalSource = new BehaviorSubject<number>(0);
     private cartVisibilitySource = new BehaviorSubject<boolean>(false);
     cartInhalt = this.cartInhaltSource.asObservable();
     cartTotal = this.cartTotalSource.asObservable();
+    versandTotal = this.versandTotalSource.asObservable();
     cartVisibility = this.cartVisibilitySource.asObservable();
     private cartVisibilityVariable = false;
     constructor(private http: HttpClient) {
@@ -55,13 +57,13 @@ export class cartService {
         this.cartVisibilityVariable = !this.cartVisibilityVariable;
         this.cartVisibilitySource.next(this.cartVisibilityVariable);
     }
-    
+
     setcartVisibilityTrue(): void {
         this.cartVisibilityVariable = true;
         this.cartVisibilitySource.next(this.cartVisibilityVariable);
     }
 
-    deleteFromCart(item: CartItem) {     
+    deleteFromCart(item: CartItem) {
         const currentcart = this.cartInhaltSource.getValue();
         const updatedcart = currentcart.filter(cartItem => cartItem.wein._id !== item.wein._id);
         this.cartInhaltSource.next(updatedcart);
@@ -74,5 +76,20 @@ export class cartService {
         const currentCart = this.cartInhaltSource.getValue();
         const total = currentCart.reduce((sum, item) => sum + (item.wein.preis * item.produktAnzahl), 0);
         this.cartTotalSource.next(total);
+        this.calculateVersand(currentCart.length, total);
+    }
+
+    private calculateVersand(anzahlWein: number, warenwert: number): void {
+        console.log("calculateVersand total" + anzahlWein);
+        const preisProFlasche = 0.5;
+        if (warenwert >= 350) {
+            this.versandTotalSource.next(0);}
+        if (anzahlWein >= 1 && anzahlWein <= 12) {
+            this.versandTotalSource.next(7.5);
+        } else if (anzahlWein >= 13 && anzahlWein <= 24) {
+            this.versandTotalSource.next(15.0);
+        } else if (anzahlWein >= 25) {
+            this.versandTotalSource.next(preisProFlasche * anzahlWein);
+        }
     }
 }

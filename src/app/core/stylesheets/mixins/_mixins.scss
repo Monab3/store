@@ -23,18 +23,20 @@
   flex-wrap: $wrap;
 }
 
-/*@mixin reset-button-styles {
-  margin: 0;
-  padding: 0;
-  background: none;
-  cursor: pointer;
-  outline: none;
-  appearance: none;
-    border: none;
-}*/
-
 @mixin border($border-property: border, $width: $border-width, $style: solid, $color) {
   #{$border-property}: $width $style $color;
+}
+
+@mixin gradient__container {
+  background: $gradient-green;
+  border-bottom-left-radius: $border-radius-max;
+  border-top-right-radius: $border-radius-max;
+  box-shadow: $border-box-shadow;
+  color: $color-light;
+  @include border($width: $border-width, $color: $color-light);
+  @include flexbox($justify: flex-start, $wrap: wrap, $align: stretch);
+  @include gap-component;
+  @include padding-component;
 }
 
 @mixin scrollbar{

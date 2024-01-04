@@ -1,0 +1,57 @@
+@import '../../../core/stylesheets/mixins/mixins';
+@import '../../../core/stylesheets/mixins/mixins-layout';
+@import '../../../core/stylesheets/mixins/mixins-effects';
+
+@import '../../../core/stylesheets/tools/typographie';
+@import '../../../core/stylesheets/tools/variables';
+
+@import '../../../core/stylesheets/elements/controls';
+
+.produkt {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-radius: $border-radius;
+
+    &__head {
+        background-color: $color-green-dark;
+        & th {
+            text-align: left;
+            @include padding-element; 
+
+        }
+
+        & th:first-child {
+            border-radius: $border-radius 0 0 $border-radius;
+
+        }
+
+        & th:last-child {
+            border-radius:0  $border-radius $border-radius 0;
+        }
+    }
+    &__body{
+        & td {
+            text-align: left;
+            @include padding-element; 
+        }
+    }
+    &__img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: scale-down;
+    }
+
+    &__img-container {
+        overflow: hidden;
+        border-radius: $border-radius;
+        width: 60px;
+        height: 60px;
+        background: $color-green-light;
+    }
+
+    &--empty{
+        text-align: center;
+        padding: $padding-component;
+    }
+}

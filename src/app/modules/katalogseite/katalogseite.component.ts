@@ -4,13 +4,12 @@ import { cartService } from '../../core/services/cart.service';
 import { base64ToImageConverter } from '../../core/services/base64ToImageConverter.service';
 import { FormGroup, FormControl, FormBuilder} from '@angular/forms';
 import { WeinFilters } from '../../core/models/WeinFilters';
-
 @Component({
-  selector: 'app-product-view',
-  templateUrl: './product-view.component.html',
-  styleUrl: './product-view.component.scss'
+  selector: 'app-katalogseite',
+  templateUrl: './katalogseite.component.html',
+  styleUrl: './katalogseite.component.scss'
 })
-export class ProductViewComponent implements OnInit {
+export class KatalogseiteComponent implements OnInit {
   mockDataWine = [
     {
       _id: 1,
@@ -302,4 +301,3 @@ export class ProductViewComponent implements OnInit {
     this.filterButtonSmallOpen = !this.filterButtonSmallOpen;
   }
 }
-

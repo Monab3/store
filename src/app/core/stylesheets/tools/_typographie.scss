@@ -23,6 +23,10 @@
     &__container-titel{
         @include fonts($font-regular, $font-size-large, $font-weight-bold, $color: $color-red-dark);
     }
+
+    &__footer{
+        @include fonts($font-special, $font-size-medium, $font-weight-bold, $color: $color-red-dark);
+    }
 }
 
 .h3 {
@@ -35,8 +39,11 @@
     }
 }
 
-h4 {
+.h4 {
     @include fonts($font-regular, $font-size-regular, $font-weight-bold, $color: $color-green-dark);
+    &--light{
+        @include fonts($font-regular, $font-size-regular, $font-weight-bold, $color: $color-light); 
+    }
 }
 
 
@@ -135,3 +142,7 @@ h4 {
 
     }
 }
+
+.no-wrap-text {
+    white-space: nowrap;
+  }

@@ -30,8 +30,6 @@ export class HauptmenueComponent implements OnInit {
   //cartInhalt: Observable<any> = new Observable();
 
   ngOnInit(): void {
-
-    //cart Service Methoden
     this.cartService.cartInhalt.subscribe((data) => {
       this.cartItems = data;
       this.cartAnzahl = data.length;
@@ -72,16 +70,10 @@ export class HauptmenueComponent implements OnInit {
       this.cartService.deleteFromCart(item);
     }
   
-
-
-
   onSubmit() {
-    // Trigger form validation
     if (this.counterForm.valid) {
-      // Your form is valid, perform the submission logic here
       console.log('Form submitted with value:', this.counterForm.value);
     } else {
-      // Mark all form controls as touched to trigger validation messages
       this.markFormGroupTouched(this.counterForm);
     }
   }

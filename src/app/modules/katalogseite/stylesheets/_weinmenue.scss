@@ -1,33 +1,28 @@
 @import '../../../core/stylesheets/mixins/mixins';
 @import '../../../core/stylesheets/mixins/mixins-layout';
 @import '../../../core/stylesheets/mixins/mixins-effects';
-@import '../../../core/stylesheets/mixins/mixins';
-@import '../../../core/stylesheets/mixins/mixins-layout';
-@import '../../../core/stylesheets/mixins/mixins-effects';
 
 @import '../../../core/stylesheets/tools/typographie';
 @import '../../../core/stylesheets/tools/variables';
 
 @import '../../../core/stylesheets/elements/controls';
-@import '../../../core/stylesheets/components/quantity_selector';
-@import '../../../core/stylesheets/components/page-titel';
-
 
 /* Weinmenü */
 .weinmenu {
     width: 100%;
     @include padding-page($left: true, $right: true, $top: false, $bottom: false);
+    @include flexbox($direction: row, $justify: center, $wrap: nowrap, $align: stretch);
+    @include gap-page;
     position: relative;
-    @include border($border-property: border-bottom, $color : $color-green-light);
-
+    border-bottom: 0.5px solid $color-green-light;
 
     &__text-margin {
         @include margin-container;
     }
 
     &__nav-button {
-        @include grid__span__quarter--mg-lg;
-        @include border($border-property: border-bottom, $color : $color-green-light);
+        flex-grow: 1;
+        border-bottom: 1px solid $color-green-light;
         @include flexbox($justify: center, $wrap: nowrap, $align: center);
         @include effect-border-underline($color-bg: $color-red-dark);
         color: $color-green-dark;
@@ -50,4 +45,11 @@
     }
 }
 
+//Media Queries
+
+@media only screen and (max-width: 769px) {
+    .weinmenu {
+        display: none;
+    }
+}
 

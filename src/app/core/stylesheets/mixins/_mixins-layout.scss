@@ -3,22 +3,10 @@
 @mixin responsive-spacing($property, $value, $medium-factor: 0.5, $minimum-factor: 0.5, $width-small: 0.5) {
   #{$property}: $value;
 
-  @media only screen and (max-width: 576px) {
+  @media only screen and (min-width: 0) and (max-width: $breakpoint-medium--minus) {
     #{$property}: $value * $minimum-factor;
   }
-
-  @media only screen and (min-width: 577px) and (max-width: 768px) {
-    #{$property}: $value * $medium-factor;
-  }
-
-  @media only screen and (min-width: 769px) and (max-width: 1199px) {
-    #{$property}: $value;
-  }
-
-  @media only screen and (max-width: 400px) {
-    #{$property}: $value * $width-small;
-  }
-}
+} 
 
 @mixin responsive-img($width, $height, $object-fit: cover) {
   @if $height {

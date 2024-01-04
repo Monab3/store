@@ -1,0 +1,30 @@
+::ng-deep .p-accordion-header-link {
+    width: 100% !important;
+    justify-content: space-between;
+    @include fonts($font-regular, $font-size-regular, $font-weight-bold, $color: $color-light);
+    @include border($border-property: border-bottom, $color: $color-light);
+
+    & > .p-element{
+        width: auto;
+    }
+
+}
+
+::ng-deep .p-accordion-toggle-icon {
+    order: 1;
+}
+
+::ng-deep .p-accordion-tab {
+    @include flexbox;
+    @include gap-element;
+}
+
+::ng-deep .p-accordion {
+    @include flexbox;
+    @include gap-component;
+    width: 100%;
+}
+
+::ng-deep .p-element {
+    width: 100%;
+}

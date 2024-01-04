@@ -1,0 +1,18 @@
+@import '../../core/stylesheets/tools/typographie';
+@import '../../core/stylesheets/tools/variables';
+@import '../../core/stylesheets/mixins/mixins';
+@import '../../core/stylesheets/layout/layout';
+
+.footer{
+    @include flexbox($direction: row, $justify: space-between, $align: stretch, $wrap: wrap);
+    @include gap-component; 
+    @include padding-component; 
+    &__content{
+        @include flexbox($direction: row, $justify: space-between, $align: stretch, $wrap: nowrap);
+        @include gap-component; 
+    }
+    &__container{
+        @include margin-page($bottom:false, $left: false, $right: false);
+        @include border($border-property: border-top, $color: $color-green-dark);   
+    }
+}
