@@ -6,7 +6,7 @@ $color-green-light: #E6F5DD;
 $color-green-dark: #6D865E;
 $color-red-dark: #6D3E4B;
 $color-red-signal: #C4413A;
-$color-grey-light: #ddd;
+$color-grey-light: #F5F5F5;
 $color-grey-dark: #B9B9B9;
 $color-blue-link: #3563E9;
 $color-black: #000000;
@@ -67,9 +67,9 @@ $wdith-interaction-mobile: 2.5rem;  /* 2.5rem = 40px */
 /* Min/Max Width Page */
 $min-width-page: 90%;  /* 90% of the viewport width */
 $max-width-page: 1200px;
-$max-width-page--small: 1140px; 
 $min-height-form-input: 2.5rem;  /* 2.5rem = 40px */
 $min-width-card: 17rem; 
+$min-width-element--small: 44px; 
 
 /* height */
 $height-min-btn: 2.5rem;  /* 2.5rem = 40px */

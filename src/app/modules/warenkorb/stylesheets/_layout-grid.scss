@@ -7,40 +7,55 @@
 
 @import '../../../core/stylesheets/elements/controls';
 
-.page__grid__warenkorb {
-    @include grid;
-    @include gap-page;
-    grid-template-areas: "nav nav nav nav nav nav nav nav sum sum sum sum"
-                         "produkt produkt produkt produkt produkt produkt produkt produkt sum sum sum sum";
-}
+.page__grid {
+    &__anzeige{
+        @include grid__span--all; 
+        align-self: start; 
 
-.sum__area {
-    grid-area: sum;
-    align-self: start; 
-}
+    }
+    &__warenkorb {
+        @include grid__span__third--lg($multipy: 2); 
+        align-self: start; 
 
-.nav__area {
-    grid-area: nav;
-}
-.produkt__area{
-    grid-area: produkt;
-
+    }
+    &__titel{
+        @include grid__span--all; 
+        align-self: start; 
+        @include hide-for-small; 
+        @include hide-for-medium; 
+    }
+    &__sum{
+        @include grid__span__third--lg; 
+        align-self: start; 
+    }
 }
 
 @media only screen and (min-width: 0) and (max-width: $breakpoint-medium--minus) {
-    .page__grid__warenkorb {
-        grid-template-areas:
-            "nav nav nav nav"
-            "sum sum sum sum"
-            "produkt produkt produkt produkt";
+    .page__grid {
+        &__anzeige{
+            order: 1; 
+    
+        }
+        &__warenkorb {
+            order: 3;
+        }
+        &__sum{
+            order: 2;
+        }
     }
 }
 
 @media only screen and (min-width:$breakpoint-medium) and (max-width: $breakpoint-large) {
-    .page__grid__warenkorb {
-        grid-template-areas:
-            "nav nav nav nav nav nav nav nav"
-            "sum sum sum sum sum sum sum sum"
-            "produkt produkt produkt produkt produkt produkt produkt produkt";
+    .page__grid {
+        &__anzeige{
+            order: 1; 
+    
+        }
+        &__warenkorb {
+            order: 3;
+        }
+        &__sum{
+            order: 2;
+        }
     }
 }

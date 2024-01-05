@@ -1,7 +1,6 @@
 .page-titel{
     @include flexbox($direction: row, $justify: center, $wrap: nowrap, $align: center);
     @include gap-container;
-    @include padding-element;
     background: $gradient-green;
     border-radius: 0 $border-radius-max 0 $border-radius-max;
     & > figure{

@@ -64,8 +64,8 @@ export class cartService {
     }
 
     deleteFromCart(item: CartItem) {
-        const currentcart = this.cartInhaltSource.getValue();
-        const updatedcart = currentcart.filter(cartItem => cartItem.wein._id !== item.wein._id);
+        const currentCart = this.cartInhaltSource.getValue();
+        const updatedcart = currentCart.filter(cartItem => cartItem.wein._id !== item.wein._id);
         this.cartInhaltSource.next(updatedcart);
         this.calculateTotal();
     }
@@ -76,20 +76,33 @@ export class cartService {
         const currentCart = this.cartInhaltSource.getValue();
         const total = currentCart.reduce((sum, item) => sum + (item.wein.preis * item.produktAnzahl), 0);
         this.cartTotalSource.next(total);
-        this.calculateVersand(currentCart.length, total);
+        let totalProduktanzahl = currentCart.reduce((total, cartItem) => total + cartItem.produktAnzahl, 0);
+        this.calculateVersand(totalProduktanzahl, total);
     }
 
     private calculateVersand(anzahlWein: number, warenwert: number): void {
-        console.log("calculateVersand total" + anzahlWein);
+        console.log("anzahlWein: " + anzahlWein);
         const preisProFlasche = 0.5;
         if (warenwert >= 350) {
-            this.versandTotalSource.next(0);}
+            this.versandTotalSource.next(0);
+            console.log("versand von 350 euro");
+            return;
+        }
         if (anzahlWein >= 1 && anzahlWein <= 12) {
             this.versandTotalSource.next(7.5);
-        } else if (anzahlWein >= 13 && anzahlWein <= 24) {
+            console.log("versand 1 -12");
+            return; 
+        } 
+        if (anzahlWein >= 13 && anzahlWein <= 24) {
             this.versandTotalSource.next(15.0);
-        } else if (anzahlWein >= 25) {
+            console.log("versand 24");
+            return; 
+        } 
+        if (anzahlWein >= 25) {
             this.versandTotalSource.next(preisProFlasche * anzahlWein);
+            console.log("versand > 25");
+            return; 
         }
+        this.versandTotalSource.next(0);
     }
 }

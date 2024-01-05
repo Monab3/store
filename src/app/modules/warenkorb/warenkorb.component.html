@@ -1,5 +1,13 @@
-<main class="page page__grid__warenkorb">
-    <nav class="anzeige__container nav__area">
+<main class="page page__grid">
+    <header class="page__grid__titel page-titel">
+        <figure>
+            <img src="../../../assets/titel-icons/warenkorb.png" alt="Weinweinmenü">
+        </figure>
+        <h1 class="h1--light">
+            Warenkorb
+        </h1>
+    </header>
+    <nav class="page__grid__anzeige anzeige__container">
         <ul class="anzeige">
             <li>
                 <button class="text-regular anzeige__item">
@@ -50,8 +58,62 @@
 
         </ul>
     </nav>
-    <section class="produkt__area">
-    <h2 class="h2__container-titel">Ihre Bestellungen</h2>
+    <section class="page__grid__warenkorb produkt__container">
+        <h2 class="h2__container-titel">Ihre Bestellungen</h2>
+        <ng-container *ngTemplateOutlet="produkt"></ng-container>
+        <ng-container *ngTemplateOutlet="produktSmall"></ng-container>
+        <div *ngIf="cartItems.length == 0" class="produkt--empty">
+            <h4 class="h4">Noch keine Weine im Warenkorb</h4>
+            <p class="text-regular">Es befinden sich noch keine Weine in ihrem Warenkorb.</p>
+            <button class="button button__secondary">Zurück zur Produktübersicht </button>
+        </div>
+        <router-outlet></router-outlet>
+    </section>
+    <section class="page__grid__sum sum__container">
+        <section class="sum">
+            <table class=" sum__table">
+                <h4 class="h4--light">Zusammenfassung</h4>
+                <tbody>
+                    <tr>
+                        <td class="text-regular--light">Warenwert:</td>
+                        <td class="text-regular--light ">{{cartTotal.toFixed(2)}} €</td>
+                    </tr>
+                    <tr>
+                        <td class="text-regular--light">Versandkosten:</td>
+                        <td class="text-regular--light">{{versandTotal.toFixed(2)}} €</td>
+                    </tr>
+                    <tr class="sum--margin-top">
+                        <td class="h4--light">Gesamtsumme:</td>
+                        <td class="h4--light">{{versandAndCartTotal.toFixed(2)}} €</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <button class="button button__secondary" [routerLink]="'kontaktformular'">Zurück zur Produktübersicht</button>
+        <button class="button button__buy" [routerLink]="['/', appRoutes.WARENKORB, appRoutes.WARENKORB__KONTAKTFORMULAR]">Zur Kasse gehen</button>
+        <p-accordion [multiple]="true">
+            <p-accordionTab class="p-accordion--red-dark" header="Versandinformationen">
+                <p class="text-regular">
+                    Der Versand erfolgt über UPS oder DHL in 2er, 3er, 6er und 12er Kartons.
+                </p>
+                <p class="text-regular">
+                    1 - 12 Flaschen: 7,50 € </p>
+                <p class="text-regular">
+                    Ab 13 - 24 Flaschen :15,00 € </p>
+                <p class="text-regular">
+                    Ab 25 Flaschen: 0,50 € pro Flasche </p>
+                <p class="text-regular">
+                    Ab 350 € Warenwert liefern wir deutschlandweit frei Haus </p>
+            </p-accordionTab>
+            <p-accordionTab class="p-accordion--red-dark" header="Wiederrufsrecht">
+                <p class="text-regular">
+                    Sie haben das Recht, binnen vierzehn Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen. Die Frist beginnt ab dem Tag an dem Sie oder ein von Ihnen benannter Dritter, der nicht der Beförderer ist, die letzte Ware in Besitz genommen haben bzw. hat.   
+                    <a class="text-link" href="https://www.buhrmannbecher.de/datenschutzerklaerung/">Weitere Informationen</a></p>
+            </p-accordionTab>
+        </p-accordion>
+    </section>
+</main>
+<ng-template #produkt>
     <table *ngIf="cartItems.length !== 0" class="produkt">
         <thead class="produkt__head">
             <tr>
@@ -78,42 +140,66 @@
                         {{item.wein.preis}} €
                     </p>
                     <p class="text-regular">
-                        {{item.wein.preisProLiter}} €  | L 
+                        {{item.wein.preisProLiter}} € | L
                     </p>
                 </td>
                 <td>
-                    <form>
-                        <input class="selector__form__input" type="number" />
+                    <form *ngIf="counterForm" [formGroup]="counterForm">
+                        <input class="selector__form__input" type="number" formControlName="count"
+                            [formControlName]="'count' + (item.wein._id)"
+                            [ngClass]="{'selector__form__input--invalid': counterForm.get('count' + (item.wein._id))?.invalid && counterForm.get('count' + (item.wein._id))?.touched}"
+                            (input)="onInputChanged($event, i)" />
                     </form>
+                    <p *ngIf="counterForm?.get('count' + (item.wein._id))?.invalid && counterForm?.get('count' + (item.wein._id))?.touched"
+                        class="text-regular--red-signal">
+                        Zahl zwischen 1 und 100 eingeben
+                    </p>
                 </td>
-                <td> <p class="text-regular no-wrap-text">{{(item.wein.preis * item.produktAnzahl).toFixed(2)}} €</p></td>
-                <td> <button class="button button__tertiary button--full-width">entfernen</button></td>
+                <td>
+                    <p class="text-regular no-wrap-text">{{(item.wein.preis * item.produktAnzahl).toFixed(2)}} €</p>
+                </td>
+                <td><button button--full-width class="button button__tertiary button--full-width"
+                        (click)="deleteItemFromCart(item)">Entfernen</button></td>
             </tr>
         </tbody>
     </table>
-</section>
-    <section *ngIf="cartItems.length == 0" class="produkt__area produkt--empty">
-        <h4 class="h4">Noch keine Weine im Warenkorb</h4>
-        <p class="text-regular">Es befinden sich noch keine Weine in ihrem Warenkorb.</p>
-        <button class="button button__secondary"> Zur Produktseite </button>
-    </section>
-    <section class="sum sum__area">
-        <h4 class="h4--light">Zusammenfassung</h4>
-        <table class="sum__table">
-            <tbody>
-                <tr>
-                    <td class="text-regular--light">Warenwert:</td>
-                    <td class="text-regular--light ">{{cartTotal.toFixed(2)}} €</td>
-                </tr>
-                <tr>
-                    <td class="text-regular--light">Versandkosten:</td>
-                    <td class="text-regular--light">{{versandTotal.toFixed(2)}} €</td>
-                </tr>
-                <tr class="sum--margin-top">
-                    <td class="h4--light">Gesamtsumme:</td>
-                    <td class="h4--light">{{versandAndCartTotal.toFixed(2)}} €</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-</main>
+</ng-template>
+
+<ng-template #produktSmall>
+    <p-accordion *ngIf="cartItems.length > 0" class="produkt--small" [multiple]="true" [activeIndex]="[0,1]">
+        <p-accordionTab class="p-accordion--red-dark" header="Bestellungen">
+            <article>
+                <section class="cart__section">
+                    <div *ngFor="let item of cartItems; let i = index" class="cart__section__container--column">
+                        <div class="cart__section__container--row">
+                            <figure class="cart__section__img-container">
+                                <img src="assets/grauburgunder.png" class="cart__section__img">
+                            </figure>
+                            <div class="cart__section__information">
+                                <p class="text-regular--red-dark">{{ item.wein.name }}</p>
+                                <p class="text-regular">{{(item.wein.preis * item.produktAnzahl).toFixed(2)}} €</p>
+                                <p class="text-fine">zzgl. <span class="text-link--small">Versand</span></p>
+                            </div>
+                            <div class="cart__section__information">
+                                <form *ngIf="counterForm" [formGroup]="counterForm">
+                                    <p class="text-regular">Anzahl</p>
+                                    <input class="selector__form__input" type="number" formControlName="count"
+                                        [formControlName]="'count' + (item.wein._id)"
+                                        [ngClass]="{'selector__form__input--invalid': counterForm.get('count' + (item.wein._id))?.invalid && counterForm.get('count' + (item.wein._id))?.touched}"
+                                        (input)="onInputChanged($event, i)" />
+                                </form>
+                            </div>
+                        </div>
+
+                        <p *ngIf="counterForm?.get('count' + (item.wein._id))?.invalid && counterForm?.get('count' + (item.wein._id))?.touched"
+                            class="text-regular--red-signal">
+                            Zahl zwischen 1 und 100 eingeben
+                        </p>
+                        <button class="button button__tertiary" (click)="deleteItemFromCart(item)">aus dem Warenkorb
+                            entfernen.</button>
+                    </div>
+                </section>
+            </article>
+        </p-accordionTab>
+    </p-accordion>
+</ng-template>

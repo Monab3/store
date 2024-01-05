@@ -80,12 +80,12 @@
     <h2 class="h2--light"> Filter</h2>
     <button class="button button__tertiary button__tertiary--font-light" (click)="removeAllFilters()">Filter
         entfernen</button>
-    <p-accordion [multiple]="true" [activeIndex]="[0,1]">
+    <p-accordion class ="p-accordion--white" [multiple]="true" [activeIndex]="[0,1]">
         <p-accordionTab header="Geschmack">
             <form [formGroup]="formGeschmack" class="filter__form">
                 <div *ngFor="let geschmack of geschmaecker" class="filter__radio">
                     <label class="filter__radio__label text-regular--light">
-                        <input type="radio" formControlName="geschmack" [value]="geschmack">
+                        <input type="radio" [class.filter__label--small--open]="filterButtonSmallOpen" formControlName="geschmack" [value]="geschmack">
                         {{ geschmack }}
                     </label>
                     <p class="filter__count text-regular">{{ formGeschmack.get(geschmack.toLowerCase() +
@@ -97,7 +97,7 @@
             <form [formGroup]="formRebsorte" class="filter__form">
                 <div *ngFor="let rebsorte of rebsorten" class="filter__radio">
                     <label class="filter__radio__label text-regular--light">
-                        <input type="radio" formControlName="rebsorte" [value]="rebsorte"> {{ rebsorte }}
+                        <input type="radio" [class.filter__label--small--open]="filterButtonSmallOpen" formControlName="rebsorte" [value]="rebsorte"> {{ rebsorte }}
                     </label>
                     <p class="filter__count text-regular">{{ formRebsorte.get(rebsorte.toLowerCase() +
                         'Count')?.value }}</p>

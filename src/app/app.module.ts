@@ -21,6 +21,8 @@ import { LandingpageComponent } from './modules/landingpage/landingpage.componen
 import { FooterComponent } from './modules/footer/footer.component';
 import { WarenkorbComponent } from './modules/warenkorb/warenkorb.component';
 import { KatalogseiteComponent } from './modules/katalogseite/katalogseite.component';
+import { StartBestellprozessComponent } from './modules/warenkorb/children/start-bestellprozess/start-bestellprozess.component';
+import { KontaktformularComponent } from './modules/warenkorb/children/kontaktformular/kontaktformular.component';
 
 
 
@@ -38,7 +40,9 @@ import { KatalogseiteComponent } from './modules/katalogseite/katalogseite.compo
     LandingpageComponent,
     FooterComponent,
     WarenkorbComponent,
-    KatalogseiteComponent
+    KatalogseiteComponent,
+    StartBestellprozessComponent,
+    KontaktformularComponent
       ],
   imports: [
     BrowserModule,

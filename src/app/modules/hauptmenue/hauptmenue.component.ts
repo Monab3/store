@@ -20,6 +20,7 @@ export class HauptmenueComponent implements OnInit {
 
 
   counterForm: FormGroup = new FormGroup({ count: new FormControl(1, [Validators.min(1)]) });
+  
   hauptmenuButtonOpen: boolean = false;
 
   constructor(private fb: FormBuilder, private cartService: cartService
@@ -43,11 +44,7 @@ export class HauptmenueComponent implements OnInit {
     this.cartService.cartTotal.subscribe((data) => {
       this.cartTotal = data.toFixed(2);
     });
-
-    //Formular counterForm Methoden
-    this.initializeCounterForProduct();
   }
-
 
   initializeCounterForProduct() {
     this.cartItems.forEach((item, index) => {
@@ -61,18 +58,18 @@ export class HauptmenueComponent implements OnInit {
   }
 
   onInputChanged($event: any, i: any) {
-    if($event.target.value >0){
+    if ($event.target.value > 0) {
       this.cartItems[i].produktAnzahl = $event.target.value;
       this.cartService.addToCartFromCart(this.cartItems[i]);
-    }  }
-
-    deleteItemFromCart( item: CartItem) {
-      this.cartService.deleteFromCart(item);
     }
-  
+  }
+
+  deleteItemFromCart(item: CartItem) {
+    this.cartService.deleteFromCart(item);
+  }
+
   onSubmit() {
     if (this.counterForm.valid) {
-      console.log('Form submitted with value:', this.counterForm.value);
     } else {
       this.markFormGroupTouched(this.counterForm);
     }
@@ -88,21 +85,21 @@ export class HauptmenueComponent implements OnInit {
     });
   }
 
-itemPriceSum(item: CartItem) {
+  itemPriceSum(item: CartItem) {
     return (item.wein.preis * item.produktAnzahl).toFixed(2);
   }
 
   togglehauptMenuButton() {
-    if(this.cartVisibility){
+    if (this.cartVisibility) {
       this.cartVisibility = false;
     }
     this.hauptmenuButtonOpen = !this.hauptmenuButtonOpen;
   }
 
-  
+
   public togglecart(): void {
-    if(this.hauptmenuButtonOpen)
-    this.hauptmenuButtonOpen = false;
+    if (this.hauptmenuButtonOpen)
+      this.hauptmenuButtonOpen = false;
     this.cartVisibility = !this.cartVisibility;
 
   }

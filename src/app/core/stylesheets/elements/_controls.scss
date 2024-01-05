@@ -11,6 +11,14 @@
   min-width: $width-min-button-desktop;
   min-height: $height-min-btn;
   white-space: nowrap;
+  ::before {
+    content: "";
+    position: absolute;
+    top: -2px; 
+    right: -2px; 
+    bottom: -2px; 
+    left: -2px; 
+  }
 
   & .bi {
     @include margin-atom($top: false, $right: true, $bottom: false, $left: false);

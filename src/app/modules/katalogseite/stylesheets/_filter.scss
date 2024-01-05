@@ -39,9 +39,6 @@
         background: $color-green-light;
         color: $color-green-dark;
     }
-}
-
-.filter {
     &__container--small {
         @include hide-for-large;
         width: 100%;
@@ -50,6 +47,11 @@
         &--open {
             @include grid__span__all;
         }
+    }
+
+    &__label--small{
+        height: $min-width-element--small;
+        width: $min-width-element--small;
     }
 
     &--small {

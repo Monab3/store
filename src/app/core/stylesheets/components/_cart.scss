@@ -1,0 +1,110 @@
+@import '../../../core/stylesheets/mixins/mixins';
+@import '../../../core/stylesheets/mixins/mixins-layout';
+@import '../../../core/stylesheets/mixins/mixins-effects';
+
+@import '../../../core/stylesheets/tools/typographie';
+@import '../../../core/stylesheets/tools/variables';
+
+@import '../../../core/stylesheets/elements/controls';
+@import '../../../core/stylesheets/components/quantity_selector';
+
+.cart {
+    &__container {
+        top: $height-nav;
+        right: 0;
+        width: 40%;
+        @include flexbox($direction: column, $justify: space-between, $wrap: nowrap, $align: stretch);
+        position: absolute;
+        z-index: 1002;
+        display: visible;
+
+        &--hidden {
+            display: none;
+        }
+
+        &>* {
+            width: 100%;
+            @include padding-component;
+        }
+    }
+
+    &__header {
+        @include flexbox($direction: row, $justify: space-between, $wrap: nowrap, $align: stretch);
+        background: $color-green-light;
+    }
+
+    &__section {
+        background-color: $color-light;
+
+        &__container {
+            &--column {
+                @include flexbox($direction: column, $justify: space-between, $wrap: nowrap, $align: stretch);
+                @include gap-element;
+            }
+
+            &--row {
+                @include flexbox($direction: row, $justify: space-between, $wrap: nowrap, $align: flex-start);
+            }
+        }
+
+
+        &--no-items {
+            background-color: $color-light;
+            text-align: center;
+        }
+
+        &__img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: fill;
+        }
+
+        &__img-container {
+            overflow: hidden;
+            border-radius: $border-radius;
+            width: 60px;
+            height: 60px;
+        }
+
+        &__information {
+            @include flexbox($direction: column, $justify: flex-start, $wrap: nowrap, $align: stretch);
+
+            &:first-child {
+                @include margin-element ($top: false, $right: false, $bottom: true, $left: false);
+            }
+        }
+    }
+
+    &__main {
+        max-height: 50vh;
+        background-color: $color-light;
+        overflow-y: auto;
+        border-left: $border-width solid $color-green-light;
+        border-right: $border-width solid $color-green-light;
+        @include scrollbar;
+    }
+
+    &__footer {
+        background-color: $color-green-light;
+        @include flexbox($direction: column, $justify: center, $wrap: nowrap, $align: stretch);
+        @include gap-element;
+
+        &__container {
+            @include flexbox($direction: row, $justify: space-between, $wrap: nowrap, $align: stretch);
+            width: 100%;
+        }
+    }
+}
+
+//Media Queries
+
+@media only screen and (max-width: 769px) {
+    .cart {
+        &__container {
+            width: 100%;
+            top: $height-nav;
+            left: 0;
+        }
+    }
+}

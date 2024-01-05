@@ -2,6 +2,9 @@ export const AppRoutes = {
     WEINSHOP: 'weinshop',
     DETAIL: 'detail',
     PRODUKTUEBERSICHT: 'produktübersicht',
-    WARENKORB: 'contact',
+    WARENKORB: 'warenkorb',
+    WARENKORB__BESTELLPROZESS: 'start-bestellprozess',
+    WARENKORB__KONTAKTFORMULAR: 'kontaktformular',
+
   };
   
