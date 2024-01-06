@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Josefin+Sans:ital,wght@0,400;0,700;1,400;1,700&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Roboto&display=swap');
+
+/* Colors */
+$color-green-light: #E6F5DD;
+$color-green-dark: #6D865E;
+$color-red-dark: #6D3E4B;
+$color-red-signal: #C4413A;
+$color-grey-light: #F5F5F5;
+$color-grey-dark: #B9B9B9;
+$color-blue-link: #3563E9;
+$color-black: #000000;
+$color-light: #FFFFFF;
+$color-grey-transparent:  rgba($color-light, 0.9);
+$color-grey--dark-opacity: rgba($color-black, 0.8);
+
+/* Linear Gradients */
+$color-gradient-green-light: #E1EFD9;
+$color-gradient-green-dark: #64875A;
+$color-gradient-red-light: #D75176;
+$color-gradient-red-dark: #6D3E4B;
+$gradient-green:  linear-gradient(90deg, #64AA32 4.86%, #64875A 92.12%);
+$gradient-red: linear-gradient(90deg, $color-gradient-red-light 0%, $color-red-dark 35%);
+
+/* base */
+$base-font-size: 16px;  /* 1rem = 16px */
+
+
+/* breakpoints equal to bootstraps*/
+$breakpoint-small: 576px;
+$breakpoint-small--minus: 575px;
+$breakpoint-medium: 768px;
+$breakpoint-medium--minus: 767px;
+$breakpoint-large: 992px;
+$breakpoint-xlarge: 1200px;
+
+/* Gaps */
+$gap-page: 3rem;  /* 5rem = 80px */
+$gap-container: 2.25rem;  /* 2.25rem = 36px */
+$gap-component: 1.5rem;  /* 1.5rem = 24px */
+$gap-element: 0.5rem;  /* 0.5rem = 8px */
+
+/* Margin */
+$margin-page: 3rem;  /* 5rem = 80px */
+$margin-container: 2.25rem;  /* 2.25rem = 36px */
+$margin-component: 1.5rem;  /* 1.5rem = 24px */
+$margin-element: 0.5rem;  /* 0.5rem = 8px */
+$margin-atom: 0.25rem;  /* 0.25rem = 4px */
+
+/* Padding */
+$padding-page: 3rem;  /* 5rem = 80px */
+$padding-container: 2.25rem;  /* 2.25rem = 36px */
+$padding-component: 1.5rem;  /* 1.5rem = 24px */
+$padding-element: 0.5rem;  /* 0.5rem = 8px */
+$padding-atom: 0.25rem;  /* 0.25rem = 4px */
+$padding-inline: 0.125rem;  /* 0.125rem = 2px */
+
+/* Spacing Button */
+$padding-btn-x: 0.75rem;  /* 0.75rem = 12px */
+$padding-btn-y: 1rem;  /* 1rem = 16px */
+$padding-icon: 0.25rem;  /* 0.25rem = 4px */
+$padding-btn-x-small: $padding-btn-x * 0.5;  /* 50% of 0.75rem */
+$padding-btn-y-small: $padding-btn-y * 0.5;  /* 50% of 1rem */
+$width-min-button-desktop: 8.125rem;  /* 8.125rem = 130px */
+$wdith-interaction-mobile: 2.5rem;  /* 2.5rem = 40px */ 
+
+/* Min/Max Width Page */
+$min-width-page: 90%;  /* 90% of the viewport width */
+$max-width-page: 1200px;
+$min-height-form-input: 2.5rem;  /* 2.5rem = 40px */
+$min-width-card: 17rem; 
+$min-width-element--small: 44px; 
+
+/* height */
+$height-min-btn: 2.5rem;  /* 2.5rem = 40px */
+$height-nav: 5rem;  /* 5rem = 80px */
+
+
+/* Border Radius */
+$border-radius: 0.5rem;  /* 0.5rem = 8px */
+$border-radius-min: 0.18rem;  /* 0.18rem = 3px */
+$border-radius-max: 3.125rem;  /* 3.125rem = 50px */
+$border-width: 0.05em;  /* 0.05em = 0.8px (approximately) */
+$border-width-max: 0.6rem;  /* 0.6rem = 10px (approximately) */
+
+/* fonts */
+
+// font-family
+$font-header: 'Cinzel';
+$font-special: 'Roboto';
+$font-regular:'Josefin Sans';
+$font-fallback: sans-serif;
+
+// font-size
+$font-size-base: 16px;
+
+$font-size-extra-large: 3.1rem;  /* 3.1rem = 50px (Header Page) */
+$font-size-large: 1.5rem;  /* 1.5rem = 24px (Container headings) */
+$font-size-medium: 1.1rem;  /* 1.1rem = 18px (Component headings) */
+$font-size-regular: 1rem;  /* 1rem = 16px (regular) */
+$font-size-small: 0.9rem;  /* 0.9rem = 14px (small) */
+$font-size-extra-small: 0.7rem;  /* 0.7rem = 11px (very small) */
+
+//line Height
+$font-line-height: 1.4em; 
+
+// font-weight
+$font-weight-regular: 400;
+$font-weight-bold: 700;
+
+// border-box-shadow
+$border-box-shadow: 0 .5rem 1rem -.25rem $color-black;
+$border-box-shadow--green-dark: 0 .5rem 1rem -.25rem $color-green-dark;
+$border-box-shadow--signal: 0 .5rem 1rem -.25rem $color-red-signal;
+$border-box-shadow-form-coltrol: 0.125rem 0.125rem 0.3125rem 0 $color-grey-light;
+$border-box-shadow-form-control--interaction: 0.125rem 0.125rem 0.5rem $color-grey-dark;

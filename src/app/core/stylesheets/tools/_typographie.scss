@@ -1,0 +1,148 @@
+/*import lato light/regular, Liu Jian Mao Cao*/
+@import '../tools/variables';
+@import '../mixins/mixins';
+
+//TODO add font to be inherrited from main or something
+
+
+.h1 {
+    @include fonts($font-header, $font-size-extra-large, $font-weight-regular, $color: $color-red-dark);
+    &--light{
+        @include fonts($font-header, $font-size-extra-large, $font-weight-regular, $color: $color-light);
+    }
+}
+
+.h2 {
+    @include fonts($font-header, $font-size-large, $font-weight-bold, $color: $color-red-dark);
+    &--green {
+        @include fonts($font-header, $font-size-medium, $font-weight-bold, $color: $color-green-dark);
+    }
+    &--light {
+        @include fonts($font-header, $font-size-large, $font-weight-regular, $color: $color-light);
+    }
+    &__container-titel{
+        @include fonts($font-regular, $font-size-large, $font-weight-bold, $color: $color-red-dark);
+    }
+
+    &__footer{
+        @include fonts($font-special, $font-size-medium, $font-weight-bold, $color: $color-red-dark);
+    }
+}
+
+.h3 {
+    @include fonts($font-regular, $font-size-medium, $font-weight-bold, $color: $color-red-dark);
+    &--regular {
+        @include fonts($font-regular, $font-size-medium, $font-weight-regular, $color: $color-red-dark);
+    }
+    &--light{
+        @include fonts($font-regular, $font-size-medium, $font-weight-bold, $color: $color-light);
+    }
+}
+
+.h4 {
+    @include fonts($font-regular, $font-size-regular, $font-weight-bold, $color: $color-green-dark);
+    &--light{
+        @include fonts($font-regular, $font-size-regular, $font-weight-bold, $color: $color-light); 
+    }
+}
+
+
+
+.text-regular {
+    @include fonts($font-regular, $font-size-regular, $font-weight-regular, $color : $color-green-dark);
+
+    &--italic {
+        @include fonts($font-regular, $font-size-regular, $font-weight-regular, $italic: true, $color : $color-green-dark);
+    }
+
+    &--bold {
+        @include fonts($font-regular, $font-size-regular, $font-weight-bold, $color : $color-green-dark);
+
+        &--italic {
+            @include fonts($font-regular, $font-size-regular, $font-weight-bold, $italic: true, $color : $color-green-dark);
+        }
+    }
+
+    &--red-dark {
+        @include fonts($font-regular, $font-size-regular, $font-weight-regular, $color : $color-red-dark);
+
+        &--italic {
+            @include fonts($font-regular, $font-size-regular, $font-weight-regular, $italic: true, $color : $color-red-dark);
+        }
+
+        &--bold {
+            @include fonts($font-regular, $font-size-regular, $font-weight-bold, $color : $color-red-dark);
+
+            &--italic {
+                @include fonts($font-regular, $font-size-regular, $font-weight-bold, $italic: true, $color : $color-red-dark);
+            }
+        }
+    }
+
+    &--light {
+        @include fonts($font-regular, $font-size-regular, $font-weight-regular, $color : $color-light);
+
+        &--italic {
+            @include fonts($font-regular, $font-size-regular, $font-weight-regular, $italic: true, $color : $color-light);
+        }
+
+        &--bold {
+            @include fonts($font-regular, $font-size-regular, $font-weight-bold, $color : $color-light);
+
+            &--italic {
+                @include fonts($font-regular, $font-size-regular, $font-weight-bold, $italic: true, $color : $color-light);
+            }
+        }
+    }
+
+    &--red-signal {
+        @include fonts($font-regular, $font-size-regular, $font-weight-regular, $color : $color-red-signal);
+
+        &--italic {
+            @include fonts($font-regular, $font-size-regular, $font-weight-regular, $italic: true, $color : $color-red-signal);
+        }
+
+        &--bold {
+            @include fonts($font-regular, $font-size-regular, $font-weight-bold, $color : $color-red-signal);
+
+            &--italic {
+                @include fonts($font-regular, $font-size-regular, $font-weight-bold, $italic: true, $color : $color-red-signal);
+            }
+        }
+    }
+}
+
+.text-fine {
+    @include fonts($font-regular, $font-size-extra-small, $font-weight-regular, $color : $color-green-dark);
+
+    &--italic {
+        @include fonts($font-regular, $font-size-extra-small, $font-weight-regular, $italic: true, $color : $color-green-dark);
+    }
+
+    &--bold {
+        @include fonts($font-regular, $font-size-extra-small, $font-weight-bold, $color : $color-red-dark);
+
+        &--italic {
+            @include fonts($font-regular, $font-size-extra-small, $font-weight-bold, $italic: true, $color : $color-red-dark);
+        }
+    }
+
+    &--red-dark {
+        @include fonts($font-regular, $font-size-extra-small, $font-weight-regular, $color : $color-red-dark);
+    }
+}
+
+.text-link {
+    @include fonts($font-regular, $font-size-regular, $font-weight-regular, $color: $color-blue-link);
+    text-decoration: underline;
+
+    &--fine {
+        @include fonts($font-regular, $font-size-extra-small, $font-weight-regular, $color: $color-blue-link);
+        text-decoration: underline;
+
+    }
+}
+
+.no-wrap-text {
+    white-space: nowrap;
+  }

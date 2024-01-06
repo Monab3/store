@@ -1,0 +1,54 @@
+@import '../../../core/stylesheets/mixins/mixins';
+@import '../../../core/stylesheets/mixins/mixins-layout';
+@import '../../../core/stylesheets/mixins/mixins-effects';
+
+@import '../../../core/stylesheets/tools/typographie';
+@import '../../../core/stylesheets/tools/variables';
+
+@import '../../../core/stylesheets/elements/controls';
+
+.sum {
+    @include gradient__container;
+    @include flexbox($direction: column, $justify: space-between, $align: flex-start, $wrap: nowrap);
+    @include padding-component;
+    @include gap-element;
+    &__container {
+        width: 100%;
+        @include flexbox($direction: column, $justify: space-between, $align: stretch, $wrap: nowrap);
+        @include gap-component;
+    }
+    &>h4 {
+        width: 100%;
+        align-self: center;
+    }
+
+    &__table {
+        width: 100%;
+        border-collapse: collapse;
+
+        & tr {
+            td {
+                @include padding-atom($left: false, $right: false);
+
+                &:last-child {
+                    text-align: end;
+                }
+            }
+        }
+    }
+
+    &--margin-top {
+        @include padding-element($bottom: false, $left: false, $right: false);
+    }
+}
+
+@media only screen and (min-width: 0) and (max-width: $breakpoint-medium--minus) {
+    .sum {
+        background: $gradient-green;
+        border-bottom-left-radius: 0;
+        border-top-right-radius: 0;
+        box-shadow: none;
+        color: $color-light;
+        border: none;
+    }
+}

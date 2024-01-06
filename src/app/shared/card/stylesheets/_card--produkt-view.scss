@@ -1,0 +1,46 @@
+@import '../../../core/stylesheets/layout/layout';
+@import '../../../core/stylesheets/elements/controls';
+@import '../../../core/stylesheets/mixins/mixins';
+@import '../../../core/stylesheets/mixins/mixins-layout';
+@import '../../../core/stylesheets/mixins/mixins-effects';
+
+@import '../../../core/stylesheets/tools/variables';
+@import '../../../core/stylesheets/tools/typographie';
+
+@import '../../../core/stylesheets/elements/controls';
+@import '../../../core/stylesheets/components/quantity_selector';
+
+@import "./mixins";
+
+.card--produkt-view {
+    @include card;
+
+    &> a >header {
+       width: 100%;
+    }
+
+    &> a > figure {
+       @include flexbox($justify: center, $wrap: wrap);
+       width: 30%;
+    }
+
+    &> a >section {
+       @include flexbox($justify: space-between, $wrap: wrap);
+       @include gap-element;
+       width: 50%;
+       
+       @include ul;
+
+    }
+
+ & > footer {
+   align-items: end;
+    width: 100%;
+    @include border($border-property: border-top, $width: $border-width, $style: solid, $color: $color-green-dark);
+    @include padding-element($left: false, $right: false, $bottom: false);
+ }
+
+ &__img {
+    @include responsive-img(true, false);
+ }
+}

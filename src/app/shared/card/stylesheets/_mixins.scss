@@ -1,0 +1,53 @@
+
+
+@import '../../../core/stylesheets/layout/layout';
+@import '../../../core/stylesheets/elements/controls';
+@import '../../../core/stylesheets/mixins/mixins';
+@import '../../../core/stylesheets/mixins/mixins-layout';
+@import '../../../core/stylesheets/mixins/mixins-effects';
+
+@import '../../../core/stylesheets/tools/variables';
+@import '../../../core/stylesheets/tools/typographie';
+
+@import '../../../core/stylesheets/elements/controls';
+@import '../../../core/stylesheets/components/quantity_selector';
+
+
+
+
+
+
+@mixin card {
+    @include border($color: $color-green-light);
+    @include flexbox($direction: row, $justify: space-between, $wrap: wrap);
+    @include effect-drop-shadow-hover();
+    @include padding-component;
+    @include gap-component;
+    height: 100%; 
+    border-radius: $border-radius;
+    background: $color-light;
+    a {
+      @include flexbox($direction: row, $justify: space-between, $wrap: wrap);
+      @include gap-component;
+    }
+ }
+ 
+ @mixin ul {
+    & ul {
+       @include flexbox($direction: column, $justify: flex-start, $wrap: nowrap);
+       @include gap-element;
+       & > * {
+          @include flexbox($direction: row, $justify: flex-start, $wrap: nowrap);
+       }
+    }
+ }
+ 
+ @mixin footer-text{
+    &>h3 {
+       text-align: center;
+    }
+ 
+    &>p {
+       text-align: center;
+    }
+ }

@@ -1,0 +1,217 @@
+<form class="form__container form" [formGroup]="kontaktFormular">
+
+    <!--<div class="form__container--half-width">
+        <div class="form--span-all">
+            <label for="anrede">Anrede</label>
+            <select class="form__input" id="anrede" formControlName="anrede">
+                <option value="herr">Herr</option>
+                <option value="frau">Frau</option>
+            </select>
+        </div>
+        <div class="form--span-all form__select-box">
+            <label for="titel">Titel</label>
+            <select class="form__input" id="titel" formControlName="titel">
+                <option value="prof">Prof</option>
+                <option value="dr">Dr</option>
+            </select>
+        </div>
+    </div>-->
+
+    <div class="form__container--half-width">
+        <div class="form--span-all">
+            <label for="anrede">Anrede</label>
+            <ng-select class="form__input" [items]="['Herr', 'Frau']" formControlName="anrede"></ng-select>
+        </div>
+        <div class="form--span-all">
+            <label for="titel">Titel</label>
+            <ng-select class="form__input" [items]="['Prof', 'Dr']" formControlName="titel"></ng-select>
+        </div>
+    </div>
+
+    <div class="form__container--half-width">
+        <div class="form--span-all">
+            <label for="vorname">Vorname (Pflichtfeld)</label>
+            <input class="form__input" id="vorname" formControlName="vorname"
+                [ngClass]="{'form__input--invalid': kontaktFormular.get('vorname')?.invalid && kontaktFormular.get('vorname')?.touched}" />
+            <p *ngIf="kontaktFormular.get('vorname')?.invalid && kontaktFormular.get('vorname')?.touched"
+                class="text-regular--red-signal">Bitte teilen Sie uns Ihren Vornamen mit.</p>
+        </div>
+        <div class="form--span-all">
+            <label for="nachname">Nachname (Pflichtfeld)</label>
+            <input class="form__input" id="nachname" formControlName="nachname"
+                [ngClass]="{'form__input--invalid': kontaktFormular.get('nachname')?.invalid && kontaktFormular.get('nachname')?.touched}" />
+            <p *ngIf="kontaktFormular.get('nachname')?.invalid && kontaktFormular.get('nachname')?.touched"
+                class="text-regular--red-signal">Bitte teilen Sie uns Ihren Nachnamen mit.</p>
+        </div>
+    </div>
+
+    <div class="form__container--full-width">
+        <p class="text-regular">Wir benötigen Ihre Email-Adresse, damit wir Sie über Ihre Bestellung informieren können.
+        </p>
+        <label for="email">E-Mail (Pflichtfeld)</label>
+        <input class="form__input" type="email" id="email" formControlName="email"
+            [ngClass]="{'form__input--invalid': kontaktFormular.get('email')?.invalid && kontaktFormular.get('email')?.touched}" />
+        <div *ngIf="kontaktFormular.get('email')?.invalid && kontaktFormular.get('email')?.touched"
+            class="text-regular--red-signal">
+            Bitte eine gültige E-Mail-Adresse eingeben.
+        </div>
+    </div>
+
+    <div class="form__container--full-width">
+        <label for="adresse">Adresse (Pflichtfeld)</label>
+        <input class="form__input" type="text" id="adresse" formControlName="adresse"
+            [ngClass]="{'form__input--invalid': kontaktFormular.get('adresse')?.invalid && kontaktFormular.get('adresse')?.touched}" />
+        <div *ngIf="kontaktFormular.get('adresse')?.invalid && kontaktFormular.get('adresse')?.touched"
+            class="text-regular--red-signal">
+            Bitte eine gültige Adresse eingeben.
+        </div>
+    </div>
+
+    <div class="form__container--full-width">
+        <label for="plz">PLZ (Pflichtfeld)</label>
+        <input class="form__input" type="text" id="plz" formControlName="plz"
+            [ngClass]="{'form__input--invalid': kontaktFormular.get('plz')?.invalid && kontaktFormular.get('plz')?.touched}" />
+        <div *ngIf="kontaktFormular.get('plz')?.invalid && kontaktFormular.get('plz')?.touched"
+            class="text-regular--red-signal">
+            Bitte eine gültige Postleitzahl eingeben.
+        </div>
+    </div>
+
+    <div class="form__container--full-width">
+        <label for="stadt">Stadt (Pflichtfeld)</label>
+        <input class="form__input" type="text" id="stadt" formControlName="stadt"
+            [ngClass]="{'form__input--invalid': kontaktFormular.get('stadt')?.invalid && kontaktFormular.get('stadt')?.touched}" />
+        <div *ngIf="kontaktFormular.get('stadt')?.invalid && kontaktFormular.get('stadt')?.touched"
+            class="text-regular--red-signal">
+            Bitte einen gültigen Stadtnamen eingeben.
+        </div>
+    </div>
+
+    <div class="form__container--full-width">
+        <label for="land">Land (Pflichtfeld)</label>
+        <input class="form__input" type="text" id="land" formControlName="land"
+            [ngClass]="{'form__input--invalid': kontaktFormular.get('land')?.invalid && kontaktFormular.get('land')?.touched}" />
+        <div *ngIf="kontaktFormular.get('land')?.invalid && kontaktFormular.get('land')?.touched"
+            class="text-regular--red-signal">
+            Bitte ein gültiges Land eingeben.
+        </div>
+    </div>
+    <button class="button button__main" [disabled]="kontaktFormular.invalid">Speichern</button>
+
+</form>
+
+<p class="text-regular">Falls Ihre Adresse nicht Ihrer Rechnungsadresse entspricht, fügen Sie sie bitte hinzu.</p>
+<button class="button button__secondary" (click)="toggleRechungsFormular()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+      </svg>
+    Rechnungsadresse hinzufügen</button>
+<form *ngIf="rechungsFormular" class="form__container form" [formGroup]="rechnungFormular">
+
+    <div class="form__container--half-width">
+        <div class="form--span-all">
+            <label for="anrede">Anrede</label>
+            <ng-select class="form__input" [items]="['Herr', 'Frau']" formControlName="anrede"></ng-select>
+        </div>
+        <div class="form--span-all">
+            <label for="titel">Titel</label>
+            <ng-select class="form__input" [items]="['Prof', 'Dr']" formControlName="titel"></ng-select>
+        </div>
+    </div>
+
+    <div class="form__container--half-width">
+        <div class="form--span-all">
+            <label for="vorname">Vorname (Pflichtfeld)</label>
+            <input class="form__input" id="vorname" formControlName="vorname"
+                [ngClass]="{'form__input--invalid': kontaktFormular.get('vorname')?.invalid && kontaktFormular.get('vorname')?.touched}" />
+            <p *ngIf="kontaktFormular.get('vorname')?.invalid && kontaktFormular.get('vorname')?.touched"
+                class="text-regular--red-signal">Bitte teilen Sie uns Ihren Vornamen mit.</p>
+        </div>
+        <div class="form--span-all">
+            <label for="nachname">Nachname (Pflichtfeld)</label>
+            <input class="form__input" id="nachname" formControlName="nachname"
+                [ngClass]="{'form__input--invalid': kontaktFormular.get('nachname')?.invalid && kontaktFormular.get('nachname')?.touched}" />
+            <p *ngIf="kontaktFormular.get('nachname')?.invalid && kontaktFormular.get('nachname')?.touched"
+                class="text-regular--red-signal">Bitte teilen Sie uns Ihren Nachnamen mit.</p>
+        </div>
+    </div>
+
+    <div class="form__container--full-width">
+        <p class="text-regular">Wir benötigen Ihre Email-Adresse, damit wir Sie über Ihre Bestellung informieren können.
+        </p>
+        <label for="email">E-Mail (Pflichtfeld)</label>
+        <input class="form__input" type="email" id="email" formControlName="email"
+            [ngClass]="{'form__input--invalid': kontaktFormular.get('email')?.invalid && kontaktFormular.get('email')?.touched}" />
+        <div *ngIf="kontaktFormular.get('email')?.invalid && kontaktFormular.get('email')?.touched"
+            class="text-regular--red-signal">
+            Bitte eine gültige E-Mail-Adresse eingeben.
+        </div>
+    </div>
+
+    <div class="form__container--full-width">
+        <label for="adresse">Adresse (Pflichtfeld)</label>
+        <input class="form__input" type="text" id="adresse" formControlName="adresse"
+            [ngClass]="{'form__input--invalid': kontaktFormular.get('adresse')?.invalid && kontaktFormular.get('adresse')?.touched}" />
+        <div *ngIf="kontaktFormular.get('adresse')?.invalid && kontaktFormular.get('adresse')?.touched"
+            class="text-regular--red-signal">
+            Bitte eine gültige Adresse eingeben.
+        </div>
+    </div>
+
+    <div class="form__container--full-width">
+        <label for="plz">PLZ (Pflichtfeld)</label>
+        <input class="form__input" type="text" id="plz" formControlName="plz"
+            [ngClass]="{'form__input--invalid': kontaktFormular.get('plz')?.invalid && kontaktFormular.get('plz')?.touched}" />
+        <div *ngIf="kontaktFormular.get('plz')?.invalid && kontaktFormular.get('plz')?.touched"
+            class="text-regular--red-signal">
+            Bitte eine gültige Postleitzahl eingeben.
+        </div>
+    </div>
+
+    <div class="form__container--full-width">
+        <label for="stadt">Stadt (Pflichtfeld)</label>
+        <input class="form__input" type="text" id="stadt" formControlName="stadt"
+            [ngClass]="{'form__input--invalid': kontaktFormular.get('stadt')?.invalid && kontaktFormular.get('stadt')?.touched}" />
+        <div *ngIf="kontaktFormular.get('stadt')?.invalid && kontaktFormular.get('stadt')?.touched"
+            class="text-regular--red-signal">
+            Bitte einen gültigen Stadtnamen eingeben.
+        </div>
+    </div>
+
+    <div class="form__container--full-width">
+        <label for="land">Land (Pflichtfeld)</label>
+        <input class="form__input" type="text" id="land" formControlName="land"
+            [ngClass]="{'form__input--invalid': kontaktFormular.get('land')?.invalid && kontaktFormular.get('land')?.touched}" />
+        <div *ngIf="kontaktFormular.get('land')?.invalid && kontaktFormular.get('land')?.touched"
+            class="text-regular--red-signal">
+            Bitte ein gültiges Land eingeben.
+        </div>
+    </div>
+    <button class="button button__main" [disabled]="rechnungFormular.invalid">Speichern</button>
+</form>
+
+<h2 class="h2__container-titel">Zahlungsmethode</h2>
+<p class="text-regular">Wählen, Sie die Zahlungsmethode aus, mit der Sie bezahlen wollen.</p>
+
+<form [formGroup]="rechnungsArtFormular">
+    <label class="text-regular">
+        <input type="radio" formControlName="bezahlart" value="Mit Rechnung">
+        Mit Rechnung
+    </label>
+    <label class="text-regular">
+        <input type="radio" formControlName="bezahlart" value="Paypal">
+        Paypal
+    </label>
+</form>
+
+<form [formGroup]="datenschutzErklaerung">
+    <label class="text-regular">
+      <input type="checkbox" formControlName="isChecked"> 
+      Ich erkläre mich damit einverstanden, dass meine Daten zur Bearbeitung meines Anliegens verarbeitet und gespeichert werden. Mehr Infos in der Datenschutzerklärung.
+    </label>
+  </form>
+
+  <button class="button button__main" [disabled]="kontaktFormular.invalid || rechnungFormular.invalid">Speichern und weiter</button>
+
+
+

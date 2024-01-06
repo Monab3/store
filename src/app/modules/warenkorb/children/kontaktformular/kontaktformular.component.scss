@@ -1,0 +1,27 @@
+@import '../../../../core/stylesheets/layout/layout';
+@import '../../../../core/stylesheets/elements/form';
+@import '../../../../core/stylesheets/mixins/mixins';
+@import '../../../../core/stylesheets/mixins/mixins-layout';
+@import '../../../../core/stylesheets/mixins/mixins-effects';
+
+@import '../../../../core/stylesheets/tools/typographie';
+@import '../../../../core/stylesheets/tools/variables';
+
+@import '../../../../core/stylesheets/elements/controls';
+
+
+
+::ng-deep .ng-option {
+    background: $color-light;
+    @include padding-atom;
+
+    width: 100%;
+}
+
+::ng-deep .ng-dropdown-panel-items{
+    border-radius: $border-radius;
+    @include border($color: $color-green-light);
+}
+::ng-deep .ng-select-container{
+    color: $color-green-dark;
+}

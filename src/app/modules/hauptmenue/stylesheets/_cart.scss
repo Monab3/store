@@ -1,0 +1,36 @@
+@import '../../../core/stylesheets/mixins/mixins';
+@import '../../../core/stylesheets/mixins/mixins-layout';
+@import '../../../core/stylesheets/mixins/mixins-effects';
+
+@import '../../../core/stylesheets/tools/typographie';
+@import '../../../core/stylesheets/tools/variables';
+
+@import '../../../core/stylesheets/elements/controls';
+@import '../../../core/stylesheets/components/quantity_selector';
+
+
+
+
+.hauptmenu__open-cart-button {
+    flex-grow: 1;
+    @include flexbox($direction: row, $justify: center, $wrap: nowrap, $align: center);
+    color: $color-green-dark;
+
+    &:hover {
+        color: $color-red-dark;
+
+        &>* {
+            color: $color-red-dark;
+        }
+    }
+
+    &__icon {
+        color: $color-green-dark;
+        font-size: 1.5rem !important;
+    }
+
+    &__text {
+        text-align: start;
+        @include margin-element($top: false, $right: false, $bottom: false, $left: true);
+    }
+}

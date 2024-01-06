@@ -1,0 +1,49 @@
+@import '../../../core/stylesheets/mixins/mixins';
+@import '../../../core/stylesheets/mixins/mixins-layout';
+@import '../../../core/stylesheets/mixins/mixins-effects';
+
+@import '../../../core/stylesheets/tools/typographie';
+@import '../../../core/stylesheets/tools/variables';
+
+@import '../../../core/stylesheets/elements/controls';
+@import '../../../core/stylesheets/components/quantity_selector';
+
+.toggle-product-view {
+    height: 46.396px; 
+    width: 100%; 
+    @include flexbox($direction: row, $justify: space-between, $align: flex-end, $wrap: wrap);
+    & > ul{
+        @include flexbox($direction: row, $justify: space-between, $align: flex-end, $wrap: wrap);
+        @include gap-element;
+    }
+    &__controls {
+        @include flexbox($direction: row, $justify: space-between, $align: flex-end, $wrap: wrap);
+        & button {
+            &:hover {
+                stroke: $color-red-signal;
+            }
+        }
+        & button:first-child {
+            @include margin-element($top: false, $right: true, $bottom: false, $left: false);
+        }
+    }
+}
+
+.toggle-product-view__controls {
+    display: flex;
+    align-items: flex-end; /* Align items at the bottom */
+}
+
+.toggle-product-view__controls button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.toggle-product-view__controls .color-red-dark svg rect {
+    stroke: $color-red-dark;
+}
+
+.toggle-product-view__controls button:hover svg rect{
+    stroke: $color-red-dark;
+}

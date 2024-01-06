@@ -1,0 +1,65 @@
+@import '../../../core/stylesheets/mixins/mixins';
+@import '../../../core/stylesheets/mixins/mixins-layout';
+@import '../../../core/stylesheets/mixins/mixins-effects';
+
+@import '../../../core/stylesheets/tools/typographie';
+@import '../../../core/stylesheets/tools/variables';
+
+@import '../../../core/stylesheets/elements/controls';
+
+.page__grid {
+    &__anzeige{
+        @include page__span--small; 
+        align-self: start; 
+    }
+    &__warenkorb {
+        @include grid__span__third--lg($multipy: 2); 
+        align-self: start; 
+
+    }
+    &__titel{
+        @include margin-page($bottom: false, $left: false, $right: false);
+        @include grid__span--all; 
+        align-self: start; 
+        @include hide-for-small; 
+        @include hide-for-medium; 
+    }
+    &__sum{
+        @include grid__span__third--lg; 
+        align-self: start; 
+    }
+}
+
+@media only screen and (min-width: 0) and (max-width: $breakpoint-medium--minus) {
+    .page__grid {
+        &__anzeige{
+            order: 1; 
+            @include margin-page($bottom: false, $left: false, $right: false);
+    
+        }
+        &__warenkorb {
+            order: 3;
+        }
+        &__sum{
+            order: 2;
+            @include grid__span--all; 
+        }
+    }
+}
+
+@media only screen and (min-width:$breakpoint-medium) and (max-width: $breakpoint-large) {
+    .page__grid {
+        &__anzeige{
+            @include margin-page($bottom: false, $left: false, $right: false);
+            order: 1; 
+    
+        }
+        &__warenkorb {
+            order: 3;
+        }
+        &__sum{
+            order: 2;
+            @include grid__span--all; 
+        }
+    }
+}

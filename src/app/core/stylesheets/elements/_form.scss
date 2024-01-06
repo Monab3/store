@@ -1,0 +1,156 @@
+@import "../tools/variables";
+
+.form {
+  @include fonts($font-regular, $font-size-regular, $font-weight-regular, $color: $color-red-dark);
+
+  &__input {
+    color: $color-green-dark;
+    @include border($width: $border-width, $style: solid, $color: $color-grey-light);
+    border-radius: $border-radius-min;
+    min-height: $min-height-form-input;
+    box-shadow: $border-box-shadow-form-coltrol;
+    @include padding-atom;
+
+    &:focus {
+      @include border($color: $color-grey-dark);
+      box-shadow: $border-box-shadow-form-control--interaction;
+      outline: none;
+
+    }
+
+    &:hover {
+      @include border($color: $color-grey-dark);
+      box-shadow: $border-box-shadow-form-control--interaction;
+      outline: none;
+    }
+
+    &--full-width {
+      width: 100%;
+    }
+
+    &--invalid {
+      @include fonts($font-special, $font-size-regular, $font-weight-regular, $color: $color-red-signal);
+      @include border($color: $color-red-signal);
+    }
+  }
+  
+  &__grid {
+    @include grid;
+    width: 100%;
+  }
+
+  &__container {
+    @include page__span--small;
+    @include flexbox($direction: row, $justify: center, $align: center, $wrap: wrap);
+    @include border($color: $color-green-light);
+    @include gap-component;
+    border-radius: $border-radius;
+    @include padding-container;
+
+    &--full-width {
+      @include flexbox($direction: row, $justify: flex-start, $align: center, $wrap: wrap);
+      @include gap-element;
+      width: 100%;
+
+      &>label {
+        width: 100%;
+      }
+
+      &>input {
+        width: 100%;
+      }
+
+      &>textarea {
+        width: 100%;
+      }
+    }
+
+    &--half-width {
+      @include flexbox($direction: row, $justify: flex-start, $align: flex-start, $wrap: nowrap);
+      @include gap-component;
+      width: 100%;
+      & option{
+        max-width: 100%;
+      }
+      >* {
+        flex: 1;
+      }
+    }
+
+    &__select-box{
+      position: relative;
+    }
+
+    &__close {
+      width: 100%;
+      text-align: right;
+    }
+  }
+
+
+  &--span-all {
+    @include flexbox($direction: column, $justify: stretch, $align: center, $wrap: wrap);
+
+    &>* {
+      width: 100%;
+    }
+  }
+
+}
+
+
+
+@mixin form__number($width: 100%) {
+  .form__number {
+    @include fonts($font-regular, $font-size-regular, $font-weight-regular, $color: $color-red-dark);
+
+    &>input {
+      width: $width;
+      height: 100%;
+      text-align: center;
+
+      &::-webkit-inner-spin-,
+      &::-webkit-outer-spin- {
+        color: $color-green-dark;
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      color: $color-green-dark;
+      @include border($width: $border-width, $style: solid, $color: $color-grey-light);
+      border-radius: $border-radius-min;
+      min-height: $min-height-form-input;
+      box-shadow: $border-box-shadow-form-coltrol;
+      @include padding-atom;
+
+      &:focus {
+        @include border($color: $color-grey-dark);
+        box-shadow: $border-box-shadow-form-control--interaction;
+        outline: none;
+
+      }
+
+      &:hover {
+        @include border($color: $color-grey-dark);
+        box-shadow: $border-box-shadow-form-control--interaction;
+        outline: none;
+      }
+
+    }
+  }
+}
+
+@media only screen and (min-width: 0) and (max-width:$breakpoint-medium) {
+  .form__container--half-width {
+      @include flexbox($direction: column, $justify: stretch, $align: center, $wrap: wrap);
+      @include gap-component;
+      width: 100%;
+
+      >* {
+          width: 100%;
+      }
+  }
+  .button__main {
+    width: 100%;
+}
+}

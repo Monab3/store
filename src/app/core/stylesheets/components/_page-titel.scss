@@ -1,0 +1,17 @@
+.page-titel{
+    @include flexbox($direction: row, $justify: center, $wrap: nowrap, $align: center);
+    @include gap-container;
+    background: $gradient-green;
+    border-radius: 0 $border-radius-max 0 $border-radius-max;
+    & > figure{
+        @include hide-for-small; 
+        width: 100px;
+        height: 100px;
+        & img{
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: contain;
+        }
+    }  
+}

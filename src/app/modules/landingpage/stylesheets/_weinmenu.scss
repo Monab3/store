@@ -1,0 +1,53 @@
+@import '../../../core/stylesheets/mixins/mixins';
+@import '../../../core/stylesheets/mixins/mixins-layout';
+@import '../../../core/stylesheets/mixins/mixins-effects';
+@import '../../../core/stylesheets/mixins/mixins';
+@import '../../../core/stylesheets/mixins/mixins-layout';
+@import '../../../core/stylesheets/mixins/mixins-effects';
+
+@import '../../../core/stylesheets/tools/typographie';
+@import '../../../core/stylesheets/tools/variables';
+
+@import '../../../core/stylesheets/elements/controls';
+@import '../../../core/stylesheets/components/quantity_selector';
+@import '../../../core/stylesheets/components/page-titel';
+
+
+/* Weinmenü */
+.weinmenu {
+    width: 100%;
+    @include padding-page($left: true, $right: true, $top: false, $bottom: false);
+    position: relative;
+    @include border($border-property: border-bottom, $color : $color-green-light);
+
+
+    &__text-margin {
+        @include margin-container;
+    }
+
+    &__nav-button {
+        @include grid__span__quarter--mg-lg;
+        @include border($border-property: border-bottom, $color : $color-green-light);
+        @include flexbox($justify: center, $wrap: nowrap, $align: center);
+        @include effect-border-underline($color-bg: $color-red-dark);
+        color: $color-green-dark;
+    }
+
+    &__img-container {
+        overflow: hidden;
+        border-radius: 100%;
+        width: 80px;
+        height: 80px;
+        @include border($width: $border-width-max, $color: $color-light);
+        box-shadow: $border-box-shadow;
+    }
+
+    &__img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: contain;
+    }
+}
+
+

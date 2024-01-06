@@ -1,0 +1,118 @@
+@import '../tools/variables';
+@import '../tools/typographie';
+@import '../mixins/mixins';
+@import '../mixins/mixins-layout';
+@import '../mixins/mixins-effects';
+
+.selector {
+    @include effect-drop-shadow-hover();
+    padding: $padding-btn-y-small 0;
+    text-align: center;
+    border: none;
+    color: $color-green-dark;
+    -moz-appearance: textfield;
+    appearance: none;
+    margin: 0;
+    outline: none;
+    grid-column: span 2;
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    &__grid{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        @include gap-element; 
+        padding: $padding-btn-y-small $padding-btn-x-small;
+        @include border($color: $color-grey-dark);
+        border-radius: $border-radius;
+        &:focus {
+            @include border($color: $color-green-dark);
+            outline: none;
+        }
+
+        &:hover {
+            @include border($color: $color-green-dark);
+            box-shadow: $border-box-shadow--green-dark;
+        }
+    }
+
+    &__control{
+        grid-column: span 1;
+        color: $color-green-dark; 
+        &:hover{
+            color: $color-red-dark;
+         }
+    }
+    &__footer {
+        &__grid {
+           display: grid;
+           grid-template-columns: repeat(5, 1fr);
+           @include gap-element;
+           &>h2 {
+              grid-column: span 2;
+              @include flexbox($align: flex-start, $justify: center);
+           }
+
+           &>h3 {
+            grid-column: span 2;
+            @include flexbox($align: flex-start, $justify: center);
+         }
+  
+           &>form {
+              grid-column: span 3;
+           }
+  
+           &>button {
+              grid-column: span 5;
+           }
+  
+           &>hr {
+              grid-column: span 5;
+  
+           }
+  
+           & p {
+              grid-column: span 5;
+              text-align: center;
+           }
+        }
+     }
+     &__form__input {
+      width: 2.5rem;
+      height: 100%;
+      padding: $padding-btn-y-small 0;
+      @include border($color: $color-grey-dark);
+      border-radius: $border-radius;
+      text-align: center;
+      color: $color-green-dark;
+      -moz-appearance: textfield;
+      appearance: none;
+      margin: 0;
+   
+      &::-webkit-inner-spin-button,
+      &::-webkit-outer-spin-button {
+          color: $color-green-dark;
+          margin: 0;
+      }
+   
+      &:focus {
+          @include border($color: $color-green-dark);
+          outline: none;
+      }
+   
+      &:hover {
+          @include border($color: $color-green-dark);
+          box-shadow: $border-box-shadow--green-dark;
+      }
+   
+      &--invalid {
+          border-color: $color-red-signal;
+   
+          color: $color-red-signal;
+      }
+   }
+}
+

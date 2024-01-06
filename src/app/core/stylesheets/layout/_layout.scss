@@ -1,0 +1,19 @@
+@import '../tools/variables';
+@import '../mixins/mixins';
+@import '../mixins/mixins-layout';
+
+.page {
+    width: min($min-width-page,$max-width-page);
+    margin: 0 auto; //centers container
+    position: relative;
+    &__grid{
+        @include grid;
+        gap: $gap-page;
+    }
+}
+
+#toggle-product-view_ul {
+    @include hide-for-small;
+}
+
+

@@ -1,0 +1,81 @@
+@import '../../../core/stylesheets/mixins/mixins';
+@import '../../../core/stylesheets/mixins/mixins-layout';
+@import '../../../core/stylesheets/mixins/mixins-effects';
+
+@import '../../../core/stylesheets/tools/typographie';
+@import '../../../core/stylesheets/tools/variables';
+
+@import '../../../core/stylesheets/elements/controls';
+
+.produkt {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-radius: $border-radius;
+    @include hide-for-small;
+
+    &__container {
+        @include gap-container;
+        flex: 2; 
+        @include flexbox($direction: column, $justify: space-between, $align: stretch, $wrap: wrap);
+    }
+    &__head {
+        background-color: $color-green-dark;
+
+        & th {
+            text-align: left;
+            @include padding-element;
+
+        }
+
+        & th:first-child {
+            border-radius: $border-radius 0 0 $border-radius;
+
+        }
+
+        & th:last-child {
+            border-radius: 0 $border-radius $border-radius 0;
+        }
+    }
+
+    &__body {
+        & td {
+            text-align: left;
+            @include padding-element($top: false, $bottom: false);
+        }
+
+        tr {
+            @include border($border-property: border-bottom, $width: $padding-component , $color: $color-light);
+            &:first-child {
+                @include border($border-property: border-top,$width: $padding-component , $color: $color-light);
+            }
+        }
+    }
+
+    &__img {
+        width: 80px;
+        height: 80px;
+        display: block;
+        object-fit: scale-down;
+    }
+
+    &__img-container {
+        overflow: hidden;
+        border-radius: $border-radius;
+        width: auto;
+        height: 80px;
+        background: $color-green-light;
+    }
+    &__zur-kasse-gehen{
+        align-self: center;
+    }
+
+    &--empty {
+        text-align: center;
+        padding: $padding-component;
+    }
+
+    &--small {
+        @include hide-for-large;
+        @include hide-for-medium;
+    }
+}

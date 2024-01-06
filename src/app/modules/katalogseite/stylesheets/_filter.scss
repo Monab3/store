@@ -1,0 +1,92 @@
+@import '../../../core/stylesheets/mixins/mixins';
+@import '../../../core/stylesheets/mixins/mixins-layout';
+@import '../../../core/stylesheets/mixins/mixins-effects';
+
+@import '../../../core/stylesheets/tools/typographie';
+@import '../../../core/stylesheets/tools/variables';
+
+@import '../../../core/stylesheets/elements/controls';
+
+.filter {
+    @include gradient__container;
+    @include hide-for-medium;
+    @include hide-for-small;
+
+    &__form {
+        @include flexbox;
+        @include gap-element;
+    }
+
+    &__radio {
+        @include flexbox($direction: row, $justify: space-between, $align: stretch, $wrap: nowrap);
+
+        &__label {
+            display: flex;
+            align-items: center;
+            @include margin-element ($left: false, $top: false, $bottom: false);
+            cursor: pointer;
+
+            & input {
+                @include margin-atom ($left: false, $top: false, $bottom: false);
+            }
+        }
+    }
+
+    &__count {
+        @include border($color: $color-grey-dark);
+        border-radius: $border-radius;
+        padding: 0 5px;
+        background: $color-green-light;
+        color: $color-green-dark;
+    }
+    &__container--small {
+        @include hide-for-large;
+        width: 100%;
+        position: relative;
+
+        &--open {
+            @include grid__span__all;
+        }
+    }
+
+    &__label--small{
+        height: $min-width-element--small;
+        width: $min-width-element--small;
+    }
+
+    &--small {
+        background: $gradient-green;
+        border-bottom-right-radius: $border-radius-max;
+        border-top-right-radius: $border-radius-max;
+        box-shadow: $border-box-shadow;
+        color: $color-light;
+        @include border($width: $border-width, $color: $color-light);
+        @include flexbox($justify: flex-start, $wrap: wrap, $align: stretch);
+        @include gap-component;
+        @include padding-page($left: true, $right: true, $top: false, $bottom: true);
+        padding-top: 4.5rem;
+        opacity: 0;
+        width: 90%;
+        z-index: 1000;
+        transition: 0.4s;
+        left: -100%;
+        position: absolute;
+
+        &--open {
+            left: -4%;
+            opacity: 1;
+        }
+
+    }
+}
+
+@mixin menu-slide-effect--small($slide: top, $differnce-to-parent: 0) {
+    #{$slide}: -100%;
+    z-index: 1000;
+    transition: 0.4s;
+    position: absolute;
+
+    &--open {
+        #{$differnce-to-parent}: 0;
+    }
+}

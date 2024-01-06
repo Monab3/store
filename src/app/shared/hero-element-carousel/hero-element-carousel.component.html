@@ -1,0 +1,22 @@
+<div class="carousel__container">
+    <div>
+      <button (click)="goToPrevious()" class="carousel__arrow--right"><i class="bi bi-arrow-left-circle-fill"></i></button>
+      <button (click)="goToNext()" class="carousel__arrow--left"><i class="bi bi-arrow-right-circle-fill"></i></button>
+    </div>
+    <div class="carousel__slide">
+      <figure class="carousel__slide__figure">
+        <img [src]="getCurrentSlideUrl()" alt="slide image" [ngClass]="{'carousel__slide__figure__img--contain': !showTitel, 'carousel__slide__figure__img--cover':showTitel}">
+      </figure>
+      <article class="carousel__article">
+        <section>
+          <h3 *ngIf="showTitel" class="h3">{{getCurrentTitel()}}</h3>
+          <p *ngIf="showText" class="text-regular">{{getCurrentText()}}</p>
+        </section>
+      </article>
+    </div>
+    <div class="carousel__dots__container">
+      <div *ngFor="let slide of slides; let slideIndex = index" class="carousel__dots" (click)="goToSlide(slideIndex)" [class.carousel__dots--selected]="slideIndex === currentIndex">
+        ●
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,63 @@
+@import '../../../core/stylesheets/mixins/mixins';
+@import '../../../core/stylesheets/mixins/mixins-layout';
+@import '../../../core/stylesheets/mixins/mixins-effects';
+
+@import '../../../core/stylesheets/tools/typographie';
+@import '../../../core/stylesheets/tools/variables';
+
+@import '../../../core/stylesheets/elements/controls';
+@import '../../../core/stylesheets/components/quantity_selector';
+
+@import './cart';
+
+.hauptmenu {
+    background-color: $color-green-light;
+    width: 100%;
+    height: $height-nav;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+
+    &__nav {
+        &__container {
+            height: $height-nav;
+            width: 100%;
+            @include flexbox($direction: row, $justify: center, $align: stretch, $wrap: wrap);
+            z-index: 1002;
+        }
+
+        &__button--hide {
+            @include hide-for-small;
+        }
+
+        &--small {
+            background: $color-green-light;
+            top: -100%;
+            width: 100%;
+            z-index: 1000;
+            transition: 0.4s;
+            position: fixed;
+            @include hide-for-large;
+            @include hide-for-medium;
+             & > ul{
+                @include flexbox($justify: flex-start, $wrap: wrap, $align: stretch);
+                @include gap-component;
+
+                & > li{
+                    align-self: center;
+                    width: 100%;
+                    @include border($border-property: border-bottom, $color: $color-green-dark); 
+                    & button{
+                        width: 100%; 
+                    }
+                }
+            }
+            &--open {
+                top: $height-nav;
+                right: 0; 
+            }
+        }
+    }
+
+}

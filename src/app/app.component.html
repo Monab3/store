@@ -1,58 +1,8 @@
-<main class="main">
-    <button (click)="fetchDatafromBackend()">test2</button>
-    <img *ngIf="base64String" [src]="base64String" alt="Image" />
-    <div class="container">
-        <div class="cards">
-            <div class="card">
-                    <figure class="card__imgcontainer">
-                        <img src="assets/grauburgunder.png" class="card__imgcontainer__img">
-                    </figure>
-                    <div class="card__text__container">
-                        <p class="card__info__text text-regular">Jahrgang 2022</p>
-                        <p class="card__info__text card__info__header h3-bold">Grauer Burgunder</p>
-                        <p class="card__info__text">trocken</p>
-                        <p class="card__info__text">Burgunder</p>
-                    </div>
-                    <hr class="card__line">
-                    <h3>7.90$</h3>
-                    <button class="btn btn-main text-regular button">
-                        In den Einkaufswagen
-                    </button>
-                    <p class="text-fine">0,75l | 14,53 $ | inkl. MwSt. zzgl.
-                        <span class="link">Verstand</span>
-                    </p>
-                    <hr class="card__line">
-                    </div>
-            <div class="card">
-                <figure class="card__imgcontainer">
-                    <img src="assets/grauburgunder.png" class="card__imgcontainer__img">
-                </figure>
-            </div>
+<app-hauptmenue></app-hauptmenue>
+<app-light-box></app-light-box>
+<div class="margin-top">
+    <router-outlet></router-outlet>
+<app-katalogseite></app-katalogseite>
 
-            <div class="card">
-                <figure class="card__imgcontainer">
-                    <img src="assets/grauburgunder.png" class="card__imgcontainer__img">
-                </figure>
-            </div>
-
-            <div class="card">
-                <figure class="card__imgcontainer">
-                    <img src="assets/grauburgunder.png" class="card__imgcontainer__img">
-                </figure>
-            </div>
-
-            <div class="card">
-                <figure class="card__imgcontainer">
-                    <img src="assets/grauburgunder.png" class="card__imgcontainer__img">
-                </figure>
-            </div>
-
-            <div class="card">
-                <figure class="card__imgcontainer">
-                    <img src="assets/grauburgunder.png" class="card__imgcontainer__img">
-                </figure>
-            </div>
-        </div>
-    </div>
-</main>
-<router-outlet></router-outlet>
+</div>
+<app-footer></app-footer>

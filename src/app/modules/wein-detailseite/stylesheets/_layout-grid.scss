@@ -1,0 +1,122 @@
+@import '../../../core/stylesheets/mixins/mixins';
+@import '../../../core/stylesheets/mixins/mixins-layout';
+@import '../../../core/stylesheets/mixins/mixins-effects';
+
+@import '../../../core/stylesheets/tools/typographie';
+@import '../../../core/stylesheets/tools/variables';
+
+@import '../../../core/stylesheets/elements/controls';
+
+.page__grid {
+    &__produkt {
+        @include page__span--small;
+        @include padding-container;
+    }
+
+    &__steckbrief {
+        @include grid__span--all;
+    }
+
+    &__bewertungen{
+        @include grid__span--all;
+    }
+
+    &__background {
+        background-image: url('../../../../assets/BackgroundImage.png');
+        background-position: center;
+        background-size: cover;
+        @include grid__span--all;
+    }
+
+}
+
+
+.produkt__grid {
+    @include grid;
+    gap: $gap-container;
+
+    &__figure {
+        @include grid__span--half;
+        text-align: center;
+    }
+
+    &__carousel {
+        @include grid__span--all;
+        text-align: center;
+        height: 50vh;
+        display: none;
+    }
+
+    &____side-img {
+        @include grid__span__quarter--mg-lg;
+    }
+
+    &__produktinformation {
+        @include grid__span--half;
+    }
+}
+
+.steckbrief__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    @include border($color: $color-red-dark);
+    border-radius: $border-radius;
+    overflow: hidden;
+    & .steckbrief__info {
+        grid-column: span 1;
+    }
+
+    & article {
+        grid-column: span 2;
+    }
+}
+
+@media only screen and (min-width: 0) and (max-width: $breakpoint-medium--minus) {
+
+    .produkt__grid {
+        &__figure {
+            height: 50vh;
+            display: none;
+        }
+
+        &__carousel {
+            display: block;
+        }
+
+        &__produktinformation {
+            @include grid__span--all;
+        }
+    }
+
+    .steckbrief__grid {
+        & .steckbrief__info {
+            grid-column: span 3;
+        }
+
+        & article {
+            grid-column: span 3;
+        }
+    }
+}
+
+@media only screen and (min-width:$breakpoint-medium) and (max-width: $breakpoint-large) {
+    .produkt__grid {
+        &__figure {
+            grid-column: 2/ span 6;
+        }
+
+        &__produktinformation {
+            @include grid__span--all;
+        }
+    }
+
+    .steckbrief__grid {
+        & .steckbrief__info {
+            grid-column: span 3;
+        }
+
+        & article {
+            grid-column: span 3;
+        }
+    }
+}

@@ -1,0 +1,16 @@
+
+@import '../../../core/stylesheets/mixins/mixins';
+@import '../../../core/stylesheets/mixins/mixins-layout';
+@import '../../../core/stylesheets/mixins/mixins-effects';
+
+@import '../../../core/stylesheets/tools/typographie';
+@import '../../../core/stylesheets/tools/variables';
+
+@import '../../../core/stylesheets/elements/controls';
+
+
+.bewertung__container{
+    @include gap-container;
+    @include flexbox($direction: column, $justify: space-between, $align: stretch, $wrap: wrap);
+}
+

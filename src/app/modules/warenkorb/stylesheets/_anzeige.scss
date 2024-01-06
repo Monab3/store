@@ -1,0 +1,78 @@
+@import '../../../core/stylesheets/mixins/mixins';
+@import '../../../core/stylesheets/mixins/mixins-layout';
+@import '../../../core/stylesheets/mixins/mixins-effects';
+
+@import '../../../core/stylesheets/tools/typographie';
+@import '../../../core/stylesheets/tools/variables';
+
+@import '../../../core/stylesheets/elements/controls';
+
+.anzeige {
+    @include flexbox($direction: row, $justify: space-between, $align: center, $wrap: nowrap);
+
+    &--small {
+        @include flexbox($direction: row, $justify: space-between, $align: center, $wrap: nowrap);
+        @include hide-for-medium;
+        @include hide-for-large;
+        @include hide-for-small;
+
+    }
+
+    &__container {
+        width: 100%;
+        position: relative;
+    }
+
+    &__line {
+        width: 100%;
+        background: $color-green-dark;
+        position: absolute;
+        top: 25%;
+        bottom: 25%;
+    }
+
+    &__item {
+        @include flexbox($direction: column, $justify: center, $align: center, $wrap: nowrap);
+        @include gap-element;
+        color: $color-green-dark;
+
+        &--aktive {
+            color: $color-red-dark;
+            & div{
+                background: $color-red-dark;
+            }
+        }
+        &:disabled {
+            cursor: auto;
+            color: $color-green-dark;
+            & div{
+                background: $color-green-light;
+            }
+        }
+        :hover{
+            color: $color-red-dark;
+            & div{
+                background: $color-red-dark;
+            }
+        }
+        &__punkt {
+            border-radius: 50%;
+            height: 30px;
+            width: 30px;
+            background: $color-green-dark;
+        }
+    }
+}
+
+@media only screen and (min-width: 0) and (max-width: $breakpoint-medium--minus) {
+    .anzeige__item__punkt {
+        height: 40px;
+        width: 40px;
+
+        &--active {
+            background: $color-red-dark;
+            height: 45px;
+            width: 45px;
+        }
+    }
+}
