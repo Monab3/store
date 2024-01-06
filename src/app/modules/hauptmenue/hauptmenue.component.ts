@@ -1,5 +1,5 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
-
+import { Component,  OnInit } from '@angular/core';
+import { AppRoutes } from '../../core/config/app-routes.config';
 import { cartService } from '../../core/services/cart.service';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { CartItem } from '../../core/models/CartItem';
@@ -10,6 +10,8 @@ import { CartItem } from '../../core/models/CartItem';
   styleUrl: './hauptmenue.component.scss'
 })
 export class HauptmenueComponent implements OnInit {
+
+  appRoutes = AppRoutes;
   navWein: String[] = [];
   cartItems: CartItem[] = [];
   cartAnzahl: Number = 0;

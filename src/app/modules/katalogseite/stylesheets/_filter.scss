@@ -23,11 +23,11 @@
         &__label {
             display: flex;
             align-items: center;
-            margin-right: 10px;
+            @include margin-element ($left: false, $top: false, $bottom: false);
             cursor: pointer;
 
             & input {
-                margin-right: 5px;
+                @include margin-atom ($left: false, $top: false, $bottom: false);
             }
         }
     }

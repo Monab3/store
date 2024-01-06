@@ -4,32 +4,26 @@
             <img src="../../../assets/titel-icons/warenkorb.png" alt="Weinweinmenü">
         </figure>
         <h1 class="h1--light">
-            Warenkorb
+            {{titel}}
         </h1>
     </header>
     <nav class="page__grid__anzeige anzeige__container">
         <ul class="anzeige">
             <li>
-                <button class="text-regular anzeige__item">
-                    <div class="anzeige__item__punkt anzeige__item__punkt--clickable"></div>
+                <button class="text-regular anzeige__item" [disabled]="!progressBar.warenkorb" [ngClass]="{'anzeige__item--aktive': progressBar.active === 'warenkorb'}">
+                    <div class="anzeige__item__punkt" [routerLink]="['/', appRoutes.WARENKORB]"></div>
                     Warenkorb
                 </button>
             </li>
             <li>
-                <button class="text-regular anzeige__item">
-                    <div class="anzeige__item__punkt anzeige__item__punkt--clickable"></div>
+                <button class="text-regular anzeige__item" [disabled]="!progressBar.daten" [ngClass]="{'anzeige__item--aktive': progressBar.active === 'daten'}">
+                    <div class="anzeige__item__punkt"></div>
                     Kundendaten
                 </button>
             </li>
             <li>
-                <button class="text-regular anzeige__item">
-                    <div class="anzeige__item__punkt anzeige__item__punkt--clickable"></div>
-                    Adresse & Bezahlung
-                </button>
-            </li>
-            <li>
-                <button class="text-regular anzeige__item">
-                    <div class="anzeige__item__punkt anzeige__item__punkt--clickable"></div>
+                <button class="text-regular anzeige__item" [disabled]="!progressBar.danke" [ngClass]="{'anzeige__item--aktive': progressBar.active === 'danke'}">
+                    <div class="anzeige__item__punkt"></div>
                     Danke!
                 </button>
             </li>
@@ -55,7 +49,6 @@
                     4
                 </button>
             </li>
-
         </ul>
     </nav>
     <section class="page__grid__warenkorb produkt__container">
@@ -65,8 +58,13 @@
         <div *ngIf="cartItems.length == 0" class="produkt--empty">
             <h4 class="h4">Noch keine Weine im Warenkorb</h4>
             <p class="text-regular">Es befinden sich noch keine Weine in ihrem Warenkorb.</p>
-            <button class="button button__secondary">Zurück zur Produktübersicht </button>
+            <button class="button button__secondary">Zurück zur Produktübersicht</button>
         </div>
+        <button *ngIf="!progressBar.daten && !progressBar.danke && cartItems.length > 0" 
+        class="produkt__zur-kasse-gehen button button__buy" 
+        [routerLink]="['/', appRoutes.WARENKORB, appRoutes.WARENKORB__KONTAKTFORMULAR]"
+        [attr.title]="cartItems.length == 0? 'Um zur Kasse zu gehen, fügen Sie Weine zum Warenkorb hinzu' : null" >
+        Zur Kasse gehen</button>
         <router-outlet></router-outlet>
     </section>
     <section class="page__grid__sum sum__container">
@@ -90,7 +88,7 @@
             </table>
         </section>
         <button class="button button__secondary" [routerLink]="'kontaktformular'">Zurück zur Produktübersicht</button>
-        <button class="button button__buy" [routerLink]="['/', appRoutes.WARENKORB, appRoutes.WARENKORB__KONTAKTFORMULAR]">Zur Kasse gehen</button>
+        <button *ngIf="!progressBar.daten && !progressBar.danke" class="button button__buy" [attr.title]="cartItems.length == 0? 'Um zur Kasse zu gehen, fügen Sie Weine zum Warenkorb hinzu' : null" [disabled]="cartItems.length == 0" [routerLink]="['/', appRoutes.WARENKORB, appRoutes.WARENKORB__KONTAKTFORMULAR]">Zur Kasse gehen</button>
         <p-accordion [multiple]="true">
             <p-accordionTab class="p-accordion--red-dark" header="Versandinformationen">
                 <p class="text-regular">
@@ -158,7 +156,7 @@
                 <td>
                     <p class="text-regular no-wrap-text">{{(item.wein.preis * item.produktAnzahl).toFixed(2)}} €</p>
                 </td>
-                <td><button button--full-width class="button button__tertiary button--full-width"
+                <td><button button--full-width class="button button__secondary button--full-width"
                         (click)="deleteItemFromCart(item)">Entfernen</button></td>
             </tr>
         </tbody>
@@ -195,7 +193,7 @@
                             class="text-regular--red-signal">
                             Zahl zwischen 1 und 100 eingeben
                         </p>
-                        <button class="button button__tertiary" (click)="deleteItemFromCart(item)">aus dem Warenkorb
+                        <button class="button button__secondary" (click)="deleteItemFromCart(item)">aus dem Warenkorb
                             entfernen.</button>
                     </div>
                 </section>

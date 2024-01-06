@@ -5,6 +5,7 @@ export const AppRoutes = {
     WARENKORB: 'warenkorb',
     WARENKORB__BESTELLPROZESS: 'start-bestellprozess',
     WARENKORB__KONTAKTFORMULAR: 'kontaktformular',
+    WARENKORB__DANKE: 'danke',
 
   };
   

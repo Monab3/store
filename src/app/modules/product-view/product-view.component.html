@@ -68,7 +68,7 @@
                         <p class="text-regular">Leider konnten wir keine Weine unter den von Ihnen Angebenen Filtern finden</p>
                     </section>
                     <footer>
-                        <button class="button button__tertiary" (click)="removeAllFilters()"><span>Filter
+                        <button class="button button__secondary" (click)="removeAllFilters()"><span>Filter
                             entfernen</span></button>
                     </footer>
                 </header>
@@ -82,7 +82,7 @@
 
 <ng-template #accordionContent>
     <h2 class="h2--light"> Filter</h2>
-    <button class="button button__tertiary button__tertiary--font-light" (click)="removeAllFilters()">Filter
+    <button class="button button__secondary button__secondary--font-light" (click)="removeAllFilters()">Filter
         entfernen</button>
     <p-accordion [multiple]="true" [activeIndex]="[0,1]">
         <p-accordionTab header="Geschmack">

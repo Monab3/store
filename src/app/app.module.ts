@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 /*Angular Components */
 import { AccordionModule } from 'primeng/accordion';
@@ -21,7 +22,6 @@ import { LandingpageComponent } from './modules/landingpage/landingpage.componen
 import { FooterComponent } from './modules/footer/footer.component';
 import { WarenkorbComponent } from './modules/warenkorb/warenkorb.component';
 import { KatalogseiteComponent } from './modules/katalogseite/katalogseite.component';
-import { StartBestellprozessComponent } from './modules/warenkorb/children/start-bestellprozess/start-bestellprozess.component';
 import { KontaktformularComponent } from './modules/warenkorb/children/kontaktformular/kontaktformular.component';
 
 
@@ -41,7 +41,6 @@ import { KontaktformularComponent } from './modules/warenkorb/children/kontaktfo
     FooterComponent,
     WarenkorbComponent,
     KatalogseiteComponent,
-    StartBestellprozessComponent,
     KontaktformularComponent
       ],
   imports: [
@@ -51,6 +50,7 @@ import { KontaktformularComponent } from './modules/warenkorb/children/kontaktfo
     AccordionModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    NgSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

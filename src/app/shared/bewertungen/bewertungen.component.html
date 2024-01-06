@@ -68,7 +68,7 @@
                 <i class="bi  bi-x-lg bi-2x"></i>
             </button>
         </div>
-        <p  class="text-regular">Vielen Dank, für Ihre Bewertung. </p>
+        <p class="text-regular">Vielen Dank, für Ihre Bewertung. </p>
     </div>
     <div class="form__grid" *ngIf="openFormular">
         <form class="form__container form" [formGroup]="bewertungForm">
@@ -116,7 +116,8 @@
             </div>
             <button type="submit" [class.button__main--invalid]="!bewertungForm.valid" class="button button__main"
                 [disabled]="!bewertungForm.valid" (click)="onSubmit()"
-                title="Füllen Sie das Formular aus, um eine Bewertung absenden zu können." placeholder="Top">Bewertung
+                [attr.title]="!bewertungForm.valid? 'Füllen Sie das Formular aus, um eine Bewertung absenden zu können' : null"
+                placeholder="Top">Bewertung
                 abschicken</button>
         </form>
     </div>

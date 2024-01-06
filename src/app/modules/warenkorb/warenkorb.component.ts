@@ -3,7 +3,8 @@ import { cartService } from '../../core/services/cart.service';
 import { CartItem } from '../../core/models/CartItem';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AppRoutes } from '../../core/config/app-routes.config';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 
 @Component({
@@ -18,14 +19,18 @@ export class WarenkorbComponent implements OnInit {
   versandTotal: number = 0;
   versandAndCartTotal: number = 0;
   cartItems: CartItem[] = [];
-  counterForm: FormGroup = new FormGroup({ count: new FormControl(1, [Validators.min(1)])});
+  counterForm: FormGroup = new FormGroup({ count: new FormControl(1, [Validators.min(1)]) });
+  titel: string = "Ihr Warenkorb";
 
-  constructor(private cartService: cartService, private route: ActivatedRoute) { 
-    this.route.url.subscribe(segments => {
-      console.log('Segments:', segments);
-      const isKontaktformular = segments.some(segment => segment.path === 'kontaktformular');
-      console.log('Is Kontaktformular:', isKontaktformular);
-    });
+  progressBar = {
+    warenkorb: true,
+    daten: false,
+    danke: false,
+    active: 'warenkorb'
+  }
+
+  constructor(private cartService: cartService, private router: Router,) {
+    this.subscripeUrl();
   }
 
   ngOnInit(): void {
@@ -55,6 +60,42 @@ export class WarenkorbComponent implements OnInit {
         this.counterForm?.get(formControlName)?.setValue(item.produktAnzahl);
       }
     });
+  }
+
+  subscripeUrl() {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      const fullUrl = this.router.url;
+      console.log(fullUrl);
+      if (fullUrl.includes(this.appRoutes.WARENKORB__KONTAKTFORMULAR)) {
+        this.titel = "Ihre Kontaktdaten";
+        this.progressBar = {
+          warenkorb: true,
+          daten: true,
+          danke: false,
+          active: 'daten'
+        }
+
+      }  else if (fullUrl.includes(this.appRoutes.WARENKORB__DANKE)) {
+        this.titel = "Vielen Dank";
+        this.progressBar = {
+          warenkorb: false,
+          daten: false,
+          danke: true,
+          active: 'danke'
+        }
+      }else {
+        this.titel = "Ihr Warenkorb";
+        this.progressBar = {
+          warenkorb: true,
+          daten: false,
+          danke: false,
+          active: 'warenkorb'
+        }
+      }
+    }
+    );
   }
 
   onInputChanged($event: any, i: any) {
@@ -88,5 +129,10 @@ export class WarenkorbComponent implements OnInit {
 
   dateConverter(date: Date): string {
     return "Ursprung " + date.getFullYear();
+  }
+
+  anzeigeNavigateTo(route: string): void{
+    console.log('/'+ this.appRoutes.WARENKORB + '/',route);
+    this.router.navigate(['/'+ this.appRoutes.WARENKORB + '/',route]);
   }
 }

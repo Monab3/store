@@ -9,12 +9,13 @@
 
 .anzeige {
     @include flexbox($direction: row, $justify: space-between, $align: center, $wrap: nowrap);
-    @include hide-for-small;
 
     &--small {
         @include flexbox($direction: row, $justify: space-between, $align: center, $wrap: nowrap);
         @include hide-for-medium;
         @include hide-for-large;
+        @include hide-for-small;
+
     }
 
     &__container {
@@ -33,27 +34,32 @@
     &__item {
         @include flexbox($direction: column, $justify: center, $align: center, $wrap: nowrap);
         @include gap-element;
+        color: $color-green-dark;
 
+        &--aktive {
+            color: $color-red-dark;
+            & div{
+                background: $color-red-dark;
+            }
+        }
+        &:disabled {
+            cursor: auto;
+            color: $color-green-dark;
+            & div{
+                background: $color-green-light;
+            }
+        }
+        :hover{
+            color: $color-red-dark;
+            & div{
+                background: $color-red-dark;
+            }
+        }
         &__punkt {
             border-radius: 50%;
             height: 30px;
             width: 30px;
-
-            &--disabled {
-                background: $color-green-light;
-            }
-
-            &--active {
-                background: $color-red-dark;
-            }
-
-            &--clickable {
-                background: $color-green-dark;
-            }
-
-            &:hover {
-                background: $color-red-dark;
-            }
+            background: $color-green-dark;
         }
     }
 }

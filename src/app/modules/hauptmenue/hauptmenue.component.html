@@ -52,8 +52,8 @@
                                 class="text-regular--red-signal">
                                 Zahl zwischen 1 und 100 eingeben
                             </p>
-                            <button class="button button__tertiary" (click)="deleteItemFromCart(item)">aus dem Warenkorb
-                                entfernen.</button>
+                            <button class="button button__secondary" (click)="deleteItemFromCart(item)">aus dem Warenkorb
+                                entfernen</button>
                         </div>
                     </section>
                 </main>
@@ -65,8 +65,7 @@
                     <button class="button button__secondary">
                         <span style="font-size: 14px;"><i class="bi-cart3 bi"></i></span>
                         Warenkorb einsehen</button>
-                    <button class="button button__buy">Zur Kasse gehen</button>
-
+                        <button class="button button__buy" [attr.title]="cartItems.length == 0? 'Um zur Kasse zu gehen, fügen Sie Weine zum Warenkorb hinzu' : null" [disabled]="cartItems.length == 0" [routerLink]="['/', appRoutes.WARENKORB, appRoutes.WARENKORB__KONTAKTFORMULAR]">Zur Kasse gehen</button>
                 </footer>
             </article>
             <button *ngFor="let nav of navWein; index as i"
