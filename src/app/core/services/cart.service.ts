@@ -8,10 +8,12 @@ import { BehaviorSubject } from 'rxjs';
 export class cartService {
     private cartInhaltSource = new BehaviorSubject<CartItem[]>([]);
     private cartTotalSource = new BehaviorSubject<number>(0);
+    private cartTotalProduktAnzahlSource = new BehaviorSubject<number>(0);
     private versandTotalSource = new BehaviorSubject<number>(0);
     private cartVisibilitySource = new BehaviorSubject<boolean>(false);
     cartInhalt = this.cartInhaltSource.asObservable();
     cartTotal = this.cartTotalSource.asObservable();
+    cartTotalProduktAnzahl = this.cartTotalProduktAnzahlSource.asObservable();
     versandTotal = this.versandTotalSource.asObservable();
     cartVisibility = this.cartVisibilitySource.asObservable();
     private cartVisibilityVariable = false;
@@ -43,6 +45,7 @@ export class cartService {
         const existingItemIndex = currentcart.findIndex(item => item.wein._id === newItem.wein._id);
         if (existingItemIndex !== -1) {
             currentcart[existingItemIndex].produktAnzahl = newItem.produktAnzahl;
+            console.log("[cartService] Item quantity increased: " + JSON.stringify(currentcart[existingItemIndex].produktAnzahl));
             this.cartInhaltSource.next(currentcart);
             console.log("[cartService] Item quantity stayed the same: " + JSON.stringify(currentcart));
         } else {
@@ -76,8 +79,10 @@ export class cartService {
         const currentCart = this.cartInhaltSource.getValue();
         const total = currentCart.reduce((sum, item) => sum + (item.wein.preis * item.produktAnzahl), 0);
         this.cartTotalSource.next(total);
-        let totalProduktanzahl = currentCart.reduce((total, cartItem) => total + cartItem.produktAnzahl, 0);
-        this.calculateVersand(totalProduktanzahl, total);
+        let totalProduktAnzahl:number = currentCart.reduce((total, cartItem) => total + cartItem.produktAnzahl, 0);
+        console.log("caculatetotal: "+totalProduktAnzahl ); 
+        this.cartTotalProduktAnzahlSource.next(totalProduktAnzahl);
+        this.calculateVersand(totalProduktAnzahl, total);
     }
 
     private calculateVersand(anzahlWein: number, warenwert: number): void {

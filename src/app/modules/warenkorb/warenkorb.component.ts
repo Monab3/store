@@ -99,8 +99,11 @@ export class WarenkorbComponent implements OnInit {
   }
 
   onInputChanged($event: any, i: any) {
-    if ($event.target.value > 0) {
-      this.cartItems[i].produktAnzahl = $event.target.value;
+    const inputValue = $event.target.value;
+    const numericValue = parseInt(inputValue, 10); // or Number(inputValue);
+  
+    if (!isNaN(numericValue) && numericValue > 0) {
+      this.cartItems[i].produktAnzahl = numericValue;
       this.cartService.addToCartFromCart(this.cartItems[i]);
     }
   }

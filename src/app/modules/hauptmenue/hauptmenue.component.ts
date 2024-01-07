@@ -14,6 +14,7 @@ export class HauptmenueComponent implements OnInit {
   appRoutes = AppRoutes;
   navWein: String[] = [];
   cartItems: CartItem[] = [];
+  cartTotalProduktAnzahl: number = 0;
   cartAnzahl: Number = 0;
   cartVisibility = false;
   cartTotal: String = "";
@@ -46,6 +47,10 @@ export class HauptmenueComponent implements OnInit {
     this.cartService.cartTotal.subscribe((data) => {
       this.cartTotal = data.toFixed(2);
     });
+    this.cartService.cartTotalProduktAnzahl.subscribe((data) => {
+      console.log("cartTotalProduktAnzahl: "+ data);
+      this.cartTotalProduktAnzahl = data;
+        });
   }
 
   initializeCounterForProduct() {
@@ -60,8 +65,11 @@ export class HauptmenueComponent implements OnInit {
   }
 
   onInputChanged($event: any, i: any) {
-    if ($event.target.value > 0) {
-      this.cartItems[i].produktAnzahl = $event.target.value;
+    const inputValue = $event.target.value;
+    const numericValue = parseInt(inputValue, 10); // or Number(inputValue);
+  
+    if (!isNaN(numericValue) && numericValue > 0) {
+      this.cartItems[i].produktAnzahl = numericValue;
       this.cartService.addToCartFromCart(this.cartItems[i]);
     }
   }

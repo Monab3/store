@@ -13,7 +13,7 @@
         <nav class="hauptmenu__nav__container">
             <article [ngClass]="{'cart__container': cartVisibility, 'cart__container--hidden': !cartVisibility}">
                 <header class="cart__header">
-                    <p class="text-regular--red-dark">Ihr Warenkorb, <span class="text-regular">{{cartAnzahl}}
+                    <p class="text-regular--red-dark">Ihr Warenkorb, <span class="text-regular">{{cartTotalProduktAnzahl}}
                             Artikel</span></p>
                     <button class="interaction-icon" (click)="togglecart()">
                         <i class="bi  bi-x-lg bi-2x"></i>
@@ -77,7 +77,10 @@
                 <div></div>
             </button>
             <button class="hauptmenu__open-cart-button" (click)="togglecart()">
-                <span><i class="bi-cart3 bi-4x hauptmenu__open-cart-button__icon"></i></span>
+                <div class="hauptmenu__open-cart-button__icon__container">
+                <p class="hauptmenu__open-cart-button__icon__counter">{{cartTotalProduktAnzahl}}</p>
+                <i class="bi-cart3 bi-4x hauptmenu__open-cart-button__icon"></i>
+            </div>
                 <span class="hauptmenu__open-cart-button__text text-regular">Gesamt:
                     <br>
                     {{cartTotal}} €</span>
