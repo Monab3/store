@@ -76,6 +76,15 @@ export class HauptmenueComponent implements OnInit {
     }
   }
 
+  handleNavWarenkorb(navigateToWarenkorb : boolean){
+    if(navigateToWarenkorb){
+      this.router.navigate([this.appRoutes.WARENKORB]);
+    }else{
+      this.router.navigate([this.appRoutes.WARENKORB, this.appRoutes.WARENKORB__KONTAKTFORMULAR]);
+    }
+    this.togglecart();
+  }
+
   navigateToWeinshop(key: string): void {
     this.router.navigate([this.appRoutes.WEINSHOP, key]);
   }

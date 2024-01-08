@@ -64,13 +64,12 @@
                         <p class="text-regular">Gesamtsumme <span class="text-fine">(inkl. MwSt.) </span>:</p>
                         <p class="text-regular--red-dark">{{cartTotal}} €</p>
                     </div>
-                    <button class="button button__secondary" [routerLink]="[appRoutes.WARENKORB]">
+                    <button class="button button__secondary button__secondary--hover-dark-green" (click)="handleNavWarenkorb(true)">
                         <span style="font-size: 14px;"><i class="bi-cart3 bi"></i></span>
                         Warenkorb einsehen</button>
                     <button class="button button__buy"
                         [attr.title]="cartItems.length == 0? 'Um zur Kasse zu gehen, fügen Sie Weine zum Warenkorb hinzu' : null"
-                        [disabled]="cartItems.length == 0"
-                        [routerLink]="[appRoutes.WARENKORB, appRoutes.WARENKORB__KONTAKTFORMULAR]">Zur Kasse
+                        [disabled]="cartItems.length == 0" (click)="handleNavWarenkorb(true)">Zur Kasse
                         gehen</button>
                 </footer>
             </article>
