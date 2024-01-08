@@ -54,7 +54,7 @@
     <footer class="selector__footer__grid">
         <hr class="selector__footer__line">
         <h2 class="h2">{{wein.preis}} €</h2>
-        <form *ngIf="counterForm" class="selector__grid" [formGroup]="counterForm">
+        <form *ngIf="counterForm" class="selector__grid selector__footer__grid__form--span3" [formGroup]="counterForm">
             <button class="selector__control" (click)="handleMinus()"><i class="bi bi-dash-lg"></i></button>
             <input type="number" class="selector" formControlName="counter"
                 [class.selector__form__input--invalid]="counterForm.get('counter')?.invalid && counterForm.get('counter')?.touched" />
@@ -75,7 +75,7 @@
         <hr class="card__footer__line">
     </footer>
 </article>
-<article *ngIf="wein && cardProduktView"
+<article *ngIf="wein && cardProduktView && !productViewList"
     [ngClass]="{ 'card-list--produkt-view': productViewList, 'card--produkt-view': !productViewList }">
     <a [routerLink]="['/', appRoutes.DETAIL, {kategorie: kategorie, id: wein._id}]">
         <header>
@@ -112,7 +112,7 @@
     <footer class="selector__footer__grid">
         <h3 class="h3">{{wein.preis}} €</h3>
 
-        <form *ngIf="counterForm" class="selector__grid" [formGroup]="counterForm">
+        <form *ngIf="counterForm" class="selector__grid selector__footer__grid__form--span3" [formGroup]="counterForm">
             <button class="selector__control" (click)="handleMinus()"><i class="bi bi-dash-lg"></i></button>
             <input type="number" class="selector" formControlName="counter"
                 [ngClass]="{'selector__form__input--invalid': counterForm.get('counter')?.invalid && counterForm.get('counter')?.touched}" />
@@ -131,4 +131,51 @@
             <span class="text-link--fine">Verstand</span>
         </p>
     </footer>
+</article>
+
+<article *ngIf="wein && cardProduktView && productViewList" class="card-list--produkt-view">
+    <a>
+    <table class="card-list--produkt-view__produkt">
+        <tbody class="produkt__body">
+            <tr>
+                <td>
+                    <figure class="produkt__img-container"><img class="produkt__img"
+                            src="../../../assets/black_noir_weisswein.png"></figure>
+                </td>
+                <td>
+                    <p class="text-regular--red-dark">{{dateConverter(wein.herstellungsDatum)}}</p>
+                    <h3 class="h3">{{wein?.name}}</h3>
+                </td>
+                <td>
+                    <p class="text-regular no-wrap-text">
+                        {{wein?.preis}} €
+                    </p>
+                    <p class="text-regular">
+                        {{wein?.preisProLiter}} € | L
+                    </p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</a>  
+    <section class="produkt__selector selector__footer__grid">
+        <form *ngIf="counterForm" class="selector__grid selector__footer__grid__form--span5" [formGroup]="counterForm">
+            <button class="selector__control" (click)="handleMinus()"><i class="bi bi-dash-lg"></i></button>
+            <input type="number" class="selector" formControlName="counter"
+                [ngClass]="{'selector__form__input--invalid': counterForm.get('counter')?.invalid && counterForm.get('counter')?.touched}" />
+            <button class="selector__control" (click)="handlePlus()"><i class="bi bi-plus-lg"></i></button>
+        </form>
+
+        <p *ngIf="counterForm?.get('counter')?.invalid && counterForm?.get('counter')?.touched"
+            class="text-regular--red-signal">
+            Zahl zwischen 1 und 100 eingeben
+        </p>
+        <button class="button button__main button--full-width" (click)="addProductToCart()">
+            In den Warenkorb
+        </button>
+        <p class="text-fine">{{wein?.fuellmenge}}l | {{wein?.preisProLiter}}€ | inkl. MwSt.
+            zzgl.
+            <span class="text-link--fine">Verstand</span>
+        </p>
+    </section>
 </article>

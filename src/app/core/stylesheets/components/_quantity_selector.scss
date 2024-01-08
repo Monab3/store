@@ -15,6 +15,7 @@
     margin: 0;
     outline: none;
     grid-column: span 2;
+
     &::-webkit-inner-spin-button,
     &::-webkit-outer-spin-button {
         -webkit-appearance: none;
@@ -61,8 +62,12 @@
             @include flexbox($align: flex-start, $justify: center);
          }
   
-           &>form {
+           &__form--span3{
               grid-column: span 3;
+           }
+
+           &__form--span5{
+            grid-column: span 5;
            }
   
            &>button {

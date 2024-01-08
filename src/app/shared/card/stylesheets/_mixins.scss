@@ -19,9 +19,7 @@
 
 @mixin card {
     @include border($color: $color-green-light);
-    @include flexbox($direction: row, $justify: space-between, $wrap: wrap);
     @include effect-drop-shadow-hover();
-    @include padding-component;
     @include gap-component;
     height: 100%; 
     border-radius: $border-radius;
