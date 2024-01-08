@@ -21,4 +21,23 @@ export interface Wein {
     weinBildString?: String;
     weinEttiketBildString:String;
     servierBildString?: String;
+    searchTags: string[];
   }
+
+  
+export interface WeinWrapper {
+  key: string;
+  value: Wein[];
+}
+
+export interface WeinFilter {
+  Trocken: number ,
+  Fruchtig: number,
+  Herb: number,
+  Feinherb: number,
+  Riesling: number,
+  Burgunder: number,
+  Rivaner: number,
+  Dornfelder: number,
+  [key: string]: number;
+}

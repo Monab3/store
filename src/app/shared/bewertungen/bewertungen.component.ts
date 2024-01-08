@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/fo
 import { bewertungService } from '../../core/services/bewertung.service';
 import { Bewertung } from '../../core/models/Bewertung';
 import { Observable } from 'rxjs';
-import { BewertungWrapper } from '../../core/models/BewertungWrapper';
+import { BewertungWrapper } from '../../core/models/Bewertung';
 @Component({
   selector: 'app-bewertungen',
   templateUrl: './bewertungen.component.html',
@@ -13,6 +13,8 @@ import { BewertungWrapper } from '../../core/models/BewertungWrapper';
 })
 export class BewertungenComponent implements OnInit {
   @Input() id: number | null = null;
+  stars =[1,2,3,4,5];
+  rating= 0 ; 
 
   bewertungWrapper: BewertungWrapper = {
     averageRating: 0,
@@ -34,9 +36,12 @@ export class BewertungenComponent implements OnInit {
   constructor(private bewertungsService: bewertungService, private fb: FormBuilder) { }
   
   ngOnInit(): void {
+    this.rating = 0;  
     this.initialiseData();
     this.bewertungAbgegeben = false;
   }
+
+
 
 
   initialiseData(): void {
@@ -47,6 +52,11 @@ export class BewertungenComponent implements OnInit {
     this.bewertungWrapper.averageRating = bewertungWrapper.averageRating;
     this.bewertungWrapper.bewertungen = bewertungWrapper.bewertungen;
   });
+  }
+
+  setRating(i: number){
+    console.log("setRating: " + i);
+    this.rating = i;
   }
 
   getpreviousSlide(): Bewertung {
@@ -90,7 +100,7 @@ export class BewertungenComponent implements OnInit {
           nachname: this.bewertungForm.get('nachname')?.value,
           email: this.bewertungForm.get('email')?.value,
           datum: new Date(),
-          sterne: 4,
+          sterne: this.rating,
           text: this.bewertungForm.get('bewertung')?.value
         };
         this.bewertungForm.reset();
@@ -112,6 +122,7 @@ export class BewertungenComponent implements OnInit {
   }
 
   getFullStarsArray(sterne: number): number[] {
+    console.log("getFullStarsArray: " + sterne);
     return new Array(sterne);
   }
 

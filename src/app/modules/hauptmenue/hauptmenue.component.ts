@@ -1,7 +1,8 @@
 import { Component,  OnInit } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AppRoutes } from '../../core/config/app-routes.config';
 import { cartService } from '../../core/services/cart.service';
-import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { CartItem } from '../../core/models/CartItem';
 
 @Component({
@@ -12,23 +13,26 @@ import { CartItem } from '../../core/models/CartItem';
 export class HauptmenueComponent implements OnInit {
 
   appRoutes = AppRoutes;
-  navWein: String[] = [];
+  
+  navWein = [
+    { key: 'weisswein', value: 'Weißwein' },
+    { key: 'rotwein', value: 'Rotwein' },
+    { key: 'rosewein', value: 'Roséwein' },
+    { key: 'schaumwein', value: 'Schaumwein' },
+  ];
+
   cartItems: CartItem[] = [];
   cartTotalProduktAnzahl: number = 0;
   cartAnzahl: Number = 0;
   cartVisibility = false;
   cartTotal: String = "";
-
+  hauptmenuButtonOpen: boolean = false;
   number: any = 1;
-
+  kategorie = "";
 
   counterForm: FormGroup = new FormGroup({ count: new FormControl(1, [Validators.min(1)]) });
-  
-  hauptmenuButtonOpen: boolean = false;
-
-  constructor(private fb: FormBuilder, private cartService: cartService
+   constructor(private fb: FormBuilder, private cartService: cartService,private router: Router
   ) {
-    this.navWein = ['Weißwein', 'Rotwein', 'Roséwein', 'Sekt'];
   }
 
   //cartInhalt: Observable<any> = new Observable();
@@ -62,6 +66,18 @@ export class HauptmenueComponent implements OnInit {
         this.counterForm?.get(formControlName)?.setValue(item.produktAnzahl);
       }
     });
+  }
+
+  handleNav(kategorie: string, isMobile: boolean, routerLink: string ) {
+    this.kategorie = kategorie;
+    this.router.navigate([this.appRoutes.WEINSHOP, routerLink]);
+    if(isMobile){
+      this.togglehauptMenuButton();
+    }
+  }
+
+  navigateToWeinshop(key: string): void {
+    this.router.navigate([this.appRoutes.WEINSHOP, key]);
   }
 
   onInputChanged($event: any, i: any) {

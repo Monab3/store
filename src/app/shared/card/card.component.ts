@@ -5,7 +5,7 @@ import { bewertungService } from '../../core/services/bewertung.service';
 import { CartItem } from '../../core/models/CartItem';
 import { Wein } from '../../core/models/Wein';
 import { AppRoutes } from '../../core/config/app-routes.config';
-import { BewertungWrapper } from '../../core/models/BewertungWrapper';
+import { BewertungWrapper } from '../../core/models/Bewertung';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -15,6 +15,7 @@ import { Observable } from 'rxjs';
 })
 export class CardComponent implements OnInit {
 
+  @Input() kategorie: string | undefined;
   @Input() wein: Wein | undefined;
   @Input() cardDetail: boolean = false;
   @Input() cardProduktView: boolean = false;
@@ -90,6 +91,8 @@ export class CardComponent implements OnInit {
   }
 
   getFullStarsArray(): number[] {
+    console.log("getFullStarsArray: " + this.bewertungWrapper.averageRating);
+
     return new Array(this.bewertungWrapper.averageRating);
   }
 

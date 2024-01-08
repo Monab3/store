@@ -1,27 +1,26 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProductViewComponent } from './modules/product-view/product-view.component';
 import { LandingpageComponent } from './modules/landingpage/landingpage.component';
 import { WeinDetailseiteComponent } from './modules/wein-detailseite/wein-detailseite.component';
 import { AppRoutes } from './core/config/app-routes.config';
 import { WarenkorbComponent } from './modules/warenkorb/warenkorb.component';
 import { KontaktformularComponent } from './modules/warenkorb/children/kontaktformular/kontaktformular.component';
+import { KatalogseiteComponent } from './modules/katalogseite/katalogseite.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: AppRoutes.WARENKORB, pathMatch: 'full' },
+  { path: '',  component: LandingpageComponent},
+  { path: AppRoutes.WEINSHOP + '/:kategorie', component: KatalogseiteComponent },
+  { path:  AppRoutes.DETAIL, component: WeinDetailseiteComponent },
   { path: AppRoutes.WARENKORB, 
     component: WarenkorbComponent,
     children: [
       { path: AppRoutes.WARENKORB__KONTAKTFORMULAR, component: KontaktformularComponent},
     ] 
   },
-  {
-    path: AppRoutes.DETAIL, component: WeinDetailseiteComponent
-  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'top' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

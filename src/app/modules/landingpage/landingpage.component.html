@@ -13,11 +13,11 @@
     <section class="page__grid__weinkategorien weinkategorien__grid">
             <h2 class="h2__container-titel">Unsere Weinkategorien</h2>
     <nav class="weinmenu__grid weinmenu">
-        <a *ngFor="let nav of navWein; index as i" class="weinmenu__nav-button" >
+        <a *ngFor="let nav of navWein; index as i" class="weinmenu__nav-button"  [routerLink]="[appRoutes.WEINSHOP, nav.key]" >
             <figure class="weinmenu__img-container">
                 <img [src]="weinmenueBilder[i]" class="logo weinmenu__img">
             </figure>
-            <span class="weinmenu__text-margin h2">{{nav}}</span>
+            <span class="weinmenu__text-margin h2">{{ nav.value}}</span>
         </a>
     </nav>
 </section>

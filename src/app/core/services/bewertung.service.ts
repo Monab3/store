@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Bewertung } from '../models/Bewertung';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { BewertungWrapper } from '../models/BewertungWrapper';
+import { BewertungWrapper } from '../models/Bewertung';
 
 
 @Injectable({ providedIn: "root" })
@@ -64,13 +64,11 @@ export class bewertungService {
   }
 
   getBewertungWrapperForWine(wineId: number): Observable<BewertungWrapper> {
-    // If wineId does not exist, initialize a BehaviorSubject for it
     if (!this.bewertungenByWine[wineId]) {
       this.initWineBehaviorSubject(wineId);
     }
     return this.bewertungenByWine[wineId].asObservable();
   }
-
 
   addBewertungForWine(wineId: any, bewertung: Bewertung): void {
     if (!this.bewertungenByWine[wineId]) {
@@ -100,10 +98,9 @@ export class bewertungService {
   }
 
   private initWineBehaviorSubject(wineId: number): void {
-    const bewertungen: Bewertung[] = []; // Initialize with existing Bewertungen for the wine if any
+    const bewertungen: Bewertung[] = []; 
     const averageRating = this.calculateAverageRating(bewertungen);
 
-    // Create a BehaviorSubject with the initial BewertungWrapper
     this.bewertungenByWine[wineId] = new BehaviorSubject<BewertungWrapper>({
       averageRating,
       bewertungen,
@@ -116,7 +113,7 @@ export class bewertungService {
     }
 
     const totalRating = bewertungen.reduce((sum, bewertung) => sum + bewertung.sterne, 0);
-    return totalRating / bewertungen.length;
+    return Math.round(totalRating / bewertungen.length);
   }
 
 }

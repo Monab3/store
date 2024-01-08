@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+
+import { AppRoutes } from '../../core/config/app-routes.config';
 
 @Component({
   selector: 'app-landingpage',
@@ -6,8 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './landingpage.component.scss'
 })
 export class LandingpageComponent implements OnInit {
+  appRoutes = AppRoutes;
   weinmenueBilder = ['../../../assets/weinmenue_weisswein.jpg', '../../../assets/weinmenue_rotwein.jpg', '../../../assets/weinmenue_rosewein.jpg', '../../../assets/weinmenue_schaumwein.jpg'];
-  navWein = ['Weißwein', 'Rotwein', 'Roséwein', 'Sekt'];
+  navWein = [
+    { key: 'weisswein', value: 'Weißwein' },
+    { key: 'rotwein', value: 'Rotwein' },
+    { key: 'rosewein', value: 'Roséwein' },
+    { key: 'schaumwein', value: 'Schaumwein' },
+  ];  
+  
   slides = [
     {
       url: '../../../assets/landingpage/landingpage-steffen-mit-wein.jpg',
@@ -25,7 +34,8 @@ export class LandingpageComponent implements OnInit {
       text: 'Unser vielseitiges Weinsortiment erstreckt sich von erlesenen Weiß- und Rotweinen über Sektweine bis hin zu feinen Schaumweinen.'
     },
   ]
+  constructor() { }
+
   ngOnInit(): void {
   }
-
 }

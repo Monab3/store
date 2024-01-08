@@ -8,19 +8,19 @@
     @include border($width: $border-width, $style: solid, $color: $color-grey-light);
     border-radius: $border-radius-min;
     min-height: $min-height-form-input;
-    box-shadow: $border-box-shadow-form-coltrol;
+    box-shadow: $border-box-shadow-form-control;
     @include padding-atom;
 
     &:focus {
       @include border($color: $color-grey-dark);
-      box-shadow: $border-box-shadow-form-control--interaction;
+      box-shadow: $border-box-shadow-form-control;
       outline: none;
 
     }
 
     &:hover {
       @include border($color: $color-grey-dark);
-      box-shadow: $border-box-shadow-form-control--interaction;
+      box-shadow: $border-box-shadow-form-control;
       outline: none;
     }
 
@@ -120,19 +120,19 @@
       @include border($width: $border-width, $style: solid, $color: $color-grey-light);
       border-radius: $border-radius-min;
       min-height: $min-height-form-input;
-      box-shadow: $border-box-shadow-form-coltrol;
+      box-shadow: $border-box-shadow-form-control;
       @include padding-atom;
 
       &:focus {
         @include border($color: $color-grey-dark);
-        box-shadow: $border-box-shadow-form-control--interaction;
+        box-shadow: $border-box-shadow-form-control;
         outline: none;
 
       }
 
       &:hover {
         @include border($color: $color-grey-dark);
-        box-shadow: $border-box-shadow-form-control--interaction;
+        box-shadow: $border-box-shadow-form-control;
         outline: none;
       }
 

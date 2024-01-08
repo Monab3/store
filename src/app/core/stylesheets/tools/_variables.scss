@@ -1,32 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Josefin+Sans:ital,wght@0,400;0,700;1,400;1,700&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Roboto&display=swap');
 
-/* Colors */
-$color-green-light: #E6F5DD;
-$color-green-dark: #6D865E;
+/* Farben */
+$color-green-light: #E8F3E2;
+$color-green-dark: #5E7152;
 $color-red-dark: #6D3E4B;
 $color-red-signal: #C4413A;
-$color-grey-light: #F5F5F5;
-$color-grey-dark: #B9B9B9;
 $color-blue-link: #3563E9;
 $color-black: #000000;
 $color-light: #FFFFFF;
+$color-grey-light: rgba(#DDDDDD, 0.87);
+$color-grey-dark: rgba($color-black, 0.51);
 $color-grey-transparent:  rgba($color-light, 0.9);
 $color-grey--dark-opacity: rgba($color-black, 0.8);
+$color-box-shadow: rgba($color-black, 0.25);
+$color-box-shadow--active: rgba($color-black, 0.25);
 
 /* Linear Gradients */
-$color-gradient-green-light: #E1EFD9;
-$color-gradient-green-dark: #64875A;
-$color-gradient-red-light: #D75176;
-$color-gradient-red-dark: #6D3E4B;
 $gradient-green:  linear-gradient(90deg, #64AA32 4.86%, #64875A 92.12%);
-$gradient-red: linear-gradient(90deg, $color-gradient-red-light 0%, $color-red-dark 35%);
+$gradient-red: linear-gradient(90deg, #D75176 0%, #6D3E4B 35%);
 
-/* base */
+/* Base */
 $base-font-size: 16px;  /* 1rem = 16px */
 
 
-/* breakpoints equal to bootstraps*/
+/* Breakpoints */
 $breakpoint-small: 576px;
 $breakpoint-small--minus: 575px;
 $breakpoint-medium: 768px;
@@ -71,7 +69,7 @@ $min-height-form-input: 2.5rem;  /* 2.5rem = 40px */
 $min-width-card: 17rem; 
 $min-width-element--small: 44px; 
 
-/* height */
+/* Height */
 $height-min-btn: 2.5rem;  /* 2.5rem = 40px */
 $height-nav: 5rem;  /* 5rem = 80px */
 
@@ -83,15 +81,13 @@ $border-radius-max: 3.125rem;  /* 3.125rem = 50px */
 $border-width: 0.05em;  /* 0.05em = 0.8px (approximately) */
 $border-width-max: 0.6rem;  /* 0.6rem = 10px (approximately) */
 
-/* fonts */
+/* Typografie */
 
-// font-family
 $font-header: 'Cinzel';
 $font-special: 'Roboto';
 $font-regular:'Josefin Sans';
 $font-fallback: sans-serif;
 
-// font-size
 $font-size-base: 16px;
 
 $font-size-extra-large: 3.1rem;  /* 3.1rem = 50px (Header Page) */
@@ -101,16 +97,15 @@ $font-size-regular: 1rem;  /* 1rem = 16px (regular) */
 $font-size-small: 0.9rem;  /* 0.9rem = 14px (small) */
 $font-size-extra-small: 0.7rem;  /* 0.7rem = 11px (very small) */
 
-//line Height
+
 $font-line-height: 1.4em; 
 
-// font-weight
+
 $font-weight-regular: 400;
 $font-weight-bold: 700;
 
-// border-box-shadow
+/* Border-box-shadow */ 
 $border-box-shadow: 0 .5rem 1rem -.25rem $color-black;
 $border-box-shadow--green-dark: 0 .5rem 1rem -.25rem $color-green-dark;
 $border-box-shadow--signal: 0 .5rem 1rem -.25rem $color-red-signal;
-$border-box-shadow-form-coltrol: 0.125rem 0.125rem 0.3125rem 0 $color-grey-light;
-$border-box-shadow-form-control--interaction: 0.125rem 0.125rem 0.5rem $color-grey-dark;
+$border-box-shadow-form-control:  0.125rem 0.125rem 0.3125rem 0.125rem $color-box-shadow;

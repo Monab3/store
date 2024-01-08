@@ -1,16 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { format } from 'date-fns';
-
-
+import { ActivatedRoute } from '@angular/router';
+import { Subject } from 'rxjs';
 import { cartService } from '../../core/services/cart.service';
 import { weinService } from '../../core/services/wein.service';
 import { rebsortenService } from '../../core/services/rebsorten.service';
 import { CartItem } from '../../core/models/CartItem';
 import { Wein } from '../../core/models/Wein';
 import { Rebsorte } from '../../core/models/Rebsorten';
-import { ActivatedRoute } from '@angular/router';
-import { Subject } from 'rxjs';
 
 
 @Component({
@@ -19,7 +16,8 @@ import { Subject } from 'rxjs';
   styleUrl: './wein-detailseite.component.scss'
 })
 export class WeinDetailseiteComponent implements OnInit {
-  wineId:number | null = null;
+  wineId: number | null = null;
+  kategorie: string | null = null;
   toggleLightBox: Subject<boolean> = new Subject<boolean>();
   smallImageSlides: any[] = [];
 
@@ -28,9 +26,6 @@ export class WeinDetailseiteComponent implements OnInit {
   mockWein: Wein | undefined;;
 
   rebsorteInfo: Rebsorte | undefined;
-
-
-
 
   constructor(private cartService: cartService, private wineService: weinService, private rebsortenService: rebsortenService, private route: ActivatedRoute) {
   }
@@ -41,14 +36,15 @@ export class WeinDetailseiteComponent implements OnInit {
 
   initialiseData() {
     this.route.paramMap.subscribe((params) => {
+      this.kategorie = params.get('kategorie');
       this.wineId = parseInt(params.get('id') ?? '');
     });
-    if (this.wineId != null) {
-      this.mockWein = this.wineService.getWineById(this.wineId);
+    if (this.wineId != null && this.kategorie != null) {
+      this.mockWein = this.wineService.getWineById(this.kategorie, this.wineId);
     }
     if (this.mockWein) {
       this.rebsorteInfo = this.rebsortenService.getRebsorte(this.mockWein.rebsorte);
-      this.smallImageSlides.push({url: this.mockWein.weinBildString}, { url: this.mockWein.weinEttiketBildString },);
+      this.smallImageSlides.push({ url: this.mockWein.weinBildString }, { url: this.mockWein.weinEttiketBildString },);
     }
   }
 
@@ -106,8 +102,8 @@ export class WeinDetailseiteComponent implements OnInit {
 
 
 
-  showLightBox(){
-   this.toggleLightBox.next(true); 
+  showLightBox() {
+    this.toggleLightBox.next(true);
   }
 
 }

@@ -78,7 +78,7 @@
 </article>
 <article *ngIf="wein && cardProduktView"
     [ngClass]="{ 'card-list--produkt-view': productViewList, 'card--produkt-view': !productViewList }">
-    <a [routerLink]="[appRoutes.DETAIL, { id: wein._id}]">
+    <a [routerLink]="['/', appRoutes.DETAIL, {kategorie: kategorie, id: wein._id}]">
         <header>
             <p class="text-regular--red-dark">{{dateConverter(wein.herstellungsDatum)}}</p>
             <h3 class="h3">{{wein.name}}</h3>

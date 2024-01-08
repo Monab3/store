@@ -1,198 +1,55 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { rebsortenService } from '../../core/services/rebsorten.service';
 import { cartService } from '../../core/services/cart.service';
-import { base64ToImageConverter } from '../../core/services/base64ToImageConverter.service';
-import { FormGroup, FormControl, FormBuilder} from '@angular/forms';
+import { weinService } from '../../core/services/wein.service';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { WeinFilters } from '../../core/models/WeinFilters';
+import { Wein } from '../../core/models/Wein';
+import { WeinFilter } from '../../core/models/Wein';
+import { AppRoutes } from '../../core/config/app-routes.config';
 @Component({
   selector: 'app-katalogseite',
   templateUrl: './katalogseite.component.html',
   styleUrl: './katalogseite.component.scss'
 })
 export class KatalogseiteComponent implements OnInit {
-  mockDataWine = [
-    {
-      _id: 1,
-      name: 'Wein mit Langem Namen zu Testen des Looks',
-      geschmack: 'Sweet',
-      rebsorte: 'Merlot',
-      preis: 18.99,
-      preisProLiter: 25.32,
-      herstellungsDatum: new Date('2022-02-15'),
-      beschreibungsText: 'Vivamus fermentum tincidunt justo, sit amet pulvinar lacus facilisis vel.',
-      produktTyp: 'Red Wine',
-      fuellmenge: 7.5,
-      alkoholgehalt: 14.2,
-      restZucker: 5.0,
-      gesamtSaeure: 4.8,
-      verschlussArt: 'Screw Cap',
-      trinkTemperatur: 18,
-      lagerfaehigkeit: '5 years',
-      allergieHinweis: 'Contains sulfites',
-      iventar: 30,
-      servierempfehlung: 'Ideal with grilled meats.',
-      weinBildString: '../../images/bottle_card_2.png',
-      weinEttiketBildString: "",
-      servierBildString: '../../images/bottle_card_2.png',
-      searchTags: ['Trocken', 'Riesling']
-    },
-    {
-      _id: 2,
-      name: 'Wine C',
-      geschmack: 'Medium',
-      rebsorte: 'Sauvignon Blanc',
-      preis: 21.50,
-      preisProLiter: 25.32,
-      herstellungsDatum: new Date('2022-03-20'),
-      beschreibungsText: 'Cras non fringilla urna, eu fringilla nisi.',
-      produktTyp: 'White Wine',
-      fuellmenge: 750,
-      alkoholgehalt: 12.8,
-      restZucker: 1.5,
-      gesamtSaeure: 6.2,
-      verschlussArt: 'Cork',
-      trinkTemperatur: 12,
-      lagerfaehigkeit: '4 years',
-      allergieHinweis: 'Contains sulfites',
-      iventar: 40,
-      servierempfehlung: 'Pairs well with seafood and salads.',
-      weinBildString: '../../images/bottle_card_2.png',
-      weinEttiketBildString: "",
-      servierBildString: '../../images/bottle_card_2.png',
-      searchTags: ['Süß', 'Riesling']
-    },
-    {
-      _id: 3,
-      name: 'Wine D',
-      geschmack: 'Dry',
-      rebsorte: 'Cabernet Sauvignon',
-      preis: 32.99,
-      preisProLiter: 25.32,
-      herstellungsDatum: new Date('2022-04-10'),
-      beschreibungsText: 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.',
-      produktTyp: 'Red Wine',
-      fuellmenge: 750,
-      alkoholgehalt: 15.0,
-      restZucker: 1.8,
-      gesamtSaeure: 5.5,
-      verschlussArt: 'Cork',
-      trinkTemperatur: 16,
-      lagerfaehigkeit: '7 years',
-      allergieHinweis: 'Contains sulfites',
-      iventar: 25,
-      servierempfehlung: 'Great with red meat dishes.',
-      weinBildString: '../../images/bottle_card_2.png',
-      weinEttiketBildString: "",
-      servierBildString: '../../images/bottle_card_2.png',
-      searchTags: ['Herb', 'Rivaner']
-    },
-    {
-      _id: 4,
-      name: 'Wine E',
-      geschmack: 'Sweet',
-      rebsorte: 'Merlot',
-      preis: 18.99,
-      preisProLiter: 25.32,
-      herstellungsDatum: new Date('2022-02-15'),
-      beschreibungsText: 'Vivamus fermentum tincidunt justo, sit amet pulvinar lacus facilisis vel.',
-      produktTyp: 'Red Wine',
-      fuellmenge: 7.5,
-      alkoholgehalt: 14.2,
-      restZucker: 5.0,
-      gesamtSaeure: 4.8,
-      verschlussArt: 'Screw Cap',
-      trinkTemperatur: 18,
-      lagerfaehigkeit: '5 years',
-      allergieHinweis: 'Contains sulfites',
-      iventar: 30,
-      servierempfehlung: 'Ideal with grilled meats.',
-      weinBildString: '../../images/bottle_card_2.png',
-      weinEttiketBildString: "",
-      servierBildString: '../../images/bottle_card_2.png',
-      searchTags: ['Trocken', 'Riesling']
-    },
-    {
-      _id: 5,
-      name: 'Wine F',
-      geschmack: 'Medium',
-      rebsorte: 'Sauvignon Blanc',
-      preis: 21.50,
-      preisProLiter: 25.32,
-      herstellungsDatum: new Date('2022-03-20'),
-      beschreibungsText: 'Cras non fringilla urna, eu fringilla nisi.',
-      produktTyp: 'White Wine',
-      fuellmenge: 750,
-      alkoholgehalt: 12.8,
-      restZucker: 1.5,
-      gesamtSaeure: 6.2,
-      verschlussArt: 'Cork',
-      trinkTemperatur: 12,
-      lagerfaehigkeit: '4 years',
-      allergieHinweis: 'Contains sulfites',
-      iventar: 40,
-      servierempfehlung: 'Pairs well with seafood and salads.',
-      weinBildString: '../../images/bottle_card_2.png',
-      weinEttiketBildString: "",
-      servierBildString: '../../images/bottle_card_2.png',
-      searchTags: ['Herb', 'Riesling']
-    },
-    {
-      _id: 6,
-      name: 'Wine G',
-      geschmack: 'Dry',
-      rebsorte: 'Cabernet Sauvignon',
-      preis: 32.99,
-      preisProLiter: 25.32,
-      herstellungsDatum: new Date('2022-04-10'),
-      beschreibungsText: 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.',
-      produktTyp: 'Red Wine',
-      fuellmenge: 750,
-      alkoholgehalt: 15.0,
-      restZucker: 1.8,
-      gesamtSaeure: 5.5,
-      verschlussArt: 'Cork',
-      trinkTemperatur: 16,
-      lagerfaehigkeit: '7 years',
-      allergieHinweis: 'Contains sulfites',
-      iventar: 25,
-      servierempfehlung: 'Great with red meat dishes.',
-      weinBildString: '../../images/bottle_card_2.png',
-      weinEttiketBildString: "",
-      servierBildString: '../../images/bottle_card_2.png',
-      searchTags: ['Dornfelder', 'Riesling']
-    },
+  appRoutes = AppRoutes;
+dataWein: Wein[] | undefined= [];
+  titel: string | undefined;
+
+  //filterDataWine = thisdataWein;
+  filterDataWine : Wein[] | undefined= [];
+  title: String = "";
+
+  navWein = [
+    { key: 'weisswein', value: 'Weißwein' },
+    { key: 'rotwein', value: 'Rotwein' },
+    { key: 'rosewein', value: 'Roséwein' },
+    { key: 'schaumwein', value: 'Schaumwein' },
   ];
 
-  filterDataWine = this.mockDataWine;
-  title: String = ""; 
-
   /* Arrays */
-  geschmaecker = ['Trocken', 'Süß', 'Herb', 'Feinherb'];
+  geschmaecker = ['Trocken', 'Fruchtig', 'Herb', 'Feinherb'];
   rebsorten = ['Riesling', 'Burgunder', 'Rivaner', 'Dornfelder'];
-  navWein = ['Weißwein', 'Rotwein', 'Roséwein', 'Sekt'];
-  
+  kategorie: string | undefined;
+
   weinmenueBilder = ['../assets/weinmenue_weisswein.jpg', '../assets/weinmenue_rotwein.jpg', '../assets/weinmenue_rosewein.jpg', '../assets/weinmenue_schaumwein.jpg'];
   productViewList: boolean = false;
   filterButtonSmallOpen: boolean = false;
   dispayNoProductsFound: boolean = false;
+  counterForm: FormGroup | undefined;
 
   /*Form Controls */
   formGeschmack = new FormGroup({
     geschmack: new FormControl(''),
-    trockenCount: new FormControl(0),
-    süßCount: new FormControl(0),
-    herbCount: new FormControl(0),
-    feinherbCount: new FormControl(0)
   });
-
 
   formRebsorte = new FormGroup({
     rebsorte: new FormControl(''),
-    rieslingCount: new FormControl(1),
-    burgunderCount: new FormControl(2),
-    rivanerCount: new FormControl(3),
-    dornfelderCount: new FormControl(4)
   });
+
+  weinfilterNumbers: WeinFilter | undefined;
 
   /*Filter Objects */
   filters: WeinFilters = {
@@ -200,22 +57,21 @@ export class KatalogseiteComponent implements OnInit {
     rebsorte: null,
   };
 
-  /* Variables */
-  base64String: string | undefined;
-
-  constructor(private rebsortenService: rebsortenService, private imageTransformSerivce: base64ToImageConverter,
-    private fb: FormBuilder, private cartService: cartService
+  constructor(private rebsortenService: rebsortenService, private weinService: weinService,
+    private fb: FormBuilder, private cartService: cartService, private route: ActivatedRoute
   ) {
 
   }
 
   ngOnInit(): void {
+    this.initialiseData();
     this.subscribeFilters();
+    this.subscribeUrl();
   }
 
-
-
-  counterForm: FormGroup | undefined;
+  initialiseData(){
+  
+  }
 
   subscribeFilters() {
 
@@ -227,19 +83,17 @@ export class KatalogseiteComponent implements OnInit {
     });
   }
 
-  public fetchDatafromBackend(): void {
-    this.rebsortenService.fetchRebsorten().subscribe((data) => {
-      if (data) {
-
-        for (let item of data) {
-          if (item.rebsorteImage) {
-            this.base64String = this.imageTransformSerivce.transform(item.rebsorteImage, 'image/png');
-            console.log("test");
-          }
-        }
-
+  subscribeUrl() {
+    this.route.params.subscribe(params => {
+      this.kategorie = params['kategorie'];
+      this.titel = this.navWein.find(wine => wine.key === this.kategorie)?.value;
+      if(this.kategorie){
+        this.dataWein = this.weinService.getWinesByKategorie(this.kategorie); 
+        this.filterDataWine = this.dataWein;
+        this.weinfilterNumbers = this.weinService.getFilterByNumber(this.kategorie);
+        console.log("weinfilters by number: "+ this.weinfilterNumbers); 
       }
-    })
+    });
   }
 
   dateConverter(date: Date): string {
@@ -263,14 +117,14 @@ export class KatalogseiteComponent implements OnInit {
   }
 
   addFilters(): void {
-    this.filterDataWine = this.mockDataWine.filter((wine) => {
-      const geschmackFilter = !this.filters.geschmack || wine.searchTags.includes(this.filters.geschmack);
-      const rebsorteFilter = !this.filters.rebsorte || wine.searchTags.includes(this.filters.rebsorte);
+    this.filterDataWine = this.dataWein?.filter((wine) => {
+      const geschmackFilter = !this.filters.geschmack || wine?.searchTags.includes(this.filters.geschmack);
+      const rebsorteFilter = !this.filters.rebsorte || wine?.searchTags.includes(this.filters.rebsorte);
       this.dispayNoProductsFound = false;
       return geschmackFilter && rebsorteFilter;
     });
 
-    if (this.filterDataWine.length == 0) {
+    if (this.filterDataWine?.length == 0) {
       this.dispayNoProductsFound = true;
     }
   }
