@@ -3,7 +3,7 @@ import { cartService } from '../../core/services/cart.service';
 import { CartItem } from '../../core/models/CartItem';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AppRoutes } from '../../core/config/app-routes.config';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
 
@@ -67,7 +67,6 @@ export class WarenkorbComponent implements OnInit {
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
       const fullUrl = this.router.url;
-      console.log(fullUrl);
       if (fullUrl.includes(this.appRoutes.WARENKORB__KONTAKTFORMULAR)) {
         this.titel = "Ihre Kontaktdaten";
         this.progressBar = {

@@ -69,12 +69,12 @@
                         Warenkorb einsehen</button>
                     <button class="button button__buy"
                         [attr.title]="cartItems.length == 0? 'Um zur Kasse zu gehen, fügen Sie Weine zum Warenkorb hinzu' : null"
-                        [disabled]="cartItems.length == 0" (click)="handleNavWarenkorb(true)">Zur Kasse
+                        [disabled]="cartItems.length == 0" (click)="handleNavWarenkorb(false)">Zur Kasse
                         gehen</button>
                 </footer>
             </article>
             <button *ngFor="let nav of navWein; index as i" class="nav-button hauptmenu__nav__button--hide"
-                [routerLink]="[appRoutes.WEINSHOP, nav.key]" [ngClass]="{'nav-button--active': nav.value == kategorie}"
+                [routerLink]="[appRoutes.WEINSHOP, nav.key]" [ngClass]="{'nav-button--active': nav.key == kategorie}"
                 (click)="handleNav(nav.value, false, nav.key)">
                 <span>{{nav.value}}</span>
             </button>

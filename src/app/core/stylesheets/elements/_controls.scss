@@ -106,7 +106,7 @@
   @include fonts($font-header, $font-size-medium, $font-weight-bold, $color: $color-green-dark);
   &--active{
     color: $color-red-dark;
-    @include border($border-property: border-bottom,  $width: 0.05em, $color: $color-red-dark);
+    @include border($border-property: border-bottom,  $width: 2px, $color: $color-red-dark);
   }
 }
 

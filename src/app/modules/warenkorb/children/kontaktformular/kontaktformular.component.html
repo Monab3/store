@@ -1,21 +1,5 @@
+<section class="produkt__container">
 <form class="form__container form" [formGroup]="kontaktFormular">
-
-    <!--<div class="form__container--half-width">
-        <div class="form--span-all">
-            <label for="anrede">Anrede</label>
-            <select class="form__input" id="anrede" formControlName="anrede">
-                <option value="herr">Herr</option>
-                <option value="frau">Frau</option>
-            </select>
-        </div>
-        <div class="form--span-all form__select-box">
-            <label for="titel">Titel</label>
-            <select class="form__input" id="titel" formControlName="titel">
-                <option value="prof">Prof</option>
-                <option value="dr">Dr</option>
-            </select>
-        </div>
-    </div>-->
 
     <div class="form__container--half-width">
         <div class="form--span-all">
@@ -190,18 +174,26 @@
     <button class="button button__main" [disabled]="rechnungFormular.invalid">Speichern</button>
 </form>
 
-<h2 class="h2__container-titel">Zahlungsmethode</h2>
-<p class="text-regular">Wählen, Sie die Zahlungsmethode aus, mit der Sie bezahlen wollen.</p>
 
-<form [formGroup]="rechnungsArtFormular">
-    <label class="text-regular">
-        <input type="radio" formControlName="bezahlart" value="Mit Rechnung">
-        Mit Rechnung
-    </label>
-    <label class="text-regular">
-        <input type="radio" formControlName="bezahlart" value="Paypal">
-        Paypal
-    </label>
+<form class="form__container form" [formGroup]="rechnungsArtFormular">
+    <div class="form__container--full-width">
+    <h2 class="h2__container-titel">Zahlungsmethode</h2>
+<p class="text-regular">Wählen, Sie die Zahlungsmethode aus, mit der Sie bezahlen wollen.</p>
+</div>
+<div class="form__container--half-width">
+    <div class="form--span-all">
+        <label class="text-regular">
+            <input type="radio" formControlName="bezahlart" value="Mit Rechnung">
+            Mit Rechnung
+        </label>
+    </div>
+    <div class="form--span-all">
+        <label class="text-regular">
+            <input type="radio" formControlName="bezahlart" value="Paypal">
+            Paypal
+        </label>
+    </div>
+</div>
 </form>
 
 <form [formGroup]="datenschutzErklaerung">
@@ -211,7 +203,6 @@
     </label>
   </form>
 
-  <button class="button button__main" [disabled]="kontaktFormular.invalid || rechnungFormular.invalid">Speichern und weiter</button>
+  <button class="button button__buy" [disabled]="kontaktFormular.invalid || rechnungFormular.invalid">Kostenpflichtig bestellen</button>
 
-
-
+</section>

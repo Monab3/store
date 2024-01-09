@@ -8,45 +8,39 @@
         </h1>
     </header>
     <nav class="page__grid__anzeige anzeige__container">
+
         <ul class="anzeige">
+            <hr class="anzeige__line" noshade size="1">
             <li>
                 <button class="text-regular anzeige__item" [disabled]="!progressBar.warenkorb" [ngClass]="{'anzeige__item--aktive': progressBar.active === 'warenkorb'}">
                     <div class="anzeige__item__punkt" [routerLink]="['/', appRoutes.WARENKORB]"></div>
-                    Warenkorb
                 </button>
             </li>
             <li>
                 <button class="text-regular anzeige__item" [disabled]="!progressBar.daten" [ngClass]="{'anzeige__item--aktive': progressBar.active === 'daten'}">
                     <div class="anzeige__item__punkt"></div>
-                    Kundendaten
                 </button>
             </li>
             <li>
                 <button class="text-regular anzeige__item" [disabled]="!progressBar.danke" [ngClass]="{'anzeige__item--aktive': progressBar.active === 'danke'}">
                     <div class="anzeige__item__punkt"></div>
-                    Danke!
                 </button>
             </li>
         </ul>
-        <ul class="anzeige--small">
+        <ul class="anzeige">
             <li>
-                <button class="text-regular--light anzeige__item__punkt anzeige__item__punkt--clickable">
-                    1
+                <button class="text-regular anzeige__item" [disabled]="!progressBar.warenkorb" [ngClass]="{'anzeige__item--aktive': progressBar.active === 'warenkorb'}">
+                    Warenkorb
                 </button>
             </li>
             <li>
-                <button class="text-regular--light anzeige__item__punkt anzeige__item__punkt--active">
-                    2
+                <button class="text-regular anzeige__item" [disabled]="!progressBar.daten" [ngClass]="{'anzeige__item--aktive': progressBar.active === 'daten'}">
+                    Kundendaten
                 </button>
             </li>
             <li>
-                <button class="text-regular--light anzeige__item__punkt anzeige__item__punkt--clickable">
-                    3
-                </button>
-            </li>
-            <li>
-                <button class="text-regular--light anzeige__item__punkt anzeige__item__punkt--clickable">
-                    4
+                <button class="text-regular anzeige__item" [disabled]="!progressBar.danke" [ngClass]="{'anzeige__item--aktive': progressBar.active === 'danke'}">
+                    Danke!
                 </button>
             </li>
         </ul>
@@ -58,14 +52,14 @@
         <div *ngIf="cartItems.length == 0" class="produkt--empty">
             <h4 class="h4">Noch keine Weine im Warenkorb</h4>
             <p class="text-regular">Es befinden sich noch keine Weine in ihrem Warenkorb.</p>
-            <button class="button button__secondary">Zurück zur Produktübersicht</button>
+            <button class="button button__secondary"  [routerLink]="['']">Zurück zur Katalogübersicht</button>
         </div>
         <button *ngIf="!progressBar.daten && !progressBar.danke && cartItems.length > 0" 
         class="produkt__zur-kasse-gehen button button__buy" 
         [routerLink]="['/', appRoutes.WARENKORB, appRoutes.WARENKORB__KONTAKTFORMULAR]"
         [attr.title]="cartItems.length == 0? 'Um zur Kasse zu gehen, fügen Sie Weine zum Warenkorb hinzu' : null" >
         Zur Kasse gehen</button>
-        <router-outlet></router-outlet>
+            <router-outlet></router-outlet>
     </section>
     <section class="page__grid__sum sum__container">
         <section class="sum">
@@ -87,7 +81,7 @@
                 </tbody>
             </table>
         </section>
-        <button class="button button__secondary" [routerLink]="'kontaktformular'">Zurück zur Produktübersicht</button>
+        <button class="button button__secondary"  [routerLink]="['']">Zurück zur Katalogübersicht</button>
         <button *ngIf="!progressBar.daten && !progressBar.danke" class="button button__buy" [attr.title]="cartItems.length == 0? 'Um zur Kasse zu gehen, fügen Sie Weine zum Warenkorb hinzu' : null" [disabled]="cartItems.length == 0" [routerLink]="['/', appRoutes.WARENKORB, appRoutes.WARENKORB__KONTAKTFORMULAR]">Zur Kasse gehen</button>
         <p-accordion [multiple]="true">
             <p-accordionTab class="p-accordion--red-dark" header="Versandinformationen">
@@ -120,7 +114,7 @@
                 <th class="h3--light">Stückpreis</th>
                 <th class="h3--light">Anzahl</th>
                 <th class="h3--light">Summe</th>
-                <th class="h3--light"></th>
+                <th  *ngIf="!progressBar.daten && !progressBar.danke" class="h3--light"></th>
             </tr>
         </thead>
         <tbody class="produkt__body">
@@ -146,6 +140,7 @@
                         <input class="selector__form__input" type="number" formControlName="count"
                             [formControlName]="'count' + (item.wein._id)"
                             [ngClass]="{'selector__form__input--invalid': counterForm.get('count' + (item.wein._id))?.invalid && counterForm.get('count' + (item.wein._id))?.touched}"
+                           [readonly] = "progressBar.daten || progressBar.danke"
                             (input)="onInputChanged($event, i)" />
                     </form>
                     <p *ngIf="counterForm?.get('count' + (item.wein._id))?.invalid && counterForm?.get('count' + (item.wein._id))?.touched"
@@ -156,7 +151,7 @@
                 <td>
                     <p class="text-regular no-wrap-text">{{(item.wein.preis * item.produktAnzahl).toFixed(2)}} €</p>
                 </td>
-                <td><button button--full-width class="button button__secondary button--full-width"
+                <td  *ngIf="!progressBar.daten && !progressBar.danke && cartItems.length > 0" ><button button--full-width class="button button__secondary button--full-width"
                         (click)="deleteItemFromCart(item)">Entfernen</button></td>
             </tr>
         </tbody>

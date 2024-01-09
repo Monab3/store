@@ -9,7 +9,7 @@ import { AppRoutes } from '../../core/config/app-routes.config';
 })
 export class LandingpageComponent implements OnInit {
   appRoutes = AppRoutes;
-  weinmenueBilder = ['../../../assets/weinmenue_weisswein.jpg', '../../../assets/weinmenue_rotwein.jpg', '../../../assets/weinmenue_rosewein.jpg', '../../../assets/weinmenue_schaumwein.jpg'];
+  weinmenueBilder = ['../../../assets/landingpage/weinmenue_weisswein.jpg', '../../../assets/landingpage/weinmenue_rotwein.jpg', '../../../assets/landingpage/weinmenue_rosewein.jpg', '../../../assets/landingpage/weinmenue_schaumwein.jpg'];
   navWein = [
     { key: 'weisswein', value: 'Weißwein' },
     { key: 'rotwein', value: 'Rotwein' },

@@ -9,7 +9,7 @@
 
 .anzeige {
     @include flexbox($direction: row, $justify: space-between, $align: center, $wrap: nowrap);
-
+     
     &--small {
         @include flexbox($direction: row, $justify: space-between, $align: center, $wrap: nowrap);
         @include hide-for-medium;
@@ -24,17 +24,28 @@
     }
 
     &__line {
-        width: 100%;
-        background: $color-green-dark;
         position: absolute;
         top: 25%;
         bottom: 25%;
+        border-width: 2px; 
+        border-color: $color-green-light;
+        color: $color-green-light;
+        position: absolute; 
+        width: 99%; 
+        z-index: -1;
+        box-shadow: none; 
     }
 
     &__item {
         @include flexbox($direction: column, $justify: center, $align: center, $wrap: nowrap);
         @include gap-element;
         color: $color-green-dark;
+        :hover{
+            color: $color-red-dark;
+            & div{
+                background: $color-red-dark;
+            }
+        }
 
         &--aktive {
             color: $color-red-dark;
@@ -49,12 +60,7 @@
                 background: $color-green-light;
             }
         }
-        :hover{
-            color: $color-red-dark;
-            & div{
-                background: $color-red-dark;
-            }
-        }
+
         &__punkt {
             border-radius: 50%;
             height: 30px;
@@ -75,4 +81,8 @@
             width: 45px;
         }
     }
+}
+
+hr {
+    box-shadow: none;
 }

@@ -34,7 +34,7 @@ dataWein: Wein[] | undefined= [];
   rebsorten = ['Riesling', 'Burgunder', 'Rivaner', 'Dornfelder'];
   kategorie: string | undefined;
 
-  weinmenueBilder = ['../assets/weinmenue_weisswein.jpg', '../assets/weinmenue_rotwein.jpg', '../assets/weinmenue_rosewein.jpg', '../assets/weinmenue_schaumwein.jpg'];
+  weinmenueBilder = ['../assets/landingpage/weinmenue_weisswein.jpg', '../assets/landingpage/weinmenue_rotwein.jpg', '../assets/landingpage/weinmenue_rosewein.jpg', '../assets/landingpage/weinmenue_schaumwein.jpg'];
   productViewList: boolean = false;
   filterButtonSmallOpen: boolean = false;
   dispayNoProductsFound: boolean = false;
