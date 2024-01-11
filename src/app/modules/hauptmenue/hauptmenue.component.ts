@@ -24,9 +24,10 @@ export class HauptmenueComponent implements OnInit {
 
   cartItems: CartItem[] = [];
   cartTotalProduktAnzahl: number = 0;
-  cartAnzahl: Number = 0;
+  cartAnzahl: number = 0;
   cartVisibility = false;
-  cartTotal: String = "";
+  cartTotal: number = 0;
+  versandTotal: number = 0;
   hauptmenuButtonOpen: boolean = false;
   number: any = 1;
   kategorie = "";
@@ -57,11 +58,15 @@ export class HauptmenueComponent implements OnInit {
     });
 
     this.cartService.cartTotal.subscribe((data) => {
-      this.cartTotal = data.toFixed(2);
+      this.cartTotal = data;
     });
     this.cartService.cartTotalProduktAnzahl.subscribe((data) => {
       console.log("cartTotalProduktAnzahl: " + data);
       this.cartTotalProduktAnzahl = data;
+    });
+
+    this.cartService.versandTotal.subscribe((data) => {
+      this.versandTotal = data;
     });
   }
 
@@ -89,8 +94,6 @@ export class HauptmenueComponent implements OnInit {
       }
       
 })}
-
-
 
 handleNav(kategorie: string, isMobile: boolean, routerLink: string) {
   this.router.navigate([this.appRoutes.WEINSHOP, routerLink]);
@@ -145,6 +148,10 @@ onSubmit() {
 
 itemPriceSum(item: CartItem) {
   return (item.wein.preis * item.produktAnzahl).toFixed(2);
+}
+
+cartTotalPriceSum() {
+  return (this.cartTotal + this.versandTotal).toFixed(2);
 }
 
 togglehauptMenuButton() {

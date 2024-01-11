@@ -31,7 +31,7 @@ dataWein: Wein[] | undefined= [];
 
   /* Arrays */
   geschmaecker = ['Trocken', 'Fruchtig', 'Herb', 'Feinherb'];
-  rebsorten = ['Riesling', 'Burgunder', 'Rivaner', 'Dornfelder'];
+  rebsorten = ['Riesling', 'Burgunder', 'Rivaner', 'Dornfelder', 'MuellerThurgau'];
   kategorie: string | undefined;
 
   weinmenueBilder = ['../assets/landingpage/weinmenue_weisswein.jpg', '../assets/landingpage/weinmenue_rotwein.jpg', '../assets/landingpage/weinmenue_rosewein.jpg', '../assets/landingpage/weinmenue_schaumwein.jpg'];
@@ -88,6 +88,7 @@ dataWein: Wein[] | undefined= [];
       this.kategorie = params['kategorie'];
       this.titel = this.navWein.find(wine => wine.key === this.kategorie)?.value;
       if(this.kategorie){
+        console.log("subscribeUrl logs: "+ this.kategorie); 
         this.dataWein = this.weinService.getWinesByKategorie(this.kategorie); 
         this.filterDataWine = this.dataWein;
         this.weinfilterNumbers = this.weinService.getFilterByNumber(this.kategorie);

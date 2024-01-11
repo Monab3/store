@@ -10,31 +10,31 @@
 
 @import '../../../../core/stylesheets/elements/controls';
 
-
-
-::ng-deep .ng-option {
-    background: $color-light;
-    @include padding-atom;
-
-    width: 100%;
-}
-
-::ng-deep .ng-dropdown-panel-items{
-    border-radius: $border-radius;
-    @include border($color: $color-green-light);
-}
-::ng-deep .ng-select-container{
-    color: $color-green-dark;
-}
-
-.adress__container{
-    @include flexbox($direction: row, $justify: center, $align: center, $wrap: wrap);
-    @include border($color: $color-green-light);
-    @include gap-component;
-    border-radius: $border-radius;
+.produkt-teaser{
+    background-color: $color-red-dark;
     @include padding-component;
-
-    & th {
-        text-align: left;  
-    }
+    @include flexbox($direction: column, $justify: space-around, $align: center, $wrap: wrap);
+    @include gap-component;
+    &__img {
+        @include border($color: $color-light);
+        width: 35%;
+        height: auto;
+        border-radius: 50%;
+  
+        & img {
+          @include responsive-img(true, true);
+        }
+      }
+      &__info {
+        width: 50%;
+      }
 }
+
+.danksagung{
+    grid-column: span 8;
+    text-align: center;
+    @include padding-component;
+}
+
+
+ 

@@ -2,12 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CartItem } from '../models/CartItem';
 import { BehaviorSubject } from 'rxjs';
+import { format, addDays } from 'date-fns';
+
 
 
 @Injectable({ providedIn: "root" })
 export class cartService {
     private cartInhaltSource = new BehaviorSubject<CartItem[]>([]);
     private cartTotalSource = new BehaviorSubject<number>(0);
+    private endOfBuySource = new BehaviorSubject<boolean>(false);
     private cartTotalProduktAnzahlSource = new BehaviorSubject<number>(0);
     private versandTotalSource = new BehaviorSubject<number>(0);
     private cartVisibilitySource = new BehaviorSubject<boolean>(false);
@@ -16,6 +19,7 @@ export class cartService {
     cartTotalProduktAnzahl = this.cartTotalProduktAnzahlSource.asObservable();
     versandTotal = this.versandTotalSource.asObservable();
     cartVisibility = this.cartVisibilitySource.asObservable();
+    endOfBuy = this.endOfBuySource.asObservable();
     private cartVisibilityVariable = false;
     constructor(private http: HttpClient) {
     }
@@ -61,6 +65,14 @@ export class cartService {
         this.cartVisibilitySource.next(this.cartVisibilityVariable);
     }
 
+    signalEndOfBuyProcess(): void {
+        this.endOfBuySource.next(true);
+    }
+    leaveEndProcessSide(): void {
+        this.endOfBuySource.next(false);
+    }
+
+
     setcartVisibilityTrue(): void {
         this.cartVisibilityVariable = true;
         this.cartVisibilitySource.next(this.cartVisibilityVariable);
@@ -69,6 +81,13 @@ export class cartService {
     deleteFromCart(item: CartItem) {
         const currentCart = this.cartInhaltSource.getValue();
         const updatedcart = currentCart.filter(cartItem => cartItem.wein._id !== item.wein._id);
+        this.cartInhaltSource.next(updatedcart);
+        this.calculateTotal();
+    }
+
+    deleteAllFromCart(){
+        const currentCart = this.cartInhaltSource.getValue();
+        const updatedcart : CartItem[] = [];
         this.cartInhaltSource.next(updatedcart);
         this.calculateTotal();
     }
@@ -109,5 +128,15 @@ export class cartService {
             return; 
         }
         this.versandTotalSource.next(0);
+    }
+
+    getDeliveryDate(): string {
+        const startDate = new Date();
+        const endDate = addDays(startDate, 5);
+    
+        const formattedStartDate = format(startDate, 'dd.MMM');
+        const formattedEndDate = format(endDate, 'dd.MMM');
+    
+        return `${formattedStartDate} - ${formattedEndDate}`;
     }
 }

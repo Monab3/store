@@ -59,7 +59,7 @@
         [routerLink]="['/', appRoutes.WARENKORB, appRoutes.WARENKORB__KONTAKTFORMULAR]"
         [attr.title]="cartItems.length == 0? 'Um zur Kasse zu gehen, fügen Sie Weine zum Warenkorb hinzu' : null" >
         Zur Kasse gehen</button>
-            <router-outlet></router-outlet>
+            <router-outlet *ngIf="!progressBar.danke"></router-outlet>
     </section>
     <section class="page__grid__sum sum__container">
         <section class="sum">
@@ -68,21 +68,28 @@
                 <tbody>
                     <tr>
                         <td class="text-regular--light">Warenwert:</td>
-                        <td class="text-regular--light ">{{cartTotal.toFixed(2)}} €</td>
+                        <td *ngIf="!endOfBuy" class="text-regular--light ">{{cartTotal.toFixed(2)}} €</td>
+                        <td *ngIf="endOfBuy" class="text-regular--light ">{{cartTotalAfter.toFixed(2)}} €</td>
+
                     </tr>
                     <tr>
                         <td class="text-regular--light">Versandkosten:</td>
-                        <td class="text-regular--light">{{versandTotal.toFixed(2)}} €</td>
+                        <td *ngIf="!endOfBuy" class="text-regular--light">{{versandTotal.toFixed(2)}} €</td>
+                        <td *ngIf="endOfBuy" class="text-regular--light">{{versandTotalAfter.toFixed(2)}} €</td>
+
                     </tr>
                     <tr class="sum--margin-top">
-                        <td class="h4--light">Gesamtsumme:</td>
-                        <td class="h4--light">{{versandAndCartTotal.toFixed(2)}} €</td>
+                        <td  class="h4--light">Gesamtsumme:</td>
+                        <td *ngIf="!endOfBuy" class="h4--light">{{versandAndCartTotal.toFixed(2)}} €</td>
+                        <td *ngIf="endOfBuy" class="text-regular--light">{{versandTotalAfter.toFixed(2)}} €</td>
+
                     </tr>
                 </tbody>
             </table>
         </section>
         <button class="button button__secondary"  [routerLink]="['']">Zurück zur Katalogübersicht</button>
         <button *ngIf="!progressBar.daten && !progressBar.danke" class="button button__buy" [attr.title]="cartItems.length == 0? 'Um zur Kasse zu gehen, fügen Sie Weine zum Warenkorb hinzu' : null" [disabled]="cartItems.length == 0" [routerLink]="['/', appRoutes.WARENKORB, appRoutes.WARENKORB__KONTAKTFORMULAR]">Zur Kasse gehen</button>
+        <p class="text-regular"><i class="bi bi-truck text-regular--red-dark"></i> Lieferung zw.<span class="text-regular--red-dark"> {{devlieryDate}}</span></p>
         <p-accordion [multiple]="true">
             <p-accordionTab class="p-accordion--red-dark" header="Versandinformationen">
                 <p class="text-regular">
@@ -104,6 +111,8 @@
             </p-accordionTab>
         </p-accordion>
     </section>
+    <section *ngIf="progressBar.danke">            <router-outlet *ngIf="progressBar.danke"></router-outlet>
+        test</section>
 </main>
 <ng-template #produkt>
     <table *ngIf="cartItems.length !== 0" class="produkt">
@@ -117,8 +126,46 @@
                 <th  *ngIf="!progressBar.daten && !progressBar.danke" class="h3--light"></th>
             </tr>
         </thead>
-        <tbody class="produkt__body">
+        <tbody *ngIf="!endOfBuy" class="produkt__body">
             <tr *ngFor="let item of cartItems; let i = index">
+                <td>
+                    <figure class="produkt__img-container"><img class="produkt__img"
+                            src="../../../assets/black_noir_weisswein.png"></figure>
+                </td>
+                <td>
+                    <p class="text-regular--red-dark">{{dateConverter(item.wein.herstellungsDatum)}}</p>
+                    <h3 class="h3">{{item.wein.name}}</h3>
+                </td>
+                <td>
+                    <p class="text-regular no-wrap-text">
+                        {{item.wein.preis}} €
+                    </p>
+                    <p class="text-regular">
+                        {{item.wein.preisProLiter}} € | L
+                    </p>
+                </td>
+                <td>
+                    <form *ngIf="counterForm" [formGroup]="counterForm">
+                        <input class="selector__form__input" type="number" formControlName="count"
+                            [formControlName]="'count' + (item.wein._id)"
+                            [ngClass]="{'selector__form__input--invalid': counterForm.get('count' + (item.wein._id))?.invalid && counterForm.get('count' + (item.wein._id))?.touched}"
+                           [readonly] = "progressBar.daten || progressBar.danke"
+                            (input)="onInputChanged($event, i)" />
+                    </form>
+                    <p *ngIf="counterForm?.get('count' + (item.wein._id))?.invalid && counterForm?.get('count' + (item.wein._id))?.touched"
+                        class="text-regular--red-signal">
+                        Zahl zwischen 1 und 100 eingeben
+                    </p>
+                </td>
+                <td>
+                    <p class="text-regular no-wrap-text">{{(item.wein.preis * item.produktAnzahl).toFixed(2)}} €</p>
+                </td>
+                <td  *ngIf="!progressBar.daten && !progressBar.danke && cartItems.length > 0" ><button button--full-width class="button button__secondary button--full-width"
+                        (click)="deleteItemFromCart(item)">Entfernen</button></td>
+            </tr>
+        </tbody>
+        <tbody *ngIf="endOfBuy" class="produkt__body">
+            <tr *ngFor="let item of cartItemsAfter; let i = index">
                 <td>
                     <figure class="produkt__img-container"><img class="produkt__img"
                             src="../../../assets/black_noir_weisswein.png"></figure>

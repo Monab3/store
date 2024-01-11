@@ -61,10 +61,10 @@
                 </main>
                 <footer class="cart__footer">
                     <div class="cart__footer__container">
-                        <p class="text-regular">Gesamtsumme <span class="text-fine">(inkl. MwSt.) </span>:</p>
-                        <p class="text-regular--red-dark">{{cartTotal}} €</p>
+                        <p class="text-regular">Gesamtsumme <span class="text-fine">(inkl. MwSt. & Versand) </span>:</p>
+                        <p class="text-regular--red-dark">{{cartTotalPriceSum()}} €</p>
                     </div>
-                    <button class="button button__secondary button__secondary--hover-dark-green" (click)="handleNavWarenkorb(true)">
+                    <button class="button button__main" (click)="handleNavWarenkorb(true)">
                         <span style="font-size: 14px;"><i class="bi-cart3 bi"></i></span>
                         Warenkorb einsehen</button>
                     <button class="button button__buy"
@@ -89,7 +89,7 @@
                 </div>
                 <span class="hauptmenu__open-cart-button__text text-regular">Gesamt:
                     <br>
-                    {{cartTotal}} €</span>
+                    {{cartTotalPriceSum()}} €</span>
             </button>
         </nav>
 

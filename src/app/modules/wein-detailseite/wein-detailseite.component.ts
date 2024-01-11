@@ -42,7 +42,7 @@ export class WeinDetailseiteComponent implements OnInit {
     if (this.wineId != null && this.kategorie != null) {
       this.mockWein = this.wineService.getWineById(this.kategorie, this.wineId);
     }
-    if (this.mockWein) {
+    if (this.mockWein && this.mockWein.rebsorte) {
       this.rebsorteInfo = this.rebsortenService.getRebsorte(this.mockWein.rebsorte);
       this.smallImageSlides.push({ url: this.mockWein.weinBildString }, { url: this.mockWein.weinEttiketBildString },);
     }

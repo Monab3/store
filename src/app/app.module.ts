@@ -12,7 +12,6 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { AccordionModule } from 'primeng/accordion';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HauptmenueComponent } from './modules/hauptmenue/hauptmenue.component';
-import { ProductViewComponent } from './modules/product-view/product-view.component';
 import { WeinDetailseiteComponent } from './modules/wein-detailseite/wein-detailseite.component';
 import { HeroElementCarouselComponent } from './shared/hero-element-carousel/hero-element-carousel.component';
 import { CardComponent } from './shared/card/card.component';
@@ -23,6 +22,7 @@ import { FooterComponent } from './modules/footer/footer.component';
 import { WarenkorbComponent } from './modules/warenkorb/warenkorb.component';
 import { KatalogseiteComponent } from './modules/katalogseite/katalogseite.component';
 import { KontaktformularComponent } from './modules/warenkorb/children/kontaktformular/kontaktformular.component';
+import { DankeComponent } from './modules/warenkorb/children/danke/danke.component';
 
 
 
@@ -31,7 +31,6 @@ import { KontaktformularComponent } from './modules/warenkorb/children/kontaktfo
   declarations: [
     AppComponent,
     HauptmenueComponent,
-    ProductViewComponent,
     WeinDetailseiteComponent,
     HeroElementCarouselComponent,
     CardComponent,
@@ -41,7 +40,8 @@ import { KontaktformularComponent } from './modules/warenkorb/children/kontaktfo
     FooterComponent,
     WarenkorbComponent,
     KatalogseiteComponent,
-    KontaktformularComponent
+    KontaktformularComponent,
+    DankeComponent
       ],
   imports: [
     BrowserModule,

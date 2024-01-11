@@ -43,9 +43,9 @@
     @include page__span--small;
     @include flexbox($direction: row, $justify: center, $align: center, $wrap: wrap);
     @include border($color: $color-green-light);
-    @include gap-component;
+    @include gap-element;
     border-radius: $border-radius;
-    @include padding-container;
+    @include padding-component;
 
     &--full-width {
       @include flexbox($direction: row, $justify: flex-start, $align: center, $wrap: wrap);
@@ -73,6 +73,21 @@
         max-width: 100%;
       }
       >* {
+        flex: 1;
+      }
+    }
+
+    &--label-nr {
+      @include flexbox($direction: row, $justify: flex-start, $align: flex-start, $wrap: nowrap);
+      @include gap-component;
+      width: 100%;
+      & option{
+        max-width: 100%;
+      }
+      & > div:first-child {
+        flex: 4;
+      }
+      & > div:last-child {
         flex: 1;
       }
     }
@@ -150,6 +165,16 @@
           width: 100%;
       }
   }
+
+  .form__container--label-nr {
+    @include flexbox($direction: column, $justify: stretch, $align: center, $wrap: wrap);
+    @include gap-component;
+    width: 100%;
+
+    >* {
+        width: 100%;
+    }
+}
   .button__main {
     width: 100%;
 }
