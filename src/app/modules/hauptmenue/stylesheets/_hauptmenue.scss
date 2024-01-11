@@ -11,10 +11,10 @@
 @import './cart';
 
 .hauptmenu {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
-    transition: opacity 0.5s ease;
+    //transition: opacity 0.5s ease;
     z-index: 2000;
     width: 100%; 
     &--green{
@@ -22,10 +22,10 @@
         width: 100%;
     }
 
-    &--hidden{
-        opacity: 0;
+    /*&--hidden{
+      //  opacity: 0;
         pointer-events: none; 
-    }
+    }*/
     
     &__kategorie{
         height: $height-nav;

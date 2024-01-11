@@ -1,48 +1,49 @@
+<nav class="website">
+    <ul class="page">
+        <li class="website__logo">
+            <a class="website-font">
+                <img src="../../../assets/logo.png" alt="Logo">
+            </a>
+        </li>
+        <li >
+            <a class="website-font li--hide-for-small">
+                HOME
+            </a>
+        </li>
+        <li>
+            <a class="website-font li--hide-for-small">
+                AKTUELLES
+            </a>
+        </li>
+        <li>
+            <a class="website-font li--hide-for-small">
+                WEINGUT
+            </a>
+        </li>
+        <li>
+            <a class="website-font website-font--shop li--hide-for-small" [routerLink]="['']">
+                SHOP
+            </a>
+        </li>
+        <li>
+            <a class="website-font li--hide-for-small">
+                PENSION
+            </a>
+        </li>
+        <li>
+            <a class="website-font li--hide-for-small">
+                KONTAKT
+            </a>
+        </li>
+        <li>
+            <button class="hamburger-button hamburger-button--hide-for-medium">
+            <div></div>
+        </button>
+        </li>
+    </ul>
+</nav>
 <div class="hauptmenu" [ngClass]="{'hauptmenu--hidden': !isVisible}">
-    <nav class="website" [ngClass]="{'website--hidden': !pageAtTop}">
-        <ul class="page">
-            <li class="website__logo">
-                <a class="website-font">
-                    <img src="../../../assets/logo.png" alt="Logo">
-                </a>
-            </li>
-            <li >
-                <a class="website-font li--hide-for-small">
-                    HOME
-                </a>
-            </li>
-            <li>
-                <a class="website-font li--hide-for-small">
-                    AKTUELLES
-                </a>
-            </li>
-            <li>
-                <a class="website-font li--hide-for-small">
-                    WEINGUT
-                </a>
-            </li>
-            <li>
-                <a class="website-font website-font--shop li--hide-for-small" [routerLink]="['']">
-                    SHOP
-                </a>
-            </li>
-            <li>
-                <a class="website-font li--hide-for-small">
-                    PENSION
-                </a>
-            </li>
-            <li>
-                <a class="website-font li--hide-for-small">
-                    KONTAKT
-                </a>
-            </li>
-            <li>
-                <button class="hamburger-button hamburger-button--hide-for-medium">
-                <div></div>
-            </button>
-            </li>
-        </ul>
-    </nav>
+
 
     <nav class="hauptmenu--green hauptmenu__kategorie__nav--small"
         [ngClass]="{'hauptmenu__kategorie__nav--small--open': hauptmenuButtonOpen}">

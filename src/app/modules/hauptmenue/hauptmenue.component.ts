@@ -14,7 +14,6 @@ import { filter } from 'rxjs/operators';
 export class HauptmenueComponent implements OnInit {
   
   @Input() isVisible: boolean = true;
-
   appRoutes = AppRoutes;
 
   navWein = [

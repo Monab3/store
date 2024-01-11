@@ -17,9 +17,9 @@ export class AppComponent {
     const currentScroll = window.scrollY;
 
     if (currentScroll <= 0) {
-      this.hauptmenuVisible = true; // At the top of the page
+      this.hauptmenuVisible = true; 
     } else if (currentScroll < this.previousScroll) {
-      this.hauptmenuVisible = true; // Scrolling up
+      this.hauptmenuVisible = true; 
     } else {
       this.hauptmenuVisible = false; // Scrolling down
     }
