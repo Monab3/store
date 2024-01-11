@@ -49,7 +49,8 @@ dataWein: Wein[] | undefined= [];
     rebsorte: new FormControl(''),
   });
 
-  weinfilterNumbers: WeinFilter | undefined;
+  weinGeschmackByNumbers: WeinFilter | undefined;
+  weinRebsorteByNumbers: WeinFilter | undefined;
 
   /*Filter Objects */
   filters: WeinFilters = {
@@ -91,8 +92,9 @@ dataWein: Wein[] | undefined= [];
         console.log("subscribeUrl logs: "+ this.kategorie); 
         this.dataWein = this.weinService.getWinesByKategorie(this.kategorie); 
         this.filterDataWine = this.dataWein;
-        this.weinfilterNumbers = this.weinService.getFilterByNumber(this.kategorie);
-        console.log("weinfilters by number: "+ this.weinfilterNumbers); 
+        this.weinRebsorteByNumbers = this.weinService.getRebsorteByNumber(this.kategorie);
+        this.weinGeschmackByNumbers = this.weinService.getGeschmackByNumber(this.kategorie);
+        console.log("weinfilters by number: "+ JSON.stringify(this.weinGeschmackByNumbers)); 
       }
     });
   }

@@ -80,27 +80,31 @@
     <h2 class="h2--light"> Filter</h2>
     <button class="button button__secondary button__secondary--light button__secondary--font-light" (click)="removeAllFilters()">Filter
         entfernen</button>
-    <p-accordion class ="p-accordion--white" [multiple]="true" [activeIndex]="[0,1]">
+    <p-accordion *ngIf="weinGeschmackByNumbers" class ="p-accordion--white" [multiple]="true" [activeIndex]="[0,1]">
         <p-accordionTab header="Geschmack">
             <form [formGroup]="formGeschmack" class="filter__form">
-                <div *ngFor="let geschmack of geschmaecker" class="filter__radio">
+                <ng-container *ngFor="let geschmack of geschmaecker">
+                <div *ngIf="weinGeschmackByNumbers?.[geschmack]" class="filter__radio">
                     <label class="filter__radio__label text-regular--light">
                         <input type="radio" [class.filter__label--small--open]="filterButtonSmallOpen" formControlName="geschmack" [value]="geschmack">
                         {{ geschmack }}
                     </label>
-                    <p class="filter__count text-regular">{{weinfilterNumbers?.[geschmack]}}</p>
+                    <p class="filter__count text-regular">{{weinGeschmackByNumbers?.[geschmack]}}</p>
                 </div>
+            </ng-container>
             </form>
         </p-accordionTab>
-        <p-accordionTab header="Rebsorte">
+        <p-accordionTab *ngIf="weinRebsorteByNumbers" header="Rebsorte">
             <form [formGroup]="formRebsorte" class="filter__form">
-                <div *ngFor="let rebsorte of rebsorten" class="filter__radio">
+               <ng-container *ngFor="let rebsorte of rebsorten">
+                <div *ngIf="weinRebsorteByNumbers?.[rebsorte]" class="filter__radio">
                     <label class="filter__radio__label text-regular--light">
                         <input type="radio" [class.filter__label--small--open]="filterButtonSmallOpen" formControlName="rebsorte" [value]="rebsorte"> {{ rebsorte }}
                     </label>
                     <p class="filter__count text-regular">
-                        {{weinfilterNumbers?.[rebsorte]}}</p>
+                        {{weinRebsorteByNumbers?.[rebsorte]}}</p>
                 </div>
+            </ng-container>
             </form>
         </p-accordionTab>
     </p-accordion>

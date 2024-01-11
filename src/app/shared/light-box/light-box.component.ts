@@ -29,7 +29,4 @@ export class LightBoxComponent implements OnInit{
     this.isOpen = false;
     this.toogleLightBox.next(this.isOpen);
   }
-
-  // Replace the dummy data below with your actual image data
-
 }

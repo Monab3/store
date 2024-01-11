@@ -85,6 +85,13 @@ export class CardComponent implements OnInit {
       this.cartService.setcartVisibilityTrue();
     }
   }
+  
+  scrollToEnd(): void {
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: 'smooth'
+    });
+  }
 
   getStarsArray(): number[] {
     return new Array(5 - this.bewertungWrapper.averageRating);

@@ -62,13 +62,13 @@
         <i class="bi bi-plus"></i>
         Eigene Bewertung schreiben
     </button>
-    <div *ngIf="openThanYouText" class="bewertungen__sourounding-container">
+    <div *ngIf="openThanYouText" class=" bewertungen__sourounding-container--full-width">
         <div class="form__container__close">
             <button class="interaction-icon modal__button-close" (click)="closeThankyou()">
                 <i class="bi  bi-x-lg bi-2x"></i>
             </button>
         </div>
-        <p class="text-regular">Vielen Dank, für Ihre Bewertung. </p>
+        <p class="bewertungen__sourounding-container text-regular">Vielen Dank, für Ihre Bewertung. </p>
     </div>
     <div class="form__grid" *ngIf="openFormular">
         <form class="form__container form" [formGroup]="bewertungForm">

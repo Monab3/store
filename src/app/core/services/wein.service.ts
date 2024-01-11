@@ -354,7 +354,7 @@ export class weinService {
             _id: 14,
             name: 'Rosini',
             geschmack: 'Trocken',
-            rebsorte: undefined,
+            rebsorte: 'Riesling',
             preis: 6.00,
             preisProLiter: 8.00,
             herstellungsDatum: new Date('2022-01-14'),
@@ -373,7 +373,7 @@ export class weinService {
             weinBildString: this.getAbsoluteImageUrl('../../../assets/grauburgunder.png'),
             weinEttiketBildString: this.getAbsoluteImageUrl('../../../assets/grauburgunder.png'),
             servierBildString: this.getAbsoluteImageUrl('../../../assets/grauburgunder.png'),
-            searchTags: ['Trocken', 'Anderes']
+            searchTags: ['Trocken', 'Riesling']
           },
           {
             _id: 15,
@@ -404,11 +404,17 @@ export class weinService {
       }
     ];
 
-  private wineFilters: [string, WeinFilter][] = [
-    ['weisswein', { Trocken: 4,  Lieblich: 1, Feinherb: 1, Riesling: 2, Burgunder: 4, Rivaner: 1 }],
-    ['rotwein', { Trocken: 1, Lieblich: 1, Feinherb: 1, Burgunder: 1, Dornfelder: 1, Anderes: 1 }],
-    ['rosewein', { Trocken: 1, Fruchtig: 1, Anderes: 2}],
-    ['schaumwein', { Trocken: 2, Lieblich: 1,  Riesling: 2, Anderes: 1 }]
+  private geschmackFilters: [string, WeinFilter][] = [
+    ['weisswein', { Trocken: 4,  Lieblich: 1, Feinherb: 1, Riesling: 2 }],
+    ['rotwein', { Trocken: 1, Lieblich: 1, Feinherb: 1}],
+    ['rosewein', { Trocken: 1, Fruchtig: 1}],
+    ['schaumwein', { Trocken: 2, Lieblich: 1 }]
+  ]; 
+
+  private rebsorteFilters: [string, WeinFilter][] = [
+    ['weisswein', {  Riesling: 2, Burgunder: 4, Rivaner: 1 }],
+    ['rotwein', { Burgunder: 1, Dornfelder: 1, Anderes: 1 }],
+    ['schaumwein', {  Riesling: 2}]
   ]; 
 
 
@@ -420,10 +426,10 @@ export class weinService {
     return this.wineData;
   }
 
-  getWineById(kategorie: string, id: number): Wein |undefined {
+  getWineById(kategorie: string, id: number): Wein | undefined {
     const foundWine = this.wineData
-      .flatMap((category) => category.value)
-      .find((wine) => wine._id === id);
+      .find((category) => category.key === kategorie)
+      ?.value.find((wine) => wine._id === id);
   
     return foundWine || undefined;
   }
@@ -438,8 +444,13 @@ export class weinService {
     return; 
   }
 
-  getFilterByNumber(kategorie: string): WeinFilter | undefined {
-    const weinFilter = this.wineFilters.find(filter => filter[0] === kategorie);
+  getGeschmackByNumber(kategorie: string): WeinFilter | undefined {
+    const weinFilter = this.geschmackFilters.find(filter => filter[0] === kategorie);
+    return weinFilter ? weinFilter[1] : undefined;
+  }
+
+  getRebsorteByNumber(kategorie: string): WeinFilter | undefined {
+    const weinFilter = this.rebsorteFilters.find(filter => filter[0] === kategorie);
     return weinFilter ? weinFilter[1] : undefined;
   }
 

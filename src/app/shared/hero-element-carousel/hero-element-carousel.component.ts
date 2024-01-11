@@ -8,8 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 export class HeroElementCarouselComponent implements OnInit {
 
   @Input() slides: any[] = [];
-  @Input() showTitel: boolean = true;
-  @Input() showText: boolean = true;
+  @Input() showTitel: boolean = false;
+  @Input() showText: boolean = false;
   currentIndex: number = 0;
 
   ngOnInit(): void {

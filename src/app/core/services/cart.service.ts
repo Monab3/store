@@ -92,7 +92,6 @@ export class cartService {
         this.calculateTotal();
     }
 
-    //Helfer Klassen
 
     private calculateTotal() {
         const currentCart = this.cartInhaltSource.getValue();
