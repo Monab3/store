@@ -9,14 +9,14 @@ import { KatalogseiteComponent } from './modules/katalogseite/katalogseite.compo
 import { DankeComponent } from './modules/warenkorb/children/danke/danke.component';
 
 const routes: Routes = [
-  { path: '',  component: LandingpageComponent},
-  { path: AppRoutes.WEINSHOP + '/:kategorie', component: KatalogseiteComponent },
-  { path:  AppRoutes.DETAIL, component: WeinDetailseiteComponent },
+  { path: '',  component: LandingpageComponent, data: { breadcrumb: 'Weinshop' }},
+  { path: AppRoutes.WEINSHOP + '/:kategorie', component: KatalogseiteComponent, data: { breadcrumb: 'Galerie' } },
+  { path:  AppRoutes.DETAIL, component: WeinDetailseiteComponent , data: { breadcrumb: 'Weinansicht' }},
   { path: AppRoutes.WARENKORB, 
-    component: WarenkorbComponent,
+    component: WarenkorbComponent, data: { breadcrumb: 'warenkorb' },
     children: [
-      { path: AppRoutes.WARENKORB__KONTAKTFORMULAR, component: KontaktformularComponent},
-      {path: AppRoutes.WARENKORB__DANKE, component: DankeComponent}
+      { path: AppRoutes.WARENKORB__KONTAKTFORMULAR, component: KontaktformularComponent, data: { breadcrumb: 'Kontaktformular' }},
+      {path: AppRoutes.WARENKORB__DANKE, component: DankeComponent, data: { breadcrumb: 'Danke' },}
     ] 
   },
 ];

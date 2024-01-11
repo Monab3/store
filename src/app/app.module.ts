@@ -23,6 +23,7 @@ import { WarenkorbComponent } from './modules/warenkorb/warenkorb.component';
 import { KatalogseiteComponent } from './modules/katalogseite/katalogseite.component';
 import { KontaktformularComponent } from './modules/warenkorb/children/kontaktformular/kontaktformular.component';
 import { DankeComponent } from './modules/warenkorb/children/danke/danke.component';
+import { BreadcrumbModule } from 'xng-breadcrumb';
 
 
 
@@ -49,6 +50,7 @@ import { DankeComponent } from './modules/warenkorb/children/danke/danke.compone
     HttpClientModule,
     AccordionModule,
     BrowserAnimationsModule,
+    BreadcrumbModule,
     ReactiveFormsModule,
     NgSelectModule
   ],

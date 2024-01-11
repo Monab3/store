@@ -1,6 +1,22 @@
-@import '../app/core/stylesheets/tools/variables'; 
-.margin-top{
+@import '../app/core/stylesheets/tools/variables';
+@import '../app/core/stylesheets/layout/layout';
+@import '../app/core/stylesheets/mixins/mixins-layout';
+
+.margin-top {
     margin-top: $height-nav;
 }
-  
 
+/* Default link style */
+.breadcrumb {
+    position: absolute;
+    & b {
+        @include padding-atom;
+        color: $color-green-dark;
+        text-decoration: none;
+        z-index: 1999;
+    }
+    & b:hover {
+        color: $color-red-dark;
+        text-decoration: none;
+    }
+}
