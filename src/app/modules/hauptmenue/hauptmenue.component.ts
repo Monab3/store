@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { AppRoutes } from '../../core/config/app-routes.config';
@@ -12,6 +12,8 @@ import { filter } from 'rxjs/operators';
   styleUrl: './hauptmenue.component.scss'
 })
 export class HauptmenueComponent implements OnInit {
+  
+  @Input() isVisible: boolean = true;
 
   appRoutes = AppRoutes;
 
@@ -45,7 +47,6 @@ export class HauptmenueComponent implements OnInit {
     this.initializeData();
     this.subscribeUrl();
   }
-
   initializeData() {
     this.cartService.cartInhalt.subscribe((data) => {
       this.cartItems = data;

@@ -3,7 +3,7 @@
 @import '../app/core/stylesheets/mixins/mixins-layout';
 
 .margin-top {
-    margin-top: $height-nav;
+    margin-top: $height-nav + $height-nav-weingut;
 }
 
 /* Default link style */

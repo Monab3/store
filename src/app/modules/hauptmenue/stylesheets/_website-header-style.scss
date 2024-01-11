@@ -1,0 +1,39 @@
+@import '../../../core/stylesheets/mixins/mixins-layout'; 
+.website{
+    background-color: $color-light;
+    width: 100%;
+    height: $height-nav-weingut;
+    @include flexbox($direction: row, $justify: space-between, $align: center, $wrap: wrap);
+    &__logo{
+        width: auto; 
+        height:4.6rem;
+        overflow: hidden;
+
+        & img{
+            @include responsive-img($width : 100%, $height: 100%, $object-fit: contain);
+        }
+    }
+    & ul{
+        @include flexbox($direction: row, $justify: space-between, $align: center, $wrap: wrap);
+        @include gap-component;
+        color: $color-green-dark; 
+        & .li--hide-for-small{
+            @include hide-for-small; 
+        }
+    }
+    &-font{
+        font-family: Trebuchet MS,Helvetica,sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        &--shop{
+            color: $color-red-dark; 
+        }
+    }
+    &--hidden{
+        display: none; 
+    }
+}
+

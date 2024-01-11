@@ -1,16 +1,62 @@
-<div class="hauptmenu">
-    <nav class="hauptmenu__nav--small hide-for-medium hide-for-large"
-        [ngClass]="{'hauptmenu__nav--small--open': hauptmenuButtonOpen}">
+<div class="hauptmenu" [ngClass]="{'hauptmenu--hidden': !isVisible}">
+    <nav class="website" [ngClass]="{'website--hidden': !pageAtTop}">
+        <ul class="page">
+            <li class="website__logo">
+                <a class="website-font">
+                    <img src="../../../assets/logo.png" alt="Logo">
+                </a>
+            </li>
+            <li >
+                <a class="website-font li--hide-for-small">
+                    HOME
+                </a>
+            </li>
+            <li>
+                <a class="website-font li--hide-for-small">
+                    AKTUELLES
+                </a>
+            </li>
+            <li>
+                <a class="website-font li--hide-for-small">
+                    WEINGUT
+                </a>
+            </li>
+            <li>
+                <a class="website-font website-font--shop li--hide-for-small" [routerLink]="['']">
+                    SHOP
+                </a>
+            </li>
+            <li>
+                <a class="website-font li--hide-for-small">
+                    PENSION
+                </a>
+            </li>
+            <li>
+                <a class="website-font li--hide-for-small">
+                    KONTAKT
+                </a>
+            </li>
+            <li>
+                <button class="hamburger-button hamburger-button--hide-for-medium">
+                <div></div>
+            </button>
+            </li>
+        </ul>
+    </nav>
+
+    <nav class="hauptmenu--green hauptmenu__kategorie__nav--small"
+        [ngClass]="{'hauptmenu__kategorie__nav--small--open': hauptmenuButtonOpen}">
         <ul class="page">
             <li *ngFor="let nav of navWein; index as i">
-                <button class="nav-button font-interactive-element" [ngClass]="{'nav-button--active': nav.value == kategorie}" (click)="handleNav(nav.value, true,nav.key )">
-                    <span class="font-interactive-element">{{ nav.value }}</span>
+                <button class="nav-button " [ngClass]="{'nav-button--active': nav.value == kategorie}"
+                    (click)="handleNav(nav.value, true,nav.key )">
+                    <span>{{ nav.value }}</span>
                 </button>
             </li>
         </ul>
     </nav>
-    <div class="page">
-        <nav class="hauptmenu__nav__container">
+    <div class="hauptmenu--green">
+        <nav class="page hauptmenu__kategorie hauptmenu__kategorie__nav__container">
             <article [ngClass]="{'cart__container': cartVisibility, 'cart__container--hidden': !cartVisibility}">
                 <header class="cart__header">
                     <p class="text-regular--red-dark">Ihr Warenkorb, <span
@@ -73,7 +119,7 @@
                         gehen</button>
                 </footer>
             </article>
-            <button *ngFor="let nav of navWein; index as i" class="nav-button hauptmenu__nav__button--hide"
+            <button *ngFor="let nav of navWein; index as i" class="nav-button hauptmenu__kategorie__nav__button--hide"
                 [routerLink]="[appRoutes.WEINSHOP, nav.key]" [ngClass]="{'nav-button--active': nav.key == kategorie}"
                 (click)="handleNav(nav.value, false, nav.key)">
                 <span>{{nav.value}}</span>
