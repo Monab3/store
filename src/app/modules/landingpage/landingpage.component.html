@@ -27,22 +27,13 @@
     <section class="page__grid__info info__grid">
         <div class="info__bild">
             <figure class="info__img">
-                <img src="../../../assets/landingpage/landingpage__rotwein-teaser.png">
+                <img [src]="empfehlungDesHauses?.img" [alt]="empfehlungDesHauses?.alt">
             </figure>
         </div>
         <div class="info__text--left">
-            <h2 class="h2">Empfehlung des Hauses: Amore</h2>
-            <p class="text-regular">Unsere Weine sind ganz angenehm aber aus einer anderen welt aber wir lieben sie
-                xoxoxo
-                Unsere Weine sind ganz angenehm aber aus einer anderen welt aber wir lieben sie xoxoxo
-                Unsere Weine sind ganz angenehm aber aus einer anderen welt aber wir lieben sie xoxoxo
-                Unsere Weine sind ganz angenehm aber aus einer anderen welt aber wir lieben sie xoxoxo
-                Unsere Weine sind ganz angenehm aber aus einer anderen welt aber wir lieben sie xoxoxo
-                Unsere Weine sind ganz angenehm aber aus einer anderen welt aber wir lieben sie xoxoxo
-                Unsere Weine sind ganz angenehm aber aus einer anderen welt aber wir lieben sie xoxoxo
-                Unsere Weine sind ganz angenehm aber aus einer anderen welt aber wir lieben sie xoxoxo
-            </p>
-            <a class="text-link">Wein ansehen</a>
+            <h2 class="h2">Empfehlung des Hauses: {{empfehlungDesHauses?.wein?.name}}</h2>
+            <p class="text-regular">{{empfehlungDesHauses?.text}}</p>
+            <a class="text-link"[routerLink]="['/', appRoutes.DETAIL, {kategorie: empfehlungDesHauses?.kategorie, id: empfehlungDesHauses?.wein?._id}]">Wein ansehen</a>
         </div>
     </section>
 </div>

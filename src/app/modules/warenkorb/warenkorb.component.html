@@ -59,7 +59,7 @@
         [routerLink]="['/', appRoutes.WARENKORB, appRoutes.WARENKORB__KONTAKTFORMULAR]"
         [attr.title]="cartItems.length == 0? 'Um zur Kasse zu gehen, fügen Sie Weine zum Warenkorb hinzu' : null" >
         Zur Kasse gehen</button>
-            <router-outlet *ngIf="!progressBar.danke"></router-outlet>
+            <router-outlet></router-outlet>
     </section>
     <section class="page__grid__sum sum__container">
         <section class="sum">
@@ -111,8 +111,6 @@
             </p-accordionTab>
         </p-accordion>
     </section>
-    <section *ngIf="progressBar.danke">            <router-outlet *ngIf="progressBar.danke"></router-outlet>
-        test</section>
 </main>
 <ng-template #produkt>
     <table *ngIf="cartItems.length !== 0" class="produkt">

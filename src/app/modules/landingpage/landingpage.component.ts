@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
-
+import { EmpfehlungDesHauses } from '../../core/models/Wein';
 import { AppRoutes } from '../../core/config/app-routes.config';
+import { weinService } from '../../core/services/wein.service';
 
 @Component({
   selector: 'app-landingpage',
@@ -16,7 +17,7 @@ export class LandingpageComponent implements OnInit {
     { key: 'rosewein', value: 'Roséwein' },
     { key: 'schaumwein', value: 'Schaumwein' },
   ];  
-  
+
   slides = [
     {
       url: '../../../assets/landingpage/landingpage-steffen-mit-wein.jpg',
@@ -34,8 +35,15 @@ export class LandingpageComponent implements OnInit {
       text: 'Unser vielseitiges Weinsortiment erstreckt sich von erlesenen Weiß- und Rotweinen über Sektweine bis hin zu feinen Schaumweinen.'
     },
   ]
-  constructor() { }
+
+  empfehlungDesHauses: EmpfehlungDesHauses | undefined;
+  constructor(private weinService: weinService) { }
 
   ngOnInit(): void {
+    this.initialiseData();
+  }
+
+  initialiseData(): void {
+    this.empfehlungDesHauses = this.weinService.getEmpfehlungDesHauses();
   }
 }

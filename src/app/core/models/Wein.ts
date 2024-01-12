@@ -44,3 +44,11 @@ export interface WeinFilter{
   MuellerThurgau?: number,
   [key: string]: number | undefined;
 }
+
+export interface EmpfehlungDesHauses {
+  wein: Wein; 
+  img: String; 
+  alt: String; 
+  kategorie: String; 
+  text: String;
+}
