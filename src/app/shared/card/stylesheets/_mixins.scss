@@ -32,9 +32,9 @@
  
  @mixin ul {
     & ul {
-       @include flexbox($direction: column, $justify: flex-start, $wrap: nowrap);
+       @include flexbox($direction: column, $justify: flex-end, $wrap: nowrap);
        @include gap-element;
-       & > * {
+       & > .card--produkt-view__info {    
           @include flexbox($direction: row, $justify: flex-start, $wrap: nowrap);
        }
     }

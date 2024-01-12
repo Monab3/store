@@ -17,22 +17,17 @@
     @include padding-component;
     @include flexbox($direction: row, $justify: space-between, $wrap: wrap);
 
-    &> a >header {
-       width: 100%;
-    }
-
     &> a > figure {
        @include flexbox($justify: center, $wrap: wrap);
        width: 30%;
     }
 
     &> a >section {
-       @include flexbox($justify: space-between, $wrap: wrap);
-       @include gap-element;
-       width: 50%;
-       
+       @include flexbox($direction: column,$justify: space-between, $wrap: wrap);
+       @include gap-element;   
+       width: 59%;   
        @include ul;
-
+       height: 100%; 
     }
 
  & > footer {

@@ -16,7 +16,7 @@
     &__container {
         @include gap-container;
         flex: 2; 
-        @include flexbox($direction: column, $justify: space-between, $align: stretch, $wrap: wrap);
+        @include flexbox($direction: column, $justify: space-between, $align: center, $wrap: wrap);
     }
     &__head {
         background-color: $color-green-dark;

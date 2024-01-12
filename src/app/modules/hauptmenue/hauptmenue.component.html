@@ -50,7 +50,7 @@
         <ul class="page">
             <li *ngFor="let nav of navWein; index as i">
                 <button class="nav-button " [ngClass]="{'nav-button--active': nav.value == kategorie}"
-                    (click)="handleNav(nav.value, true,nav.key )">
+                    (click)="handleNav(nav.value, true,nav.key)">
                     <span>{{ nav.value }}</span>
                 </button>
             </li>

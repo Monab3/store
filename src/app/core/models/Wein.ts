@@ -19,7 +19,9 @@ export interface Wein {
     inventar: number;
     servierempfehlung: string;
     weinBildString?: String;
+    weinBildAlt: String;
     weinEttiketBildString:String;
+    weinEttiketBildAlt: String;
     servierBildString?: String;
     searchTags: string[];
   }

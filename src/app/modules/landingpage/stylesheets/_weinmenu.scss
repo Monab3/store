@@ -15,14 +15,15 @@
 
 /* Weinmenü */
 .weinmenu {
-    width: 100%;
-    @include padding-page($left: true, $right: true, $top: false, $bottom: false);
+    @include padding-component($left: true, $right: true, $top: false, $bottom: false);
     position: relative;
     @include border($border-property: border-bottom, $color : $color-green-light);
-
+    & h2{
+        text-align: center;
+    }
 
     &__text-margin {
-        @include margin-container;
+        @include margin-element;
     }
 
     &__nav-button {

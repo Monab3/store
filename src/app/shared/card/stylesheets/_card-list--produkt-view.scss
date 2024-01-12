@@ -19,7 +19,7 @@
    @include flexbox($direction: row, $justify: space-between, $wrap: nowrap);
    @include gap-component;
 
-   & .produkt {
+   &__table {
       &__selector {
          max-width: 220px;
       }
@@ -33,24 +33,36 @@
          & td {
             text-align: left;
             @include padding-element($top: false, $bottom: false);
+            &:nth-child(3) {
+               @include hide-for-small;
+            }
+            &:last-child {
+               @include hide-for-small;
+               @include hide-for-medium; 
+            }
          }
       }
-
       &__img {
-         width: 80px;
-         height: 80px;
-         display: block;
-         object-fit: scale-down;
-      }
-
-      &__img-container {
          overflow: hidden;
          border-radius: $border-radius;
          width: auto;
          height: 80px;
          background: $color-green-light;
+         &  > img{
+            width: 80px;
+            height: 80px;
+            display: block;
+            object-fit: scale-down;
+         }
       }
+      &__info {    
+         @include flexbox($direction: row, $justify: flex-start, $wrap: nowrap);
+      }
+   }
 
+   &__price{
+      @include hide-for-large; 
+      @include hide-for-medium;
    }
 }
 
@@ -58,10 +70,14 @@
    .card-list--produkt-view {
       flex-wrap: wrap;
 
-      & .produkt {
+      &__table {
          &__selector {
             max-width: 100%;
+            &__info{
+               @include flexbox($direction: column, $justify: flex-start, $wrap: nowrap);
+            }
          }
+
       }
    }
 

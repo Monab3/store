@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: AppRoutes.WEINSHOP + '/:kategorie', component: KatalogseiteComponent, data: { breadcrumb: 'Galerie' } },
   { path:  AppRoutes.DETAIL, component: WeinDetailseiteComponent , data: { breadcrumb: 'Weinansicht' }},
   { path: AppRoutes.WARENKORB, 
-    component: WarenkorbComponent, data: { breadcrumb: 'warenkorb' },
+    component: WarenkorbComponent, data: { breadcrumb: 'Warenkorb' },
     children: [
       { path: AppRoutes.WARENKORB__KONTAKTFORMULAR, component: KontaktformularComponent, data: { breadcrumb: 'Kontaktformular' }},
       {path: AppRoutes.WARENKORB__DANKE, component: DankeComponent, data: { breadcrumb: 'Danke' },}
