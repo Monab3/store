@@ -108,6 +108,14 @@
     color: $color-red-dark;
     @include border($border-property: border-bottom,  $width: 2px, $color: $color-red-dark);
   }
+  &--small{
+    border-bottom: 1px solid $color-green-light;
+    @include effect-border-underline($color-bg: $color-red-dark);
+    color: $color-green-dark;
+    border: none;
+    @include fonts($font-header, $font-size-medium, $font-weight-bold, $color: $color-green-dark);
+
+  }
 }
 
 .remove__button {
