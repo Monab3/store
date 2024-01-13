@@ -11,11 +11,16 @@
     @include gap-container;
     @include border($border-property: border-bottom, $width: $border-width, $style: solid, $color: $color-green-light);
     &__button{
-            @include border($border-property: border-bottom, $color : $color-green-light);
+            @include border($border-property: border-bottom, $color : $color-green-dark);
             @include effect-border-underline($color-bg: $color-red-dark);
             color: $color-green-dark;
             &:hover{
                 color: $color-red-dark;
             }
+            &--activ{
+                @include border($border-property: border-bottom, $color : $color-red-dark);
+                color: $color-red-dark;
+            }
     }
+
 }

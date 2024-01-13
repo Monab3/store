@@ -21,11 +21,10 @@ export class WeinDetailseiteComponent implements OnInit {
   toggleLightBox: Subject<boolean> = new Subject<boolean>();
   smallImageSlides: any[] = [];
   produktBild: String | undefined;
-
+  showBewertungen : boolean = false;
+  showSteckbrief:   boolean = true; 
   counterForm = new FormGroup({ counter: new FormControl(1, [Validators.min(1)]) });
-
   mockWein: Wein | undefined;;
-
   rebsorteInfo: Rebsorte | undefined;
 
   constructor(private cartService: cartService, private wineService: weinService, private rebsortenService: rebsortenService, private route: ActivatedRoute) {
@@ -115,4 +114,13 @@ export class WeinDetailseiteComponent implements OnInit {
     console.log("showLightBox()" ); 
   }
 
+  toggleSteckbrief(){
+    this.showBewertungen = false; 
+    this.showSteckbrief = true;
+  }
+
+  toggleBewertung(){
+    this.showBewertungen = true; 
+    this.showSteckbrief = false;
+  }
 }

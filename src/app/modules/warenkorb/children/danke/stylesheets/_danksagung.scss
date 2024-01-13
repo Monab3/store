@@ -14,7 +14,7 @@
     @include padding-component;
     @include flexbox($direction: column, $justify: center, $wrap: nowrap, $align: center);
     &__text{
-      width: 60%; 
+      width: 80%; 
     }
 }
 

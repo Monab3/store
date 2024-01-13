@@ -30,16 +30,15 @@
         </div>
     </section>
     <nav class="nav page__grid__nav">
-        <button class="nav__button h2--green">
-            Steckbrief
+        <button class="nav__button h2--green" (click)="toggleSteckbrief()">
+           <h2 [class.nav__button--activ]="showSteckbrief">Steckbrief </h2> 
         </button>
-        <button class="nav__button h2--green">
-            Bewertungen
+        <button class="nav__button h2--green"  (click)="toggleBewertung()">
+            <h2 [class.nav__button--activ]="showBewertungen">Bewertungen</h2>
         </button>
     </nav>
 
-    <section *ngIf="rebsorteInfo" class="steckbrief__container page__grid__steckbrief">
-        <h2 class="h2__container-titel">Steckbrief</h2>
+    <section *ngIf="rebsorteInfo && showSteckbrief" class="steckbrief__container page__grid__steckbrief">
         <div class="steckbrief steckbrief__grid">
             <div class="steckbrief__info">
                 <table class="steckbrief__info__table">
@@ -108,8 +107,7 @@
             </article>
         </div>
     </section>
-    <section class="page__grid__bewertungen bewertung__container">
-        <h2 *ngIf="wineId" class="h2__container-titel">Bewertungen</h2>
+    <section *ngIf="wineId && showBewertungen" class="page__grid__bewertungen bewertung__container">
         <app-bewertungen [id]="wineId"></app-bewertungen>
     </section>
 </main>

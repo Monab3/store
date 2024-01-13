@@ -5,6 +5,7 @@ import { Wein } from '../../core/models/Wein';
 import { WeinWrapper } from '../../core/models/Wein';
 import { WeinFilter } from '../../core/models/Wein';
 import { EmpfehlungDesHauses } from '../../core/models/Wein';
+import  { Event } from '../../core/models/Event';
 //Konstanten 
 const WEIN_URL = 'http://localhost/api/wein/';
 
@@ -352,8 +353,8 @@ export class weinService {
         {
           _id: 13,
           name: 'Becher,s Frizz',
-          geschmack: 'Riesling',
-          rebsorte: 'Lieblich',
+          geschmack: 'Lieblich',
+          rebsorte: 'Riesling',
           preis: 6.00,
           preisProLiter: 8.00,
           herstellungsDatum: new Date('2022-01-13'),
@@ -481,73 +482,12 @@ export class weinService {
     text: 'Rotwein ist ein beliebter Wein, der aus dunklen Trauben hergestellt wird. Er zeichnet sich durch seine tiefrote Farbe, seinen vollmundigen Geschmack und seine vielfältigen Aromen von Beeren, Gewürzen und manchmal auch Schokolade aus. Rotwein wird oft zu herzhaften Speisen wie Fleisch und Käse serviert und kann je nach Sorte trocken, halbtrocken oder lieblich sein. Er wird weltweit angebaut und ist bekannt für seine gesundheitsfördernden Eigenschaften aufgrund seines hohen Gehalts an Antioxidantien.'
   }
 
-  private weinTeaser: EmpfehlungDesHauses[] = [{
-    wein: {
-      _id: 8,
-      name: 'Roséwein',
-      geschmack: 'Fruchtig',
-      rebsorte: undefined,
-      preis: 4.50,
-      preisProLiter: 6.00,
-      herstellungsDatum: new Date('2022-01-07'),
-      beschreibungsText: 'Kräftige Waldbeerenfrüchte treffen auf Schwarzkirsche, hohe Fruchtsüße.',
-      produktTyp: 'Roséwein',
-      fuellmenge: 0.75,
-      alkoholgehalt: 9.0,
-      restZucker: 43.6,
-      gesamtSaeure: 7.2,
-      verschlussArt: 'Korken',
-      trinkTemperatur: 8,
-      lagerfaehigkeit: '2 Jahre',
-      allergieHinweis: 'Enthält Sulfite',
-      inventar: 15,
-      servierempfehlung: 'Perfekt zu leichtem Dessert.',
-      weinBildString: this.getAbsoluteImageUrl('../../../assets/katalog/katalog__rose.png'),
-      weinBildAlt: 'Weinflasche Roéwein',
-      weinEttiketBildString: this.getAbsoluteImageUrl('../../../assets/katalog/katalog__rose__label.jpg'),
-      weinEttiketBildAlt: 'Weinflasche Roséwein Etikett',
-      servierBildString: this.getAbsoluteImageUrl('../../../assets/grauburgunder.png'),
-      searchTags: ['Fruchtig', 'Anderes']
-    },
+  private eventTeaser: Event = {
     alt: 'Empfehlung des Hauses Roséwein',
-    kategorie: 'rosewein',
     text: 'Roséwein ist ein beliebter Wein, der aus dunklen Trauben hergestellt wird.',
-    img: this.getAbsoluteImageUrl('../../../assets/danke/danke__teaser__rose.jpg')
-  },
-  {
-    wein: {
-      _id: 3,
-      name: 'Blanc de Noir',
-      geschmack: 'Halbtrocken',
-      rebsorte: 'Spätburgunder',
-      preis: 5.00,
-      preisProLiter: 6.66,
-      herstellungsDatum: new Date('2022-01-03'),
-      beschreibungsText: 'Der Weiße aus roten Trauben, kräftig, würzig, harmonisch.',
-      produktTyp: 'Weißwein',
-      fuellmenge: 0.75,
-      alkoholgehalt: 12.0,
-      restZucker: 12.0,
-      gesamtSaeure: 7.7,
-      verschlussArt: 'Korken',
-      trinkTemperatur: 8,
-      lagerfaehigkeit: '5 Jahre',
-      allergieHinweis: 'Enthält Sulfite',
-      inventar: 30,
-      servierempfehlung: 'Ideal zu Geflügelgerichten.',
-      weinBildString: this.getAbsoluteImageUrl('../../../assets/katalog/katalog__weisswein.jpg'),
-      weinBildAlt: 'Weinflasche Weißwein',
-      weinEttiketBildString: this.getAbsoluteImageUrl('../../../assets/katalog/katalog__weisswein__label.jpg'),
-      weinEttiketBildAlt: 'Weinflasche Weißwein Etikett',
-      servierBildString: this.getAbsoluteImageUrl('pfad_zum_bild'),
-      searchTags: ['Trocken', 'Burgunder']
-    },
-    alt: 'Empfehlung des Hauses Roséwein',
-    kategorie: 'rosewein',
-    text: 'Roséwein ist ein beliebter Wein, der aus dunklen Trauben hergestellt wird.',
-    img: this.getAbsoluteImageUrl('../../../assets/danke/danke__teaser__weisswein.jpg')
-  },
-  ]
+    img: this.getAbsoluteImageUrl('../../../assets/landingpage/landingpage-steffen-mit-wein.jpg'),
+    link: 'https://www.buhrmannbecher.de/aktuelles/'
+  };
   constructor(private http: HttpClient, private location: Location) {
 
   }
@@ -560,8 +500,8 @@ export class weinService {
     return this.empfehlungDesHauses;
   }
 
-  getWeinTeaser() { 
-    return this.weinTeaser;
+  getEventTeaser() { 
+    return this.eventTeaser;
   }
 
   getWineById(kategorie: string, id: number): Wein | undefined {

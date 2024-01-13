@@ -4,13 +4,15 @@
         Anfrage bearbeiten und die Weine in kürze verschicken. Ihre Paketverfolgug haben wir Ihnen
         per Email zukommen lassen. </p>
 </div>
-<article *ngIf="weinTeaser" class="produkt-teaser produkt-teaser__grid">
-    <section *ngFor="let teaser of weinTeaser" class="produkt-teaser__section">
-        <h3 class="h3">{{teaser.wein?.name}}</h3>
+<article *ngIf="eventTeaser" class="produkt-teaser produkt-teaser__grid">  
+    <section class="produkt-teaser__section">
         <figure class="produkt-teaser__img">
-            <img [src]="teaser.img" [alt]="teaser.alt" />
+            <img [src]="eventTeaser.img" [alt]="eventTeaser.alt" />
         </figure>
-        <p class="text-regular produkt-teaser__section__teaser ">{{teaser.text}}</p>
-        <a class="text-link" [routerLink]="['/', appRoutes.DETAIL, {kategorie: teaser?.kategorie, id: teaser?.wein?._id}]">Zum Wein</a>
+    </section>
+    <section class="produkt-teaser__section">
+        <h3 class="h3--light">Unser nächstes Event</h3>
+        <p class="text-regular--light">{{eventTeaser.text}}</p>
+        <a class="text-link--light" [href]="[eventTeaser.link]">Zum Event</a>
     </section>
 </article>

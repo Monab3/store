@@ -10,7 +10,6 @@ import { format, addDays } from 'date-fns';
 export class cartService {
     private cartInhaltSource = new BehaviorSubject<CartItem[]>([]);
     private cartTotalSource = new BehaviorSubject<number>(0);
-    private endOfBuySource = new BehaviorSubject<boolean>(false);
     private cartTotalProduktAnzahlSource = new BehaviorSubject<number>(0);
     private versandTotalSource = new BehaviorSubject<number>(0);
     private cartVisibilitySource = new BehaviorSubject<boolean>(false);
@@ -19,7 +18,6 @@ export class cartService {
     cartTotalProduktAnzahl = this.cartTotalProduktAnzahlSource.asObservable();
     versandTotal = this.versandTotalSource.asObservable();
     cartVisibility = this.cartVisibilitySource.asObservable();
-    endOfBuy = this.endOfBuySource.asObservable();
     private cartVisibilityVariable = false;
     constructor(private http: HttpClient) {
     }
@@ -65,13 +63,6 @@ export class cartService {
         this.cartVisibilitySource.next(this.cartVisibilityVariable);
     }
 
-    signalEndOfBuyProcess(): void {
-        this.endOfBuySource.next(true);
-    }
-    leaveEndProcessSide(): void {
-        this.endOfBuySource.next(false);
-    }
-
 
     setcartVisibilityTrue(): void {
         this.cartVisibilityVariable = true;
@@ -85,7 +76,7 @@ export class cartService {
         this.calculateTotal();
     }
 
-    deleteAllFromCart(){
+    clearCart(){
         const currentCart = this.cartInhaltSource.getValue();
         const updatedcart : CartItem[] = [];
         this.cartInhaltSource.next(updatedcart);

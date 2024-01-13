@@ -1,4 +1,4 @@
-import { Component, NgModule, OnInit,  OnChanges, SimpleChanges, OnDestroy } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { cartService } from '../../core/services/cart.service';
 import { CartItem } from '../../core/models/CartItem';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -14,20 +14,15 @@ import { ca } from 'date-fns/locale';
   styleUrl: './warenkorb.component.scss'
 })
 
-export class WarenkorbComponent implements OnInit, OnDestroy{
+export class WarenkorbComponent implements OnInit{
   appRoutes = AppRoutes;
   cartTotal: number = 0;
   versandTotal: number = 0;
   versandAndCartTotal: number = 0;
   cartItems: CartItem[] = [];
-
-  cartTotalAfter: number = 0;
-  versandTotalAfter: number = 0;
-  versandAndCartTotalAfter: number = 0;
-  cartItemsAfter: CartItem[] = [];
+  
   counterForm: FormGroup = new FormGroup({ count: new FormControl(1, [Validators.min(1)]) });
   titel: string = "Ihr Warenkorb";
-  endOfBuy: boolean = false;
   devlieryDate : String = '';
   progressBar = {
     warenkorb: true,
@@ -38,10 +33,6 @@ export class WarenkorbComponent implements OnInit, OnDestroy{
 
   constructor(private cartService: cartService, private router: Router) {
     this.subscripeUrl();
-  }
-  ngOnDestroy(): void {
-    this.cartService.leaveEndProcessSide();
-    this.endOfBuy = false;
   }
 
   ngOnInit(): void {
@@ -58,24 +49,10 @@ export class WarenkorbComponent implements OnInit, OnDestroy{
       this.versandAndCartTotal = this.cartTotal + this.versandTotal;
     });
     this.cartService.cartInhalt.subscribe((cartItems) => {
-      if(!this.endOfBuy){
         console.log("cartItems set: ", cartItems);
         this.cartItems = cartItems;
         this.initializeCounterForProduct();
-      }
     });
-    this.cartService.endOfBuy.subscribe((endOfBuy) => {
-      if(endOfBuy){
-        this.endOfBuy = true; 
-        this.cartTotalAfter = this.cartTotal;
-        this.versandTotalAfter = this.versandTotal;
-        this.versandAndCartTotalAfter = this.versandAndCartTotal;
-        this.cartItemsAfter = this.cartItems;
-          console.log("danke delete All");
-          this.cartService.deleteAllFromCart();
-      }
-    });
-
     this.devlieryDate = this.cartService.getDeliveryDate();
   }
 
@@ -159,8 +136,7 @@ export class WarenkorbComponent implements OnInit, OnDestroy{
   }
 
   getItems(): CartItem[] {
-    console.log("card Items is called: " , this.endOfBuy, this.cartItemsAfter); 
-    return this.endOfBuy ? this.cartItemsAfter : this.cartItems;
+    return this.cartItems;
   }
 
   dateConverter(date: Date): string {

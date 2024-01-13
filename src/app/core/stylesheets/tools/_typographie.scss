@@ -29,7 +29,7 @@
     }
 }
 
-.h3 {
+.h3{
     @include fonts($font-regular, $font-size-medium, $font-weight-bold, $color: $color-red-dark);
     &--regular {
         @include fonts($font-regular, $font-size-medium, $font-weight-regular, $color: $color-red-dark);
@@ -135,6 +135,11 @@
 .text-link {
     @include fonts($font-regular, $font-size-regular, $font-weight-regular, $color: $color-blue-link);
     text-decoration: underline;
+
+    &--light{
+        @include fonts($font-regular, $font-size-regular, $font-weight-regular, $color: $color-light);
+        text-decoration: underline;
+    }
 
     &--fine {
         @include fonts($font-regular, $font-size-extra-small, $font-weight-regular, $color: $color-blue-link);

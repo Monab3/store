@@ -137,7 +137,6 @@ export class KontaktformularComponent implements OnInit {
     const bezahlartValue = this.rechnungsArtFormular.get('bezahlart')?.value;
     if (this.kontaktFormular.valid && bezahlartValue != "" && this.datenschutzErklaerung.get('isChecked')?.value) {
       this.router.navigate(['/',this.appRoutes.WARENKORB,this.appRoutes.WARENKORB__DANKE]);
-      this.cartService.signalEndOfBuyProcess();
       return; 
     }
      if(!this.kontaktFormular.valid){
