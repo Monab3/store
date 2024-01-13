@@ -30,6 +30,9 @@
     &__nav{
         @include grid__span--all;
     }
+    &__servierempfehlung{
+        @include page__span--small
+    }
 
 }
 

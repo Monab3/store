@@ -26,6 +26,7 @@
     &__container {
         @include flexbox($direction: row, $justify: center, $align: center, $wrap: nowrap);
         @include gap-component;
+        width: 100%;
     }
 
     &__quote {

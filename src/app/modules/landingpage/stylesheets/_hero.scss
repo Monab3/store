@@ -11,6 +11,8 @@
 @import '../../../core/stylesheets/elements/controls';
 @import '../../../core/stylesheets/components/quantity_selector';
 @import '../../../core/stylesheets/components/page-titel';
+@import '../../../core/stylesheets/mixins/mixins-layout';
+@import '../../../core/stylesheets/mixins/mixins';
 
 .hero {
     &__img {
@@ -30,9 +32,12 @@
 
         & figcaption {
             position: absolute;
-            top: 50%;
+            top: 70%;
             width: 50%;
             right: 5%;
+            @include padding-component; 
+            background-color: $color-grey-transparent; 
+            border-radius: $border-radius;
         }
     }
 }
