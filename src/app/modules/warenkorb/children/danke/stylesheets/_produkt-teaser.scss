@@ -1,0 +1,34 @@
+@import '../../../../../core/stylesheets/layout/layout';
+@import '../../../../../core/stylesheets/elements/form';
+@import '../../../../../core/stylesheets/mixins/mixins';
+@import '../../../../../core/stylesheets/mixins/mixins-layout';
+@import '../../../../../core/stylesheets/mixins/mixins-effects';
+@import '../../../stylesheets/produkt';
+
+@import '../../../../../core/stylesheets/tools/typographie';
+@import '../../../../../core/stylesheets/tools/variables';
+
+@import '../../../../../core/stylesheets/elements/controls';
+
+.produkt-teaser{
+    @include gap-component;
+    &__grid{
+      @include grid; 
+      @include gap-element;
+    }
+     & h3{
+      @include grid__span__all;
+     }
+    &__section{
+      @include grid__span--half; 
+      @include flexbox($direction: column, $justify: center, $wrap: nowrap, $align: center);
+    }
+    &__img {
+        width: 100%; 
+        & img {
+          @include responsive-img(true, true, $object-fit: contain);
+          max-height: 300px;
+        }
+      }
+}
+

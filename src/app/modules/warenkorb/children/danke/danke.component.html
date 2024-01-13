@@ -1,18 +1,16 @@
 <div class="danksagung">
     <h3 class="h3">Vielen Dank für Ihren Einkauf</h3>
-    <p class="text-regular">Vielen Dank, dass Sie bei uns Wein bestellt haben. Wir werden Ihre 
-        Anfrage bearbeiten und die Weine in kürze verschicken. Ihre Paketverfolgug haben wir Ihnen 
+    <p class="text-regular danksagung__text">Vielen Dank, dass Sie bei uns Wein bestellt haben. Wir werden Ihre
+        Anfrage bearbeiten und die Weine in kürze verschicken. Ihre Paketverfolgug haben wir Ihnen
         per Email zukommen lassen. </p>
 </div>
-<article class="produkt-teaser">
-    <section class="produkt-teaser__info">
-        <h2 class="h2">Empfehlung 
-            des Hauses </h2>
-            <p class="text-regular">
-                Eine erfrischende Wahl für spritzige Genussmomente. Dieser ausgewählte Tropfen verspricht ein prickelndes Geschmackserlebnis. Cheers zu unvergesslichen Augenblicken und einem Glas voller Genuss!
-            </p>
+<article *ngIf="weinTeaser" class="produkt-teaser produkt-teaser__grid">
+    <section *ngFor="let teaser of weinTeaser" class="produkt-teaser__section">
+        <h3 class="h3">{{teaser.wein?.name}}</h3>
+        <figure class="produkt-teaser__img">
+            <img [src]="teaser.img" [alt]="teaser.alt" />
+        </figure>
+        <p class="text-regular produkt-teaser__section__teaser ">{{teaser.text}}</p>
+        <a class="text-link" [routerLink]="['/', appRoutes.DETAIL, {kategorie: teaser?.kategorie, id: teaser?.wein?._id}]">Zum Wein</a>
     </section>
-    <figure class="produkt-teaser__img">
-        <img src="../../../../../assets/BackgroundImage.png" alt="Dankeschön" />
-    </figure>
 </article>

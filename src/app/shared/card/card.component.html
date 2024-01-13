@@ -134,7 +134,7 @@
 </article>
 
 <article *ngIf="wein && cardProduktView && productViewList" class="card-list--produkt-view">
-    <a>
+    <a [routerLink]="['/', appRoutes.DETAIL, {kategorie: kategorie, id: wein._id}]">
         <table class="card-list--produkt-view__produkt">
             <tbody class="card-list--produkt-view__table__body">
                 <tr>

@@ -322,7 +322,7 @@ export class weinService {
           _id: 12,
           name: 'Amour',
           geschmack: 'Lieblich',
-          rebsorte: undefined,
+          rebsorte: 'Merlot',
           preis: 4.50,
           preisProLiter: 6.00,
           herstellungsDatum: new Date('2022-01-15'),

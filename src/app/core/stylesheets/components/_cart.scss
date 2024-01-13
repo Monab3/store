@@ -99,7 +99,7 @@
 
 //Media Queries
 
-@media only screen and (max-width: 769px) {
+@media only screen and (max-width: $breakpoint-small) {
     .cart {
         &__container {
             width: 100%;

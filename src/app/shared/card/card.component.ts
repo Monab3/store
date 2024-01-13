@@ -17,7 +17,7 @@ export class CardComponent implements OnInit {
 
   @Input() kategorie: string | undefined;
   @Input() wein: Wein | undefined;
-  @Input() cardDetail: boolean = false;
+    @Input() cardDetail: boolean = false;
   @Input() cardProduktView: boolean = false;
   @Input() productViewList: boolean = false;
 

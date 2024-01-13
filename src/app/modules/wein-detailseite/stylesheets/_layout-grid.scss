@@ -27,6 +27,9 @@
         background-size: cover;
         @include grid__span--all;
     }
+    &__nav{
+        @include grid__span--all;
+    }
 
 }
 

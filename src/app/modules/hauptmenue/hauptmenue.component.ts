@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, HostListener } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { AppRoutes } from '../../core/config/app-routes.config';
@@ -32,6 +32,9 @@ export class HauptmenueComponent implements OnInit {
   hauptmenuButtonOpen: boolean = false;
   number: any = 1;
   kategorie = "";
+
+  hauptmenuVisible: boolean = true;
+  private previousScroll = 0;
 
   counterForm: FormGroup = new FormGroup({ count: new FormControl(1, [Validators.min(1)]) });
   constructor(private fb: FormBuilder, private cartService: cartService, private router: Router,
@@ -167,6 +170,20 @@ togglehauptMenuButton() {
   this.hauptmenuButtonOpen = false;
   this.cartVisibility = !this.cartVisibility;
 
+}
+
+
+@HostListener('window:scroll', ['$event'])
+onScroll(event: any): void {
+  const currentScroll = window.scrollY;
+
+  if (currentScroll <= 0) {
+    this.hauptmenuVisible = true; 
+  }  else {
+    this.hauptmenuVisible = false; 
+  }
+
+  this.previousScroll = currentScroll;
 }
 
 }

@@ -1,0 +1,26 @@
+@import '../../../../../core/stylesheets/layout/layout';
+@import '../../../../../core/stylesheets/elements/form';
+@import '../../../../../core/stylesheets/mixins/mixins';
+@import '../../../../../core/stylesheets/mixins/mixins-layout';
+@import '../../../../../core/stylesheets/mixins/mixins-effects';
+@import '../../../stylesheets/produkt';
+@import '../../../../../core/stylesheets/tools/typographie';
+@import '../../../../../core/stylesheets/tools/variables';
+@import '../../../../../core/stylesheets/elements/controls';
+
+.danksagung{
+    grid-column: span 8;
+    text-align: center;
+    @include padding-component;
+    @include flexbox($direction: column, $justify: center, $wrap: nowrap, $align: center);
+    &__text{
+      width: 60%; 
+    }
+}
+
+@media only screen and (max-width: $breakpoint-small--minus) {
+  .danksagung__text{
+    width: 100%; 
+  }
+}
+

@@ -20,6 +20,7 @@ export class WeinDetailseiteComponent implements OnInit {
   kategorie: string | null = null;
   toggleLightBox: Subject<boolean> = new Subject<boolean>();
   smallImageSlides: any[] = [];
+  produktBild: String | undefined;
 
   counterForm = new FormGroup({ counter: new FormControl(1, [Validators.min(1)]) });
 
@@ -41,6 +42,7 @@ export class WeinDetailseiteComponent implements OnInit {
     });
     if (this.wineId != null && this.kategorie != null) {
       this.mockWein = this.wineService.getWineById(this.kategorie, this.wineId);
+      this.produktBild = this.mockWein?.weinBildString;
     }
     if (this.mockWein && this.mockWein.rebsorte) {
       this.rebsorteInfo = this.rebsortenService.getRebsorte(this.mockWein.rebsorte);
@@ -92,7 +94,7 @@ export class WeinDetailseiteComponent implements OnInit {
 
   createSlidesForCarousel() {
     const slides = [];
-    if (this.mockWein) {
+    if (this.mockWein && this.mockWein.weinBildString && this.mockWein.weinEttiketBildString) {
       slides.push({ url: this.mockWein.weinBildString });
       slides.push({ url: this.mockWein.weinEttiketBildString });
     }
@@ -100,10 +102,17 @@ export class WeinDetailseiteComponent implements OnInit {
     return slides;
   }
 
+  switchPicture(img : String | undefined) {
+    if(img){
+      this.produktBild = img;
+    }
+  }
+
 
 
   showLightBox() {
     this.toggleLightBox.next(true);
+    console.log("showLightBox()" ); 
   }
 
 }

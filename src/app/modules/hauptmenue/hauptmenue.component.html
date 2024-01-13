@@ -45,17 +45,7 @@
 <div class="hauptmenu" [ngClass]="{'hauptmenu--hidden': !isVisible}">
 
 
-    <nav class="hauptmenu--green hauptmenu__kategorie__nav--small"
-        [ngClass]="{'hauptmenu__kategorie__nav--small--open': hauptmenuButtonOpen}">
-        <ul class="page">
-            <li *ngFor="let nav of navWein; index as i">
-                <button class="nav-button " [ngClass]="{'nav-button--active': nav.value == kategorie}"
-                    (click)="handleNav(nav.value, true,nav.key)">
-                    <span>{{ nav.value }}</span>
-                </button>
-            </li>
-        </ul>
-    </nav>
+
     <div class="hauptmenu--green">
         <nav class="page hauptmenu__kategorie hauptmenu__kategorie__nav__container">
             <article [ngClass]="{'cart__container': cartVisibility, 'cart__container--hidden': !cartVisibility}">
@@ -120,6 +110,17 @@
                         gehen</button>
                 </footer>
             </article>
+            <nav class="hauptmenu--green hauptmenu__kategorie__nav--small"
+            [ngClass]="{'hauptmenu__kategorie__nav--small--open': hauptmenuButtonOpen && hauptmenuVisible, 'hauptmenu__kategorie__nav--small--open--scroll': hauptmenuButtonOpen && !hauptmenuVisible}">
+            <ul class="page">
+                <li *ngFor="let nav of navWein; index as i">
+                    <button class="nav-button " [ngClass]="{'nav-button--active': nav.value == kategorie}"
+                        (click)="handleNav(nav.value, true,nav.key)">
+                        <span>{{ nav.value }}</span>
+                    </button>
+                </li>
+            </ul>
+        </nav>
             <button *ngFor="let nav of navWein; index as i" class="nav-button hauptmenu__kategorie__nav__button--hide"
                 [routerLink]="[appRoutes.WEINSHOP, nav.key]" [ngClass]="{'nav-button--active': nav.key == kategorie}"
                 (click)="handleNav(nav.value, false, nav.key)">

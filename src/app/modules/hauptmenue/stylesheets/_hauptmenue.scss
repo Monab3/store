@@ -21,11 +21,6 @@
         background-color: $color-green-light;
         width: 100%;
     }
-
-    /*&--hidden{
-      //  opacity: 0;
-        pointer-events: none; 
-    }*/
     
     &__kategorie{
         height: $height-nav;
@@ -66,7 +61,12 @@
                 &--open {
                     top: $height-nav + $height-nav-weingut;
                     right: 0; 
+                    &--scroll{
+                        top: $height-nav;
+                        right: 0; 
+                    }
                 }
+
             }
         }
     }

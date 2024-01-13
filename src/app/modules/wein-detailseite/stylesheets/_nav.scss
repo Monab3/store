@@ -1,0 +1,21 @@
+@import '../../../core/stylesheets/mixins/mixins';
+@import '../../../core/stylesheets/mixins/mixins-layout';
+@import '../../../core/stylesheets/mixins/mixins-effects';
+
+@import '../../../core/stylesheets/tools/typographie';
+@import '../../../core/stylesheets/tools/variables';
+
+@import '../../../core/stylesheets/elements/controls';
+.nav{
+    @include flexbox($direction: row, $justify: center, $wrap: nowrap, $align: center);
+    @include gap-container;
+    @include border($border-property: border-bottom, $width: $border-width, $style: solid, $color: $color-green-light);
+    &__button{
+            @include border($border-property: border-bottom, $color : $color-green-light);
+            @include effect-border-underline($color-bg: $color-red-dark);
+            color: $color-green-dark;
+            &:hover{
+                color: $color-red-dark;
+            }
+    }
+}
