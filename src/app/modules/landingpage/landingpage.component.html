@@ -14,7 +14,7 @@
             <a *ngFor="let nav of navWein; index as i" class="weinmenu__nav-button"
                 [routerLink]="[appRoutes.WEINSHOP, nav.key]">
                 <figure class="weinmenu__img-container">
-                    <img [src]="weinmenueBilder[i]" class="logo weinmenu__img">
+                    <img [src]="weinmenueBilder[i]" [alt]="weinmenueBildAlt[i]" class="logo weinmenu__img">
                 </figure>
                 <span class="weinmenu__text-margin h3">{{ nav.value}}</span>
             </a>

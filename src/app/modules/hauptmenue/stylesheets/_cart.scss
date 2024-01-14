@@ -43,6 +43,7 @@
             position: absolute;
         }
     }
+
     &__text {
         text-align: start;
         @include margin-component($top: false, $right: false, $bottom: false, $left: true);

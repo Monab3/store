@@ -39,13 +39,16 @@ export class HeroElementCarouselComponent implements OnInit {
     return this.slides[this.currentIndex].url;
   }
 
+  getCurrentSlideAlt(){
+    return this.slides[this.currentIndex].alt ? this.slides[this.currentIndex].alt : 'Slider Bild';
+  }
+
   getCurrentTitel() {
     return this.slides[this.currentIndex].titel;
   }
 
   getCurrentText() {
     return this.slides[this.currentIndex].text;
-   
   }
 
 }

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { rebsortenService } from '../../core/services/rebsorten.service';
 import { cartService } from '../../core/services/cart.service';
 import { weinService } from '../../core/services/wein.service';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
@@ -58,7 +57,7 @@ dataWein: Wein[] | undefined= [];
     rebsorte: null,
   };
 
-  constructor(private rebsortenService: rebsortenService, private weinService: weinService,
+  constructor(private weinService: weinService,
     private fb: FormBuilder, private cartService: cartService, private route: ActivatedRoute
   ) {
 

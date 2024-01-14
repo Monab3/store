@@ -18,11 +18,13 @@ export interface Wein {
     allergieHinweis: string;
     inventar: number;
     servierempfehlung: string;
-    weinBildString?: String;
+    weinBildS?: String;
+    weinBildL?: String;
     weinBildAlt: String;
-    weinEttiketBildString:String;
+    ausfuehrlicheBeschreibung: string;
+    weinEttiketBildS:String;
+    weinEttiketBildL:String;
     weinEttiketBildAlt: String;
-    servierBildString?: String;
     searchTags: string[];
   }
 
@@ -46,7 +48,7 @@ export interface WeinFilter{
 }
 
 export interface EmpfehlungDesHauses {
-  wein: Wein; 
+  wein?: Wein; 
   img: String; 
   alt: String; 
   kategorie: String; 

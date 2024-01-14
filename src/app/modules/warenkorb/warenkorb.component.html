@@ -1,7 +1,7 @@
 <main class="page page__grid">
     <header class="page__grid__titel page-titel">
         <figure>
-            <img src="../../../assets/titel-icons/warenkorb.png" alt="Weinweinmenü">
+            <img src="../../../assets/titel-icons/warenkorb.png" alt="Warenkorb Überschrift">
         </figure>
         <h1 class="h1--light">
             {{titel}}
@@ -123,8 +123,9 @@
         <tbody class="produkt__body">
             <tr *ngFor="let item of cartItems; let i = index">
                 <td>
-                    <figure class="produkt__img-container"><img class="produkt__img"
-                            src="../../../assets/black_noir_weisswein.png"></figure>
+                    <figure class="produkt__img-container">
+                        <img class="produkt__img" [src]="item.wein.weinBildS" [alt]="item.wein.weinBildAlt">
+                        </figure>
                 </td>
                 <td>
                     <p class="text-regular--red-dark">{{dateConverter(item.wein.herstellungsDatum)}}</p>
@@ -168,8 +169,8 @@
                 <section class="cart__section">
                     <div *ngFor="let item of cartItems; let i = index" class="cart__section__container--column">
                         <div class="cart__section__container--row">
-                            <figure class="cart__section__img-container">
-                                <img src="assets/grauburgunder.png" class="cart__section__img">
+                            <figure class="cart__section__img">
+                                <img [src]="item.wein.weinBildS" [alt]="item.wein.weinBildAlt">
                             </figure>
                             <div class="cart__section__information">
                                 <p class="text-regular--red-dark">{{ item.wein.name }}</p>

@@ -32,23 +32,14 @@
       width: 100%;
       height: 30rem;
       @include padding-component;
+      @include flexbox($direction: column, $justify: center, $align: center, $wrap: nowrap);
       border-radius: $border-radius;
-
       &--background {
          background-color: rgba($color-green-dark, 0.5);
-
       }
-
-      /* Semi-transparent white background */
       &__img {
-         height: 100%;
-         width: auto;
-         object-fit: contain;
+         @include responsive-img($width: auto, $height: 100%, $object-fit: contain);
       }
-   }
-
-   &__img-container {
-      @include flexbox($direction: column, $justify: center, $align: center, $wrap: nowrap);
    }
 
    &__side-img{

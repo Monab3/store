@@ -36,3 +36,12 @@
       }
 }
 
+//Media Queries
+@media only screen and (max-width: $breakpoint-small) {
+  .produkt-teaser {
+      &__section {
+        @include grid__span--all;
+      }
+  }
+}
+

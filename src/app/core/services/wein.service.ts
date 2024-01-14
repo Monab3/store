@@ -5,7 +5,7 @@ import { Wein } from '../../core/models/Wein';
 import { WeinWrapper } from '../../core/models/Wein';
 import { WeinFilter } from '../../core/models/Wein';
 import { EmpfehlungDesHauses } from '../../core/models/Wein';
-import  { Event } from '../../core/models/Event';
+import { Event } from '../../core/models/Event';
 //Konstanten 
 const WEIN_URL = 'http://localhost/api/wein/';
 
@@ -35,11 +35,13 @@ export class weinService {
           allergieHinweis: 'Enthält Sulfite',
           inventar: 30,
           servierempfehlung: 'Lachs-Crostini mit Zitronencreme: Die frische des Lachses harmoniert wunderbar zu diesem Weißwein, der das Picknick am Rhein zu einem kulinarischen Höhepunkt macht.',
-          weinBildString: this.getAbsoluteImageUrl('../../../assets/katalog/katalog__weisswein.jpg'),
+          weinBildS: this.getAbsoluteImageUrl('../../../assets/katalog/small/katalog__weisswein-s.png'),
+          weinBildL: this.getAbsoluteImageUrl('../../../assets/katalog/large/katalog__weisswein-l.png'),
           weinBildAlt: 'Weinflasche Weißwein',
-          weinEttiketBildString: this.getAbsoluteImageUrl('../../../assets/katalog/katalog__weisswein__label.jpg'),
+          ausfuehrlicheBeschreibung: 'Lachs-Crostini mit Zitronencreme: Die frische des Lachses harmoniert wunderbar zu diesem Weißwein',
+          weinEttiketBildS: this.getAbsoluteImageUrl('../../../assets/katalog/small/katalog__weisswein__label-s.png'),
+          weinEttiketBildL: this.getAbsoluteImageUrl('../../../assets/katalog/large/katalog__weisswein__label-l.png'),
           weinEttiketBildAlt: 'Weinflasche Weißwein Etikett',
-          servierBildString: this.getAbsoluteImageUrl('pfad_zum_bild'),
           searchTags: ['Trocken', 'Riesling']
         },
         {
@@ -62,9 +64,12 @@ export class weinService {
           allergieHinweis: 'Enthält Sulfite',
           inventar: 30,
           servierempfehlung: 'Oliven-Tapenade auf knusprigem Ciabatta - eine mediterrane Köstlichkeit, die die Sinne belebt und den Wein noch besser zur Geltung bringt. Auf zum sommerlichen Genuss!',
-          weinBildString: this.getAbsoluteImageUrl('../../../assets/katalog/katalog__weisswein.jpg'),
+          weinBildS: this.getAbsoluteImageUrl('../../../assets/katalog/small/katalog__weisswein-s.png'),
+          weinBildL: this.getAbsoluteImageUrl('../../../assets/katalog/large/katalog__weisswein-l.png'),
           weinBildAlt: 'Weinflasche Weißwein',
-          weinEttiketBildString: this.getAbsoluteImageUrl('../../../assets/katalog/katalog__weisswein__label.jpg'),
+          ausfuehrlicheBeschreibung: 'Lachs-Crostini mit Zitronencreme: Die frische des Lachses harmoniert wunderbar zu diesem Weißwein',
+          weinEttiketBildS: this.getAbsoluteImageUrl('../../../assets/katalog/small/katalog__weisswein__label-s.png'),
+          weinEttiketBildL: this.getAbsoluteImageUrl('../../../assets/katalog/large/katalog__weisswein__label-l.png'),
           weinEttiketBildAlt: 'Weinflasche Weißwein Etikett',
           searchTags: ['Trocken', 'Burgunder']
         },
@@ -88,11 +93,13 @@ export class weinService {
           allergieHinweis: 'Enthält Sulfite',
           inventar: 30,
           servierempfehlung: 'Frische Tomaten-Bruschetta mit Basilikum: Ein leichtes und erfrischendes Gericht, das perfekt zu diesem Spätburgunder passt. Genießt Sie den Sommergeschmack und lassen Sie die Aromen tanzen.',
-          weinBildString: this.getAbsoluteImageUrl('../../../assets/katalog/katalog__weisswein.jpg'),
+          weinBildS: this.getAbsoluteImageUrl('../../../assets/katalog/small/katalog__weisswein-s.png'),
+          weinBildL: this.getAbsoluteImageUrl('../../../assets/katalog/large/katalog__weisswein-l.png'),
           weinBildAlt: 'Weinflasche Weißwein',
-          weinEttiketBildString: this.getAbsoluteImageUrl('../../../assets/katalog/katalog__weisswein__label.jpg'),
+          ausfuehrlicheBeschreibung: 'Lachs-Crostini mit Zitronencreme: Die frische des Lachses harmoniert wunderbar zu diesem Weißwein',
+          weinEttiketBildS: this.getAbsoluteImageUrl('../../../assets/katalog/small/katalog__weisswein__label-s.png'),
+          weinEttiketBildL: this.getAbsoluteImageUrl('../../../assets/katalog/large/katalog__weisswein__label-l.png'),
           weinEttiketBildAlt: 'Weinflasche Weißwein Etikett',
-          servierBildString: this.getAbsoluteImageUrl('pfad_zum_bild'),
           searchTags: ['Trocken', 'Burgunder']
         },
         {
@@ -115,11 +122,13 @@ export class weinService {
           allergieHinweis: 'Enthält Sulfite',
           inventar: 25,
           servierempfehlung: 'Spinat- und Feta-Quiche: Die würzige Füllung und der buttrige Teig bilden eine ideale Ergänzung zu diesem trockenen Burgunder. Ein Picknick am Rhein wird so zu einem wahren Gaumenfest.',
-          weinBildString: this.getAbsoluteImageUrl('../../../assets/katalog/katalog__weisswein.jpg'),
+          weinBildS: this.getAbsoluteImageUrl('../../../assets/katalog/small/katalog__weisswein-s.png'),
+          weinBildL: this.getAbsoluteImageUrl('../../../assets/katalog/large/katalog__weisswein-l.png'),
           weinBildAlt: 'Weinflasche Weißwein',
-          weinEttiketBildString: this.getAbsoluteImageUrl('../../../assets/katalog/katalog__weisswein__label.jpg'),
+          ausfuehrlicheBeschreibung: 'Lachs-Crostini mit Zitronencreme: Die frische des Lachses harmoniert wunderbar zu diesem Weißwein',
+          weinEttiketBildS: this.getAbsoluteImageUrl('../../../assets/katalog/small/katalog__weisswein__label-s.png'),
+          weinEttiketBildL: this.getAbsoluteImageUrl('../../../assets/katalog/large/katalog__weisswein__label-l.png'),
           weinEttiketBildAlt: 'Weinflasche Weißwein Etikett',
-          servierBildString: this.getAbsoluteImageUrl('pfad_zum_bild'),
           searchTags: ['Trocken', 'Burgunder']
         },
         {
@@ -142,11 +151,13 @@ export class weinService {
           allergieHinweis: 'Enthält Sulfite',
           inventar: 25,
           servierempfehlung: 'Knusprige Hähnchenspieße mit Teriyaki-Glasur: Die süß-salzige Note dieser Spezialität lässt sich hervorragend mit dem Pfälzer Wein kombinieren. Ein Muss für Weinliebhaber.',
-          weinBildString: this.getAbsoluteImageUrl('../../../assets/katalog/katalog__weisswein.jpg'),
+          weinBildS: this.getAbsoluteImageUrl('../../../assets/katalog/small/katalog__weisswein-s.png'),
+          weinBildL: this.getAbsoluteImageUrl('../../../assets/katalog/large/katalog__weisswein-l.png'),
           weinBildAlt: 'Weinflasche Weißwein',
-          weinEttiketBildString: this.getAbsoluteImageUrl('../../../assets/katalog/katalog__weisswein__label.jpg'),
+          ausfuehrlicheBeschreibung: 'Lachs-Crostini mit Zitronencreme: Die frische des Lachses harmoniert wunderbar zu diesem Weißwein',
+          weinEttiketBildS: this.getAbsoluteImageUrl('../../../assets/katalog/small/katalog__weisswein__label-s.png'),
+          weinEttiketBildL: this.getAbsoluteImageUrl('../../../assets/katalog/large/katalog__weisswein__label-l.png'),
           weinEttiketBildAlt: 'Weinflasche Weißwein Etikett',
-          servierBildString: this.getAbsoluteImageUrl('pfad_zum_bild'),
           searchTags: ['Feinherb', 'Burgunder']
         },
         {
@@ -169,11 +180,13 @@ export class weinService {
           allergieHinweis: 'Enthält Sulfite',
           inventar: 20,
           servierempfehlung: 'Antipasti-Platte mit luftgetrocknetem Schinken und verschiedenen Käsesorten - eine geschmackliche Reise, die den Wein in seiner vollen Pracht erstrahlen lässt!',
-          weinBildString: this.getAbsoluteImageUrl('../../../assets/katalog/katalog__weisswein.jpg'),
+          weinBildS: this.getAbsoluteImageUrl('../../../assets/katalog/small/katalog__weisswein-s.png'),
+          weinBildL: this.getAbsoluteImageUrl('../../../assets/katalog/large/katalog__weisswein-l.png'),
           weinBildAlt: 'Weinflasche Weißwein',
-          weinEttiketBildString: this.getAbsoluteImageUrl('../../../assets/katalog/katalog__weisswein__label.jpg'),
+          ausfuehrlicheBeschreibung: 'Lachs-Crostini mit Zitronencreme: Die frische des Lachses harmoniert wunderbar zu diesem Weißwein',
+          weinEttiketBildS: this.getAbsoluteImageUrl('../../../assets/katalog/small/katalog__weisswein__label-s.png'),
+          weinEttiketBildL: this.getAbsoluteImageUrl('../../../assets/katalog/large/katalog__weisswein__label-l.png'),
           weinEttiketBildAlt: 'Weinflasche Weißwein Etikett',
-          servierBildString: this.getAbsoluteImageUrl('pfad_zum_bild'),
           searchTags: ['Feinherb', 'Rivaner']
         },
         {
@@ -196,11 +209,13 @@ export class weinService {
           allergieHinweis: 'Enthält Sulfite',
           inventar: 15,
           servierempfehlung: 'Gegrillte Gemüsespieße mit Pesto-Dip: Die aromatischen Gemüsesorten und das würzige Pesto sind die perfekte Ergänzung zu diesem Filou!',
-          weinBildString: this.getAbsoluteImageUrl('../../../assets/katalog/katalog__weisswein.jpg'),
+          weinBildS: this.getAbsoluteImageUrl('../../../assets/katalog/small/katalog__weisswein-s.png'),
+          weinBildL: this.getAbsoluteImageUrl('../../../assets/katalog/large/katalog__weisswein-l.png'),
           weinBildAlt: 'Weinflasche Weißwein',
-          weinEttiketBildString: this.getAbsoluteImageUrl('../../../assets/katalog/katalog__weisswein__label.jpg'),
+          ausfuehrlicheBeschreibung: 'Lachs-Crostini mit Zitronencreme: Die frische des Lachses harmoniert wunderbar zu diesem Weißwein',
+          weinEttiketBildS: this.getAbsoluteImageUrl('../../../assets/katalog/small/katalog__weisswein__label-s.png'),
+          weinEttiketBildL: this.getAbsoluteImageUrl('../../../assets/katalog/large/katalog__weisswein__label-l.png'),
           weinEttiketBildAlt: 'Weinflasche Weißwein Etikett',
-          servierBildString: this.getAbsoluteImageUrl('pfad_zum_bild'),
           searchTags: ['Lieblich', 'Anderes']
         },
       ],
@@ -227,11 +242,13 @@ export class weinService {
           allergieHinweis: 'Enthält Sulfite',
           inventar: 15,
           servierempfehlung: 'Ein herzhaftes Baguette mit cremigem Camembert ist die perfekte Begleitung zu diesem Roséwein. Der milde Käse und das fruchtige Aroma verschmelzen zu einem genussvollen Erlebnis am Rheinufer.',
-          weinBildString: this.getAbsoluteImageUrl('../../../assets/katalog/katalog__rose.png'),
-          weinBildAlt: 'Weinflasche Roéwein',
-          weinEttiketBildString: this.getAbsoluteImageUrl('../../../assets/katalog/katalog__rose__label.jpg'),
+          weinBildS: this.getAbsoluteImageUrl('../../../assets/katalog/small/katalog__rose-s.png'),
+          weinBildL: this.getAbsoluteImageUrl('../../../assets/katalog/large/katalog__rose-l.png'),
+          weinBildAlt: 'Weinflasche Roséwein',
+          ausfuehrlicheBeschreibung: 'Lachs-Crostini mit Zitronencreme: Die frische des Lachses harmoniert wunderbar zu diesem Weißwein',
+          weinEttiketBildS: this.getAbsoluteImageUrl('../../../assets/katalog/small/katalog__rose__label-s.png'),
+          weinEttiketBildL: this.getAbsoluteImageUrl('../../../assets/katalog/large/katalog__rose__label-l.png'),
           weinEttiketBildAlt: 'Weinflasche Roséwein Etikett',
-          servierBildString: this.getAbsoluteImageUrl('../../../assets/grauburgunder.png'),
           searchTags: ['Fruchtig', 'Anderes']
         },
         {
@@ -254,11 +271,13 @@ export class weinService {
           allergieHinweis: 'Enthält Sulfite',
           inventar: 15,
           servierempfehlung: 'Passt gut zu mediterranen Gerichten.',
-          weinBildString: this.getAbsoluteImageUrl('../../../assets/katalog/katalog__rose.png'),
+          weinBildS: this.getAbsoluteImageUrl('../../../assets/katalog/small/katalog__rose-s.png'),
+          weinBildL: this.getAbsoluteImageUrl('../../../assets/katalog/large/katalog__rose-l.png'),
           weinBildAlt: 'Weinflasche Roséwein',
-          weinEttiketBildString: this.getAbsoluteImageUrl('../../../assets/katalog/katalog__rose__label.jpg'),
+          ausfuehrlicheBeschreibung: 'Lachs-Crostini mit Zitronencreme: Die frische des Lachses harmoniert wunderbar zu diesem Weißwein',
+          weinEttiketBildS: this.getAbsoluteImageUrl('../../../assets/katalog/small/katalog__rose__label-s.png'),
+          weinEttiketBildL: this.getAbsoluteImageUrl('../../../assets/katalog/large/katalog__rose__label-l.png'),
           weinEttiketBildAlt: 'Weinflasche Roséwein Etikett',
-          servierBildString: this.getAbsoluteImageUrl('../../../assets/grauburgunder.png'),
           searchTags: ['Trocken', 'Anderes']
         }
       ]
@@ -285,12 +304,14 @@ export class weinService {
           allergieHinweis: 'Enthält Sulfite',
           inventar: 25,
           servierempfehlung: 'Blätterteiggebäck mit Ziegenkäse und Honig: Die süße Note des Honigs und die cremige Konsistenz des Ziegenkäses sind ein Traumpaar für diesen Dornfelder.',
-          weinBildString: this.getAbsoluteImageUrl('../../../assets/katalog/katalog__rotwein.jpg'),
+          weinBildS: this.getAbsoluteImageUrl('../../../assets/katalog/small/katalog__rotwein-s.png'),
+          weinBildL: this.getAbsoluteImageUrl('../../../assets/katalog/large/katalog__rotwein-l.png'),
           weinBildAlt: 'Weinflasche Rotwein',
-          weinEttiketBildString: this.getAbsoluteImageUrl('../../../assets/katalog/katalog__rotwein__label.jpg'),
+          ausfuehrlicheBeschreibung: 'Lachs-Crostini mit Zitronencreme: Die frische des Lachses harmoniert wunderbar zu diesem Weißwein',
+          weinEttiketBildS: this.getAbsoluteImageUrl('../../../assets/katalog/small/katalog__rotwein__label-s.png'),
+          weinEttiketBildL: this.getAbsoluteImageUrl('../../../assets/katalog/large/katalog__rotwein__label-l.png'),
           weinEttiketBildAlt: 'Weinflasche Rotwein Etikett',
-          servierBildString: this.getAbsoluteImageUrl('../../../assets/grauburgunder.png'),
-          searchTags: ['Feinherb', 'Dornfelder']
+          searchTags: ['Trocken', 'Spätburgunder']
         },
         {
           _id: 11,
@@ -312,11 +333,13 @@ export class weinService {
           allergieHinweis: 'Enthält Sulfite',
           inventar: 30,
           servierempfehlung: 'Garnelenspieße mit Knoblauch und Limette: Die pikante Frische dieser Spezialität passt hervorragend zu diesem Spätburgunder. Ein exquisites Duo für ein unvergessliches Picknick am Rhein.',
-          weinBildString: this.getAbsoluteImageUrl('../../../assets/katalog/katalog__rotwein.jpg'),
+          weinBildS: this.getAbsoluteImageUrl('../../../assets/katalog/small/katalog__rotwein-s.png'),
+          weinBildL: this.getAbsoluteImageUrl('../../../assets/katalog/large/katalog__rotwein-l.png'),
           weinBildAlt: 'Weinflasche Rotwein',
-          weinEttiketBildString: this.getAbsoluteImageUrl('../../../assets/katalog/katalog__rotwein__label.jpg'),
+          ausfuehrlicheBeschreibung: 'Lachs-Crostini mit Zitronencreme: Die frische des Lachses harmoniert wunderbar zu diesem Weißwein',
+          weinEttiketBildS: this.getAbsoluteImageUrl('../../../assets/katalog/small/katalog__rotwein__label-s.png'),
+          weinEttiketBildL: this.getAbsoluteImageUrl('../../../assets/katalog/large/katalog__rotwein__label-l.png'),
           weinEttiketBildAlt: 'Weinflasche Rotwein Etikett',
-          servierBildString: this.getAbsoluteImageUrl('../../../assets/grauburgunder.png'),
           searchTags: ['Trocken', 'Burgunder']
         },
         {
@@ -339,11 +362,13 @@ export class weinService {
           allergieHinweis: 'Enthält Sulfite',
           inventar: 20,
           servierempfehlung: 'Melonenschiffchen mit Parmaschinken: Die süße Melone und der herzhafte Schinken vereinen sich zu einem erfrischenden Gaumenschmaus. Perfekt für einen sommerlichen Wein-Genuss.',
-          weinBildString: this.getAbsoluteImageUrl('../../../assets/katalog/katalog__rotwein.jpg'),
+          weinBildS: this.getAbsoluteImageUrl('../../../assets/katalog/small/katalog__rotwein-s.png'),
+          weinBildL: this.getAbsoluteImageUrl('../../../assets/katalog/large/katalog__rotwein-l.png'),
           weinBildAlt: 'Weinflasche Rotwein',
-          weinEttiketBildString: this.getAbsoluteImageUrl('../../../assets/katalog/katalog__rotwein__label.jpg'),
+          ausfuehrlicheBeschreibung: 'Lachs-Crostini mit Zitronencreme: Die frische des Lachses harmoniert wunderbar zu diesem Weißwein',
+          weinEttiketBildS: this.getAbsoluteImageUrl('../../../assets/katalog/small/katalog__rotwein__label-s.png'),
+          weinEttiketBildL: this.getAbsoluteImageUrl('../../../assets/katalog/large/katalog__rotwein__label-l.png'),
           weinEttiketBildAlt: 'Weinflasche Rotwein Etikett',
-          servierBildString: this.getAbsoluteImageUrl('../../../assets/grauburgunder.png'),
           searchTags: ['Lieblich', 'Anderes']
         },
       ]
@@ -370,11 +395,13 @@ export class weinService {
           allergieHinweis: 'Enthält Sulfite',
           inventar: 20,
           servierempfehlung: 'Gebackener Ziegenkäse mit Honig und Walnüssen: Die süße Cremigkeit des Käses und die knackigen Nüsse lassen den "Bechers Fritz" in seiner ganzen Vielfalt erstrahlen.',
-          weinBildString: this.getAbsoluteImageUrl('../../../assets/katalog/katalog__schaumwein.jpg'),
+          weinBildS: this.getAbsoluteImageUrl('../../../assets/katalog/small/katalog__schaumwein-s.png'),
+          weinBildL: this.getAbsoluteImageUrl('../../../assets/katalog/large/katalog__schaumwein-l.png'),
           weinBildAlt: 'Weinflasche Schaumwein',
-          weinEttiketBildString: this.getAbsoluteImageUrl('../../../assets/katalog/katalog__schaumwein__label.jpg'),
+          ausfuehrlicheBeschreibung: 'Lachs-Crostini mit Zitronencreme: Die frische des Lachses harmoniert wunderbar zu diesem Weißwein',
+          weinEttiketBildS: this.getAbsoluteImageUrl('../../../assets/katalog/small/katalog__schaumwein__label-s.png'),
+          weinEttiketBildL: this.getAbsoluteImageUrl('../../../assets/katalog/large/katalog__schaumwein__label-l.png'),
           weinEttiketBildAlt: 'Weinflasche Schaumwein Etikett',
-          servierBildString: this.getAbsoluteImageUrl('../../../assets/grauburgunder.png'),
           searchTags: ['Riesling', 'Anderes']
         },
         {
@@ -397,11 +424,13 @@ export class weinService {
           allergieHinweis: 'Enthält Sulfite',
           inventar: 15,
           servierempfehlung: 'Pesto-Nudelsalat mit getrockneten Tomaten und Pinienkernen: Ein leichter, mediterraner Genuss, der wunderbar mit unserem Wein harmoniert. Verführt eure Sinne an einem sonnigen Tag am Rhein.',
-          weinBildString: this.getAbsoluteImageUrl('../../../assets/katalog/katalog__schaumwein.jpg'),
+          weinBildS: this.getAbsoluteImageUrl('../../../assets/katalog/small/katalog__schaumwein-s.png'),
+          weinBildL: this.getAbsoluteImageUrl('../../../assets/katalog/large/katalog__schaumwein-l.png'),
           weinBildAlt: 'Weinflasche Schaumwein',
-          weinEttiketBildString: this.getAbsoluteImageUrl('../../../assets/katalog/katalog__schaumwein__label.jpg'),
+          ausfuehrlicheBeschreibung: 'Lachs-Crostini mit Zitronencreme: Die frische des Lachses harmoniert wunderbar zu diesem Weißwein',
+          weinEttiketBildS: this.getAbsoluteImageUrl('../../../assets/katalog/small/katalog__schaumwein__label-s.png'),
+          weinEttiketBildL: this.getAbsoluteImageUrl('../../../assets/katalog/large/katalog__schaumwein__label-l.png'),
           weinEttiketBildAlt: 'Weinflasche Schaumwein Etikett',
-          servierBildString: this.getAbsoluteImageUrl('../../../assets/grauburgunder.png'),
           searchTags: ['Trocken', 'Riesling']
         },
         {
@@ -424,11 +453,13 @@ export class weinService {
           allergieHinweis: 'Enthält Sulfite',
           inventar: 25,
           servierempfehlung: 'Rucola-Salat mit Erdbeeren und Balsamico-Dressing: Die fruchtige Frische dieses Salats ist die perfekte Begleitung zu unserem Wein.',
-          weinBildString: this.getAbsoluteImageUrl('../../../assets/katalog/katalog__schaumwein.jpg'),
+          weinBildS: this.getAbsoluteImageUrl('../../../assets/katalog/small/katalog__schaumwein-s.png'),
+          weinBildL: this.getAbsoluteImageUrl('../../../assets/katalog/large/katalog__schaumwein-l.png'),
           weinBildAlt: 'Weinflasche Schaumwein',
-          weinEttiketBildString: this.getAbsoluteImageUrl('../../../assets/katalog/katalog__schaumwein__label.jpg'),
+          ausfuehrlicheBeschreibung: 'Lachs-Crostini mit Zitronencreme: Die frische des Lachses harmoniert wunderbar zu diesem Weißwein',
+          weinEttiketBildS: this.getAbsoluteImageUrl('../../../assets/katalog/small/katalog__schaumwein__label-s.png'),
+          weinEttiketBildL: this.getAbsoluteImageUrl('../../../assets/katalog/large/katalog__schaumwein__label-l.png'),
           weinEttiketBildAlt: 'Weinflasche Schaumwein Etikett',
-          servierBildString: this.getAbsoluteImageUrl('../../../assets/grauburgunder.png'),
           searchTags: ['Trocken', 'Riesling']
         },
       ]
@@ -449,33 +480,7 @@ export class weinService {
   ];
 
   private empfehlungDesHauses: EmpfehlungDesHauses = {
-    wein: {
-      _id: 12,
-      name: 'Amour',
-      geschmack: 'Lieblich',
-      rebsorte: undefined,
-      preis: 4.50,
-      preisProLiter: 6.00,
-      herstellungsDatum: new Date('2022-01-15'),
-      beschreibungsText: 'Der süße Rote. Lieblicher Rotwein.',
-      produktTyp: 'Rotwein',
-      fuellmenge: 0.75,
-      alkoholgehalt: 9.0,
-      restZucker: 55.1,
-      gesamtSaeure: 4.9,
-      verschlussArt: 'Korken',
-      trinkTemperatur: 14,
-      lagerfaehigkeit: '3 Jahre',
-      allergieHinweis: 'Enthält Sulfite',
-      inventar: 20,
-      servierempfehlung: 'Ideal zu Desserts und Käse.',
-      weinBildString: this.getAbsoluteImageUrl('../../../assets/katalog/katalog__rotwein.jpg'),
-      weinBildAlt: 'Weinflasche Rotwein',
-      weinEttiketBildString: this.getAbsoluteImageUrl('../../../assets/katalog/katalog__rotwein__label.jpg'),
-      weinEttiketBildAlt: 'Weinflasche Rotwein Etikett',
-      servierBildString: this.getAbsoluteImageUrl('../../../assets/grauburgunder.png'),
-      searchTags: ['Lieblich', 'Anderes']
-    },
+    wein: this.getWineById('rotwein', 12),
     img: this.getAbsoluteImageUrl('../../../assets/landingpage/landingpage__rotwein-teaser.png'),
     alt: 'Weinflasche Rotwein',
     kategorie: 'rotwein',
@@ -483,9 +488,9 @@ export class weinService {
   }
 
   private eventTeaser: Event = {
-    alt: 'Empfehlung des Hauses Roséwein',
+    alt: 'Event des Weingutes',
     text: 'Roséwein ist ein beliebter Wein, der aus dunklen Trauben hergestellt wird.',
-    img: this.getAbsoluteImageUrl('../../../assets/landingpage/landingpage-steffen-mit-wein.jpg'),
+    img: this.getAbsoluteImageUrl('../../../assets/weinglas.png'),
     link: 'https://www.buhrmannbecher.de/aktuelles/'
   };
   constructor(private http: HttpClient, private location: Location) {
@@ -500,7 +505,7 @@ export class weinService {
     return this.empfehlungDesHauses;
   }
 
-  getEventTeaser() { 
+  getEventTeaser() {
     return this.eventTeaser;
   }
 
@@ -534,11 +539,12 @@ export class weinService {
 
   /**
    * Konvertiert einen relativen Bildpfad in eine absolute URL mithilfe des Angular Location-Dienstes.
-   * Dadurch wird sichergestellt, dass der Bildpfad unabhängig von der Basis-URL oder der Bereitstellungsumgebung der Anwendung korrekt aufgelöst wird.
+   * Dadurch wird sichergestellt, dass der Bildpfad unabhängig von der URL oder der Bereitstellungsumgebung der Anwendung korrekt aufgelöst wird.
    * 
    * @param relativePath Der relative Pfad des Bildes.
    * @returns Die absolute URL des Bildes.
    */
+
   private getAbsoluteImageUrl(relativePath: string): String {
     return this.location.prepareExternalUrl(relativePath);
   }

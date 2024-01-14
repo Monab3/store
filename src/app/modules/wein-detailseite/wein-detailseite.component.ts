@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
 import { cartService } from '../../core/services/cart.service';
 import { weinService } from '../../core/services/wein.service';
-import { rebsortenService } from '../../core/services/rebsorten.service';
 import { CartItem } from '../../core/models/CartItem';
 import { Wein } from '../../core/models/Wein';
 import { Rebsorte } from '../../core/models/Rebsorten';
@@ -21,13 +20,12 @@ export class WeinDetailseiteComponent implements OnInit {
   toggleLightBox: Subject<boolean> = new Subject<boolean>();
   smallImageSlides: any[] = [];
   produktBild: String | undefined;
-  showBewertungen : boolean = false;
-  showSteckbrief:   boolean = true; 
+  showBewertungen: boolean = false;
+  showSteckbrief: boolean = true;
   counterForm = new FormGroup({ counter: new FormControl(1, [Validators.min(1)]) });
   mockWein: Wein | undefined;;
-  rebsorteInfo: Rebsorte | undefined;
 
-  constructor(private cartService: cartService, private wineService: weinService, private rebsortenService: rebsortenService, private route: ActivatedRoute) {
+  constructor(private cartService: cartService, private wineService: weinService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -41,11 +39,10 @@ export class WeinDetailseiteComponent implements OnInit {
     });
     if (this.wineId != null && this.kategorie != null) {
       this.mockWein = this.wineService.getWineById(this.kategorie, this.wineId);
-      this.produktBild = this.mockWein?.weinBildString;
+      this.produktBild = this.mockWein?.weinBildL;
     }
-    if (this.mockWein && this.mockWein.rebsorte) {
-      this.rebsorteInfo = this.rebsortenService.getRebsorte(this.mockWein.rebsorte);
-      this.smallImageSlides.push({ url: this.mockWein.weinBildString }, { url: this.mockWein.weinEttiketBildString },);
+    if (this.mockWein) {
+      this.smallImageSlides.push({ url: this.mockWein.weinBildS }, { url: this.mockWein.weinEttiketBildS },);
     }
   }
 
@@ -88,39 +85,32 @@ export class WeinDetailseiteComponent implements OnInit {
 
   }
   /**
-   * Erstellt Slides aus den Bildern des Weins
-   */
+     * Erstellt Slides aus den Bildern des Weins
+     */
 
   createSlidesForCarousel() {
     const slides = [];
-    if (this.mockWein && this.mockWein.weinBildString && this.mockWein.weinEttiketBildString) {
-      slides.push({ url: this.mockWein.weinBildString });
-      slides.push({ url: this.mockWein.weinEttiketBildString });
+    if (this.mockWein && this.mockWein.weinBildS && this.mockWein.weinEttiketBildS) {
+      slides.push({ url: this.mockWein.weinBildS, alt: this.mockWein.weinBildAlt });
+      slides.push({ url: this.mockWein.weinEttiketBildS, alt: this.mockWein.weinEttiketBildAlt });
     }
 
     return slides;
   }
 
-  switchPicture(img : String | undefined) {
-    if(img){
+  switchPicture(img: String | undefined) {
+    if (img) {
       this.produktBild = img;
     }
   }
 
-
-
-  showLightBox() {
-    this.toggleLightBox.next(true);
-    console.log("showLightBox()" ); 
-  }
-
-  toggleSteckbrief(){
-    this.showBewertungen = false; 
+  toggleSteckbrief() {
+    this.showBewertungen = false;
     this.showSteckbrief = true;
   }
 
-  toggleBewertung(){
-    this.showBewertungen = true; 
+  toggleBewertung() {
+    this.showBewertungen = true;
     this.showSteckbrief = false;
   }
 }

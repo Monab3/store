@@ -52,19 +52,15 @@
             background-color: $color-light;
             text-align: center;
         }
-
         &__img {
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: fill;
-        }
-
-        &__img-container {
             overflow: hidden;
             border-radius: $border-radius;
             width: 60px;
             height: 60px;
+            background: $color-green-light; 
+            & img{
+                @include responsive-img(100%, 100%, $object-fit: contain)
+            }
         }
 
         &__information {

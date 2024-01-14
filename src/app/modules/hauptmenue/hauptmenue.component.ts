@@ -30,6 +30,7 @@ export class HauptmenueComponent implements OnInit {
   cartTotal: number = 0;
   versandTotal: number = 0;
   hauptmenuButtonOpen: boolean = false;
+  websitemenuButtonOpen: boolean = false;
   number: any = 1;
   kategorie = "";
 
@@ -161,7 +162,20 @@ togglehauptMenuButton() {
   if (this.cartVisibility) {
     this.cartVisibility = false;
   }
+  if(this.websitemenuButtonOpen){
+    this.websitemenuButtonOpen = false;
+  }
   this.hauptmenuButtonOpen = !this.hauptmenuButtonOpen;
+}
+
+toggleWebsiteMenuButton(){
+  if (this.cartVisibility) {
+    this.cartVisibility = false;
+  }
+  if(this.hauptmenuButtonOpen){
+    this.hauptmenuButtonOpen = false;
+  }
+  this.websitemenuButtonOpen = !this.websitemenuButtonOpen;
 }
 
 

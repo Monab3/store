@@ -6,21 +6,24 @@
 @import '../../../core/stylesheets/tools/variables';
 
 @import '../../../core/stylesheets/elements/controls';
-.nav{
+
+.nav {
+    @include border($border-property: border-bottom, $width: $border-width, $style: solid, $color: $color-green-light);
     @include flexbox($direction: row, $justify: center, $wrap: nowrap, $align: center);
     @include gap-container;
-    @include border($border-property: border-bottom, $width: $border-width, $style: solid, $color: $color-green-light);
-    &__button{
-            @include border($border-property: border-bottom, $color : $color-green-dark);
-            @include effect-border-underline($color-bg: $color-red-dark);
-            color: $color-green-dark;
-            &:hover{
-                color: $color-red-dark;
-            }
-            &--activ{
-                @include border($border-property: border-bottom, $color : $color-red-dark);
-                color: $color-red-dark;
-            }
-    }
 
+    &__button {
+        @include border($border-property: border-bottom, $color : $color-green-dark);
+        @include effect-border-underline($color-bg: $color-red-dark);
+        color: $color-green-dark;
+
+        &--activ {
+            @include border($border-property: border-bottom, $color : $color-red-dark);
+            color: $color-red-dark;
+        }
+
+        &:hover {
+            color: $color-red-dark;
+        }
+    }
 }

@@ -14,15 +14,15 @@
     position: sticky;
     top: 0;
     left: 0;
-    //transition: opacity 0.5s ease;
     z-index: 2000;
-    width: 100%; 
-    &--green{
+    width: 100%;
+
+    &--green {
         background-color: $color-green-light;
         width: 100%;
     }
-    
-    &__kategorie{
+
+    &__kategorie {
         height: $height-nav;
 
         &__nav {
@@ -31,11 +31,11 @@
                 @include flexbox($direction: row, $justify: space-between, $align: stretch, $wrap: wrap);
                 z-index: 1002;
             }
-    
+
             &__button--hide {
                 @include hide-for-small;
             }
-    
+
             &--small {
                 background: $color-green-light;
                 top: -100%;
@@ -45,25 +45,29 @@
                 position: fixed;
                 @include hide-for-large;
                 @include hide-for-medium;
-                 & > ul{
+
+                &>ul {
                     @include flexbox($justify: flex-start, $wrap: wrap, $align: stretch);
                     @include gap-component;
-    
-                    & > li{
+
+                    &>li {
                         align-self: center;
                         width: 100%;
-                        @include border($border-property: border-bottom, $color: $color-green-dark); 
-                        & button{
-                            width: 100%; 
+                        @include border($border-property: border-bottom, $color: $color-green-dark);
+
+                        & button {
+                            width: 100%;
                         }
                     }
                 }
+
                 &--open {
                     top: $height-nav + $height-nav-weingut;
-                    right: 0; 
-                    &--scroll{
+                    right: 0;
+
+                    &--scroll {
                         top: $height-nav;
-                        right: 0; 
+                        right: 0;
                     }
                 }
 

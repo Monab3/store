@@ -11,30 +11,14 @@ import { weinService } from '../../core/services/wein.service';
 export class LandingpageComponent implements OnInit {
   appRoutes = AppRoutes;
   weinmenueBilder = ['../../../assets/landingpage/weinmenue_weisswein.jpg', '../../../assets/landingpage/weinmenue_rotwein.jpg', '../../../assets/landingpage/weinmenue_rosewein.jpg', '../../../assets/landingpage/weinmenue_schaumwein.jpg'];
+  weinmenueBildAlt = ['Navigation zu den Weißweinen', 'Navigation zu den Rotweinen', 'Navigation zu den Roséweinen', 'Navigation zu den Schaumweinen'];
+
   navWein = [
     { key: 'weisswein', value: 'Weißwein' },
     { key: 'rotwein', value: 'Rotwein' },
     { key: 'rosewein', value: 'Roséwein' },
     { key: 'schaumwein', value: 'Schaumwein' },
-  ];  
-
-  slides = [
-    {
-      url: '../../../assets/landingpage/landingpage-steffen-mit-wein.jpg',
-      titel: 'Familienbetrieb',
-      text: 'In unserem Familienbetrieb vereinen wir generationsübergreifende Erfahrung und Hingabe, um Ihnen qualitativ hochwertige Produkte und einen persönlichen Service zu bieten.'
-    },
-    {
-      url: '../../../assets/landingpage/landingpage-weinhauschen.jpg',
-      titel: 'Regionaleranbau',
-      text: 'Unsere Produkte stammen aus regionalem Anbau, was nicht nur Frische garantiert, sondern auch die Unterstützung lokaler Landwirte fördert.'
-    },
-    {
-      url: '../../../assets/landingpage/landingpage-weingut.jpg',
-      titel: 'Sortimentauswahl',
-      text: 'Unser vielseitiges Weinsortiment erstreckt sich von erlesenen Weiß- und Rotweinen über Sektweine bis hin zu feinen Schaumweinen.'
-    },
-  ]
+  ]; 
 
   empfehlungDesHauses: EmpfehlungDesHauses | undefined;
   constructor(private weinService: weinService) { }

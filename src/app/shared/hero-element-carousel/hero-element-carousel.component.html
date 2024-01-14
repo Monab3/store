@@ -5,7 +5,7 @@
     </div>
     <div class="carousel__slide">
       <figure class="carousel__slide__figure">
-        <img [src]="getCurrentSlideUrl()" alt="slide image" [ngClass]="{'carousel__slide__figure__img--contain': !showTitel, 'carousel__slide__figure__img--cover':showTitel}">
+        <img [src]="getCurrentSlideUrl()" [alt]="getCurrentSlideAlt()" [ngClass]="{'carousel__slide__figure__img--contain': !showTitel, 'carousel__slide__figure__img--cover':showTitel}">
       </figure>
       <article class="carousel__article">
         <section *ngIf="showTitel || showText">

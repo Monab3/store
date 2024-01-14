@@ -53,7 +53,7 @@
     </section>
     <footer class="selector__footer__grid">
         <hr class="selector__footer__line">
-        <h2 class="h2">{{wein.preis}} €</h2>
+        <h2 class="h2">{{wein.preis.toFixed(2)}} €</h2>
         <form *ngIf="counterForm" class="selector__grid selector__footer__grid__form--span3" [formGroup]="counterForm">
             <button class="selector__control" (click)="handleMinus()"><i class="bi bi-dash-lg"></i></button>
             <input type="number" class="selector" formControlName="counter"
@@ -79,8 +79,7 @@
     <a [routerLink]="['/', appRoutes.DETAIL, {kategorie: kategorie, id: wein._id}]">
         <figure>
 
-            <img [src]="wein.weinBildString" [alt]="wein.weinBildAlt"
-                [ngClass]="{ 'card-list--produkt-view__img': productViewList, 'card--produkt-view__img': !productViewList}">
+            <img [src]="wein.weinBildL" [alt]="wein.weinBildAlt" class="card--produkt-view__img">
         </figure>
         <section>
             <header>
@@ -140,7 +139,7 @@
                 <tr>
                     <td>
                         <figure class="card-list--produkt-view__table__img"><img
-                            [src]="wein.weinBildString" [alt]="wein.weinBildAlt"></figure>
+                            [src]="wein.weinBildS" [alt]="wein.weinBildAlt"></figure>
                     </td>
                     <td>
                         <p class="text-regular--red-dark">{{dateConverter(wein.herstellungsDatum)}}</p>

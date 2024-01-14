@@ -26,3 +26,11 @@
         }
     }
 }
+
+//Media Queries
+
+@media only screen and (max-width: $breakpoint-small) {
+    .servierempfehlung {
+        background-image: url('../../../../assets/food-s.png');
+    }
+  }

@@ -8,53 +8,53 @@
 @import '../../../core/stylesheets/elements/controls';
 
 .page__grid {
-    &__produkt {
-        @include page__span--small;
-        @include padding-container;
-    }
-
-    &__steckbrief {
-        @include grid__span--all;
-    }
-
-    &__bewertungen{
-        @include grid__span--all;
-    }
-
     &__background {
         background-image: url('../../../../assets/detail/BackgroundImage-l.jpg');
         background-position: center;
         background-size: cover;
         @include grid__span--all;
     }
-    &__nav{
+
+    &__bewertungen {
         @include grid__span--all;
     }
-    &__servierempfehlung{
+
+    &__nav {
+        @include grid__span--all;
+    }
+
+    &__produkt {
+        @include page__span--small;
+        @include padding-container;
+    }
+
+    &__servierempfehlung {
         @include page__span--small
     }
 
+    &__steckbrief {
+        @include grid__span--all;
+    }
 }
-
 
 .produkt__grid {
     @include grid;
     gap: $gap-container;
 
-    &__figure {
-        @include grid__span--half;
-        text-align: center;
+    &____side-img {
+        @include grid__span__quarter--mg-lg;
     }
 
     &__carousel {
         @include grid__span--all;
-        text-align: center;
-        height: 50vh;
         display: none;
+        height: 50vh;
+        text-align: center;
     }
 
-    &____side-img {
-        @include grid__span__quarter--mg-lg;
+    &__figure {
+        @include grid__span--half;
+        text-align: center;
     }
 
     &__produktinformation {
@@ -63,11 +63,12 @@
 }
 
 .steckbrief__grid {
+    border-radius: $border-radius;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     @include border($color: $color-red-dark);
-    border-radius: $border-radius;
     overflow: hidden;
+
     & .steckbrief__info {
         grid-column: span 1;
     }
@@ -78,15 +79,14 @@
 }
 
 @media only screen and (min-width: 0) and (max-width: $breakpoint-medium--minus) {
-
     .produkt__grid {
-        &__figure {
-            height: 50vh;
-            display: none;
-        }
-
         &__carousel {
             display: block;
+        }
+
+        &__figure {
+            display: none;
+            height: 50vh;
         }
 
         &__produktinformation {
@@ -105,7 +105,7 @@
     }
 }
 
-@media only screen and (min-width:$breakpoint-medium) and (max-width: $breakpoint-large) {
+@media only screen and (min-width: $breakpoint-medium) and (max-width: $breakpoint-large) {
     .produkt__grid {
         &__figure {
             grid-column: 2/ span 6;

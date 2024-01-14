@@ -1,3 +1,4 @@
+<!-- Hauptnavigation der Website Desktop Ansicht -->
 <nav class="website">
     <ul class="page">
         <li class="website__logo">
@@ -5,7 +6,7 @@
                 <img src="../../../assets/logo.png" alt="Logo">
             </a>
         </li>
-        <li >
+        <li>
             <a class="website-font li--hide-for-small">
                 HOME
             </a>
@@ -36,18 +37,55 @@
             </a>
         </li>
         <li>
-            <button class="hamburger-button hamburger-button--hide-for-medium">
-            <div></div>
-        </button>
+            <button class="hamburger-button hamburger-button--hide-for-medium" (click)="toggleWebsiteMenuButton()">
+                <div></div>
+            </button>
         </li>
     </ul>
 </nav>
+
+<!-- Hauptnavigation der Website Mobile Ansicht -->
+<nav class="website" [ngClass]="{'hauptmenu__kategorie__nav--small--open': websitemenuButtonOpen}">
+    <ul class="page">
+        <li>
+            <a class="website-font li--hide-for-small">
+                HOME
+            </a>
+        </li>
+        <li>
+            <a class="website-font li--hide-for-small">
+                AKTUELLES
+            </a>
+        </li>
+        <li>
+            <a class="website-font li--hide-for-small">
+                WEINGUT
+            </a>
+        </li>
+        <li>
+            <a class="website-font website-font--shop li--hide-for-small" [routerLink]="['']">
+                SHOP
+            </a>
+        </li>
+        <li>
+            <a class="website-font li--hide-for-small">
+                PENSION
+            </a>
+        </li>
+        <li>
+            <a class="website-font li--hide-for-small">
+                KONTAKT
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<!-- Navigation des Online-Shop -->
 <div class="hauptmenu" [ngClass]="{'hauptmenu--hidden': !isVisible}">
-
-
-
     <div class="hauptmenu--green">
         <nav class="page hauptmenu__kategorie hauptmenu__kategorie__nav__container">
+
+            <!-- Warenkorb Pop-Up -->
             <article [ngClass]="{'cart__container': cartVisibility, 'cart__container--hidden': !cartVisibility}">
                 <header class="cart__header">
                     <p class="text-regular--red-dark">Ihr Warenkorb, <span
@@ -57,7 +95,7 @@
                         <i class="bi  bi-x-lg bi-2x"></i>
                     </button>
                 </header>
-                <main class="cart__main">
+                <section class="cart__main">
                     <section *ngIf="cartItems.length == 0" class="cart__section--no-items">
                         <h4 class="h4">Es befinden sich noch keine Weine in ihrem Warenkorb. </h4>
                         <p class="text-regular">Klicken Sie
@@ -67,8 +105,8 @@
                     <section *ngIf="cartItems.length > 0" class="cart__section">
                         <div *ngFor="let item of cartItems; let i = index" class="cart__section__container--column">
                             <div class="cart__section__container--row">
-                                <figure class="cart__section__img-container">
-                                    <img src="assets/grauburgunder.png" class="cart__section__img">
+                                <figure class="cart__section__img">
+                                    <img [src]="item.wein.weinBildS" [alt]="item.wein.weinBildAlt">
                                 </figure>
                                 <div class="cart__section__information">
                                     <p class="text-regular--red-dark">{{ item.wein.name }}</p>
@@ -95,7 +133,7 @@
                                 entfernen</button>
                         </div>
                     </section>
-                </main>
+                </section>
                 <footer class="cart__footer">
                     <div class="cart__footer__container">
                         <p class="text-regular">Gesamtsumme <span class="text-fine">(inkl. MwSt. & Versand) </span>:</p>
@@ -110,17 +148,21 @@
                         gehen</button>
                 </footer>
             </article>
+
+            <!-- Navigationbutton des Online-Shop Mobile Ansicht -->
             <nav class="hauptmenu--green hauptmenu__kategorie__nav--small"
-            [ngClass]="{'hauptmenu__kategorie__nav--small--open': hauptmenuButtonOpen && hauptmenuVisible, 'hauptmenu__kategorie__nav--small--open--scroll': hauptmenuButtonOpen && !hauptmenuVisible}">
-            <ul class="page">
-                <li *ngFor="let nav of navWein; index as i">
-                    <button class="nav-button" [ngClass]="{'nav-button--active': nav.value == kategorie}"
-                        (click)="handleNav(nav.value, true,nav.key)">
-                        <span>{{ nav.value }}</span>
-                    </button>
-                </li>
-            </ul>
-        </nav>
+                [ngClass]="{'hauptmenu__kategorie__nav--small--open': hauptmenuButtonOpen && hauptmenuVisible, 'hauptmenu__kategorie__nav--small--open--scroll': hauptmenuButtonOpen && !hauptmenuVisible}">
+                <ul class="page">
+                    <li *ngFor="let nav of navWein; index as i">
+                        <button class="nav-button" [ngClass]="{'nav-button--active': nav.value == kategorie}"
+                            (click)="handleNav(nav.value, true,nav.key)">
+                            <span>{{ nav.value }}</span>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Navigationbutton des Online-Shop Desktop Ansicht -->
             <button *ngFor="let nav of navWein; index as i" class="nav-button hauptmenu__kategorie__nav__button--hide"
                 [routerLink]="[appRoutes.WEINSHOP, nav.key]" [ngClass]="{'nav-button--active': nav.key == kategorie}"
                 (click)="handleNav(nav.value, false, nav.key)">
@@ -140,6 +182,5 @@
                     {{cartTotalPriceSum()}} €</span>
             </button>
         </nav>
-
     </div>
 </div>
