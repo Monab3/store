@@ -12,6 +12,8 @@
 
 @import "./mixins";
 
+//Stlyesheet der Produkte der Katalogseite in Galleriefrom
+
 .card--produkt-view {
     @include card;
     @include padding-component;

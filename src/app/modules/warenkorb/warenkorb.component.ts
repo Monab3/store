@@ -5,7 +5,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AppRoutes } from '../../core/config/app-routes.config';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
-import { ca } from 'date-fns/locale';
 
 
 @Component({

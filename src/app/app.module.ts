@@ -14,7 +14,6 @@ import { HauptmenueComponent } from './modules/hauptmenue/hauptmenue.component';
 import { WeinDetailseiteComponent } from './modules/wein-detailseite/wein-detailseite.component';
 import { HeroElementCarouselComponent } from './shared/hero-element-carousel/hero-element-carousel.component';
 import { CardComponent } from './shared/card/card.component';
-import { LightBoxComponent } from './shared/light-box/light-box.component';
 import { BewertungenComponent } from './shared/bewertungen/bewertungen.component';
 import { LandingpageComponent } from './modules/landingpage/landingpage.component';
 import { FooterComponent } from './modules/footer/footer.component';
@@ -31,7 +30,6 @@ import { BreadcrumbModule } from 'xng-breadcrumb';
     WeinDetailseiteComponent,
     HeroElementCarouselComponent,
     CardComponent,
-    LightBoxComponent,
     BewertungenComponent,
     LandingpageComponent,
     FooterComponent,

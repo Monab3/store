@@ -16,13 +16,14 @@ import { Wein } from '../../core/models/Wein';
 export class WeinDetailseiteComponent implements OnInit {
   wineId: number | null = null;
   kategorie: string | null = null;
-  toggleLightBox: Subject<boolean> = new Subject<boolean>();
+  mockWein: Wein | undefined;
+
   smallImageSlides: any[] = [];
   produktBild: String | undefined;
+
   showBewertungen: boolean = false;
   showSteckbrief: boolean = true;
   counterForm = new FormGroup({ counter: new FormControl(1, [Validators.min(1)]) });
-  mockWein: Wein | undefined;
 
   constructor(private cartService: cartService, private wineService: weinService, private route: ActivatedRoute) {
   }
@@ -45,6 +46,9 @@ export class WeinDetailseiteComponent implements OnInit {
     }
   }
 
+  /**
+   * Verringert die Anzahl der Weine im Warenkorb in einser Schritten
+   */
   handleMinus() {
     const control = this.counterForm?.get('counter');
     if (control) {
@@ -57,6 +61,9 @@ export class WeinDetailseiteComponent implements OnInit {
     }
   }
 
+  /**
+   * Erhöhrt die Anzahl der Weine im Warenkorb in einser Schritten
+   */
   handlePlus() {
     const control = this.counterForm?.get('counter');
     if (control) {
@@ -70,7 +77,6 @@ export class WeinDetailseiteComponent implements OnInit {
   }
 
   addProductToCart() {
-
     const quantity = this.counterForm?.get('counter')?.value
     if (this.mockWein) {
       const newProduct: CartItem = {
@@ -83,17 +89,16 @@ export class WeinDetailseiteComponent implements OnInit {
     }
 
   }
-  /**
-     * Erstellt Slides aus den Bildern des Weins
-     */
 
+  /**
+  * Erstellt Slides aus den Bildern des Weins
+  */
   createSlidesForCarousel() {
     const slides = [];
     if (this.mockWein && this.mockWein.weinBildS && this.mockWein.weinEttiketBildS) {
       slides.push({ url: this.mockWein.weinBildS, alt: this.mockWein.weinBildAlt });
       slides.push({ url: this.mockWein.weinEttiketBildS, alt: this.mockWein.weinEttiketBildAlt });
     }
-
     return slides;
   }
 

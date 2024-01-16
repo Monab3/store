@@ -1,3 +1,4 @@
+<!-- Produktkarte der Detailansicht -->
 <article *ngIf="wein && cardDetail" class="card--detail">
     <header>
         <div class="card--detail__header__titel">
@@ -75,6 +76,8 @@
         <hr class="card__footer__line">
     </footer>
 </article>
+
+<!-- Produktkarte als Kartenansicht-->
 <article *ngIf="wein && cardProduktView && !productViewList" class="card--produkt-view">
     <a [routerLink]="['/', appRoutes.DETAIL, {kategorie: kategorie, id: wein._id}]">
         <figure>
@@ -131,6 +134,7 @@
     </footer>
 </article>
 
+<!-- Produktkarte als Listenansicht -->
 <article *ngIf="wein && cardProduktView && productViewList" class="card-list--produkt-view">
     <a [routerLink]="['/', appRoutes.DETAIL, {kategorie: kategorie, id: wein._id}]">
         <table class="card-list--produkt-view__produkt">

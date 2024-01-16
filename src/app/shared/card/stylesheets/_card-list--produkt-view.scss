@@ -10,8 +10,9 @@
 @import '../../../core/stylesheets/elements/controls';
 @import '../../../core/stylesheets/components/quantity_selector';
 
-
 @import "./mixins";
+
+//Stlyesheet der Produkte der Katalogseite in Listenform
 
 .card-list--produkt-view {
    @include card;
