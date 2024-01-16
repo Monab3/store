@@ -14,14 +14,15 @@ import { Observable } from 'rxjs';
   styleUrl: './card.component.scss'
 })
 export class CardComponent implements OnInit {
+  appRoutes = AppRoutes;
 
   @Input() kategorie: string | undefined;
   @Input() wein: Wein | undefined;
   @Input() cardDetail: boolean = false;
   @Input() cardProduktView: boolean = false;
   @Input() productViewList: boolean = false;
+
   @Output() showBewertungenChange: EventEmitter<boolean> = new EventEmitter<boolean>();
-    appRoutes = AppRoutes;
 
   counterForm = new FormGroup({ counter: new FormControl(1, [Validators.min(1)]) });
   bewertungWrapper: BewertungWrapper = {
@@ -49,6 +50,9 @@ export class CardComponent implements OnInit {
 
   constructor(private cartService: cartService, private bewertungService: bewertungService) { }
 
+  /**
+   * Verringert die Anzahl der Weine in einser Schritten
+   */
   handleMinus() {
     const control = this.counterForm?.get('counter');
     if (control) {
@@ -61,6 +65,9 @@ export class CardComponent implements OnInit {
     }
   }
 
+  /**
+   * Erhöhung der Anzahl der Weine in einser Schritten
+   */
   handlePlus() {
     const control = this.counterForm?.get('counter');
     if (control) {
@@ -86,6 +93,9 @@ export class CardComponent implements OnInit {
     }
   }
 
+  /**
+  * Diese Methode wird aufgerufen, um zum Ende der Seite zu scrollen.
+  */
   scrollToEnd(): void {
     this.showBewertungenChange.emit(true);
     window.scrollTo({
@@ -94,10 +104,26 @@ export class CardComponent implements OnInit {
     });
   }
 
+  /**
+  * Diese Methode gibt ein Array zurück, das die Anzahl der leeren Sterne
+  * repräsentiert, die für die durchschnittliche Bewertung fehlen. Das Array
+  * wird in der Regel für die Anzeige von leeren Sternen in der Benutzeroberfläche
+  * verwendet.
+  *
+  * @returns Ein Array mit der Anzahl der leeren Sterne.
+  */
   getStarsArray(): number[] {
     return new Array(5 - this.bewertungWrapper.averageRating);
   }
-
+  
+  /**
+  * Diese Methode gibt ein Array zurück, das die Anzahl der vollen Sterne
+  * repräsentiert, die der durchschnittlichen Bewertung entsprechen. Das Array
+  * wird in der Regel für die Anzeige von vollen Sternen in der Benutzeroberfläche
+  * verwendet.
+  *
+  * @returns Ein Array mit der Anzahl der vollen Sterne.
+  */
   getFullStarsArray(): number[] {
     return new Array(this.bewertungWrapper.averageRating);
   }

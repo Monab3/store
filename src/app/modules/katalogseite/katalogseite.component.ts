@@ -29,7 +29,7 @@ dataWein: Wein[] | undefined= [];
   ];
 
   /* Arrays */
-  geschmaecker = ['Trocken', 'Fruchtig', 'Herb', 'Feinherb'];
+  geschmaecker = ['Trocken', 'Fruchtig', 'Feinherb', 'Lieblich'];
   rebsorten = ['Riesling', 'Burgunder', 'Rivaner', 'Dornfelder', 'MuellerThurgau'];
   kategorie: string | undefined;
 

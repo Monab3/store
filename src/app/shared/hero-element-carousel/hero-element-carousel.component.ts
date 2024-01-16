@@ -15,6 +15,12 @@ export class HeroElementCarouselComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+  * Diese Methode wird aufgerufen, um zum vorherigen Slide zu wechseln.
+  * Sie überprüft, ob das aktuelle Slide das erste Slide ist. Falls ja,
+  * wird der Index auf das letzte Slide gesetzt, andernfalls wird der Index
+  * um eins verringert.
+  */
   goToPrevious(): void {
     const isFirstSlide = this.currentIndex === 0;
     const newIndex = isFirstSlide
@@ -24,6 +30,12 @@ export class HeroElementCarouselComponent implements OnInit {
     this.currentIndex = newIndex;
   }
 
+  /**
+  * Diese Methode wird aufgerufen, um zum nächsten Slide zu wechseln.
+  * Sie überprüft, ob das aktuelle Slide das letzte Slide ist. Falls ja,
+  * wird der Index auf das erste Slide gesetzt, andernfalls wird der Index
+  * um eins erhöht.
+  */
   goToNext(): void {
     const isLastSlide = this.currentIndex === this.slides.length - 1;
     const newIndex = isLastSlide ? 0 : this.currentIndex + 1;
