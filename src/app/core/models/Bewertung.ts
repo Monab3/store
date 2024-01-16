@@ -13,3 +13,5 @@ export interface BewertungWrapper {
   averageRating: number;
   bewertungen: Bewertung[];
 }
+
+

@@ -12,54 +12,65 @@
         <ul class="anzeige">
             <hr class="anzeige__line" noshade size="1">
             <li>
-                <button class="text-regular anzeige__item" [disabled]="!progressBar.warenkorb" [ngClass]="{'anzeige__item--aktive': progressBar.active === 'warenkorb'}">
+                <button class="text-regular anzeige__item" [disabled]="!progressBar.warenkorb"
+                    [ngClass]="{'anzeige__item--aktive': progressBar.active === 'warenkorb'}">
                     <div class="anzeige__item__punkt" [routerLink]="['/', appRoutes.WARENKORB]"></div>
                 </button>
             </li>
             <li>
-                <button class="text-regular anzeige__item" [disabled]="!progressBar.daten" [ngClass]="{'anzeige__item--aktive': progressBar.active === 'daten'}">
+                <button class="text-regular anzeige__item" [disabled]="!progressBar.daten"
+                    [ngClass]="{'anzeige__item--aktive': progressBar.active === 'daten'}">
                     <div class="anzeige__item__punkt"></div>
                 </button>
             </li>
             <li>
-                <button class="text-regular anzeige__item" [disabled]="!progressBar.danke" [ngClass]="{'anzeige__item--aktive': progressBar.active === 'danke'}">
+                <button class="text-regular anzeige__item" [disabled]="!progressBar.danke"
+                    [ngClass]="{'anzeige__item--aktive': progressBar.active === 'danke'}">
                     <div class="anzeige__item__punkt"></div>
                 </button>
             </li>
         </ul>
         <ul class="anzeige">
             <li>
-                <button class="text-regular anzeige__item" [disabled]="!progressBar.warenkorb" [ngClass]="{'anzeige__item--aktive': progressBar.active === 'warenkorb'}">
+                <button class="text-regular anzeige__item" [disabled]="!progressBar.warenkorb"
+                    [ngClass]="{'anzeige__item--aktive': progressBar.active === 'warenkorb'}">
                     Warenkorb
                 </button>
             </li>
             <li>
-                <button class="text-regular anzeige__item" [disabled]="!progressBar.daten" [ngClass]="{'anzeige__item--aktive': progressBar.active === 'daten'}">
-                    Kundendaten
+                <button class="text-regular anzeige__item" [disabled]="!progressBar.daten"
+                    [ngClass]="{'anzeige__item--aktive': progressBar.active === 'daten'}">
+                    Kontaktdaten
                 </button>
             </li>
             <li>
-                <button class="text-regular anzeige__item" [disabled]="!progressBar.danke" [ngClass]="{'anzeige__item--aktive': progressBar.active === 'danke'}">
+                <button class="text-regular anzeige__item" [disabled]="!progressBar.danke"
+                    [ngClass]="{'anzeige__item--aktive': progressBar.active === 'danke'}">
                     Danke!
                 </button>
             </li>
         </ul>
     </nav>
-    <section class="page__grid__warenkorb produkt__container">
-        <h2 class="h2__container-titel">Ihre Bestellungen</h2>
+    <section *ngIf="!progressBar.daten && !progressBar.danke && cartItems.length > 0"
+        class="page__grid__warenkorb produkt__container">
+        <h2 *ngIf="!progressBar.daten && !progressBar.danke && cartItems.length > 0" class="h2__container-titel">Ihre
+            Bestellungen</h2>
         <ng-container *ngTemplateOutlet="produkt"></ng-container>
         <ng-container *ngTemplateOutlet="produktSmall"></ng-container>
         <div *ngIf="cartItems.length == 0" class="produkt--empty">
             <h4 class="h4">Noch keine Weine im Warenkorb</h4>
             <p class="text-regular">Es befinden sich noch keine Weine in ihrem Warenkorb.</p>
-            <button class="button button__secondary"  [routerLink]="['']">Zurück zur Katalogübersicht</button>
+            <button class="button button__secondary" [routerLink]="['']">Zurück zur Katalogübersicht</button>
         </div>
-        <button *ngIf="!progressBar.daten && !progressBar.danke && cartItems.length > 0" 
-        class="produkt__zur-kasse-gehen button button__buy" 
-        [routerLink]="['/', appRoutes.WARENKORB, appRoutes.WARENKORB__KONTAKTFORMULAR]"
-        [attr.title]="cartItems.length == 0? 'Um zur Kasse zu gehen, fügen Sie Weine zum Warenkorb hinzu' : null" >
-        Zur Kasse gehen</button>
-            <router-outlet></router-outlet>
+        <button *ngIf="!progressBar.daten && !progressBar.danke && cartItems.length > 0"
+            class="produkt__zur-kasse-gehen button button__buy"
+            [routerLink]="['/', appRoutes.WARENKORB, appRoutes.WARENKORB__KONTAKTFORMULAR]"
+            [attr.title]="cartItems.length == 0? 'Um zur Kasse zu gehen, fügen Sie Weine zum Warenkorb hinzu' : null">
+            Zur Kasse gehen</button>
+
+    </section>
+    <section class="page__grid__warenkorb produkt__container" *ngIf="progressBar.daten || progressBar.danke">
+        <router-outlet></router-outlet>
     </section>
     <section class="page__grid__sum sum__container">
         <section class="sum">
@@ -77,15 +88,24 @@
 
                     </tr>
                     <tr class="sum--margin-top">
-                        <td  class="h4--light">Gesamtsumme:</td>
+                        <td class="h4--light">Gesamtsumme:</td>
                         <td class="h4--light">{{versandAndCartTotal.toFixed(2)}} €</td>
                     </tr>
                 </tbody>
             </table>
         </section>
-        <button class="button button__secondary"  [routerLink]="['']">Zurück zur Katalogübersicht</button>
-        <button *ngIf="!progressBar.daten && !progressBar.danke" class="button button__buy" [attr.title]="cartItems.length == 0? 'Um zur Kasse zu gehen, fügen Sie Weine zum Warenkorb hinzu' : null" [disabled]="cartItems.length == 0" [routerLink]="['/', appRoutes.WARENKORB, appRoutes.WARENKORB__KONTAKTFORMULAR]">Zur Kasse gehen</button>
-        <p class="text-regular"><i class="bi bi-truck text-regular--red-dark"></i> Lieferung zw.<span class="text-regular--red-dark"> {{devlieryDate}}</span></p>
+        <button class="button button__secondary" [routerLink]="['']">Zurück zur Katalogübersicht</button>
+        <button *ngIf="!progressBar.daten && !progressBar.danke" class="button button__buy"
+            [attr.title]="cartItems.length == 0? 'Um zur Kasse zu gehen, fügen Sie Weine zum Warenkorb hinzu' : null"
+            [disabled]="cartItems.length == 0"
+            [routerLink]="['/', appRoutes.WARENKORB, appRoutes.WARENKORB__KONTAKTFORMULAR]">Zur Kasse gehen</button>
+        <div *ngIf="progressBar.daten  || progressBar.danke" class="sum__bestellung__container">
+            <h2 class="h2__container-titel">Ihre Bestellungen</h2>
+            <ng-container *ngTemplateOutlet="produktSmall"></ng-container>
+        </div>
+
+        <p class="text-regular"><i class="bi bi-truck text-regular--red-dark"></i> Lieferung zw.<span
+                class="text-regular--red-dark"> {{devlieryDate}}</span></p>
         <p-accordion [multiple]="true">
             <p-accordionTab class="p-accordion--red-dark" header="Versandinformationen">
                 <p class="text-regular">
@@ -102,14 +122,18 @@
             </p-accordionTab>
             <p-accordionTab class="p-accordion--red-dark" header="Wiederrufsrecht">
                 <p class="text-regular">
-                    Sie haben das Recht, binnen vierzehn Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen. Die Frist beginnt ab dem Tag an dem Sie oder ein von Ihnen benannter Dritter, der nicht der Beförderer ist, die letzte Ware in Besitz genommen haben bzw. hat.   
-                    <a class="text-link" href="https://www.buhrmannbecher.de/datenschutzerklaerung/">Weitere Informationen</a></p>
+                    Sie haben das Recht, binnen vierzehn Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen. Die
+                    Frist beginnt ab dem Tag an dem Sie oder ein von Ihnen benannter Dritter, der nicht der Beförderer
+                    ist, die letzte Ware in Besitz genommen haben bzw. hat.
+                    <a class="text-link" href="https://www.buhrmannbecher.de/datenschutzerklaerung/">Weitere
+                        Informationen</a>
+                </p>
             </p-accordionTab>
         </p-accordion>
     </section>
 </main>
 <ng-template #produkt>
-    <table *ngIf="cartItems.length !== 0" class="produkt">
+    <table *ngIf="cartItems.length !== 0" class="produkt produkt--large">
         <thead class="produkt__head">
             <tr>
                 <th class="h3--light"></th>
@@ -117,7 +141,7 @@
                 <th class="h3--light">Stückpreis</th>
                 <th class="h3--light">Anzahl</th>
                 <th class="h3--light">Summe</th>
-                <th  *ngIf="!progressBar.daten && !progressBar.danke" class="h3--light"></th>
+                <th *ngIf="!progressBar.daten && !progressBar.danke" class="h3--light"></th>
             </tr>
         </thead>
         <tbody class="produkt__body">
@@ -125,7 +149,7 @@
                 <td>
                     <figure class="produkt__img-container">
                         <img class="produkt__img" [src]="item.wein.weinBildS" [alt]="item.wein.weinBildAlt">
-                        </figure>
+                    </figure>
                 </td>
                 <td>
                     <p class="text-regular--red-dark">{{dateConverter(item.wein.herstellungsDatum)}}</p>
@@ -144,8 +168,8 @@
                         <input class="selector__form__input" type="number" formControlName="count"
                             [formControlName]="'count' + (item.wein._id)"
                             [ngClass]="{'selector__form__input--invalid': counterForm.get('count' + (item.wein._id))?.invalid && counterForm.get('count' + (item.wein._id))?.touched}"
-                           [readonly] = "progressBar.daten || progressBar.danke"
-                            (input)="onInputChanged($event, i)" />
+                            [readonly]="progressBar.daten || progressBar.danke"
+                            [disabled]="progressBar.daten || progressBar.danke" (input)="onInputChanged($event, i)" />
                     </form>
                     <p *ngIf="counterForm?.get('count' + (item.wein._id))?.invalid && counterForm?.get('count' + (item.wein._id))?.touched"
                         class="text-regular--red-signal">
@@ -155,7 +179,8 @@
                 <td>
                     <p class="text-regular no-wrap-text">{{(item.wein.preis * item.produktAnzahl).toFixed(2)}} €</p>
                 </td>
-                <td  *ngIf="!progressBar.daten && !progressBar.danke && cartItems.length > 0" ><button button--full-width class="button button__secondary button--full-width"
+                <td *ngIf="!progressBar.daten && !progressBar.danke && cartItems.length > 0"><button button--full-width
+                        class="button button__secondary button--full-width"
                         (click)="deleteItemFromCart(item)">Entfernen</button></td>
             </tr>
         </tbody>
@@ -163,19 +188,23 @@
 </ng-template>
 
 <ng-template #produktSmall>
-    <p-accordion *ngIf="cartItems.length > 0" class="produkt--small" [multiple]="true" [activeIndex]="[0,1]">
+    <p-accordion *ngIf="cartItems.length > 0" class="produkt--small"
+        [ngClass]="{'produkt--small':!progressBar.daten && !progressBar.danke, 'produkt' : progressBar.daten ||  progressBar.danke }"
+        [multiple]="true" [activeIndex]="[0,1]">
         <p-accordionTab class="p-accordion--red-dark" header="Bestellungen">
             <article>
                 <section class="cart__section">
                     <div *ngFor="let item of cartItems; let i = index" class="cart__section__container--column">
                         <div class="cart__section__container--row">
-                            <figure class="cart__section__img">
-                                <img [src]="item.wein.weinBildS" [alt]="item.wein.weinBildAlt">
-                            </figure>
-                            <div class="cart__section__information">
+                            <div class="cart__section__container--row cart__section__container--row--gap">
+                                <figure class="cart__section__img">
+                                    <img [src]="item.wein.weinBildS" [alt]="item.wein.weinBildAlt">
+                                </figure>
+                                <div class="cart__section__container--column">
                                 <p class="text-regular--red-dark">{{ item.wein.name }}</p>
                                 <p class="text-regular">{{(item.wein.preis * item.produktAnzahl).toFixed(2)}} €</p>
                                 <p class="text-fine">zzgl. <span class="text-link--small">Versand</span></p>
+                            </div>
                             </div>
                             <div class="cart__section__information">
                                 <form *ngIf="counterForm" [formGroup]="counterForm">
@@ -183,6 +212,8 @@
                                     <input class="selector__form__input" type="number" formControlName="count"
                                         [formControlName]="'count' + (item.wein._id)"
                                         [ngClass]="{'selector__form__input--invalid': counterForm.get('count' + (item.wein._id))?.invalid && counterForm.get('count' + (item.wein._id))?.touched}"
+                                        [readonly]="progressBar.daten || progressBar.danke"
+                                        [disabled]="progressBar.daten || progressBar.danke"
                                         (input)="onInputChanged($event, i)" />
                                 </form>
                             </div>
@@ -192,7 +223,8 @@
                             class="text-regular--red-signal">
                             Zahl zwischen 1 und 100 eingeben
                         </p>
-                        <button class="button button__secondary" (click)="deleteItemFromCart(item)">aus dem Warenkorb
+                        <button *ngIf="!progressBar.daten && !progressBar.danke" class="button button__secondary"
+                            (click)="deleteItemFromCart(item)">aus dem Warenkorb
                             entfernen.</button>
                     </div>
                 </section>

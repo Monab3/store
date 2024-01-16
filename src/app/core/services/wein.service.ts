@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Location } from '@angular/common';
 import { Wein } from '../../core/models/Wein';
 import { WeinWrapper } from '../../core/models/Wein';
@@ -493,7 +492,7 @@ export class weinService {
     img: this.getAbsoluteImageUrl('../../../assets/weinglas.png'),
     link: 'https://www.buhrmannbecher.de/aktuelles/'
   };
-  constructor(private http: HttpClient, private location: Location) {
+  constructor(private location: Location) {
 
   }
 

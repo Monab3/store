@@ -15,7 +15,7 @@
             </svg>
         </div>
         <p class="text-regular">{{bewertungWrapper.bewertungen.length}}
-            Kundenmeinung{{bewertungWrapper.bewertungen.length==1 ? '': 'en'}}</p>
+            Kundenmeinung{{bewertungWrapper.bewertungen.length>=1 ? '': 'en'}}</p>
     </div>
     <div *ngIf="id &&  4> bewertungWrapper.bewertungen.length && bewertungWrapper.bewertungen.length > 0"
         class="bewertungen__container bewertungen--hide-for-small">

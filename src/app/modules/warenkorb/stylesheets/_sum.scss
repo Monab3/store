@@ -17,6 +17,16 @@
         @include flexbox($direction: column, $justify: space-between, $align: stretch, $wrap: nowrap);
         @include gap-component;
     }
+    &__bestellung__container{
+        @include flexbox($direction: column, $justify: center, $align: stretch, $wrap: nowrap);
+        @include gap-component;
+        background: $color-green-light; 
+        @include padding-element; 
+        border-radius: $border-radius;
+        & .cart__section__container--column{
+            background: $color-green-light; 
+        }
+    }
     &>h4 {
         width: 100%;
         align-self: center;

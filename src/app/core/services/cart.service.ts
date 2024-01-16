@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { CartItem } from '../models/CartItem';
 import { BehaviorSubject } from 'rxjs';
 import { format, addDays } from 'date-fns';
@@ -19,8 +18,7 @@ export class cartService {
     versandTotal = this.versandTotalSource.asObservable();
     cartVisibility = this.cartVisibilitySource.asObservable();
     private cartVisibilityVariable = false;
-    constructor(private http: HttpClient) {
-    }
+
     // Function to add a new item to the cart
     addToCart(newItem: CartItem) {
         const currentcart = this.cartInhaltSource.getValue();

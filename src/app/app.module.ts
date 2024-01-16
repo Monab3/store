@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgSelectModule } from '@ng-select/ng-select';
 
@@ -25,9 +24,6 @@ import { KontaktformularComponent } from './modules/warenkorb/children/kontaktfo
 import { DankeComponent } from './modules/warenkorb/children/danke/danke.component';
 import { BreadcrumbModule } from 'xng-breadcrumb';
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +43,6 @@ import { BreadcrumbModule } from 'xng-breadcrumb';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
     AccordionModule,
     BrowserAnimationsModule,
     BreadcrumbModule,

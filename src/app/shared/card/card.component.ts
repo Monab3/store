@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { cartService } from '../../core/services/cart.service';
 import { bewertungService } from '../../core/services/bewertung.service';
@@ -17,11 +17,11 @@ export class CardComponent implements OnInit {
 
   @Input() kategorie: string | undefined;
   @Input() wein: Wein | undefined;
-    @Input() cardDetail: boolean = false;
+  @Input() cardDetail: boolean = false;
   @Input() cardProduktView: boolean = false;
   @Input() productViewList: boolean = false;
-
-  appRoutes = AppRoutes;
+  @Output() showBewertungenChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+    appRoutes = AppRoutes;
 
   counterForm = new FormGroup({ counter: new FormControl(1, [Validators.min(1)]) });
   bewertungWrapper: BewertungWrapper = {
@@ -85,8 +85,10 @@ export class CardComponent implements OnInit {
       this.cartService.setcartVisibilityTrue();
     }
   }
-  
+
   scrollToEnd(): void {
+    console.log("scrollToEnd");
+    this.showBewertungenChange.emit(true);
     window.scrollTo({
       top: document.body.scrollHeight,
       behavior: 'smooth'

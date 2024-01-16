@@ -6,7 +6,6 @@ import { cartService } from '../../core/services/cart.service';
 import { weinService } from '../../core/services/wein.service';
 import { CartItem } from '../../core/models/CartItem';
 import { Wein } from '../../core/models/Wein';
-import { Rebsorte } from '../../core/models/Rebsorten';
 
 
 @Component({
@@ -23,7 +22,7 @@ export class WeinDetailseiteComponent implements OnInit {
   showBewertungen: boolean = false;
   showSteckbrief: boolean = true;
   counterForm = new FormGroup({ counter: new FormControl(1, [Validators.min(1)]) });
-  mockWein: Wein | undefined;;
+  mockWein: Wein | undefined;
 
   constructor(private cartService: cartService, private wineService: weinService, private route: ActivatedRoute) {
   }
@@ -108,7 +107,9 @@ export class WeinDetailseiteComponent implements OnInit {
     this.showBewertungen = false;
     this.showSteckbrief = true;
   }
-
+  handleShowBewertungenChange(value: boolean): void {
+    this.toggleBewertung();
+  }
   toggleBewertung() {
     this.showBewertungen = true;
     this.showSteckbrief = false;

@@ -21,7 +21,7 @@
 
 ::ng-deep .ng-dropdown-panel-items{
     border-radius: $border-radius;
-    @include border($color: $color-green-light);
+    @include border($color: $color-green-dark);
 }
 ::ng-deep .ng-select-container{
     color: $color-green-dark;
@@ -29,7 +29,7 @@
 
 .adress__container{
     @include flexbox($direction: row, $justify: center, $align: center, $wrap: wrap);
-    @include border($color: $color-green-light);
+    @include border($color: $color-green-dark);
     @include gap-component;
     border-radius: $border-radius;
     @include padding-component;

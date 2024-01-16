@@ -15,7 +15,6 @@
         @include hide-for-medium;
         @include hide-for-large;
         @include hide-for-small;
-
     }
 
     &__container {
@@ -39,7 +38,7 @@
     &__item {
         @include flexbox($direction: column, $justify: center, $align: center, $wrap: nowrap);
         @include gap-element;
-        color: $color-green-dark;
+        color: $color-red-dark;
         :hover{
             color: $color-red-dark;
             & div{
@@ -65,7 +64,7 @@
             border-radius: 50%;
             height: 30px;
             width: 30px;
-            background: $color-green-dark;
+            background: $color-red-dark;
         }
     }
 }

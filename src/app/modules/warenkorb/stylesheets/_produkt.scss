@@ -11,14 +11,14 @@
     border-collapse: collapse;
     border-spacing: 0;
     border-radius: $border-radius;
-    @include hide-for-small;
     align-self: stretch;
 
     &__container {
         @include gap-container;
-        flex: 2; 
+        flex: 2;
         @include flexbox($direction: column, $justify: space-between, $align: center, $wrap: wrap);
     }
+
     &__head {
         background-color: $color-green-dark;
 
@@ -46,8 +46,9 @@
 
         tr {
             @include border($border-property: border-bottom, $width: $padding-component , $color: $color-light);
+
             &:first-child {
-                @include border($border-property: border-top,$width: $padding-component , $color: $color-light);
+                @include border($border-property: border-top, $width: $padding-component , $color: $color-light);
             }
         }
     }
@@ -66,7 +67,8 @@
         height: 80px;
         background: $color-green-light;
     }
-    &__zur-kasse-gehen{
+
+    &__zur-kasse-gehen {
         align-self: center;
     }
 
@@ -78,5 +80,9 @@
     &--small {
         @include hide-for-large;
         @include hide-for-medium;
+    }
+
+    &--large {
+        @include hide-for-small;
     }
 }

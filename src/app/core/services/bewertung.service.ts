@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Bewertung } from '../models/Bewertung';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { BewertungWrapper } from '../models/Bewertung';
@@ -8,9 +7,7 @@ import { BewertungWrapper } from '../models/Bewertung';
 @Injectable({ providedIn: "root" })
 export class bewertungService {
 
-  constructor(private http: HttpClient) {
-  }
-
+// Diese private Variable speichert Bewertungen für verschiedene Weine. 
   private bewertungenByWine: { [wineId: number]: BehaviorSubject<BewertungWrapper> } = {
     1: new BehaviorSubject<BewertungWrapper>({
       averageRating: 4,
@@ -58,9 +55,14 @@ export class bewertungService {
       ],
     }),
   };
+  private initWineBehaviorSubject(wineId: number): void {
+    const bewertungen: Bewertung[] = []; 
+    const averageRating = this.calculateAverageRating(bewertungen);
 
-  get uniqueWineIds(): number[] {
-    return Object.keys(this.bewertungenByWine).map(Number);
+    this.bewertungenByWine[wineId] = new BehaviorSubject<BewertungWrapper>({
+      averageRating,
+      bewertungen,
+    });
   }
 
   getBewertungWrapperForWine(wineId: number): Observable<BewertungWrapper> {
@@ -69,6 +71,32 @@ export class bewertungService {
     }
     return this.bewertungenByWine[wineId].asObservable();
   }
+
+
+
+  private modifyName(name: string | undefined, surname: boolean): string {
+
+    if (!name && surname) return 'Anonym'
+    if (name) {
+      if (!surname) return name.charAt(0).toUpperCase() + '.';
+      if (surname) return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+    }
+    return '';
+  }
+
+  private calculateAverageRating(bewertungen: Bewertung[]): number {
+    if (bewertungen.length === 0) {
+      return 0;
+    }
+
+    const totalRating = bewertungen.reduce((sum, bewertung) => sum + bewertung.sterne, 0);
+    return Math.round(totalRating / bewertungen.length);
+  }
+
+  get uniqueWineIds(): number[] {
+    return Object.keys(this.bewertungenByWine).map(Number);
+  }
+
 
   addBewertungForWine(wineId: any, bewertung: Bewertung): void {
     if (!this.bewertungenByWine[wineId]) {
@@ -85,35 +113,6 @@ export class bewertungService {
       averageRating,
       bewertungen,
     });
-  }
-
-  private modifyName(name: string | undefined, surname: boolean): string {
-
-    if (!name && surname) return 'Anonym'
-    if (name) {
-      if (!surname) return name.charAt(0).toUpperCase() + '.';
-      if (surname) return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
-    }
-    return '';
-  }
-
-  private initWineBehaviorSubject(wineId: number): void {
-    const bewertungen: Bewertung[] = []; 
-    const averageRating = this.calculateAverageRating(bewertungen);
-
-    this.bewertungenByWine[wineId] = new BehaviorSubject<BewertungWrapper>({
-      averageRating,
-      bewertungen,
-    });
-  }
-
-  private calculateAverageRating(bewertungen: Bewertung[]): number {
-    if (bewertungen.length === 0) {
-      return 0;
-    }
-
-    const totalRating = bewertungen.reduce((sum, bewertung) => sum + bewertung.sterne, 0);
-    return Math.round(totalRating / bewertungen.length);
   }
 
 }

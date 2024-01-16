@@ -40,9 +40,7 @@ export class HauptmenueComponent implements OnInit {
   counterForm: FormGroup = new FormGroup({ count: new FormControl(1, [Validators.min(1)]) });
   constructor(private fb: FormBuilder, private cartService: cartService, private router: Router,
     private route: ActivatedRoute
-  ) {
-
-  }
+  ) { }
 
   //cartInhalt: Observable<any> = new Observable();
 
@@ -92,7 +90,6 @@ export class HauptmenueComponent implements OnInit {
       const fullUrl = this.router.url;
       const foundKategorie = this.navWein.find(item => fullUrl.includes(item.key));
 
-      // Set kategorie if a match is found
       if (foundKategorie) {
         this.kategorie = foundKategorie.key;
       }
@@ -185,7 +182,6 @@ toggleWebsiteMenuButton(){
   this.cartVisibility = !this.cartVisibility;
 
 }
-
 
 @HostListener('window:scroll', ['$event'])
 onScroll(event: any): void {

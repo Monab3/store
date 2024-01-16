@@ -9,9 +9,9 @@ import { KatalogseiteComponent } from './modules/katalogseite/katalogseite.compo
 import { DankeComponent } from './modules/warenkorb/children/danke/danke.component';
 
 const routes: Routes = [
-  { path: '',  component: LandingpageComponent, data: { breadcrumb: 'Weinshop' }},
+  { path: '',  component: LandingpageComponent, data: { breadcrumb: 'Home / Weinshop' }},
   { path: AppRoutes.WEINSHOP + '/:kategorie', component: KatalogseiteComponent, data: { breadcrumb: 'Galerie' } },
-  { path:  AppRoutes.DETAIL, component: WeinDetailseiteComponent , data: { breadcrumb: 'Weinansicht' }},
+  { path:  AppRoutes.DETAIL, component: WeinDetailseiteComponent , data: { breadcrumb: '/ Weinansicht' }},
   { path: AppRoutes.WARENKORB, 
     component: WarenkorbComponent, data: { breadcrumb: 'Warenkorb' },
     children: [

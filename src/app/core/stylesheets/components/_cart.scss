@@ -44,6 +44,9 @@
 
             &--row {
                 @include flexbox($direction: row, $justify: space-between, $wrap: nowrap, $align: flex-start);
+                &--gap{
+                    @include gap-element;
+                }
             }
         }
 

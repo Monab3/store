@@ -44,42 +44,6 @@
     </ul>
 </nav>
 
-<!-- Hauptnavigation der Website Mobile Ansicht -->
-<nav class="website" [ngClass]="{'hauptmenu__kategorie__nav--small--open': websitemenuButtonOpen}">
-    <ul class="page">
-        <li>
-            <a class="website-font li--hide-for-small">
-                HOME
-            </a>
-        </li>
-        <li>
-            <a class="website-font li--hide-for-small">
-                AKTUELLES
-            </a>
-        </li>
-        <li>
-            <a class="website-font li--hide-for-small">
-                WEINGUT
-            </a>
-        </li>
-        <li>
-            <a class="website-font website-font--shop li--hide-for-small" [routerLink]="['']">
-                SHOP
-            </a>
-        </li>
-        <li>
-            <a class="website-font li--hide-for-small">
-                PENSION
-            </a>
-        </li>
-        <li>
-            <a class="website-font li--hide-for-small">
-                KONTAKT
-            </a>
-        </li>
-    </ul>
-</nav>
-
 <!-- Navigation des Online-Shop -->
 <div class="hauptmenu" [ngClass]="{'hauptmenu--hidden': !isVisible}">
     <div class="hauptmenu--green">

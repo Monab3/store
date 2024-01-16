@@ -25,7 +25,7 @@
                     </button>
                 </div>
             </div>
-            <app-card *ngIf="mockWein" [wein]="mockWein" [cardDetail]="true"
+            <app-card *ngIf="mockWein" (showBewertungenChange)="handleShowBewertungenChange($event)" [wein]="mockWein" [cardDetail]="true"
                 class="produkt__grid__produktinformation"></app-card>
         </div>
     </section>
