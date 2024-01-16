@@ -12,7 +12,7 @@ import { filter } from 'rxjs/operators';
   styleUrl: './hauptmenue.component.scss'
 })
 export class HauptmenueComponent implements OnInit {
-  
+
   @Input() isVisible: boolean = true;
   appRoutes = AppRoutes;
 
@@ -26,28 +26,28 @@ export class HauptmenueComponent implements OnInit {
   cartItems: CartItem[] = [];
   cartTotalProduktAnzahl: number = 0;
   cartAnzahl: number = 0;
-  cartVisibility = false;
   cartTotal: number = 0;
   versandTotal: number = 0;
+
   hauptmenuButtonOpen: boolean = false;
   websitemenuButtonOpen: boolean = false;
-  number: any = 1;
-  kategorie = "";
 
   hauptmenuVisible: boolean = true;
   private previousScroll = 0;
 
+  cartVisibility = false;
+  kategorie = "";
   counterForm: FormGroup = new FormGroup({ count: new FormControl(1, [Validators.min(1)]) });
+
   constructor(private fb: FormBuilder, private cartService: cartService, private router: Router,
     private route: ActivatedRoute
   ) { }
-
-  //cartInhalt: Observable<any> = new Observable();
 
   ngOnInit(): void {
     this.initializeData();
     this.subscribeUrl();
   }
+
   initializeData() {
     this.cartService.cartInhalt.subscribe((data) => {
       this.cartItems = data;
@@ -63,7 +63,6 @@ export class HauptmenueComponent implements OnInit {
       this.cartTotal = data;
     });
     this.cartService.cartTotalProduktAnzahl.subscribe((data) => {
-      console.log("cartTotalProduktAnzahl: " + data);
       this.cartTotalProduktAnzahl = data;
     });
 
@@ -72,6 +71,12 @@ export class HauptmenueComponent implements OnInit {
     });
   }
 
+  /**
+  * Initialisiert Formularelemente für die Steuerung der Anzahl von Produkten im Warenkorb-PopUp.
+  * Durchläuft jeden Artikel im Warenkorb-PopUp und erstellt oder aktualisiert ein Formularelement für die Produktanzahl.
+  * Falls das Produkt neu zum Warenkorb hinzugefügt wurde, wird ein neues Formularelemente erstellt und mit der aktuellen Anzahl initialisiert.
+  * Falls sich das Produkt bereits im Warenkorb befindet, wird die neue Anzahl des Produkts im Warenkorb-PopUp gesetzt.
+  */
   initializeCounterForProduct() {
     this.cartItems.forEach((item, index) => {
       const formControlName = `count${item.wein._id}`;
@@ -83,6 +88,11 @@ export class HauptmenueComponent implements OnInit {
     });
   }
 
+  /**
+  * Abonniert die Router-Ereignisse, um Änderungen in der URL zu überwachen um im HTML Template den markierten Menüpunkt der Navigationsleiste zu aktualisieren.
+  * Die Methode extrahiert die vollständige URL und vergleicht sie mit den definierten Navigationswein-Kategorien.
+  * Wenn eine Übereinstimmung gefunden wird, wird die aktive Kategorie entsprechend aktualisiert.
+  */
   subscribeUrl() {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
@@ -93,109 +103,101 @@ export class HauptmenueComponent implements OnInit {
       if (foundKategorie) {
         this.kategorie = foundKategorie.key;
       }
-      
-})}
-
-handleNav(kategorie: string, isMobile: boolean, routerLink: string) {
-  this.router.navigate([this.appRoutes.WEINSHOP, routerLink]);
-  if (isMobile) {
-    this.togglehauptMenuButton();
+    })
   }
-}
 
-handleNavWarenkorb(navigateToWarenkorb : boolean){
-  if (navigateToWarenkorb) {
-    this.router.navigate([this.appRoutes.WARENKORB]);
-  } else {
-    this.router.navigate([this.appRoutes.WARENKORB, this.appRoutes.WARENKORB__KONTAKTFORMULAR]);
-  }
-  this.togglecart();
-}
-
-navigateToWeinshop(key: string): void {
-  this.router.navigate([this.appRoutes.WEINSHOP, key]);
-}
-
-onInputChanged($event: any, i: any) {
-  const inputValue = $event.target.value;
-  const numericValue = parseInt(inputValue, 10); // or Number(inputValue);
-
-  if (!isNaN(numericValue) && numericValue > 0) {
-    this.cartItems[i].produktAnzahl = numericValue;
-    this.cartService.addToCartFromCart(this.cartItems[i]);
-  }
-}
-
-deleteItemFromCart(item: CartItem) {
-  this.cartService.deleteFromCart(item);
-}
-
-onSubmit() {
-  if (this.counterForm.valid) {
-  } else {
-    this.markFormGroupTouched(this.counterForm);
-  }
-}
-
-  private markFormGroupTouched(formGroup: FormGroup) {
-  Object.values(formGroup.controls).forEach(control => {
-    control.markAsTouched();
-
-    if (control instanceof FormGroup) {
-      this.markFormGroupTouched(control);
+  /**
+ * Navigiert zu einer bestimmten Kategorie im Weinshop. Wenn der Shop in der mobilen Ansicht ausgeführt wird, wird das Drop-Down Menü geschlossen.
+ *
+ * @param kategorie - Die zu navigierende Kategorie.
+ * @param isMobile - Gibt an, ob die Anwendung in der mobilen Ansicht ausgeführt wird.
+ * @param routerLink - Der Router-Link für die Navigation.
+ */
+  handleNav(kategorie: string, isMobile: boolean, routerLink: string) {
+    this.router.navigate([this.appRoutes.WEINSHOP, routerLink]);
+    if (isMobile) {
+      this.togglehauptMenuButton();
     }
-  });
-}
-
-itemPriceSum(item: CartItem) {
-  return (item.wein.preis * item.produktAnzahl).toFixed(2);
-}
-
-cartTotalPriceSum() {
-  return (this.cartTotal + this.versandTotal).toFixed(2);
-}
-
-togglehauptMenuButton() {
-  if (this.cartVisibility) {
-    this.cartVisibility = false;
-  }
-  if(this.websitemenuButtonOpen){
-    this.websitemenuButtonOpen = false;
-  }
-  this.hauptmenuButtonOpen = !this.hauptmenuButtonOpen;
-}
-
-toggleWebsiteMenuButton(){
-  if (this.cartVisibility) {
-    this.cartVisibility = false;
-  }
-  if(this.hauptmenuButtonOpen){
-    this.hauptmenuButtonOpen = false;
-  }
-  this.websitemenuButtonOpen = !this.websitemenuButtonOpen;
-}
-
-
-  public togglecart(): void {
-  if(this.hauptmenuButtonOpen)
-  this.hauptmenuButtonOpen = false;
-  this.cartVisibility = !this.cartVisibility;
-
-}
-
-@HostListener('window:scroll', ['$event'])
-onScroll(event: any): void {
-  const currentScroll = window.scrollY;
-
-  if (currentScroll <= 0) {
-    this.hauptmenuVisible = true; 
-  }  else {
-    this.hauptmenuVisible = false; 
   }
 
-  this.previousScroll = currentScroll;
-}
+  /**
+  * Navigiert zum Warenkorb oder zum Kontaktformular des Warenkorbs, abhängig von der gegebenen Bedingung.
+  *
+  * @param navigateToWarenkorb - Gibt an, ob zum Warenkorb (true) oder zum Kontaktformular des Warenkorbs (false) navigiert werden soll.
+  */
+  handleNavWarenkorb(navigateToWarenkorb: boolean) {
+    if (navigateToWarenkorb) {
+      this.router.navigate([this.appRoutes.WARENKORB]);
+    } else {
+      this.router.navigate([this.appRoutes.WARENKORB, this.appRoutes.WARENKORB__KONTAKTFORMULAR]);
+    }
+    this.togglecart();
+  }
 
+/**
+ * Wird aufgerufen, wenn die Anzahl der Weine im Warenkorb über das Warenkorb PopUp geändert wird.
+ * 
+ * @param $event - Das Event-Objekt, das die Änderung auslöst.
+ * @param i - Der Index des aktuellen Eingabefelds im Warenkorb.
+ */
+  onInputChanged($event: any, i: any) {
+    const inputValue = $event.target.value;
+    const numericValue = parseInt(inputValue, 10);
+
+    if (!isNaN(numericValue) && numericValue > 0) {
+      this.cartItems[i].produktAnzahl = numericValue;
+      this.cartService.addToCartFromCart(this.cartItems[i]);
+    }
+  }
+
+  deleteItemFromCart(item: CartItem) {
+    this.cartService.deleteFromCart(item);
+  }
+
+  itemPriceSum(item: CartItem) {
+    return (item.wein.preis * item.produktAnzahl).toFixed(2);
+  }
+
+  cartTotalPriceSum() {
+    return (this.cartTotal + this.versandTotal).toFixed(2);
+  }
+
+  togglehauptMenuButton() {
+    if (this.cartVisibility) {
+      this.cartVisibility = false;
+    }
+    if (this.websitemenuButtonOpen) {
+      this.websitemenuButtonOpen = false;
+    }
+    this.hauptmenuButtonOpen = !this.hauptmenuButtonOpen;
+  }
+
+  /**
+ * Diese Methode wird aufgerufen, um den Warenkorb ein- oder auszublenden.
+ * Wenn das Hauptmenü geöffnet ist, wird es zuerst geschlossen, und dann wird die Sichtbarkeit des Warenkorbs umgekehrt.
+ */
+  togglecart(): void {
+    if (this.hauptmenuButtonOpen)
+      this.hauptmenuButtonOpen = false;
+    this.cartVisibility = !this.cartVisibility;
+  }
+
+  /**
+  * HostListener-Methode, die auf das Scroll-Ereignis des Fensters reagiert.
+  * Passt die Sichtbarkeit des Menüs der Webseite des Weingutes basierend auf dem Scrollverhalten an.
+  * Wenn der aktuelle Bildlauf an der oberen Position ist, wird das Menü sichtbar gemacht, sonst unsichtbar.
+  * @param event - Das ausgelöste Scroll-Ereignis
+  */
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event: any): void {
+    const currentScroll = window.scrollY;
+    if (currentScroll <= 0) {
+      this.hauptmenuVisible = true;
+    } else {
+      this.hauptmenuVisible = false;
+    }
+    this.previousScroll = currentScroll;
+  }
 }
 
 

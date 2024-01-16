@@ -13,7 +13,6 @@
 @import '../../../core/stylesheets/components/page-titel';
 
 
-/* Weinmenü */
 .weinmenu {
     @include padding-component($left: true, $right: true, $top: false, $bottom: false);
     position: relative;
@@ -33,21 +32,17 @@
         @include effect-border-underline($color-bg: $color-red-dark);
         color: $color-green-dark;
     }
-
-    &__img-container {
+    &__img {
         overflow: hidden;
         border-radius: 100%;
         width: 80px;
         height: 80px;
         @include border($width: $border-width-max, $color: $color-light);
         box-shadow: $border-box-shadow;
-    }
-
-    &__img {
-        width: 100%;
-        height: auto;
-        display: block;
-        object-fit: contain;
+        & > img{
+            height: auto;
+            @include responsive-img($width: true, $height: false, $object-fit: contain);
+        }
     }
 }
 

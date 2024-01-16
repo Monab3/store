@@ -9,7 +9,9 @@ import { weinService } from '../../core/services/wein.service';
   styleUrl: './landingpage.component.scss'
 })
 export class LandingpageComponent implements OnInit {
+
   appRoutes = AppRoutes;
+
   weinmenueBilder = ['../../../assets/landingpage/weinmenue_weisswein.jpg', '../../../assets/landingpage/weinmenue_rotwein.jpg', '../../../assets/landingpage/weinmenue_rosewein.jpg', '../../../assets/landingpage/weinmenue_schaumwein.jpg'];
   weinmenueBildAlt = ['Navigation zu den Weißweinen', 'Navigation zu den Rotweinen', 'Navigation zu den Roséweinen', 'Navigation zu den Schaumweinen'];
 
@@ -21,6 +23,7 @@ export class LandingpageComponent implements OnInit {
   ]; 
 
   empfehlungDesHauses: EmpfehlungDesHauses | undefined;
+  
   constructor(private weinService: weinService) { }
 
   ngOnInit(): void {

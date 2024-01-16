@@ -8,9 +8,6 @@
 @import '../../../core/stylesheets/elements/controls';
 @import '../../../core/stylesheets/components/quantity_selector';
 
-
-
-
 .hauptmenu__open-cart-button {
     flex-grow: 1;
     @include flexbox($direction: row, $justify: center, $wrap: nowrap, $align: center);

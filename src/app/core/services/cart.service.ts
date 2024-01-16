@@ -7,6 +7,8 @@ import { format, addDays } from 'date-fns';
 
 @Injectable({ providedIn: "root" })
 export class cartService {
+    private cartVisibilityVariable = false;
+
     private cartInhaltSource = new BehaviorSubject<CartItem[]>([]);
     private cartTotalSource = new BehaviorSubject<number>(0);
     private cartTotalProduktAnzahlSource = new BehaviorSubject<number>(0);
@@ -18,7 +20,6 @@ export class cartService {
     cartTotalProduktAnzahl = this.cartTotalProduktAnzahlSource.asObservable();
     versandTotal = this.versandTotalSource.asObservable();
     cartVisibility = this.cartVisibilitySource.asObservable();
-    private cartVisibilityVariable = false;
 
     /**
     * Berechnet den Gesamtpreis und die Gesamtanzahl der Produkte im Warenkorb.

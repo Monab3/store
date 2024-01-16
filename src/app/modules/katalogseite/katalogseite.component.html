@@ -1,5 +1,6 @@
 <main class="page">
     <div class="page__grid">
+        <!-- Überschrift der Katalogseite -->
         <header class="page__grid__header page-titel">
             <figure>
                 <img src="../../assets/weinweine-icon.png" alt="Weinweinmenü">
@@ -8,9 +9,13 @@
                 {{titel}}
             </h1>
         </header>
+
+        <!-- Filterliste -->
         <section class="page__grid__filter filter">
             <ng-container *ngTemplateOutlet="accordionContent"></ng-container>
         </section>
+
+        <!-- Kacheldarstellungssteuerung und aufpoppende Button der gesetzten Filter -->
         <section class="page__grid__produkt produkt__grid">
             <div class="filter__container--small" [class.filter__container--small--open]="filterButtonSmallOpen">
                 <div class="filter--small" [class.filter--small--open]="filterButtonSmallOpen">
@@ -18,7 +23,8 @@
                 </div>
             </div>
             <section class="produkt__grid__toggle-product-view toggle-product-view">
-                <button class="hamburger-button" (click)="toggleFilterButton()" [class.hamburger-button--open]="filterButtonSmallOpen" >
+                <button class="hamburger-button" (click)="toggleFilterButton()"
+                    [class.hamburger-button--open]="filterButtonSmallOpen">
                     <div></div>
                 </button>
                 <ul id="toggle-product-view_ul">
@@ -31,7 +37,6 @@
                             <i class="bi bi-x-lg bi-3x"></i>
                         </button>
                     </li>
-
                     <li *ngIf="filters.rebsorte">
                         <button class="remove__button" (click)="setFiltersRebsorte(null)">
                             <span>{{ filters.rebsorte }}</span>
@@ -47,7 +52,6 @@
                             <rect x="13.5" y="0.5" width="10" height="10" rx="1.5" stroke="#6D865E" />
                             <rect x="13.5" y="13.5" width="10" height="10" rx="1.5" stroke="#6D865E" />
                         </svg>
-
                     </button>
                     <button (click)="toggleProductViewList()" [ngClass]="{ 'color-red-dark': productViewList}">
                         <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -57,54 +61,63 @@
                     </button>
                 </nav>
             </section>
+
+        <!-- Gallerie - Darstellung, wenn keine Weine nach einer Filterung gefunden wurden -->
             <article class="produkt__grid__card-list card-list " *ngIf="dispayNoProductsFound">
                 <header class="card-list--full-width">
                     <h3 class="h3">Keine Weine unter ihren Filter</h3>
                     <section class="card-list--full-width">
-                        <p class="text-regular">Leider konnten wir keine Weine unter den von Ihnen Angebenen Filtern finden</p>
+                        <p class="text-regular">Leider konnten wir keine Weine unter den von Ihnen Angebenen Filtern
+                            finden</p>
                     </section>
                     <footer>
                         <button class="button button__secondary" (click)="removeAllFilters()"><span>Filter
-                            entfernen</span></button>
+                                entfernen</span></button>
                     </footer>
                 </header>
             </article>
-            <app-card *ngFor="let wein of filterDataWine" [wein]="wein"  [kategorie]="kategorie" [cardProduktView]="true" [productViewList]="productViewList" class="produkt__grid__produktinformation"
-            [ngClass]="{ 'produkt__grid__card-list': productViewList, 'produkt__grid__card': !productViewList }"
-            ></app-card>
+
+        <!-- Gallerie -->
+            <app-card *ngFor="let wein of filterDataWine" [wein]="wein" [kategorie]="kategorie" [cardProduktView]="true"
+                [productViewList]="productViewList" class="produkt__grid__produktinformation"
+                [ngClass]="{ 'produkt__grid__card-list': productViewList, 'produkt__grid__card': !productViewList }"></app-card>
         </section>
     </div>
 </main>
 
+<!-- Filter-Akkordeon-Vorlage -->
 <ng-template #accordionContent>
     <h2 class="h2--light"> Filter</h2>
-    <button class="button button__secondary button__secondary--light button__secondary--font-light" (click)="removeAllFilters()">Filter
+    <button class="button button__secondary button__secondary--light button__secondary--font-light"
+        (click)="removeAllFilters()">Filter
         entfernen</button>
-    <p-accordion *ngIf="weinGeschmackByNumbers" class ="p-accordion--white" [multiple]="true" [activeIndex]="[0,1]">
+    <p-accordion *ngIf="weinGeschmackByNumbers" class="p-accordion--white" [multiple]="true" [activeIndex]="[0,1]">
         <p-accordionTab header="Geschmack">
             <form [formGroup]="formGeschmack" class="filter__form">
                 <ng-container *ngFor="let geschmack of geschmaecker">
-                <div *ngIf="weinGeschmackByNumbers?.[geschmack]" class="filter__radio">
-                    <label class="filter__radio__label text-regular--light">
-                        <input type="radio" [class.filter__label--small--open]="filterButtonSmallOpen" formControlName="geschmack" [value]="geschmack">
-                        {{ geschmack }}
-                    </label>
-                    <p class="filter__count text-regular">{{weinGeschmackByNumbers?.[geschmack]}}</p>
-                </div>
-            </ng-container>
+                    <div *ngIf="weinGeschmackByNumbers?.[geschmack]" class="filter__radio">
+                        <label class="filter__radio__label text-regular--light">
+                            <input type="radio" [class.filter__label--small--open]="filterButtonSmallOpen"
+                                formControlName="geschmack" [value]="geschmack">
+                            {{ geschmack }}
+                        </label>
+                        <p class="filter__count text-regular">{{weinGeschmackByNumbers?.[geschmack]}}</p>
+                    </div>
+                </ng-container>
             </form>
         </p-accordionTab>
         <p-accordionTab *ngIf="weinRebsorteByNumbers" header="Rebsorte">
             <form [formGroup]="formRebsorte" class="filter__form">
-               <ng-container *ngFor="let rebsorte of rebsorten">
-                <div *ngIf="weinRebsorteByNumbers?.[rebsorte]" class="filter__radio">
-                    <label class="filter__radio__label text-regular--light">
-                        <input type="radio" [class.filter__label--small--open]="filterButtonSmallOpen" formControlName="rebsorte" [value]="rebsorte"> {{ rebsorte }}
-                    </label>
-                    <p class="filter__count text-regular">
-                        {{weinRebsorteByNumbers?.[rebsorte]}}</p>
-                </div>
-            </ng-container>
+                <ng-container *ngFor="let rebsorte of rebsorten">
+                    <div *ngIf="weinRebsorteByNumbers?.[rebsorte]" class="filter__radio">
+                        <label class="filter__radio__label text-regular--light">
+                            <input type="radio" [class.filter__label--small--open]="filterButtonSmallOpen"
+                                formControlName="rebsorte" [value]="rebsorte"> {{ rebsorte }}
+                        </label>
+                        <p class="filter__count text-regular">
+                            {{weinRebsorteByNumbers?.[rebsorte]}}</p>
+                    </div>
+                </ng-container>
             </form>
         </p-accordionTab>
     </p-accordion>

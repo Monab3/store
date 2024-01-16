@@ -21,8 +21,6 @@
   object-fit: $object-fit;
 }
 
-
-
 /* Gaps */
 @mixin gap-page {
   gap: $gap-page;
@@ -267,7 +265,6 @@
 }
 
 /* Grid Layout */
-
 @mixin grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -318,8 +315,6 @@
   }
 
 }
-
-
 
 @mixin grid__span__quarter--mg-lg($multipy: 1) {
   grid-column: span 3 * $multipy;

@@ -1,36 +1,44 @@
 <main class="landingpage__color">
-<div class="page page__grid">
-    <section class="page__grid__hero">
-        <figure class="hero__img">
-           <img src="../../../assets/landingpage/landingpage-weingut-l.jpg" alt="Bild vom Weingut">
-            <figcaption>
-                <h2 class="h2">Willkommen in unserem Online-Shop</h2>
-            </figcaption>
-        </figure>
-    </section>
-    <section class="page__grid__weinkategorien weinkategorien__grid">
-        <nav class="weinmenu__grid weinmenu">
-            <h2 class="h2__container-titel">Unsere Weinkategorien</h2>
-            <a *ngFor="let nav of navWein; index as i" class="weinmenu__button__nav"
-                [routerLink]="[appRoutes.WEINSHOP, nav.key]">
-                <figure class="weinmenu__img-container">
-                    <img [src]="weinmenueBilder[i]" [alt]="weinmenueBildAlt[i]" class="logo weinmenu__img">
-                </figure>
-                <span class="weinmenu__text-margin h3">{{ nav.value}}</span>
-            </a>
-        </nav>
-    </section>
-    <section class="page__grid__info info__grid">
-        <div class="info__bild">
-            <figure class="info__img">
-                <img [src]="empfehlungDesHauses?.img" [alt]="empfehlungDesHauses?.alt">
+    <div class="page page__grid">
+
+        <!-- Hero-Element -->
+        <section class="page__grid__hero">
+            <figure class="hero__img">
+                <img src="../../../assets/landingpage/landingpage-weingut-l.jpg" alt="Bild vom Weingut">
+                <figcaption>
+                    <h2 class="h2">Willkommen in unserem Online-Shop</h2>
+                </figcaption>
             </figure>
-        </div>
-        <div class="info__text--left">
-            <h2 class="h2">Empfehlung des Hauses: {{empfehlungDesHauses?.wein?.name}}</h2>
-            <p class="text-regular">{{empfehlungDesHauses?.text}}</p>
-            <a class="text-link"[routerLink]="['/', appRoutes.DETAIL, {kategorie: empfehlungDesHauses?.kategorie, id: empfehlungDesHauses?.wein?._id}]">Wein ansehen</a>
-        </div>
-    </section>
-</div>
+        </section>
+
+        <!-- Weinkategorie Menü -->
+        <section class="page__grid__weinkategorien weinkategorien__grid">
+            <nav class="weinmenu__grid weinmenu">
+                <h2 class="h2__container-titel">Unsere Weinkategorien</h2>
+                <a *ngFor="let nav of navWein; index as i" class="weinmenu__button__nav"
+                    [routerLink]="[appRoutes.WEINSHOP, nav.key]">
+                    <figure class="weinmenu__img">
+                        <img [src]="weinmenueBilder[i]" [alt]="weinmenueBildAlt[i]">
+                    </figure>
+                    <span class="weinmenu__text-margin h3">{{ nav.value}}</span>
+                </a>
+            </nav>
+        </section>
+
+        <!-- Weinempfehlung -->
+        <section class="page__grid__info info__grid">
+            <div class="info__bild">
+                <figure class="info__img">
+                    <img [src]="empfehlungDesHauses?.img" [alt]="empfehlungDesHauses?.alt">
+                </figure>
+            </div>
+            <div class="info__text--left">
+                <h2 class="h2">Empfehlung des Hauses: {{empfehlungDesHauses?.wein?.name}}</h2>
+                <p class="text-regular">{{empfehlungDesHauses?.text}}</p>
+                <a class="text-link"
+                    [routerLink]="['/', appRoutes.DETAIL, {kategorie: empfehlungDesHauses?.kategorie, id: empfehlungDesHauses?.wein?._id}]">Wein
+                    ansehen</a>
+            </div>
+        </section>
+    </div>
 </main>

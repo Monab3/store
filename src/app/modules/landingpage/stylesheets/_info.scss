@@ -12,6 +12,34 @@
 @import '../../../core/stylesheets/components/quantity_selector';
 @import '../../../core/stylesheets/components/page-titel';
 
-.info{
+.info {
+    &__bild {
+        @include grid__span__third--lg;
+    }
+    &__img {
+        overflow: hidden;
+        height: 60vh;
+        width: auto;
+        text-align: left;
     
+        &>img {
+            @include responsive-img($width: true, $height: true, $object-fit: contain);
+        }
+    }
+    &__text--left {
+        @include flexbox($direction: column, $justify: center, $align: flex-start);
+        @include grid__span__third--lg($multipy: 2);
+        text-align: left;
+    }
+}
+
+@media only screen and (min-width: 0) and (max-width:$breakpoint-medium--minus) {
+    .info__bild {
+        @include grid__span__all;
+        text-align: center;
+    }
+
+    .info__text--left {
+        @include grid__span__all;
+    }
 }

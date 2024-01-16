@@ -108,7 +108,6 @@ dataWein: Wein[] | undefined= [];
   }
 
   removeAllFilters(): void {
-    console.log("remove all filters");
     this.filters = {
       geschmack: null,
       rebsorte: null

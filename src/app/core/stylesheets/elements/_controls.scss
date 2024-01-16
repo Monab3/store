@@ -105,10 +105,6 @@
   }
 }
 
-.button__nav {
-
-}
-
 .remove__button {
   @include fonts($font-special, $font-size-regular, $font-weight-regular, $color : $color-green-dark);
   border: none;

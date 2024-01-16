@@ -2,9 +2,6 @@
 @import '../tools/variables';
 @import '../mixins/mixins';
 
-//TODO add font to be inherrited from main or something
-
-
 .h1 {
     @include fonts($font-header, $font-size-extra-large, $font-weight-regular, $color: $color-red-dark);
     &--light{
