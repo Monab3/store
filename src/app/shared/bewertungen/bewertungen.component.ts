@@ -16,15 +16,17 @@ export class BewertungenComponent implements OnInit {
   stars =[1,2,3,4,5];
   rating= 0 ; 
 
-  bewertungWrapper: BewertungWrapper = {
-    averageRating: 0,
-    bewertungen: []
-  };
+
   currentIndex: number = 0;
   openFormular: boolean = false;
   openThanYouText = false; 
   bewertungAbgegeben: boolean = false;
   bewertungWrapper$: Observable<BewertungWrapper> = new Observable<BewertungWrapper>();
+
+  bewertungWrapper: BewertungWrapper = {
+    averageRating: 0,
+    bewertungen: []
+  };
 
   bewertungForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -40,9 +42,6 @@ export class BewertungenComponent implements OnInit {
     this.initialiseData();
     this.bewertungAbgegeben = false;
   }
-
-
-
 
   initialiseData(): void {
     if(this.id != null){
@@ -90,7 +89,7 @@ export class BewertungenComponent implements OnInit {
     this.currentIndex = newIndex;
   }
 
-  onSubmit() {
+onSubmit() {
     if (this.bewertungForm.valid) {
       if (this.bewertungForm.valid) {
         const bewertung: Bewertung = {
