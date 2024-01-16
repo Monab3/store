@@ -17,12 +17,12 @@ RxJS:** 7.8.0
 xng-breadcrumb:** 7.2.0
 
 ## Installation
-Stelle sicher, dass Node.js auf deinem System installiert ist. (Node.js herunterladen: https://nodejs.org/en) 
-Folge diesen Schritten, um das Projekt lokal zu installieren:
+Stelle Sie sicher, dass Node.js auf Ihrem System installiert ist. (Node.js herunterladen: https://nodejs.org/en) 
+Folge Sie diesen Schritten, um das Projekt lokal zu installieren:
 -> Clonen Sie das Projekt
   1.Möglichkeit: Gehen zur GitHub-Seite deines Projekts und Downloaden sie die ZIP-Datei mit dem gesamten Projekt. 
   Entpacke die ZIP-Datei in das gewünschte Verzeichnis auf Ihrem Computer.
-  2.Möglichkeit: Falls Sie Git auf Ihrem Computer Installiert haben können Sie das Projekt mit über. Dafür kopieren Sie die    Git-Repository-URL und führen folgenden Befehl in ihrer Kommandozeile aus: git clone {Git-Repository-URL}
+  2.Möglichkeit: Falls Sie Git auf Ihrem Computer Installiert haben, können Sie das Projekt damit Clonen. Dafür kopieren Sie die Git-Repository-URL und führen folgenden Befehl in ihrer Kommandozeile aus: git clone {Git-Repository-URL}
 -> Navigieren Sie zum Projektverzeichnis /store
 -> installieren Sie die Abhändigkeiten des Projektes mit dem Befehl "npm install"
 -> starten die Anwendung mit dem Befehl "npm start" oder "ng serve"
