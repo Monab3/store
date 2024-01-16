@@ -20,7 +20,7 @@
         @include margin-container;
     }
 
-    &__nav-button {
+    &__button__nav {
         flex-grow: 1;
         border-bottom: 1px solid $color-green-light;
         @include flexbox($justify: center, $wrap: nowrap, $align: center);

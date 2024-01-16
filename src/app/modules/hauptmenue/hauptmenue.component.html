@@ -118,7 +118,7 @@
                 [ngClass]="{'hauptmenu__kategorie__nav--small--open': hauptmenuButtonOpen && hauptmenuVisible, 'hauptmenu__kategorie__nav--small--open--scroll': hauptmenuButtonOpen && !hauptmenuVisible}">
                 <ul class="page">
                     <li *ngFor="let nav of navWein; index as i">
-                        <button class="nav-button" [ngClass]="{'nav-button--active': nav.value == kategorie}"
+                        <button class="button__nav" [ngClass]="{'button__nav--active': nav.value == kategorie}"
                             (click)="handleNav(nav.value, true,nav.key)">
                             <span>{{ nav.value }}</span>
                         </button>
@@ -127,8 +127,8 @@
             </nav>
 
             <!-- Navigationbutton des Online-Shop Desktop Ansicht -->
-            <button *ngFor="let nav of navWein; index as i" class="nav-button hauptmenu__kategorie__nav__button--hide"
-                [routerLink]="[appRoutes.WEINSHOP, nav.key]" [ngClass]="{'nav-button--active': nav.key == kategorie}"
+            <button *ngFor="let nav of navWein; index as i" class="button__nav hauptmenu__kategorie__nav__button--hide"
+                [routerLink]="[appRoutes.WEINSHOP, nav.key]" [ngClass]="{'button__nav--active': nav.key == kategorie}"
                 (click)="handleNav(nav.value, false, nav.key)">
                 <span>{{nav.value}}</span>
             </button>

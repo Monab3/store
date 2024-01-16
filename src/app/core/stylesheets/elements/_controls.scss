@@ -1,9 +1,8 @@
 @import '../mixins/mixins';
 @import '../mixins/mixins-effects';
 @import '../tools/variables';
-//TODO Hover and Focus
 
-
+// Stylevorgaben für die Button der Anwendung
 
 .button {
   border-radius: $border-radius;
@@ -79,16 +78,26 @@
     }
   }
 
-  &__cancel {
-    @include fonts($font-special, $font-size-regular, $font-weight-regular, $color : $color-red-dark);
-
-    &:hover {
-      color: $color-red-signal;
+  &__nav{
+    flex-grow: 1;
+    border-bottom: 1px solid $color-green-light;
+    @include flexbox($justify: center, $wrap: nowrap, $align: center);
+    @include effect-border-underline($color-bg: $color-red-dark);
+    color: $color-green-dark;
+    border: none;
+    @include fonts($font-header, $font-size-medium, $font-weight-bold, $color: $color-green-dark);
+    &--active{
+      color: $color-red-dark;
+      @include border($border-property: border-bottom,  $width: 2px, $color: $color-red-dark);
     }
-
-    &:active {
-      color: $color-red-signal;
-    }
+    &--small{
+      border-bottom: 1px solid $color-green-light;
+      @include effect-border-underline($color-bg: $color-red-dark);
+      color: $color-green-dark;
+      border: none;
+      @include fonts($font-header, $font-size-medium, $font-weight-bold, $color: $color-green-dark);
+  
+    } 
   }
 
   &--full-width {
@@ -96,26 +105,8 @@
   }
 }
 
-.nav-button {
-  flex-grow: 1;
-  border-bottom: 1px solid $color-green-light;
-  @include flexbox($justify: center, $wrap: nowrap, $align: center);
-  @include effect-border-underline($color-bg: $color-red-dark);
-  color: $color-green-dark;
-  border: none;
-  @include fonts($font-header, $font-size-medium, $font-weight-bold, $color: $color-green-dark);
-  &--active{
-    color: $color-red-dark;
-    @include border($border-property: border-bottom,  $width: 2px, $color: $color-red-dark);
-  }
-  &--small{
-    border-bottom: 1px solid $color-green-light;
-    @include effect-border-underline($color-bg: $color-red-dark);
-    color: $color-green-dark;
-    border: none;
-    @include fonts($font-header, $font-size-medium, $font-weight-bold, $color: $color-green-dark);
+.button__nav {
 
-  }
 }
 
 .remove__button {

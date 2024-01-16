@@ -8,6 +8,8 @@
 @import '../../../core/stylesheets/elements/controls';
 @import '../../../core/stylesheets/components/quantity_selector';
 
+// Styles für den Warenkorb Pup-Up Fenster. Die Gestaltung der Weine werden auch in anderen Komponenten verwendet.
+
 .cart {
     &__container {
         top: $height-nav;
@@ -27,7 +29,6 @@
             @include padding-component;
         }
     }
-
     &__header {
         @include flexbox($direction: row, $justify: space-between, $wrap: nowrap, $align: stretch);
         background: $color-green-light;
@@ -49,8 +50,6 @@
                 }
             }
         }
-
-
         &--no-items {
             background-color: $color-light;
             text-align: center;
@@ -65,7 +64,6 @@
                 @include responsive-img(100%, 100%, $object-fit: contain)
             }
         }
-
         &__information {
             @include flexbox($direction: column, $justify: flex-start, $wrap: nowrap, $align: stretch);
 
@@ -97,7 +95,6 @@
 }
 
 //Media Queries
-
 @media only screen and (max-width: $breakpoint-small) {
     .cart {
         &__container {

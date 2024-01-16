@@ -1,3 +1,5 @@
+//Stylevorgaben für große Überschrift
+
 .page-titel{
     @include flexbox($direction: row, $justify: center, $wrap: nowrap, $align: center);
     @include gap-container;

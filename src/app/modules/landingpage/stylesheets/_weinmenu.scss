@@ -26,7 +26,7 @@
         @include margin-element;
     }
 
-    &__nav-button {
+    &__button__nav {
         @include grid__span__quarter--mg-lg;
         @include border($border-property: border-bottom, $color : $color-green-light);
         @include flexbox($justify: center, $wrap: nowrap, $align: center);

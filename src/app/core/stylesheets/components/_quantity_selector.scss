@@ -4,6 +4,8 @@
 @import '../mixins/mixins-layout';
 @import '../mixins/mixins-effects';
 
+//Stylevorgaben für die das Formular zum verändern der Anzahl der Weine im Warenkorb
+
 .selector {
     @include effect-drop-shadow-hover();
     padding: $padding-btn-y-small 0;

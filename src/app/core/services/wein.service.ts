@@ -465,6 +465,7 @@ export class weinService {
     }
   ];
 
+  //Definieren wie viele Weine pro Geschmack exsistieren
   private geschmackFilters: [string, WeinFilter][] = [
     ['weisswein', { Trocken: 4, Lieblich: 1, Feinherb: 1, Riesling: 2 }],
     ['rotwein', { Trocken: 1, Lieblich: 1, Feinherb: 1 }],
@@ -472,6 +473,7 @@ export class weinService {
     ['schaumwein', { Trocken: 2, Lieblich: 1 }]
   ];
 
+    //Definieren wie viele Weine pro Rebsorte exsistieren
   private rebsorteFilters: [string, WeinFilter][] = [
     ['weisswein', { Riesling: 2, Burgunder: 4, Rivaner: 1 }],
     ['rotwein', { Burgunder: 1, Dornfelder: 1, Anderes: 1 }],
@@ -492,8 +494,18 @@ export class weinService {
     img: this.getAbsoluteImageUrl('../../../assets/weinglas.png'),
     link: 'https://www.buhrmannbecher.de/aktuelles/'
   };
-  constructor(private location: Location) {
 
+  constructor(private location: Location) { }
+
+  /**
+ * Konvertiert einen relativen Bildpfad in eine absolute URL mithilfe des Angular Location-Dienstes.
+ * Dadurch wird sichergestellt, dass der Bildpfad unabhängig von der URL oder der Bereitstellungsumgebung der Anwendung korrekt aufgelöst wird.
+ * 
+ * @param relativePath Der relative Pfad des Bildes.
+ * @returns Die absolute URL des Bildes.
+ */
+  private getAbsoluteImageUrl(relativePath: string): String {
+    return this.location.prepareExternalUrl(relativePath);
   }
 
   getWines() {
@@ -512,40 +524,36 @@ export class weinService {
     const foundWine = this.wineData
       .find((category) => category.key === kategorie)
       ?.value.find((wine) => wine._id === id);
-
     return foundWine || undefined;
   }
 
   getWinesByKategorie(kategorie: string): Wein[] | undefined {
     const weinValue = this.wineData.find(category => category.key === kategorie)?.value;
-
     if (weinValue) {
-      console.log("wein service: " + weinValue + "")
       return weinValue;
     }
     return;
   }
 
+  /**
+  * Gibt die Anzahl der Weine einer Kategorie  pro Geschmacks Filter zurück
+  * 
+  * @param kategorie - Die Kategorie des Geschmacks, für den der Weinfilter abgerufen werden soll.
+  * @returns Der Weinfilter für den angegebenen Geschmack oder 'undefined', wenn nicht gefunden.
+  */
   getGeschmackByNumber(kategorie: string): WeinFilter | undefined {
     const weinFilter = this.geschmackFilters.find(filter => filter[0] === kategorie);
     return weinFilter ? weinFilter[1] : undefined;
   }
 
+  /**
+  * Gibt die Anzahl der Weine einer Kategorie  pro Rebsorten Filter zurück
+  * 
+  * @param kategorie - Die Kategorie des Geschmacks, für den der Weinfilter abgerufen werden soll.
+  * @returns Der Weinfilter für den angegebenen Geschmack oder 'undefined', wenn nicht gefunden.
+  */
   getRebsorteByNumber(kategorie: string): WeinFilter | undefined {
     const weinFilter = this.rebsorteFilters.find(filter => filter[0] === kategorie);
     return weinFilter ? weinFilter[1] : undefined;
   }
-
-  /**
-   * Konvertiert einen relativen Bildpfad in eine absolute URL mithilfe des Angular Location-Dienstes.
-   * Dadurch wird sichergestellt, dass der Bildpfad unabhängig von der URL oder der Bereitstellungsumgebung der Anwendung korrekt aufgelöst wird.
-   * 
-   * @param relativePath Der relative Pfad des Bildes.
-   * @returns Die absolute URL des Bildes.
-   */
-
-  private getAbsoluteImageUrl(relativePath: string): String {
-    return this.location.prepareExternalUrl(relativePath);
-  }
-
 }

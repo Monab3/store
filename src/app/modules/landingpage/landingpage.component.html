@@ -11,7 +11,7 @@
     <section class="page__grid__weinkategorien weinkategorien__grid">
         <nav class="weinmenu__grid weinmenu">
             <h2 class="h2__container-titel">Unsere Weinkategorien</h2>
-            <a *ngFor="let nav of navWein; index as i" class="weinmenu__nav-button"
+            <a *ngFor="let nav of navWein; index as i" class="weinmenu__button__nav"
                 [routerLink]="[appRoutes.WEINSHOP, nav.key]">
                 <figure class="weinmenu__img-container">
                     <img [src]="weinmenueBilder[i]" [alt]="weinmenueBildAlt[i]" class="logo weinmenu__img">
