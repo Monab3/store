@@ -52,20 +52,19 @@
             }
         }
     }
-
     &__img {
-        width: 80px;
-        height: 80px;
-        display: block;
-        object-fit: scale-down;
-    }
-
-    &__img-container {
         overflow: hidden;
         border-radius: $border-radius;
         width: auto;
         height: 80px;
         background: $color-green-light;
+        
+        & > img {
+            width: 80px;
+            height: 80px;
+            display: block;
+            object-fit: scale-down;
+        }
     }
 
     &__zur-kasse-gehen {

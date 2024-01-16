@@ -1,6 +1,10 @@
 <section class="produkt__container">
     <h2 class="h2__container-titel">Ihre Kontaktdaten</h2>
+
+    <!-- Anzeige der Adressdaten nachdem der Nutzer sie eingegeben hat -->
     <section *ngIf="adresseVorhanden || rechnungsAdresseVorhanden" class="adress__container">
+
+        <!-- Adresse -->
         <div *ngIf="adresseVorhanden">
             <h3 class="h3">Hinterlassene Adresse</h3>
             <table>
@@ -24,6 +28,8 @@
             </table>
             <button class="button button__main" (click)="adresseBearbeiten('normal')">Bearbeiten</button>
         </div>
+
+        <!-- Rechnungsadresse -->
         <div *ngIf="rechnungsAdresseVorhanden">
             <h3 class="h3">Rechnungsadresse</h3>
             <table>
@@ -50,25 +56,28 @@
                     <td><button class="button button__secondary " (click)="adresseEntfernen()">Entfernen</button></td>
                 </tr>
             </table>
-
-
         </div>
     </section>
 
+    <!-- Fontaktformular zum hinterlassen der Adresse -->
     <form *ngIf="kontaktFormular && !adresseVorhanden || openAdressFormular" class="form__container form"
         [formGroup]="kontaktFormular">
 
+        <!-- Anrede -->
         <div class="form__container--half-width">
             <div class="form--span-all">
                 <label for="anrede">Anrede</label>
                 <ng-select class="form__input" [items]="['Herr', 'Frau']" formControlName="anrede"></ng-select>
             </div>
+
+            <!-- Titel -->
             <div class="form--span-all">
                 <label for="titel">Titel</label>
                 <ng-select class="form__input" [items]="['Prof', 'Dr']" formControlName="titel"></ng-select>
             </div>
         </div>
 
+        <!-- Vorname -->
         <div class="form__container--half-width">
             <div class="form--span-all">
                 <label for="vorname">Vorname (Pflichtfeld)</label>
@@ -77,6 +86,8 @@
                 <p *ngIf="kontaktFormular.get('vorname')?.invalid && kontaktFormular.get('vorname')?.touched"
                     class="text-regular--red-signal">Bitte teilen Sie uns Ihren Vornamen mit.</p>
             </div>
+
+            <!-- Nachname -->
             <div class="form--span-all">
                 <label for="nachname">Nachname (Pflichtfeld)</label>
                 <input class="form__input" id="nachname" formControlName="nachname"
@@ -86,6 +97,7 @@
             </div>
         </div>
 
+        <!-- Email-Adresse -->
         <div class="form__container--full-width">
             <p class="text-regular">Wir benötigen Ihre Email-Adresse, damit wir Sie über Ihre Bestellung informieren
                 können.
@@ -99,6 +111,7 @@
             </div>
         </div>
 
+        <!-- Straße -->
         <div class="form__container--label-nr">
             <div class="form__container--full-width">
                 <label for="strasse">Straße (Pflichtfeld)</label>
@@ -110,6 +123,7 @@
                 </div>
             </div>
 
+            <!-- Hausnummer -->
             <div class="form__container--full-width">
                 <label for="hausnummer">Nr. (Pflichtfeld)</label>
                 <input class="form__input" type="number" id="hausnummer" formControlName="hausnummer"
@@ -121,6 +135,7 @@
             </div>
         </div>
 
+        <!-- Stadt -->
         <div class="form__container--label-nr">
             <div class="form__container--full-width">
                 <label for="stadt">Stadt (Pflichtfeld)</label>
@@ -132,6 +147,7 @@
                 </div>
             </div>
 
+            <!-- PLZ -->
             <div class="form__container--full-width">
                 <label for="plz">PLZ. (Pflichtfeld)</label>
                 <input class="form__input" type="text" id="plz" formControlName="plz"
@@ -143,6 +159,7 @@
             </div>
         </div>
 
+        <!-- Land -->
         <div class="form__container--full-width">
             <label for="land">Land (Pflichtfeld)</label>
             <input class="form__input" type="text" id="land" formControlName="land"
@@ -154,9 +171,9 @@
         </div>
         <button class="button button__main" [disabled]="kontaktFormular.invalid"
             (click)="adresseSpeichern(kontaktFormular,'normal')">Speichern</button>
-
     </form>
 
+    <!-- Rechnungsadresse -->
     <p class="text-regular">Falls Ihre Adresse nicht Ihrer Rechnungsadresse entspricht, fügen Sie sie bitte hinzu.</p>
     <button *ngIf="!rechnungsAdresseVorhanden && !openRechnungsAdressFormular" class="button button__secondary"
         (click)="toggleRechungsFormular()">
@@ -166,8 +183,12 @@
                 d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
         </svg>
         Rechnungsadresse hinzufügen</button>
+
+    <!-- Formular zum hinterlassen der Rechnungsadresse -->
     <form *ngIf="rechnungFormular && openRechnungsAdressFormular" class="form__container form"
         [formGroup]="rechnungFormular">
+
+        <!-- Anrede -->
         <div class="form__container--half-width">
             <div class="form--span-all">
                 <label for="anrede">Anrede</label>
@@ -179,6 +200,7 @@
             </div>
         </div>
 
+        <!-- Vorname -->
         <div class="form__container--half-width">
             <div class="form--span-all">
                 <label for="vorname">Vorname (Pflichtfeld)</label>
@@ -187,6 +209,8 @@
                 <p *ngIf="rechnungFormular.get('vorname')?.invalid && rechnungFormular.get('vorname')?.touched"
                     class="text-regular--red-signal">Bitte teilen Sie uns Ihren Vornamen mit.</p>
             </div>
+
+            <!-- Nachname -->
             <div class="form--span-all">
                 <label for="nachname">Nachname (Pflichtfeld)</label>
                 <input class="form__input" id="nachname" formControlName="nachname"
@@ -196,6 +220,7 @@
             </div>
         </div>
 
+        <!-- Email-Adresse -->
         <div class="form__container--full-width">
             <p class="text-regular">Wir benötigen Ihre Email-Adresse, damit wir Sie über Ihre Bestellung informieren
                 können.
@@ -209,6 +234,7 @@
             </div>
         </div>
 
+        <!-- Straße -->
         <div class="form__container--label-nr">
             <div class="form__container--full-width">
                 <label for="strasse">Straße (Pflichtfeld)</label>
@@ -220,6 +246,7 @@
                 </div>
             </div>
 
+            <!-- Hausnummer -->
             <div class="form__container--full-width">
                 <label for="hausnummer">Nr. (Pflichtfeld)</label>
                 <input class="form__input" type="number" id="hausnummer" formControlName="hausnummer"
@@ -231,6 +258,7 @@
             </div>
         </div>
 
+        <!-- Stadt -->
         <div class="form__container--label-nr">
             <div class="form__container--full-width">
                 <label for="stadt">Stadt (Pflichtfeld)</label>
@@ -242,6 +270,7 @@
                 </div>
             </div>
 
+            <!-- PLZ -->
             <div class="form__container--full-width">
                 <label for="plz">PLZ. (Pflichtfeld)</label>
                 <input class="form__input" type="text" id="plz" formControlName="plz"
@@ -253,6 +282,7 @@
             </div>
         </div>
 
+        <!-- Land -->
         <div class="form__container--full-width">
             <label for="land">Land (Pflichtfeld)</label>
             <input class="form__input" type="text" id="land" formControlName="land"
@@ -267,7 +297,7 @@
         <button class="button button__secondary " (click)="adresseEntfernen()">Abbrechen</button>
     </form>
 
-
+    <!-- Formular zum Auswählen einer Zahlungmethode -->
     <form class="form__container form" [formGroup]="rechnungsArtFormular">
         <div class="form__container--full-width">
             <h2 class="h2__container-titel">Zahlungsmethode</h2>
@@ -289,14 +319,13 @@
         </div>
 
         <div class="form__container--full-width">
-            <p *ngIf="rechnungsArtFormularInvalid"
-                class="text-regular--red-signal">
-            Bitte wählen Sie eine Rechnungsadresse aus.
+            <p *ngIf="rechnungsArtFormularInvalid" class="text-regular--red-signal">
+                Bitte wählen Sie eine Rechnungsadresse aus.
             </p>
         </div>
-
     </form>
 
+    <!-- Datenschutzerklärungsformular -->
     <form [formGroup]="datenschutzErklaerung">
         <label class="text-regular">
             <input type="checkbox" formControlName="isChecked">

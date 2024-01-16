@@ -14,16 +14,18 @@ import { Router } from '@angular/router';
 export class KontaktformularComponent implements OnInit {
   appRoutes = AppRoutes;
 
-  rechungsFormular = false;
   adresseData: User = {};
-  adresseVorhanden: boolean = false;
   rechnungsAdresseData: User = {};
+
+  rechungsFormular = false;
+  adresseVorhanden: boolean = false;
   rechnungsAdresseVorhanden: boolean = false;
   openAdressFormular = false;
   openRechnungsAdressFormular = false;
-  errorMessageFormular = ""; 
   errorMessageForumlarVisible = false;
-
+  rechnungsArtFormularInvalid = false;
+  errorRechnungsArtFormular = false; 
+  errorMessageFormular = ""; 
 
   kontaktFormular: FormGroup = this.fb.group({
     anrede: [''],
@@ -54,9 +56,6 @@ export class KontaktformularComponent implements OnInit {
   rechnungsArtFormular = this.fb.group({
     bezahlart: [''],
   });
-
-  rechnungsArtFormularInvalid = false;
-  errorRechnungsArtFormular = false; 
 
   datenschutzErklaerung = this.fb.group({
     isChecked: [false]
@@ -128,12 +127,16 @@ export class KontaktformularComponent implements OnInit {
     return Object.values(userData).some(value => value !== null && value !== '');
   }
 
+  /**
+  * Diese Methode wird aufgerufen, um die Navigation in der Anwendung zu handhaben,
+  * Sie überprüft die Gültigkeit von Formularen, die Auswahl einer Bezahlart und die Akzeptanz
+  * der Datenschutzerklärung, bevor sie die Navigation durchführt.
+  */
   handleNav() {
     this.errorMessageFormular="";
     this.errorMessageForumlarVisible = false;
     let errorMessages: string[] = [];
     this.rechnungsArtFormularInvalid = false; 
-    console.log(this.rechnungsArtFormular.get('bezahlart')?.value); 
     const bezahlartValue = this.rechnungsArtFormular.get('bezahlart')?.value;
     if (this.kontaktFormular.valid && bezahlartValue != "" && this.datenschutzErklaerung.get('isChecked')?.value) {
       this.router.navigate(['/',this.appRoutes.WARENKORB,this.appRoutes.WARENKORB__DANKE]);
@@ -166,6 +169,5 @@ export class KontaktformularComponent implements OnInit {
       }
     });
   }
-
 }
 

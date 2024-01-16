@@ -15,7 +15,6 @@ export class LightBoxComponent implements OnInit{
   ngOnInit(): void {
     if (this.toogleLightBox) {
       this.toogleLightBox.subscribe((isOpen) => {
-        console.log("inside Child: hoverboy: "+ isOpen); 
         this.isOpen = isOpen;
       });
     }

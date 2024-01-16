@@ -1,7 +1,8 @@
 <main class="page page__grid">
+    <!-- Carousel der Produktbilder für die Mobileansicht -->
     <section class="page__grid page__grid__background">
         <div class="page__grid__produkt produkt__grid">
-<div class="produkt__grid__carousel">
+            <div class="produkt__grid__carousel">
                 <app-hero-element-carousel [showTitel]="false" [showText]="false" [slides]="createSlidesForCarousel()">
                 </app-hero-element-carousel>
             </div>
@@ -12,7 +13,8 @@
                 <div class="produkt__side-imgs-container">
                     <button (click)="switchPicture(mockWein?.weinBildL)">
                         <figure class="produkt__side-img-container">
-                            <img class="produkt__side-img-container__img" [src]="mockWein?.weinBildS" [alt]="mockWein?.weinBildAlt">
+                            <img class="produkt__side-img-container__img" [src]="mockWein?.weinBildS"
+                                [alt]="mockWein?.weinBildAlt">
                             <div class="produkt__side-img__overlay"><i class="bi bi-zoom-in"></i> </div>
                         </figure>
                     </button>
@@ -25,10 +27,12 @@
                     </button>
                 </div>
             </div>
-            <app-card *ngIf="mockWein" (showBewertungenChange)="handleShowBewertungenChange($event)" [wein]="mockWein" [cardDetail]="true"
-                class="produkt__grid__produktinformation"></app-card>
+            <app-card *ngIf="mockWein" (showBewertungenChange)="handleShowBewertungenChange($event)" [wein]="mockWein"
+                [cardDetail]="true" class="produkt__grid__produktinformation"></app-card>
         </div>
     </section>
+
+    <!-- Servierempfehlung -->
     <article class="servierempfehlung page__grid__servierempfehlung">
         <section class=" servierempfehlung__section__container">
             <p class="text-regular col">Servierempfehlung</p>
@@ -40,15 +44,18 @@
             </div>
         </section>
     </article>
+
+    <!-- Steckbrief und Bewertungen Navigation -->
     <nav class="nav page__grid__nav">
         <button class="button__nav--small h2--green" (click)="toggleSteckbrief()">
-           <span [class.button__nav--active]="showSteckbrief">Steckbrief </span> 
+            <span [class.button__nav--active]="showSteckbrief">Steckbrief </span>
         </button>
-        <button class="button__nav--small h2--green"  (click)="toggleBewertung()">
+        <button class="button__nav--small h2--green" (click)="toggleBewertung()">
             <span [class.button__nav--active]="showBewertungen">Bewertungen</span>
         </button>
     </nav>
 
+    <!-- Steckbrief -->
     <section *ngIf="showSteckbrief" class="steckbrief__container page__grid__steckbrief">
         <div class="steckbrief steckbrief__grid">
             <div class="steckbrief__info">
@@ -118,6 +125,8 @@
             </article>
         </div>
     </section>
+
+    <!-- Bewertungen -->
     <section *ngIf="wineId && showBewertungen" class="page__grid__bewertungen bewertung__container">
         <app-bewertungen [id]="wineId"></app-bewertungen>
     </section>

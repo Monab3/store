@@ -87,7 +87,6 @@ export class CardComponent implements OnInit {
   }
 
   scrollToEnd(): void {
-    console.log("scrollToEnd");
     this.showBewertungenChange.emit(true);
     window.scrollTo({
       top: document.body.scrollHeight,
@@ -100,8 +99,6 @@ export class CardComponent implements OnInit {
   }
 
   getFullStarsArray(): number[] {
-    console.log("getFullStarsArray: " + this.bewertungWrapper.averageRating);
-
     return new Array(this.bewertungWrapper.averageRating);
   }
 

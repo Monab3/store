@@ -88,12 +88,10 @@ dataWein: Wein[] | undefined= [];
       this.kategorie = params['kategorie'];
       this.titel = this.navWein.find(wine => wine.key === this.kategorie)?.value;
       if(this.kategorie){
-        console.log("subscribeUrl logs: "+ this.kategorie); 
         this.dataWein = this.weinService.getWinesByKategorie(this.kategorie); 
         this.filterDataWine = this.dataWein;
         this.weinRebsorteByNumbers = this.weinService.getRebsorteByNumber(this.kategorie);
         this.weinGeschmackByNumbers = this.weinService.getGeschmackByNumber(this.kategorie);
-        console.log("weinfilters by number: "+ JSON.stringify(this.weinGeschmackByNumbers)); 
       }
     });
   }

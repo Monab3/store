@@ -7,6 +7,7 @@
 
 @import '../../../core/stylesheets/elements/controls';
 
+//Stylesheet der Fortschrittsanzeige
 .anzeige {
     @include flexbox($direction: row, $justify: space-between, $align: center, $wrap: nowrap);
      

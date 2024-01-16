@@ -54,7 +54,6 @@ export class BewertungenComponent implements OnInit {
   }
 
   setRating(i: number){
-    console.log("setRating: " + i);
     this.rating = i;
   }
 
@@ -121,7 +120,6 @@ onSubmit() {
   }
 
   getFullStarsArray(sterne: number): number[] {
-    console.log("getFullStarsArray: " + sterne);
     return new Array(sterne);
   }
 
