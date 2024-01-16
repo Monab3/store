@@ -1,26 +1,31 @@
-# Store
+# Implementierung eines High-Fidelity-Prototyp für den Online-Shop eines Weinguts
+***
+Dieses Projekt ist eine frontendseitige Implementierung einer Single-Page-Applikation. Technische Grundlage ist das Open-Source Komponenten-Framework Angular in der Version 17.0.4, die auf den Webtechnologien HTML5, CSS3 und JavaScript basiert. 
+Unter Berücksichtigung von Usability-Richtlinien und nach den Methoden des Human Centered Design-Prozesses, wurde dieser Prototypen für einen Bestellshop entworfen. 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.1.
+## Technologien
+Dieses Projekt wurde mit [Angular CLI](https://github.com/angular/angular-cli) in der Version 17.0.1. generiert.
+***
+### Weitere Technologien
+Bootstrap Icons:** 1.11.2
+@ng-select/ng-select:** 12.0.4
+Date-fns:** 3.0.6
+Nodemon:** 3.0.1
+Normalize.css:** 8.0.1
+PrimeNG:** 17.0.0-beta.1
+RxJS:** 7.8.0
+xng-breadcrumb:** 7.2.0
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Installation
+Stelle sicher, dass Node.js auf deinem System installiert ist. (Node.js herunterladen: https://nodejs.org/en) 
+Folge diesen Schritten, um das Projekt lokal zu installieren:
+-> Clonen Sie das Projekt
+  1.Möglichkeit: Gehen zur GitHub-Seite deines Projekts und Downloaden sie die ZIP-Datei mit dem gesamten Projekt. 
+  Entpacke die ZIP-Datei in das gewünschte Verzeichnis auf Ihrem Computer.
+  2.Möglichkeit: Falls Sie Git auf Ihrem Computer Installiert haben können Sie das Projekt mit über. Dafür kopieren Sie die    Git-Repository-URL und führen folgenden Befehl in ihrer Kommandozeile aus: git clone {Git-Repository-URL}
+-> Navigieren Sie zum Projektverzeichnis /store
+-> installieren Sie die Abhändigkeiten des Projektes mit dem Befehl "npm install"
+-> starten die Anwendung mit dem Befehl "npm start" oder "ng serve"
 
 ## Further help
 
